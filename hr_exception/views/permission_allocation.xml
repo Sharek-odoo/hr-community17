@@ -1,0 +1,45 @@
+<odoo>
+
+    <record id="view_permission_allocation_tree" model="ir.ui.view">
+        <field name="name">permission.allocation.tree</field>
+        <field name="model">permission.allocation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="hour_balance"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_permission_allocation_form" model="ir.ui.view">
+        <field name="name">permission.allocation.form</field>
+        <field name="model">permission.allocation</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                  <group>
+                    <field name="employee_id"/>
+                  </group>
+                  <group>
+                    <field name="hour_balance"/>
+                  </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <menuitem id="menu_permission_allocation"
+              name="Permission Allocation"
+              parent="hr.menu_human_resources_configuration"
+              sequence="50"/>
+
+    <record id="action_permission_allocation" model="ir.actions.act_window">
+        <field name="name">Permission Allocation</field>
+        <field name="res_model">permission.allocation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="submenu_permission_allocation"
+              name="Allocations"
+              parent="menu_permission_allocation"
+              action="action_permission_allocation"/>
+</odoo>

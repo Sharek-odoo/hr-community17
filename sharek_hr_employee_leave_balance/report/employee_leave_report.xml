@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--    Employee Report    -->
+        <report
+                id="report_employee_details"
+                model="hr.employee.summary"
+                string="Employee Leave Summary"
+                report_type="qweb-pdf"
+                name="sharek_hr_employee_leave_balance.hr_leave_report"
+                file="sharek_hr_employee_leave_balance.hr_leave_report"
+        />
+          <record id="action_hr_leave_report" model="ir.actions.report">
+            <field name="name">Employee Leave Summary</field>
+            <field name="model">hr.employee.summary</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sharek_hr_employee_leave_balance.hr_leave_report</field>
+            <field name="report_file">sharek_hr_employee_leave_balance.hr_leave_report</field>
+        </record>
+
+        <!--        Template Purchase Requisition-->
+        <template id="hr_leave_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="header" style="text-align: center; margin-bottom: 20px;">
+                        <h2>الموارد البشرية</h2>
+                        <h3>تقرير الرواتب والبدلات</h3>
+                    </div>
+
+                    <table class="table table-bordered" style="width: 100%; direction: rtl;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2;">
+                                <th style="text-align: center;">Basic</th>
+                                <th style="text-align: center;"> Housing</th>
+                                <th style="text-align: center;"> Transportation</th>
+                                <th style="text-align: center;"> Other Allowances</th>
+                                <th style="text-align: center;"> Leave Balance</th>
+                                <th style="text-align: center;"> Leave amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.line_ids" t-as="emp">
+                                <td style="text-align: center;">
+                                    <t t-esc="emp['employee_id.name']"/>
+                                </td>
+
+                                <td style="text-align: center;">
+                                    <t t-esc="emp['job_id']"/>
+                                </td>
+                                <td style="text-align: center;">
+                                    <t t-esc="'{:.2f}'.format(emp['basic_salary'])"/>
+                                </td>
+                                <td style="text-align: center;">
+                                    <t t-esc="'{:.2f}'.format(emp['hra'])"/>
+                                </td>
+                                <td style="text-align: center;">
+                                    <t t-esc="'{:.2f}'.format(emp['transport_allowance'])"/>
+                                </td>
+                                <td style="text-align: center;">
+                                    <t t-esc="'{:.2f}'.format(emp['other_allowance'])"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

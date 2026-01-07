@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_attendess_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.attendess.wizard.view.form</field>
+        <field name="model">hr.attendess.wizard</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="employee_id" />
+                            <field name="department_id" />
+                            <field name="company_id" readonly="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_export_to_excel" string="Print Excel" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-danger"/>
+                </footer>
+                
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_attendess_wizard_action" model="ir.actions.act_window">
+        <field name="name">Attendance XLSX Report</field>
+        <field name="res_model">hr.attendess.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="hr_attendess_wizard_menu"
+        name="Attendance XLSX Report"
+        action="hr_attendess_wizard_action"
+        parent="softatt_attendance.sa_attendance_reports_menu"
+        sequence="10"/>
+</odoo>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+         <record id="module_category_financial" model="ir.module.category">
+            <field name="name">Financial Request</field>
+            <field name="description">Financial Request Workflow Permissions</field>
+            <field name="sequence">25</field>
+        </record>
+
+        <!-- Security Groups using the new Loan category -->
+        <record id="group_financial_request_user" model="res.groups">
+            <field name="name">Financial Request User</field>
+            <field name="category_id" ref="sharek_financial_requests.module_category_financial"/>
+        </record>
+
+
+        <record id="rule_children_education_employee" model="ir.rule">
+        <field name="name">Children Education - Employee Own Records</field>
+        <field name="model_id" ref="model_children_education_allowance"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_employee_submit'))]"/>
+    </record>
+
+    <record id="rule_advance_salary_employee" model="ir.rule">
+        <field name="name">Advance Salary - Employee Own Records</field>
+        <field name="model_id" ref="model_advance_salary"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_employee_submit'))]"/>
+    </record>
+
+    <record id="rule_financial_claim_employee" model="ir.rule">
+        <field name="name">Financial Claim - Employee Own Records</field>
+        <field name="model_id" ref="model_financial_claim"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_employee_submit'))]"/>
+    </record>
+
+    <record id="rule_overtime_request_employee" model="ir.rule">
+        <field name="name">Overtime Request - Employee Own Records</field>
+        <field name="model_id" ref="model_overtime_request"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_employee_submit'))]"/>
+    </record>
+
+    <record id="rule_perpetual_custody_employee" model="ir.rule">
+        <field name="name">Perpetual Custody - Employee Own Records</field>
+        <field name="model_id" ref="model_perpetual_custody"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_employee_submit'))]"/>
+    </record>
+
+    <record id="rule_temporary_custody_employee" model="ir.rule">
+        <field name="name">Temporary Custody - Employee Own Records</field>
+        <field name="model_id" ref="model_temporary_custody"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_employee_submit'))]"/>
+    </record>
+
+    <!-- ================= Direct Manager Rules ================= -->
+    <record id="rule_children_education_direct_manager" model="ir.rule">
+        <field name="name">Children Education - Direct Manager</field>
+        <field name="model_id" ref="model_children_education_allowance"/>
+        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_direct_manager'))]"/>
+    </record>
+
+    <record id="rule_advance_salary_direct_manager" model="ir.rule">
+        <field name="name">Advance Salary - Direct Manager</field>
+        <field name="model_id" ref="model_advance_salary"/>
+        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_direct_manager'))]"/>
+    </record>
+
+    <record id="rule_financial_claim_direct_manager" model="ir.rule">
+        <field name="name">Financial Claim - Direct Manager</field>
+        <field name="model_id" ref="model_financial_claim"/>
+        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_direct_manager'))]"/>
+    </record>
+
+    <record id="rule_overtime_request_direct_manager" model="ir.rule">
+        <field name="name">Overtime Request - Direct Manager</field>
+        <field name="model_id" ref="model_overtime_request"/>
+        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_direct_manager'))]"/>
+    </record>
+
+    <record id="rule_perpetual_custody_direct_manager" model="ir.rule">
+        <field name="name">Perpetual Custody - Direct Manager</field>
+        <field name="model_id" ref="model_perpetual_custody"/>
+        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_direct_manager'))]"/>
+    </record>
+
+    <record id="rule_temporary_custody_direct_manager" model="ir.rule">
+        <field name="name">Temporary Custody - Direct Manager</field>
+        <field name="model_id" ref="model_temporary_custody"/>
+        <field name="domain_force">[('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_direct_manager'))]"/>
+    </record>
+
+    <!-- ================= Department Manager Rules ================= -->
+    <record id="rule_children_education_department_manager" model="ir.rule">
+        <field name="name">Children Education - Department Manager</field>
+        <field name="model_id" ref="model_children_education_allowance"/>
+        <field name="domain_force">[('employee_id.parent_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_department_manager'))]"/>
+    </record>
+
+    <record id="rule_advance_salary_department_manager" model="ir.rule">
+        <field name="name">Advance Salary - Department Manager</field>
+        <field name="model_id" ref="model_advance_salary"/>
+        <field name="domain_force">[('employee_id.parent_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_department_manager'))]"/>
+    </record>
+
+    <record id="rule_financial_claim_department_manager" model="ir.rule">
+        <field name="name">Financial Claim - Department Manager</field>
+        <field name="model_id" ref="model_financial_claim"/>
+        <field name="domain_force">[('employee_id.parent_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_department_manager'))]"/>
+    </record>
+
+    <record id="rule_overtime_request_department_manager" model="ir.rule">
+        <field name="name">Overtime Request - Department Manager</field>
+        <field name="model_id" ref="model_overtime_request"/>
+        <field name="domain_force">[('employee_id.parent_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_department_manager'))]"/>
+    </record>
+
+    <record id="rule_perpetual_custody_department_manager" model="ir.rule">
+        <field name="name">Perpetual Custody - Department Manager</field>
+        <field name="model_id" ref="model_perpetual_custody"/>
+        <field name="domain_force">[('employee_id.parent_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_department_manager'))]"/>
+    </record>
+
+    <record id="rule_temporary_custody_department_manager" model="ir.rule">
+        <field name="name">Temporary Custody - Department Manager</field>
+        <field name="model_id" ref="model_temporary_custody"/>
+        <field name="domain_force">[('employee_id.parent_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sharek_hr_employee_loan.group_loan_department_manager'))]"/>
+    </record>
+
+    <!-- ================= HR / CEO / Finance Rules (See All) ================= -->
+    <record id="rule_all_children_education" model="ir.rule">
+        <field name="name">Children Education - HR / CEO / Finance All Records</field>
+        <field name="model_id" ref="model_children_education_allowance"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[
+            (4, ref('sharek_hr_employee_loan.group_loan_hr')),
+            (4, ref('sharek_hr_employee_loan.group_loan_hr_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_ceo')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance'))
+        ]"/>
+    </record>
+
+    <!-- Repeat the same "see all" rule for other models -->
+    <record id="rule_all_advance_salary" model="ir.rule">
+        <field name="name">Advance Salary - HR / CEO / Finance All Records</field>
+        <field name="model_id" ref="model_advance_salary"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[
+            (4, ref('sharek_hr_employee_loan.group_loan_hr')),
+            (4, ref('sharek_hr_employee_loan.group_loan_hr_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_ceo')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance'))
+        ]"/>
+    </record>
+
+
+    <record id="rule_all_financial_claim" model="ir.rule">
+        <field name="name">Financial Claim - HR / CEO / Finance All Records</field>
+        <field name="model_id" ref="model_financial_claim"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[
+            (4, ref('sharek_hr_employee_loan.group_loan_hr')),
+            (4, ref('sharek_hr_employee_loan.group_loan_hr_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_ceo')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance'))
+        ]"/>
+    </record>
+
+    <record id="rule_all_overtime_request" model="ir.rule">
+        <field name="name">Overtime Request - HR / CEO / Finance All Records</field>
+        <field name="model_id" ref="model_overtime_request"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[
+            (4, ref('sharek_hr_employee_loan.group_loan_hr')),
+            (4, ref('sharek_hr_employee_loan.group_loan_hr_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_ceo')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance'))
+        ]"/>
+    </record>
+
+    <record id="rule_all_perpetual_custody" model="ir.rule">
+        <field name="name">Perpetual Custody - HR / CEO / Finance All Records</field>
+        <field name="model_id" ref="model_perpetual_custody"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[
+            (4, ref('sharek_hr_employee_loan.group_loan_hr')),
+            (4, ref('sharek_hr_employee_loan.group_loan_hr_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_ceo')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance'))
+        ]"/>
+    </record>
+
+    <record id="rule_all_temporary_custody" model="ir.rule">
+        <field name="name">Temporary Custody - HR / CEO / Finance All Records</field>
+        <field name="model_id" ref="model_temporary_custody"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[
+            (4, ref('sharek_hr_employee_loan.group_loan_hr')),
+            (4, ref('sharek_hr_employee_loan.group_loan_hr_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_ceo')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance_manager')),
+            (4, ref('sharek_hr_employee_loan.group_loan_finance'))
+        ]"/>
+    </record>
+
+         
+    </data>
+</odoo>

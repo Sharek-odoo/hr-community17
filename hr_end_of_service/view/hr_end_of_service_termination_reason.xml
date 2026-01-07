@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="view_hr_end_of_service_termination_reason_tree">
+		<field name="name">hr.end_of_service.termination_reason.tree</field>
+		<field name="model">hr.end_of_service.termination_reason</field>
+		<field name="arch" type="xml">
+			<tree editable="bottom">
+				<field name="name" />
+				<field name="code" />
+			</tree>
+		</field>
+	</record>	
+
+</odoo>

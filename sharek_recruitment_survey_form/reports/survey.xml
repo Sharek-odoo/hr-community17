@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_hr_job_document" model="ir.actions.report">
+        <field name="name">Jop Interview</field>
+        <field name="model">hr.job</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sharek_recruitment_survey_form.report_hr_job_document</field>
+        <field name="report_file">sharek_recruitment_survey_form.report_hr_job_document</field>
+        <field name="print_report_name">'Job - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_job"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+
+    <template id="report_hr_job_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <div class="container text-center h6" style="font-size:1.1rem" dir="rtl">
+                        <style>
+                            table, th, td {
+                                border: 1px solid black;
+                                word-wrap: break-word; /* break long words */
+                                word-break: break-word; /* older fallback */
+                                white-space: norma
+                            }
+                            caption {
+                                caption-side: top;
+                                text-align: right;
+                                font-weight: bold;
+                                margin-bottom: 10px;
+                            }
+                        </style>
+                        <div class="row mt-3 border">
+                            <div class="col-3 border"> (F-HR04-04) </div>
+                            <div class="col-6 border">
+                                <div class="h5">General Interview Form</div> 
+                                <div class="h6">استمارة مقابلة شخصية</div> 
+                            </div>
+                            <div class="col-3 border"> 
+                                <!-- <img src="./dd.jpg" height="100" width="150"/>  -->
+                                <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" width="150" height="100" alt="Logo"/>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 text-center">
+                            <table class="border text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>اسم المرشح بالكامل</th>
+                                        <th>الوظيفة المتقدم لها</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.application_ids" t-as="application">
+                                        <tr>
+                                            <td> <t t-esc="application.partner_name"/> </td>
+                                            <td> <t t-esc="application.job_id.name"/> </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row mt-5 text-center">
+                            <table class="table text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="6">ملاحظة: سيقوم مُجري المقابلة بالتقييم عن طريق النقر في الخانة المناسبة.</th>
+                                    </tr>
+                                    <tr>
+                                        <th>العوامل</th>
+                                        <th>مؤشرات التقييم</th>
+                                        <th colspan="4">مؤشرات التقييم</th>
+
+                                    </tr>
+
+                                    <t t-foreach="doc.survey_id.question_ids" t-as="question">
+                                        <tr>
+                                            <td> <t t-esc="doc.survey_id.title"/> </td>
+                                            <td> <t t-esc="question.title"/> </td>
+                                            <t t-foreach="question.suggested_answer_ids" t-as="answer">
+                                                <td> <t t-esc="answer.value"/> </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </thead>
+                                
+                            </table>
+
+
+                            <table class="table" style="width: 100%;">
+                                <thead>
+                                    <tr class="text-right">
+                                        <th colspan="4">يقوم مُجري المقابلة بكتابة تعليقاته وملاحظاته عن مدى ملائمة المرشح للوظيفة</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4">نقاط القوة:</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4"></th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4">نقاط الضعف:</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4"></th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4">التوصيات بعد المقابلة الشخصية</th>
+                                    </tr>
+                                    
+                                <tr>
+                                    <td> ننصح بتعييه □  </td>
+                                    <td> غير مناسب للوظيفة □  </td>
+                                    <td> قيد الانتظار □  </td>
+                                </tr>
+                                </thead>
+                            </table>
+                            
+                        </div>
+
+
+                        <div class="row mt-3">
+                            <div class="text-right border p-2" style="width: 100%;">مراجعة لجنة المقابلة الشخصية</div>
+                            <table class="table text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>اسم من قام بالمقابلة</th>
+                                        <th>التوقيع والتاريخ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <t t-esc="doc.user_id.name"/> </td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="row mt-3">
+                            <table class="table text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td style="background-color: gray;font-size:1.3rem" colspan="4"> مؤشرات التقييم </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="word-wrap: break-word;word-break: break-word">1 (يفوق متطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">2 (يلبي المتطلبات الأساسية للوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">3 (يلبي جزئياً الحد الأدنى لمتطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">1 (لا يلبي متطلبات الوظيفة)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: gray;font-size:1.3rem" colspan="4">إجمالي نقاط التقييم</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="word-wrap: break-word;word-break: break-word">6 (يفوق متطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">7-12 (يلبي المتطلبات الأساسية للوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">13-18(يلبي جزئياً الحد الأدنى لمتطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">19-24  (لا يلبي متطلبات الوظيفة)</td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
+
+
+
+
+
+
+    <!-- <record id="hr_job_survey" model="ir.ui.view">
+        <field name="name">hr.job.form1</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_job_survey"/>
+        <field name="arch" type="xml">
+
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button"
+                    icon="fa-pencil"
+                    name="action_view_interview_form"
+                    type="object">
+                    <field name="all_interview_form_count" widget="statinfo" string="Job Interviews"/>
+                </button>
+            </div>
+
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button string="clik" name="create_candidit" type="object" class="oe_highlight"/>
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="interview_form_id" />
+                <!-- <field name="nationality" options="{'no_create':True,'no_edit':True}" /> -->
+            </xpath>
+        </field>
+        
+    </record> -->

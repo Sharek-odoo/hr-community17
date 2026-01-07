@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_time_off_report" model="ir.actions.report">
+        <field name="name">Time Off Request</field>
+        <field name="model">hr.leave</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">softatt_time_off_extensions.time_off_report_template</field>
+        <field name="report_file">softatt_time_off_extensions.time_off_report_template</field>
+        <field name="binding_model_id" ref="hr_holidays.model_hr_leave" />
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Time_Off_Request_%s' % (object.employee_id.name)</field>
+    </record>
+    
+
+    <template id="time_off_report_template" name="Time Off Report Template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout" t-lang="en_US">
+                <t t-foreach="docs" t-as="doc">
+                    <!-- Header Section -->
+                    <div style="font-family: Arial, sans-serif; color: #333;">
+                        <h2><t t-esc="doc.holiday_status_id.name"/> Request</h2>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <div style="text-align: right;">
+                                <span>Date: <t t-esc="doc.create_date.strftime('%B %d, %Y')"/></span>
+                            </div>
+                        </div>
+    
+                    <!-- Employee Details Section (Two-column Layout) -->
+                    <table style="width: 100%; margin-bottom: 20px;" class="table table-borderless">
+                        <tr>
+                            <td style="width: 50%; font-size: 16px; border: none;">
+                                <p><strong>Employee Name:</strong> <t t-esc="doc.employee_id.name"/></p>
+                                <p><strong>Department:</strong> <t t-esc="doc.employee_id.department_id.name"/></p>
+                            </td>
+                            <td style="width: 50%; font-size: 16px; border: none;">
+                                <p><strong>Job Title:</strong> <t t-esc="doc.employee_id.job_title"/></p>
+                                <p><strong>Manager:</strong> <t t-esc="doc.employee_id.parent_id.name"/></p>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                        <!-- Leave Information Section (Bordered Table) -->
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                            <tr>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd; background-color: #f9f9f9;">Leave Type</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd; background-color: #f9f9f9;">Start Date</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd; background-color: #f9f9f9;">End Date</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd; background-color: #f9f9f9;">Duration</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><t t-esc="doc.holiday_status_id.name"/></td>
+                                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><t t-esc="doc.date_from.strftime('%B %d, %Y')"/></td>
+                                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><t t-esc="doc.date_to.strftime('%B %d, %Y')"/></td>
+                                <td style="padding: 8px; border-bottom: 1px solid #ddd;"><t t-esc="doc.number_of_days_display"/> Days</td>
+                            </tr>
+                        </table>
+    
+                        <!-- Balance Section (Two-column Layout) -->
+                        <div t-if="doc.holiday_status_id.requires_allocation =='yes'" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <div style="width: 100%; border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9;">
+                                <p><strong>Remaining <t t-esc="doc.holiday_status_id.name"/> Balance:</strong> <t t-esc="doc.employee_id.remaining_leaves or 0"/> Days</p>
+                            </div>
+                        </div>
+    
+                        <!-- Reason for Leave Section (Card Design) -->
+                        <div style="margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; background-color: #f2f2f2;">
+                            <h3 style="margin-bottom: 10px;">Reason for Leave</h3>
+                            <p><t t-esc="doc.name or 'No reason provided.'"/></p>
+                        </div>
+    
+                        <!-- Signature Section -->
+                        <div style="margin-top: 40px; margin-bottom: 20px;">
+                            <div style="float: right; width: 45%;">
+                                <p style="border-top: 1px solid #000; text-align: center; padding-top: 10px;">Manager Signature</p>
+                            </div>
+                            <div style="clear: both;"/>
+                        </div>
+                        
+                        <div style="margin-top: 40px; margin-bottom: 20px; position: relative;">
+                           
+                            <div style="float: right; width: 45%; position: relative; text-align: center;">
+                                <img t-if="user.employee_id.sa_digital_signature" t-att-src="image_data_uri(user.employee_id.sa_digital_signature)" style="max-height: 4.5cm; max-width: 6cm; "/>
+                                <p style="border-top: 1px solid #000; padding-top: 10px;">HR Signature</p>
+                            </div>
+
+                            <div style="clear: both;"/>
+                        </div>
+
+    
+                        <!-- Footer Section -->
+                        <div style="border-top: 1px solid #ccc; padding-top: 10px; font-size: 12px; text-align: center;">
+                            <p>If you have any questions regarding this request, please contact the HR department.</p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+</odoo>

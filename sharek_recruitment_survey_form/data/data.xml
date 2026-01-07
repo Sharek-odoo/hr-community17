@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_hr_interview_form" model="ir.sequence">
+            <field name="name">Interview Form Sequence</field>
+            <field name="code">hr.interview.form</field>
+            <field name="prefix">INTF-</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

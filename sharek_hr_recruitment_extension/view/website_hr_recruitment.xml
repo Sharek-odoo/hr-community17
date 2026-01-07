@@ -1,0 +1,135 @@
+<odoo>
+  <template id="custom_hr_recruitment_form" inherit_id="website_hr_recruitment.apply" priority="20">
+    <xpath expr="//form[@id='hr_recruitment_form']/div/div[4]" position="replace">
+      <!-- LinkedIn Profile (now optional) -->
+<div class="col-12 mb-0 py-2 s_website_form_field"
+     data-type="char" data-name="LinkedIn Profile">
+    <div class="row s_col_no_resize s_col_no_bgcolor">
+        <label class="col-4 col-sm-auto s_website_form_label" style="width: 200px" for="recruitment4">
+            <span class="s_website_form_label_content">LinkedIn Profile</span>
+        </label>
+        <div class="col-sm" style="position: relative">
+            <i class="fa fa-linkedin fa-2x m-1 o_linkedin_icon" style="max-height: 37px;"></i>
+            <input id="recruitment4" type="text"
+                   class="form-control s_website_form_input pl64"
+                   placeholder="e.g. https://www.linkedin.com/in/fpodoo/"
+                   style="padding-left: 40px"
+                   name="linkedin_profile"
+                   data-fill-with="linkedin_profile"/> <!-- ❌ removed `required` -->
+            <div class="alert alert-warning mt-2" id="linkedin-message" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+    </xpath>
+    <xpath expr="//form[@id='hr_recruitment_form']/div/div" position="inside">
+
+      <!-- Years of Experience -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="integer" data-name="Years of Experience">
+        <div class="row s_col_no_resize s_col_no_bgcolor">
+          <label class="col-4 col-sm-auto s_website_form_label" for="years_of_experience" style="width: 200px">
+            <span class="s_website_form_label_content">Years of Experience / Years</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="years_of_experience" name="years_of_experience" type="number" class="form-control s_website_form_input" required="1"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notice Period -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="char" data-name="Notice Period">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="notice_period" style="width: 200px">
+            <span class="s_website_form_label_content">Notice Period / Months</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="notice_period" name="notice_period" type="text" class="form-control s_website_form_input" required="1"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expected Salary (existing field: salary_expected) -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="float" data-name="Expected Salary">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="salary_expected" style="width: 200px">
+            <span class="s_website_form_label_content">Expected Salary</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="salary_expected" name="salary_expected" type="number" class="form-control s_website_form_input" step="any" required="1"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- City of Residence -->
+    <div class="col-12 mb-0 py-2 s_website_form_field" data-type="many2one" data-name="City of residence">
+    <div class="row">
+        <label class="col-4 col-sm-auto s_website_form_label" for="city_residence" style="width: 200px">
+            <span class="s_website_form_label_content">City of Residence</span><span class="s_website_form_mark">*</span>
+        </label>
+        <div class="col-sm">
+            <select id="city_residence" name="city_residence" required="1" class="form-control s_website_form_input">
+                <t t-foreach="states.filtered(lambda s: s.country_id.code == 'SA')" t-as="state">
+                    <option t-att-value="state.id" t-esc="state.name"/>
+                </t>
+            </select>
+        </div>
+    </div>
+</div>
+
+      <!-- Gender -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="selection" data-name="Gender">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="gender" style="width: 200px">
+            <span class="s_website_form_label_content">Gender</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <select id="gender" name="gender" class="form-control s_website_form_input" required="1">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate Level -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="selection" data-name="Certificate Level">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="certificate_two" style="width: 200px">
+            <span class="s_website_form_label_content">Certificate Level</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <select id="certificate_two" name="certificate_two" class="form-control s_website_form_input" required="1">
+              <option value="primary">Primary School</option>
+              <option value="middle">Middle School</option>
+              <option value="high">High School</option>
+              <option value="diploma">Diploma</option>
+              <option value="bachelor">Bachelor</option>
+              <option value="master">Master</option>
+              <option value="phd">PhD</option>
+              <option value="other" selected="selected">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source (existing field: source_id) -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="many2one" data-name="Source">
+    <div class="row">
+        <label class="col-4 col-sm-auto s_website_form_label" for="source_id" style="width: 200px">
+            <span class="s_website_form_label_content">Source</span>
+            <span class="s_website_form_mark">*</span>
+        </label>
+        <div class="col-sm">
+            <select id="source_id" name="source_id" class="form-control s_website_form_input" required="1">
+                <option value="">Select Source</option>
+                <t t-foreach="utm_sources" t-as="source">
+                    <option t-att-value="source.id" t-esc="source.name"/>
+                </t>
+            </select>
+        </div>
+    </div>
+</div>
+
+    </xpath>
+  </template>
+</odoo>

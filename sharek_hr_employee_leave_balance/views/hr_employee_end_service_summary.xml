@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Tree View for Employee Summary -->
+    <record id="view_employee_end_services_summary_tree" model="ir.ui.view">
+        <field name="name">hr.employee.end.services.summary.tree</field>
+        <field name="model">hr.employee.end.services.summary</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date"  readonly="state != 'draft'"/>
+                <field name="state"/>
+                <field name="company_id" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Employee Summary -->
+    <record id="view_employee_end_services_summary_form" model="ir.ui.view">
+        <field name="name">hr.employee.end.services.summary.form</field>
+        <field name="model">hr.employee.end.services.summary</field>
+        <field name="arch" type="xml">
+            <form string="Employee Summary">
+                <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved"/>
+                        <button string="Set Employees" name="get_all_employee" invisible="state != 'draft'" type="object" class="oe_highlight"/>
+                        <button name="compute_employee_summary" type="object" string="Compute"
+                                invisible="state not in 'draft'" class="btn-primary"/>
+                        <button name="action_submit" type="object" string="Submit"
+                                invisible="state not in 'draft'" class="btn-primary"/>
+                        <button name="action_draft" type="object" string="Reset To Draft"
+                                invisible="state not in 'cancel'"  class="btn-primary"/>
+
+                        <button name="action_approve" type="object" string="Approve"
+                                invisible="state not in 'submitted'" class="btn-success"/>
+                        <button name="action_cancel" type="object" string="cancel"
+                                invisible="state in 'cancel'" class="btn-danger"/>
+                    </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date" required="1" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Employees">
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <tree editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="employee_no" optional="hide"/>
+                                    <field name="department_id" optional="hide"/>
+                                    <field name="job_id" optional="hide"/>
+                                    <field name="join_date" optional="hide"/>
+                                    <field name="basic_salary" options="{'currency_field': 'currency_id'}"  optional="hide"/>
+                                    <field name="hra" options="{'currency_field': 'currency_id'}"  optional="hide"/>
+                                    <field name="transport_allowance" options="{'currency_field': 'currency_id'}" optional="hide"/>
+                                    <field name="other_allowance" options="{'currency_field': 'currency_id'}" optional="hide"/>
+                                    <field name="total_gross_salary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="service_days"/>
+                                    <field name="total_service_balance" options="{'currency_field': 'currency_id'}" sum="x"/>
+
+
+                                    <field name="last_service_days"/> <!--  Add by Hamid A Moahmed -->
+                                    <field name="last_total_service_balance" options="{'currency_field': 'currency_id'}" sum="x"/> <!--  Add by Hamid A Moahmed -->
+                                    <field name="difference_days"   optional="show"/> <!--  Add by Hamid A Moahmed -->
+                                    <field name="company_id" readonly="1" optional="hide"/>
+                                    <field name="currency_id" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user" options="{'post_refresh': 'recipients'}"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open Employee Summary -->
+    <record id="action_hr_employee_end_services_summary" model="ir.actions.act_window">
+        <field name="name">End Of Services Summaries</field>
+        <field name="res_model">hr.employee.end.services.summary</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Item under HR -->
+
+    <menuitem id="menu_hr_employee_end_services_summary" name="End Services Summaries" parent="menu_hr_employee_summary_root"
+              action="action_hr_employee_end_services_summary" sequence="10"/>
+
+</odoo>

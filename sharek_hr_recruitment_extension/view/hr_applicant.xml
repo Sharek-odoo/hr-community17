@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="hr_applicant_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.applicant.view.form.inherit</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//group[1]//field[@name='type_id']" position="after">
+                <field name="years_of_experience"/>
+                <field name="notice_period"/>
+                <field name="certificate_two"/>
+            </xpath>
+            <xpath expr="//group//group[1]//field[@name='partner_mobile']" position="after">
+                <field name="gender"/>
+                <field name="city_residence"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+
+    <record id="hr_applicant_view_search_bis_inherit_custom" model="ir.ui.view">
+            <field name="name">hr.applicant.view.search.inherit.custom</field>
+            <field name="model">hr.applicant</field>
+            <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_search_bis"/>
+            <field name="arch" type="xml">
+
+                <!-- Add new fields at the top of the search bar -->
+                <xpath expr="//search" position="inside">
+                    <field name="city_residence" string="City of Residence" filter_domain="[('city_residence', 'ilike', self)]"/>
+                    <field name="years_of_experience" string="Years of Experience" filter_domain="[('years_of_experience', '=', self)]"/>
+                    <field name="notice_period" string="Notice Period" filter_domain="[('notice_period', 'ilike', self)]"/>
+                    <field name="gender" string="Gender" filter_domain="[('gender', '=', self)]"/>
+                    <field name="certificate_two" string="Certificate Level" filter_domain="[('certificate_two', '=', self)]"/>
+                </xpath>
+
+                <!-- Optional: Group By -->
+                <xpath expr="//group" position="inside">
+                    <filter string="City" name="city_residence" context="{'group_by': 'city_residence'}"/>
+                    <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Certificate" name="certificate_two" context="{'group_by': 'certificate_two'}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    
+</odoo>

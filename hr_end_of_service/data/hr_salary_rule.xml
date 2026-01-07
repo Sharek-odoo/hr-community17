@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+
+<!-- 	<record id="rule_end_of_service" model="hr.salary.rule" forcecreate="False">
+		<field name="name">End of Service (Value)</field>
+		<field name="code">EOS</field>
+		<field name="sequence">80</field>
+		<field name="category_id" ref="hr_payroll.COMP" />
+		<field name="struct_id" ref="hr_payroll_extension.ksa_basic_structure"/>
+		<field name="condition_select">none</field>
+		<field name="appears_on_payslip" eval="False" />
+		<field name="amount_select">code</field>
+		<field name="amount_python_compute">
+<![CDATA[
+result = payslip.end_of_service.reward_amount
+]]>
+		</field>
+	</record>
+
+	<record id="rule_end_of_service_post" model="hr.salary.rule" forcecreate="False">
+		<field name="name">End of Service (Post)</field>
+		<field name="code">EOSPost</field>
+		<field name="sequence">81</field>
+		<field name="category_id" ref="hr_payroll.COMP" />
+		<field name="struct_id" ref="hr_payroll_extension.ksa_basic_structure"/>
+		<field name="condition_select">none</field>
+		<field name="appears_on_payslip" eval="False" />
+		<field name="amount_select">code</field>
+		<field name="amount_python_compute">
+<![CDATA[
+account_id = employee.env.ref('hr_end_of_service.rule_end_of_service_post').sudo().account_credit
+previous_amount = employee.env['account.move.line'].sudo().read_group([('account_id','=', account_id.id),('partner_id','=', employee.address_home_id.id)], ['balance'],[])[0]['balance'] or 0
+result = EOS + previous_amount
+]]>
+		</field>
+	</record>	 -->
+	
+	<record id="rule_end_of_service_payment" model="hr.salary.rule" forcecreate="False">
+		<field name="name">End of Service</field>
+		<field name="code">EOSPay</field>
+		<field name="sequence">82</field>
+		<field name="category_id" ref="hr_payroll.ALW" />
+		<field name="struct_id" ref="hr_payroll_extension.ksa_basic_structure"/>
+		<field name="condition_select">python</field>
+		<field name="condition_python">result = bool(payslip.end_of_service.id)</field>
+		<field name="appears_on_payslip" eval="True" />		
+		<field name="amount_select">code</field>
+		<field name="amount_python_compute">
+<![CDATA[		
+result = payslip.end_of_service.reward_amount
+]]>
+		</field>		
+	</record>
+
+	<record id="rule_leave_compensation" model="hr.salary.rule" forcecreate="False">
+		<field name="name">Leave (Compensation)</field>
+		<field name="code">LEAVECOMP</field>
+		<field name="sequence">79</field>
+		<field name="category_id" ref="hr_payroll.COMP" />
+		<field name="struct_id" ref="hr_payroll_extension.ksa_basic_structure"/>
+		<field name="condition_select">none</field>
+		<field name="appears_on_payslip" eval="False" />
+		<field name="amount_select">code</field>
+		<field name="amount_python_compute">
+<![CDATA[
+salary = categories.BASIC + categories.ALW
+remaining_leaves = payslip.end_of_service.remaining_leaves
+result = (salary / 30) * remaining_leaves
+
+]]>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- XLSX Report Definition -->
+
+       <record id="action_payroll_batch_xlsx" model="ir.actions.report">
+                <field name="name">Payroll Bank XLSX</field>
+                <field name="model">hr.payslip.run</field>
+                <field name="report_type">xlsx</field>
+                <field name="report_name">sharek_xlsx_payroll_report.payroll_batch_xlsx</field>
+                <field name="report_file">sharek_xlsx_payroll_report.payroll_batch_xlsx_file</field>
+                <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+                <field name="binding_type">report</field>
+            </record>
+
+
+    <!-- Server Action to Trigger Report -->
+    <record id="action_print_payroll_batch_xlsx" model="ir.actions.server">
+        <field name="name">Print payroll Bank XLSX</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip_run"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = env.ref('sharek_xlsx_payroll_report.action_payroll_batch_xlsx').report_action(records)
+        </field>
+    </record>
+
+    <!-- Add Button to Payslip Batch Form View -->
+    <record id="view_hr_payslip_run_form_inherit_xlsx" model="ir.ui.view">
+        <field name="name">hr.payslip.run.form.xlsx</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(sharek_xlsx_payroll_report.action_print_payroll_batch_xlsx)d"
+                        type="action"
+                        string="Print Payroll Bank XLSX"
+                        class="btn-primary"
+                        icon="fa-download"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

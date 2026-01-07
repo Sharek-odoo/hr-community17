@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_appraisal_form" model="ir.ui.view">
+            <field name="name">hr.appraisal.employee.form</field>
+            <field name="model">hr.appraisal.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee Appraisal">
+                    <header>
+                        <button name="action_confirm" invisible="state != 'draft'" string="Confirm" type="object" class="oe_highlight" />
+                        <button name="action_done" invisible="state != 'confirm'" string="Done" type="object" class="oe_highlight" />
+                        <button name="action_cancel" invisible="state == 'cancel'" string="Cancel" type="object" />
+                        <button name="action_draft" invisible="state != 'cancel'" string="Set to Draft" type="object" class="oe_highlight" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" options="{'no_create': True}" readonly="state != 'draft'"/>
+                                <field name="job_id" options="{'no_create': True}" readonly="1" force_save="1"/>
+                                <field name="employee_no" readonly="1" force_save="1"/>
+                                <field name="goal_percentage" readonly="state != 'draft'"/>
+                                <field name="competence_percentage" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="appraisal_criteria_assignmet_id" options="{'no_create': True}" readonly="state != 'draft'" 
+                                domain="[('state','=','done'),('employee_id','=',employee_id)]" required="1"/>
+                                <field name="department_id" options="{'no_create': True}" readonly="1" force_save="1"/>
+                                <field name="appraisal_manager_id" readonly="state != 'draft'"/>
+                                <field name="date" readonly="state != 'draft'" required="1"/>
+                                <field name="company_id" options="{'no_create': True}" readonly="state != 'draft'" goups="base.group_multi_company"/>
+                                <field name="allowed_competence_ids" widget="many2many_tags" options="{'no_create': True}" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Goals">
+                                <field name="appraisal_goal_line_ids" readonly="state != 'draft'">
+                                    <tree editable="bottom">
+                                        <field name="goal_id" />
+                                        <field name="evaluation_standard" required="1"/>
+                                        <field name="weight" />
+                                        <field name="actual_result" />
+                                        <field name="difference" />
+                                        <field name="grade" required="1"/>
+                                        <field name="weight_grade" />
+                                        <field name="appraisal_id" column_invisible="1" />
+                                    </tree>
+                                </field>
+                                <separator/>
+                                <group class="oe_subtotal_footer">
+                                    <field name="goal_weighted_grade"/>
+                                    <field name="competence_weighted_grade"/>
+                                    <field name="overall_grade"/>
+                                </group>
+                            </page>
+                            <page string="Competences">
+                                <field name="appraisal_competence_total_line_ids" readonly="state != 'draft'">
+                                    <tree editable="bottom">
+                                        <field name="competence_id" />
+                                        <field name="weight" sum="Total Weight"/>
+                                        <field name="weight_grade" sum="Total Weighted Grade"/>
+                                        <field name="appraisal_id" column_invisible="1" />
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer">
+                                    <field name="competence_weighted_grade"/>
+                                </group>
+                            </page>
+                            <page string="Competence Indexes">
+                                <field name="appraisal_competence_line_ids" readonly="state != 'draft'">
+                                    <tree editable="bottom">
+                                        <field name="competence_id" domain="[('id','in',parent.allowed_competence_ids)]"/>
+                                        <field name="weight"/>
+                                        <field name="competence_index_id" required="1" domain="[('competence_id','=',competence_id)]"/>
+                                        <field name="grade" required="1"/>
+                                        <field name="weight_grade"/>
+                                        <field name="appraisal_id" column_invisible="1" />
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer">
+                                    <field name="competence_weighted_grade"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_employee_appraisal_tree" model="ir.ui.view">
+            <field name="name">hr.appraisal.employee.tree</field>
+            <field name="model">hr.appraisal.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Appraisal"
+                      decoration-muted="state=='cancel'" sample="1">
+                    <field name="name" string="Reference" readonly="1" decoration-info="state in ('draft','sent')"/>
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="job_id" options="{'no_create': True}" readonly="1"/>
+                    <field name="employee_no" readonly="1"/>
+                    <field name="department_id" options="{'no_create': True}" readonly="1"/>
+                    <field name="appraisal_manager_id" options="{'no_create': True}" readonly="1"/>
+                    <field name="company_id" readonly="1" options="{'no_create': True}"
+                        groups="base.group_multi_company" optional="show"/>
+                    <field name="state" optional="show" widget="badge" decoration-success="state == 'done'"
+                        decoration-warning="state == 'confirm'" decoration-info="state == 'draft'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_employee_appraisal_search_view" model="ir.ui.view">
+            <field name="name">hr.appraisal.employee.search</field>
+            <field name="model">hr.appraisal.employee</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="job_id"/>
+                    <field name="employee_no"/>
+                    <field name="department_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_employee_appraisal" model="ir.actions.act_window">
+            <field name="name">Employee Appraisal</field>
+            <field name="res_model">hr.appraisal.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_employee_appraisal_tree"/>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="hr_employee_appraisal_search_view"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create Employee Appraisal.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_hr_employee_appraisal" name="Employee Appraisal" sequence="2" 
+            parent="sharek_hr_appraisal.menu_appraisal" action="action_hr_employee_appraisal"/>
+
+    </data>
+</odoo>

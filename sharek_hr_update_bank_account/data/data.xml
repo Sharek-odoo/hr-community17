@@ -1,0 +1,8 @@
+<odoo>
+    <record id="seq_bank_account_update_request" model="ir.sequence">
+        <field name="name">Bank Account Update Request</field>
+        <field name="code">bank.account.update.request</field>
+        <field name="prefix">BAUR/</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

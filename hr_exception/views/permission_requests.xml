@@ -1,0 +1,79 @@
+<odoo>
+
+  <record id="view_hr_permission_tree" model="ir.ui.view">
+        <field name="name">hr.permission.request.tree</field>
+        <field name="model">hr.permission.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="request_date"/>
+                <field name="duration"/>
+                <field name="monthly_balance"/>
+                <field name="after_balance"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_permission_form" model="ir.ui.view">
+        <field name="name">hr.permission.request.form</field>
+        <field name="model">hr.permission.request</field>
+        <field name="arch" type="xml">
+            <form string="Permission Request">
+                <header>
+                    <button name="action_submit" type="object" string="Submit" invisible="state != 'draft'"/>
+                    <button name="action_manager_approve" type="object" string="Manager Approve" invisible="state != 'manager'"/>
+                    <button name="action_hr_approve" type="object" string="HR Approve" invisible="state != 'hr'" 
+                        groups="hr_exception.group_hr_user_exception"/>
+                    <button name="action_refuse" type="object" string="Refuse" invisible="state not in ('manager','hr')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,manager,hr,done,refused"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                            <br/>
+                        </h1>
+                    </div>
+                    <group>
+                      <group>
+                        <field name="employee_id" readonly="state != 'draft'"/>
+                        <field name="request_date" readonly="state != 'draft'"/>
+                        <field name="time_from" widget="float_time" readonly="state != 'draft'"/>
+                        <field name="time_to" widget="float_time" readonly="state != 'draft'"/>
+                      </group>
+                      <group>
+                        <field name="duration" readonly="1"/>
+                        <field name="monthly_balance" readonly="1"/>
+                        <field name="after_balance" readonly="1"/>
+                        <field name="reason" readonly="state != 'draft'"/>
+                      </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <menuitem id="menu_hr_permission_root"
+              name="Permission Requests"
+              parent="hr.menu_hr_root"
+              groups="hr_exception.group_hr_exception_user"/>
+
+    <record id="action_hr_permission_request" model="ir.actions.act_window">
+        <field name="name">Permission Requests</field>
+        <field name="res_model">hr.permission.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <menuitem id="menu_hr_permission_request"
+              name="Permission Requests"
+              parent="menu_hr_permission_root"
+              action="action_hr_permission_request"
+              groups="hr_exception.group_hr_exception_user"/>
+</odoo>

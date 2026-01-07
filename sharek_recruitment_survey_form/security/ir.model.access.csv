@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_interview_form,hr_interview_form,model_hr_interview_form,base.group_user,1,1,1,1
+access_hr_interview_criteria,hr_interview_criteria,model_hr_interview_criteria,base.group_user,1,1,1,1
+access_job_factor_indicator_line,access.job.factor.indicator.line,model_job_factor_indicator_line,base.group_user,1,1,1,1

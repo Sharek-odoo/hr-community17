@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+	<record id="termination_reason_absenteeism" model="hr.end_of_service.termination_reason" forcecreate="False">
+		<field name="name">Absenteeism</field>
+	</record>
+
+	<record id="termination_business_conditions" model="hr.end_of_service.termination_reason" forcecreate="False">
+		<field name="name">Business Conditions</field>
+	</record>
+
+	<record id="termination_reason_inadequate_job_performance" model="hr.end_of_service.termination_reason" forcecreate="False">
+		<field name="name">Inadequate Job Performance</field>
+	</record>
+
+	<record id="termination_unacceptable_behavior" model="hr.end_of_service.termination_reason" forcecreate="False">
+		<field name="name">Unacceptable Behavior</field>
+	</record>
+
+</odoo>

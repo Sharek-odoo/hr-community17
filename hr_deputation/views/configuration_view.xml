@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_deputation_configuration" model="ir.ui.view">
+            <field name="name">Configure Deputattions</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="30"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//form" position="inside">
+                    <div class="app_settings_block" data-string="Deputations" string="Deputations"
+                         data-key="hr_deputations" groups="hr.group_hr_manager">
+
+                        <h2>Deputations Analytic Account</h2>
+                        <div class="row mt16 o_settings_container" name="deputations_setting_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="default_deputations_account_setting">
+                                <div class="o_setting_right_pane">
+                                    <label for="deputation_account"/>
+                                    <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                          role="img" aria-label="Values set here are company-specific."
+                                          groups="base.group_multi_company"/>
+                                    <div class="row">
+                                        <div class="text-muted col-lg-8">
+                                            Set default deputations Analytic account
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="deputation_account"
+                                                   class="o_light_label"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <h2>Deputation Account</h2>
+                        <div class="row mt16 o_settings_container" name="deputations_setting_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="default_deputations_account_setting">
+                                <div class="o_setting_right_pane">
+                                    <label for="account_id" string="Deputation Account"/>
+                                    <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                          role="img" aria-label="Values set here are company-specific."
+                                          groups="base.group_multi_company"/>
+                                    <div class="row">
+                                        <div class="text-muted col-lg-8">
+                                            Set Deputation Account
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="account_id"
+                                                   class="o_light_label"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <h2>Tickets Product</h2>
+                        <div class="row mt16 o_settings_container" name="deputations_setting_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="default_deputations_account_setting">
+                                <div class="o_setting_right_pane">
+                                    <label for="ticket_product"/>
+                                    <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                          role="img" aria-label="Values set here are company-specific."
+                                          groups="base.group_multi_company"/>
+                                    <div class="row">
+                                        <div class="text-muted col-lg-8">
+                                            Set Tickets Product
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="ticket_product"
+                                                   class="o_light_label"
+                                                   domain="[('detailed_type','=','service'),('purchase_ok','=',True),('sale_ok','=',False)]"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_hr_deputation_config" model="ir.actions.act_window">
+            <field name="name">Deputations Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'hr_deputations'}</field>
+        </record>
+
+
+        <menuitem id="menu_main_deputation_configuration"
+                  name="Configuration"
+                  parent="deputations_main_menu"
+                  groups="hr_deputation.group_deputation_manager"
+        />
+
+        <menuitem id="menu_hr_deputation_configuration_view"
+                  name="Settings"
+                  action="action_hr_deputation_config"
+                  parent="menu_main_deputation_configuration"
+        />
+    </data>
+</odoo>

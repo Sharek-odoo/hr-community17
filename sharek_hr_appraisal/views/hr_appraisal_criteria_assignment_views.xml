@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="appraisal_criteria_assigment_form" model="ir.ui.view">
+            <field name="name">hr.appraisal.criteria.assignment.form</field>
+            <field name="model">hr.appraisal.criteria.assignment</field>
+            <field name="arch" type="xml">
+                <form string="Appraisal Criteria Assigment">
+                    <header>
+                        <button name="action_confirm" invisible="state != 'draft'" string="Confirm" type="object" class="oe_highlight" />
+                        <button name="action_direct_manager" invisible="state != 'confirm'" string="Approve" type="object" class="oe_highlight" />
+                        <button name="action_employee" invisible="state != 'validate'" string="Approve" type="object" class="oe_highlight" />
+                        <button name="action_done" invisible="state != 'hr'" string="Approve" type="object" class="oe_highlight" />
+                        <button name="action_cancel" invisible="state == 'cancel'" string="Cancel" type="object" />
+                        <button name="action_draft" invisible="state != 'cancel'" string="Set to Draft" type="object" class="oe_highlight" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,validate,hr,done" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" options="{'no_create': True}" readonly="state != 'draft'"/>
+                                <field name="job_id" options="{'no_create': True}" readonly="1" force_save="1"/>
+                                <field name="employee_no" readonly="1" force_save="1"/>
+                                <field name="goal_percentage" readonly="state != 'draft'"/>
+                                <field name="competence_percentage" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="department_id" options="{'no_create': True}" readonly="1" force_save="1"/>
+                                <field name="appraisal_manager_id" readonly="state != 'draft'"/>
+                                <field name="date" readonly="state != 'draft'" required="1"/>
+                                <field name="allowed_competence_ids" widget="many2many_tags" options="{'no_create': True}" invisible="1"/>
+                                <field name="company_id" options="{'no_create': True}" readonly="state != 'draft'" goups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Goals">
+                                <field name="assignment_goal_line_ids" readonly="state in ['done', 'cancel']">
+                                    <tree editable="bottom">
+                                        <field name="goal_id" />
+                                        <field name="evaluation_standard" />
+                                        <field name="weight" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Competences">
+                                <field name="assignment_competence_ids" readonly="state in ['done', 'cancel']">
+                                    <tree editable="bottom">
+                                        <field name="competence_id" />
+                                        <field name="weight" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Indexes">
+                                <field name="assignment_competence_line_ids" readonly="state in ['done', 'cancel']">
+                                    <tree editable="bottom">
+                                        <field name="competence_id" domain="[('id','in',parent.allowed_competence_ids)]"/>
+                                        <field name="weight" />
+                                        <field name="competence_index_id" domain="[('competence_id','=',competence_id)]"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="appraisal_criteria_assigment_tree" model="ir.ui.view">
+            <field name="name">appraisal.criteria.assigment.tree</field>
+            <field name="model">hr.appraisal.criteria.assignment</field>
+            <field name="arch" type="xml">
+                <tree string="Appraisal Criteria Assigment"
+                      decoration-muted="state=='cancel'" sample="1">
+                    <field name="name" string="Reference" readonly="1" decoration-info="state in ('draft','sent')"/>
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="job_id" options="{'no_create': True}" readonly="1"/>
+                    <field name="employee_no" readonly="1"/>
+                    <field name="department_id" options="{'no_create': True}" readonly="1"/>
+                    <field name="appraisal_manager_id" options="{'no_create': True}" readonly="1"/>
+                    <field name="company_id" readonly="1" options="{'no_create': True}"
+                        groups="base.group_multi_company" optional="show"/>
+                    <field name="state" optional="show" widget="badge" decoration-success="state == 'done'"
+                        decoration-warning="state == 'confirm'" decoration-info="state == 'draft'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="appraisal_criteria_assigment_search_view" model="ir.ui.view">
+            <field name="name">appraisal.criteria.assigment.search</field>
+            <field name="model">hr.appraisal.criteria.assignment</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="job_id"/>
+                    <field name="employee_no"/>
+                    <field name="department_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_appraisal_criteria_assigment" model="ir.actions.act_window">
+            <field name="name">Appraisal Criteria Assigment</field>
+            <field name="res_model">hr.appraisal.criteria.assignment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="appraisal_criteria_assigment_tree"/>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="appraisal_criteria_assigment_search_view"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create Appraisal Criteria Assigment.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_appraisal_criteria_assigment" name="Appraisal Criteria Assigment" sequence="1" 
+            parent="sharek_hr_appraisal.menu_appraisal" action="action_appraisal_criteria_assigment"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+  <record id="seq_employee_direct_work" model="ir.sequence">
+    <field name="name">Direct Work Sequence</field>
+    <field name="code">employee_direct_work.seq</field> <!-- Use this code in your Python model -->
+    <field name="prefix">DIR/%(month)s/</field>
+    <field name="padding">4</field>
+    <field name="number_next">1</field>
+    <field name="number_increment">1</field>
+  </record>
+</odoo>

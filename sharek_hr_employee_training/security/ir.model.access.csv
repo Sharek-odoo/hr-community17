@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_training_needs_request_user,access_training_needs_request_user,model_training_needs_request,hr.group_hr_user,1,1,1,1
+access_training_needs_line_user,access_training_needs_line_user,model_training_needs_line,hr.group_hr_user,1,1,1,1
+access_training_domain,access_training_domain,model_training_domain,hr.group_hr_user,1,1,1,1
+access_training_impact,access_training_impact,model_training_impact,hr.group_hr_user,1,1,1,1
+access_training_course,access_training_course,model_training_course,hr.group_hr_user,1,1,1,1
+access_training_needs_line,access_training_needs_line,model_training_needs_line,hr.group_hr_user,1,1,1,1
+access_hr_employee_training,access_hr_employee_training,model_hr_employee_training,hr.group_hr_user,1,1,1,1
+access_hr_employee_training_line,access_hr_employee_training_line,model_hr_employee_training_line,hr.group_hr_user,1,1,1,1
+access_training_academy,access_training_academy,model_training_academy,hr.group_hr_user,1,1,1,1
+access_reason,access_reason,model_training_needs_request_refuse_wizard,hr.group_hr_user,1,1,1,1
+access_training_reason,access_training_reason,model_training_request_refuse_wizard,hr.group_hr_user,1,1,1,1

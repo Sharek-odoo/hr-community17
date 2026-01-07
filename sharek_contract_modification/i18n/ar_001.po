@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_contract_modification
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-20 09:55+0000\n"
+"PO-Revision-Date: 2025-05-20 09:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields.selection,name:sharek_contract_modification.selection__hr_contract__trial_period__three_month
+msgid "3 Months"
+msgstr "3 أشهر"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields.selection,name:sharek_contract_modification.selection__hr_contract__trial_period__six_month
+msgid "6 Months"
+msgstr " 6 أِشهر"
+
+#. module: sharek_contract_modification
+#: model:ir.model,name:sharek_contract_modification.model_hr_contract
+msgid "Contract Extension"
+msgstr "عقد الموظف"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,field_description:sharek_contract_modification.field_hr_contract__contract_type
+msgid "Contract Type Period"
+msgstr "نوع مدة العقد"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,field_description:sharek_contract_modification.field_hr_contract__date_end
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,field_description:sharek_contract_modification.field_hr_contract__end_trial_period
+msgid "End Trial Period"
+msgstr "تاريخ انتهاء فترة التجربة"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,help:sharek_contract_modification.field_hr_contract__date_end
+msgid "End date of the contract (if it's a fixed-term contract)."
+msgstr "تاريخ انتهاء العقد (إذا كان عقدًا محدد المدة)."
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,field_description:sharek_contract_modification.field_hr_contract__need_trial_period
+msgid "Needs Trial Period?"
+msgstr "تحتاج فترة تجربة ؟"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,field_description:sharek_contract_modification.field_hr_contract__no_year
+msgid "No Year"
+msgstr "عدد السنوات"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields.selection,name:sharek_contract_modification.selection__hr_contract__contract_type__specified
+msgid "Specified Period"
+msgstr "محدد المدة"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields,field_description:sharek_contract_modification.field_hr_contract__trial_period
+msgid "Trial Period"
+msgstr "فترة تجربة"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields.selection,name:sharek_contract_modification.selection__hr_contract__contract_type__unspecified
+msgid "Unspecified Period"
+msgstr "غير محدد المدة"
+
+#. module: sharek_contract_modification
+#: model:ir.model.fields.selection,name:sharek_contract_modification.selection__hr_contract__trial_period__without_period
+msgid "Without Period"
+msgstr "بدون فترة تجربة"

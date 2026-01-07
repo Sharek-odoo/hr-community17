@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_hr_contract_form_inherit_trial" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherit.trial</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <!-- Place it right after contract_type_id field -->
+            <xpath expr="//field[@name='contract_type_id']" position="after">
+                <field name="in_trial_period"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Evaluation Log">
+                    <field name="evaluation_ids" readonly="1">
+                        <tree>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="average_score"/>
+                            <field name="recommendation"/>
+                            <field name="state"/>
+                            <field name="previous_end_trial_period"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

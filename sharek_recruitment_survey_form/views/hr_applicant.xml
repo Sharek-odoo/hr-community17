@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_applicant_view_form_inherit_nationality" model="ir.ui.view">
+        <field name="name">hr.applicant.form.inherit</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button"
+                    icon="fa-pencil"
+                    name="action_view_interview_form"
+                    type="object">
+                    <field name="all_interview_form_count" widget="statinfo" string="Job Interviews"/>
+                </button>
+            </div>
+
+            <xpath expr="//header" position="inside">
+                <button string="Create Interviwes" name="create_candidit" type="object" class="oe_highlight"/>
+            </xpath>
+
+            <xpath expr="//field[@name='job_id']" position="before">
+                <field name="nationality" />
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

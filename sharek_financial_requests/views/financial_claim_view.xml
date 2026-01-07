@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_financial_claim_form" model="ir.ui.view">
+        <field name="name">financial.claim.form</field>
+        <field name="model">financial.claim</field>
+        <field name="arch" type="xml">
+            <form string="Financial Claim">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'"
+                             class="btn-primary" groups="sharek_hr_employee_loan.group_loan_employee_submit"/>
+                    
+                    <button name="action_direct_manager_approve" string="Direct Manager Approve" type="object" invisible="state != 'direct_manager'"
+                             class="btn-primary" groups="sharek_hr_employee_loan.group_loan_direct_manager"/>
+
+                    <button name="action_department_manager_approve" string="Department Manager Approve" type="object" invisible="state != 'department_manager'"
+                             class="btn-primary" groups="sharek_hr_employee_loan.group_loan_department_manager"/>
+
+                    <button name="action_hr_approve" string="HR Manager Approve" type="object" invisible="state != 'hr'" class="btn-primary" groups="sharek_hr_employee_loan.group_loan_hr_manager"/>
+
+                    <button name="action_ceo_approve" string="CEO Approve" type="object" invisible="state != 'ceo'" class="btn-primary" groups="sharek_hr_employee_loan.group_loan_ceo"/>
+
+                    <button name="action_finance_approve" string="Finance Approve" type="object" invisible="state != 'finance'" class="btn-primary" groups="sharek_hr_employee_loan.group_loan_finance_manager"/>
+
+                    <button name="%(action_reject_reason_wizard)d" string="Reject" type="action"
+                        context="{'active_model': 'financial.claim', 'active_id': active_id}"
+                        invisible="state != 'direct_manager'"
+                        class="btn-danger" 
+                        groups="sharek_hr_employee_loan.group_loan_direct_manager"/>
+
+                    <button name="%(action_reject_reason_wizard)d" string="Reject" type="action"
+                        context="{'active_model': 'financial.claim', 'active_id': active_id}"
+                        invisible="state != 'department_manager'"
+                        class="btn-danger" 
+                        groups="sharek_hr_employee_loan.group_loan_department_manager"/>
+
+                    <button name="%(action_reject_reason_wizard)d" string="Reject" type="action"
+                        context="{'active_model': 'financial.claim', 'active_id': active_id}"
+                        invisible="state != 'hr'"
+                        class="btn-danger" 
+                        groups="sharek_hr_employee_loan.group_loan_hr_manager"/>    
+
+                    <button name="%(action_reject_reason_wizard)d" string="Reject" type="action"
+                        context="{'active_model': 'financial.claim', 'active_id': active_id}"
+                        invisible="state != 'ceo'"
+                        class="btn-danger" 
+                        groups="sharek_hr_employee_loan.group_loan_ceo"/>
+
+
+                    <button name="%(action_reject_reason_wizard)d" string="Reject" type="action"
+                        context="{'active_model': 'financial.claim', 'active_id': active_id}"
+                        invisible="state != 'finance'"
+                        class="btn-danger" 
+                        groups="sharek_hr_employee_loan.group_loan_finance_manager"/>    
+
+
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state != 'direct_manager'" class="btn-danger"
+                        groups="sharek_hr_employee_loan.group_loan_direct_manager"/>  
+                    
+
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state != 'department_manager'" class="btn-danger" groups="sharek_hr_employee_loan.group_loan_department_manager"/>  
+
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state != 'hr'" class="btn-danger" groups="sharek_hr_employee_loan.group_loan_hr_manager"/>      
+
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state != 'ceo'" class="btn-danger" groups="sharek_hr_employee_loan.group_loan_ceo"/>
+
+
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state != 'finance'" class="btn-danger" groups="sharek_hr_employee_loan.group_loan_finance_manager"/>
+
+
+                    <button name="action_set_draft" string="Set Draft" type="object" invisible="state not in ('rejected','cancel')" class="btn-primary"/> 
+                        
+                    <field name="state" widget="statusbar" statusbar_visible="draft,direct_manager,department_manager,hr,ceo"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_vendor_bill_claim"
+                            string="Vendor Bill"
+                            type="object"
+                            invisible="vendor_bill_id == False"
+                            icon="fa-money"
+                            class="oe_stat_button"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                        <field name="employee_id" readonly="state != 'draft'"/>
+                        <field name="vendor_bill_id" readonly="1" invisible="1"/>
+                        <field name="employee_no" force_save="1"/>
+                        <field name="current_department_id" force_save="1"/>
+                        <field name="current_job_id" force_save="1"/>  
+                        <field name="rejection_reason" readonly="1"/>
+                        <field name="first_approve_id" invisible="state not in ('finance','approved')" required="state == 'finance'" readonly="state == 'approved'"/>
+                    </group>
+                    <group>
+                        <field name="request_date" readonly="state != 'draft'"/>
+                        <field name="manager_id" force_save="1"/>
+                        <field name="reason" readonly="state != 'draft'"/>
+                        <field name="attachment_ids" widget="many2many_binary" readonly="state != 'draft'"/>
+                        <field name="amount" readonly="state != 'draft'"/>
+                        <field name="company_id" readonly="1"/>
+                    </group>
+                        
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_financial_claim_tree" model="ir.ui.view">
+        <field name="name">financial.claim.tree</field>
+        <field name="model">financial.claim</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="request_date"/>
+                <field name="employee_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_financial_claim" model="ir.actions.act_window">
+        <field name="name">Financial Claim</field>
+        <field name="res_model">financial.claim</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_finanace_claim" name="Financial Claim Requests"
+              parent="menu_requests_finance"
+              action="action_financial_claim" sequence="3"/>        
+</odoo>

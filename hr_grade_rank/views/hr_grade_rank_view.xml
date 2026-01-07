@@ -1,0 +1,144 @@
+<odoo>
+
+    <record id="hr_employee_search_inherit_department_manager" model="ir.ui.view">
+        <field name="name">hr.employee.search.department.manager</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//filter[@name='group_department']" position="after">
+                <filter
+                    string="Department – Manager"
+                    name="groupby_department_manager_display"
+                    context="{'group_by': 'department_manager_display'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- GRADE FORM VIEW -->
+    <record id="view_employee_grade_form" model="ir.ui.view">
+        <field name="name">grade.grade.form</field>
+        <field name="model">grade.grade</field>
+        <field name="arch" type="xml">
+            <form string="Employees Grade">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="hr_percentage"/>
+                            <field name="transport_allowance"/>
+                            <field name="educ_allowance"/>
+                        </group>
+                        <group>
+                            <field name="company_id"/>
+                            <field name="currency_id"/>
+                            <field name="timeoff_days"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- GRADE TREE VIEW -->
+    <record id="view_employee_grade_tree" model="ir.ui.view">
+        <field name="name">grade.grade.tree</field>
+        <field name="model">grade.grade</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="hr_percentage"/>
+                <field name="transport_allowance"/>
+                <field name="educ_allowance"/>
+                <field name="description"  optional="hide"/>
+                <field name="company_id"  optional="hide"/>
+                <field name="currency_id"  optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- GRADE ACTION -->
+    <record id="action_employee_grade" model="ir.actions.act_window">
+        <field name="name">Grades</field>
+        <field name="res_model">grade.grade</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Employee Rank/Grade Menu -->
+    <menuitem
+            id="menu_employee_grade_rank"
+            parent="hr.menu_human_resources_configuration"
+            sequence="30"
+            name="Employee Grades and Rank"
+    />
+
+    <!-- GRADE MENU -->
+    <menuitem
+            id="menu_grade"
+            sequence="2"
+            parent="hr_grade_rank.menu_employee_grade_rank"
+            action="action_employee_grade"
+    />
+
+
+    <!-- EMPLOYEES INHERITED FORM VIEW -->
+    <record id="view_employee_form_grade_rank" model="ir.ui.view">
+        <field name="name">hr.employee.form.grade.rank</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="job_id" position="after">
+                <field name="grade_id" options="{'no_open': True, 'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- EMPLOYEES INHERITED TREE VIEW -->
+    <record id="view_employee_tree_grade_rank" model="ir.ui.view">
+        <field name="name">hr.employee.tree.grade.rank</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="job_id" position="after">
+                <field name="grade_id"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- EMPLOYEES INHERITED SEARCH VIEW -->
+    <record id="view_employee_filter_grade_rank" model="ir.ui.view">
+        <field name="name">Employees Grade Rank</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <filter name="group_job" position="after">
+                <filter
+                        string="Grade"
+                        icon="terp-gtk-select-all"
+                        domain="[]"
+                        name='grade'
+                        context="{'group_by':'grade_id'}"
+                />
+            </filter>
+        </field>
+    </record>
+
+    <!-- EMPLOYEES INHERITED KANBAN VIEW -->
+    <record id="hr_kanban_view_emp_grade_rank" model="ir.ui.view">
+        <field name="name">hr.employee.kanban.grade.rank</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//templates" position="before">
+                <field name="grade_id"/>
+            </xpath>
+            <xpath expr="//field[@name='work_phone']" position="after">
+                <li t-if="record.grade_id.raw_value">
+                    <field name="grade_id"/>
+                </li>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

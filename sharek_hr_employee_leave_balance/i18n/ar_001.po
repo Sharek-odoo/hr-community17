@@ -1,0 +1,597 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_hr_employee_leave_balance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-19 08:07+0000\n"
+"PO-Revision-Date: 2025-06-19 08:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_needaction
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_exception_decoration
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_state
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_type_icon
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "Approve"
+msgstr "إعتماد"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_end_services_summary__state__approved
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_summary__state__approved
+msgid "Approved"
+msgstr "معتمد"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_attachment_count
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "Basic"
+msgstr "الراتب الاساسي"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__basic_salary
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__basic_salary
+msgid "Basic Salary"
+msgstr "الراتب الاساسي"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_end_services_summary__state__cancel
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_summary__state__cancel
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__company_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__company_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__company_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__company_id
+msgid "Company"
+msgstr " الشركة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__contract_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__contract_id
+msgid "Contract"
+msgstr "العقد"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__create_uid
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__create_uid
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__create_uid
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__create_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__create_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__create_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__currency_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__contract_id
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__contract_id
+msgid "Current contract of the employee"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__department_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__department_id
+msgid "Department"
+msgstr "القسم"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__display_name
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__display_name
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__display_name
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_end_services_summary__state__draft
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_summary__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__employee_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.actions.report,name:sharek_hr_employee_leave_balance.action_hr_leave_report
+msgid "Employee Leave Summary"
+msgstr "اقفالات الاجازات"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__line_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__line_ids
+msgid "Employee Lines"
+msgstr "البنود"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.actions.act_window,name:sharek_hr_employee_leave_balance.action_hr_employee_summary
+msgid "Employee Summaries"
+msgstr " الاقفالات الشهرية"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model,name:sharek_hr_employee_leave_balance.model_hr_employee_end_services_summary
+#: model:ir.model,name:sharek_hr_employee_leave_balance.model_hr_employee_summary
+#: model:ir.ui.menu,name:sharek_hr_employee_leave_balance.menu_hr_employee_summary_root
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "Employee Summary"
+msgstr "الاقفالات الشهرية"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model,name:sharek_hr_employee_leave_balance.model_hr_employee_end_services_summary_line
+#: model:ir.model,name:sharek_hr_employee_leave_balance.model_hr_employee_summary_line
+msgid "Employee Summary Line"
+msgstr "الموظفيين"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__basic_salary
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__basic_salary
+msgid "Employee's monthly gross wage."
+msgstr "الأجر الشهري الإجمالي للموظف"
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "Employees"
+msgstr "الموظفيين"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__employee_no
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__employee_no
+msgid "Employment ID"
+msgstr "رقم الموظف"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.actions.act_window,name:sharek_hr_employee_leave_balance.action_hr_employee_end_services_summary
+msgid "End Of Services Summaries"
+msgstr "اقفالات نهايه الخدمة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.ui.menu,name:sharek_hr_employee_leave_balance.menu_hr_employee_end_services_summary
+msgid "End Services Summaries"
+msgstr "اقفالات نهايه الخدمة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_follower_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_partner_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_type_icon
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__has_message
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "Housing"
+msgstr "بدل السكن"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__hra
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__hra
+msgid "Housing Allowance"
+msgstr "بدل السكن"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__id
+msgid "ID"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_exception_icon
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_exception_icon
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_needaction
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_has_error
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_has_sms_error
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_has_error
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_is_follower
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__job_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__job_id
+msgid "Job Position"
+msgstr "المسمى الوظيفي"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__join_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__join_date
+msgid "Join Date"
+msgstr "تاريخ الانضمام"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__last_remaining_leaves
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__last_remaining_leaves
+msgid "Last Remaining Leaves"
+msgstr "رصيد اجازات لشهر السابق"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__last_total_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__last_total_leave_balance
+msgid "Last Total Leave Balance"
+msgstr " اجمالي رصيد الاجازات للشهر السابق"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__write_uid
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__write_uid
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__write_uid
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__write_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__write_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__write_date
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "Leave Balance"
+msgstr "رصيد الاجازات"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.module.category,name:sharek_hr_employee_leave_balance.hr_leave_summary_groups
+msgid "Leave Summary"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:res.groups,name:sharek_hr_employee_leave_balance.hr_leave_summary_approver
+msgid "Leave Summary Approver"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:res.groups,name:sharek_hr_employee_leave_balance.hr_leave_summary_manager
+msgid "Leave Summary Manager"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:res.groups,name:sharek_hr_employee_leave_balance.hr_leave_summary_user
+msgid "Leave Summary User"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "Leave amount"
+msgstr "مبلغ الإجازة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_has_error
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__my_activity_date_deadline
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__name
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__name
+msgid "Name"
+msgstr "رقم الاقفال"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_calendar_event_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_date_deadline
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_summary
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_type_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_needaction_counter
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_has_error_counter
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_needaction_counter
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_has_error_counter
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__other_allowance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__other_allowance
+msgid "Other Allowance"
+msgstr "البدلات الاخرى"
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "Other Allowances"
+msgstr "البدلات الاخرى"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__other_allowance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__other_allowance
+msgid "Other allowances"
+msgstr "البدلات الاخرى"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__rating_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__remaining_leaves
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__remaining_leaves
+msgid "Remaining Leaves"
+msgstr "رصيد الاجازات"
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "Reset To Draft"
+msgstr "تعيين كمسودة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_user_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__message_has_sms_error
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "Set Employees"
+msgstr "تعيين الموظفيين"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__state
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_state
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "Submit"
+msgstr "ارسال"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_end_services_summary__state__submitted
+#: model:ir.model.fields.selection,name:sharek_hr_employee_leave_balance.selection__hr_employee_summary__state__submitted
+msgid "Submitted"
+msgstr "تم الارسال"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.ui.menu,name:sharek_hr_employee_leave_balance.menu_hr_employee_summary
+msgid "Summaries"
+msgstr " اقفالات الاجازات"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__summary_id
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__summary_id
+msgid "Summary"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#. odoo-python
+#: code:addons/sharek_hr_employee_leave_balance/models/hr_employee_end_service_summary.py:0
+#: code:addons/sharek_hr_employee_leave_balance/models/hr_employee_summary.py:0
+#, python-format
+msgid "The employee %s already has a summary in %s."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__total_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__total_leave_balance
+msgid "Total Leave Balance"
+msgstr "مجموع رصيد الإجازات"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__total_gross_salary
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__total_gross_salary
+msgid "Total Salary"
+msgstr "اجمالي الراتب"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__remaining_leaves
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__remaining_leaves
+msgid ""
+"Total number of paid time off allocated to this employee, change this value "
+"to create allocation/time off request. Total based on all the time off types"
+" without overriding limit."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "Transportation"
+msgstr "بدل النقل"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary_line__transport_allowance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary_line__transport_allowance
+msgid "Transportation Allowance"
+msgstr "بدل النقل"
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__activity_exception_decoration
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__website_message_ids
+#: model:ir.model.fields,field_description:sharek_hr_employee_leave_balance.field_hr_employee_summary__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_end_services_summary__website_message_ids
+#: model:ir.model.fields,help:sharek_hr_employee_leave_balance.field_hr_employee_summary__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_end_services_summary_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.view_employee_summary_form
+msgid "cancel"
+msgstr "الغاء"
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "الموارد البشرية"
+msgstr ""
+
+#. module: sharek_hr_employee_leave_balance
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_leave_balance.hr_leave_report
+msgid "تقرير الرواتب والبدلات"
+msgstr ""

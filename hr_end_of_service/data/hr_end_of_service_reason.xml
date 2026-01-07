@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="reason_reaching_retirement_age" model="hr.end_of_service.reason">
+        <field name="name">Reaching Retirement Age</field>
+        <field name="reason_type">termination</field>
+    </record>
+
+    <record id="reason_death" model="hr.end_of_service.reason">
+        <field name="name">Death</field>
+        <field name="reason_type">termination</field>
+    </record>
+
+    <record id="reason_end_of_the_contract" model="hr.end_of_service.reason">
+        <field name="name">End of the Contract</field>
+        <field name="reason_type">end</field>
+    </record>
+
+    <record id="reason_medical_condition" model="hr.end_of_service.reason">
+        <field name="name">Medical Condition</field>
+        <field name="reason_type">termination</field>
+    </record>
+
+    <record id="reason_resignation" model="hr.end_of_service.reason">
+        <field name="name">Resignation</field>
+        <field name="reason_type">resign</field>
+    </record>
+
+    <record id="reason_termination" model="hr.end_of_service.reason">
+        <field name="name">Termination</field>
+        <field name="reason_type">termination</field>
+    </record>
+
+</odoo>

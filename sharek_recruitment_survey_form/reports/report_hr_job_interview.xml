@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_hr_job_document" model="ir.actions.report">
+        <field name="name">Jop Interview</field>
+        <field name="model">hr.interview.form</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sharek_recruitment_survey_form.report_hr_job_document</field>
+        <field name="report_file">sharek_recruitment_survey_form.report_hr_job_document</field>
+        <field name="print_report_name">'Interview - %s' % (object.candidate_name)</field>
+        <field name="binding_model_id" ref="model_hr_interview_form"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+
+    <template id="report_hr_job_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <div class="container text-center h6" style="font-size:1.5rem" dir="rtl">
+                        <style>
+                            table, th, td {
+                                border: 1px solid black;
+                                word-wrap: break-word; /* break long words */
+                                word-break: break-word; /* older fallback */
+                                white-space: norma
+                            }
+                            caption {
+                                caption-side: top;
+                                text-align: right;
+                                font-weight: bold;
+                                margin-bottom: 10px;
+                            }
+                        </style>
+                        <div class="row mt-3" style="font-size:1.8rem;font-weight:bold;border: double;">
+                            <div class="col-3" style="border: double;"> (F-HR04-04) </div>
+                            <div class="col-6" style="border: double;">
+                                <div class="h3" style="font-weight:bold;">General Interview Form</div> 
+                                <div class="h3" style="font-weight:bold;">استمارة مقابلة شخصية</div> 
+                            </div>
+                            <div class="col-3" style="border: double;"> 
+                                <!-- <img src="./dd.jpg" height="100" width="150"/>  -->
+                                <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" width="150" height="100" alt="Logo"/>
+                            </div>
+                        </div>
+                        <br/>
+                        
+
+                        <div class="row mt-3 text-center">
+                            <table class="border text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>اسم المرشح بالكامل</th>
+                                        <th>الوظيفة المتقدم لها</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <t t-foreach="doc.application_ids" t-as="application"> -->
+                                        <tr>
+                                            <td> <t t-esc="doc.candidate_name"/> </td>
+                                            <td> <t t-esc="doc.applied_job_id.name"/> </td>
+                                        </tr>
+                                    <!-- </t> -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        
+                        <div class="row mt-3 text-center">
+                            <table class="border text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>القسم</th>
+                                        <th>الجنسية</th>
+                                        <th>تاريخ المقابلة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <t t-esc="doc.department_id.name"/> </td>
+                                        <td> <t t-esc="doc.nationality"/> </td>
+                                        <td> <t t-esc="doc.date"/> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        
+                        
+
+                        <div class="row mt-5 text-center">
+                            <table class="table text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="6" style="background-color: gray;">ملاحظة: سيقوم مُجري المقابلة بالتقييم عن طريق النقر في الخانة المناسبة.</th>
+                                    </tr>
+                                    <tr>
+                                        <th>العوامل</th>
+                                        <th>مؤشرات التقييم</th>
+                                        <th colspan="4">النتيجة</th>
+
+                                    </tr>
+
+                                    <t t-foreach="doc.criteria_ids" t-as="criteria">
+                                        <tr>
+                                            <td> <t t-esc="criteria.factor"/> </td>
+                                            <td> <t t-esc="criteria.indicator"/> </td>
+                                            <td> <t t-esc="criteria.score"/> </td>
+                                        </tr>
+                                    </t>
+                                </thead>
+                                
+                            </table>
+                        </div>
+                        <br/>
+                        
+
+                        <div class="row mt-5 text-center">
+
+
+                            <table class="table" style="width: 100%;">
+                                <thead>
+                                    <tr class="text-right">
+                                        <th colspan="4" style="text-align:right">يقوم مُجري المقابلة بكتابة تعليقاته وملاحظاته عن مدى ملائمة المرشح للوظيفة</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" style="text-align:right">نقاط القوة:</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" style="text-align:right"> <t t-esc="doc.strengths"/> </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" style="text-align:right">نقاط الضعف:</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" style="text-align:right"> <t t-esc="doc.weaknesses"/> </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" style="text-align:right">التوصيات بعد المقابلة الشخصية</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <t t-if="doc.recommendations == 'recommend_hire'">☑</t>
+                                            <t t-else="">☐</t>Recommend Hiring
+                                        </td>
+                                        <td>
+                                            <t t-if="doc.recommendations == 'not_suitable'">☑</t>
+                                            <t t-else="">☐</t>  Not Suitable
+                                        </td>
+                                        <td>
+                                            <t t-if="doc.recommendations == 'on_hold'">☑</t>
+                                            <t t-else="">☐</t> On Hold
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            
+                        </div>
+                        <br/>
+
+
+                        <div class="row mt-3">
+                            <div class="text-right border p-2" style="width: 100%;">مراجعة لجنة المقابلة الشخصية</div>
+                            <table class="table text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>اسم من قام بالمقابلة</th>
+                                        <th>التاريخ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <t t-esc="doc.recruiter_id.name"/> </td>
+                                        <td> <t t-esc="doc.date"/> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+
+
+                        <div class="row mt-3">
+                            <table class="table text-center" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td style="background-color: gray;font-size:1.5rem" colspan="4"> مؤشرات التقييم </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>
+                                            <t t-esc="doc.factor_notes"/>
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="word-wrap: break-word;word-break: break-word">1 (يفوق متطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">2 (يلبي المتطلبات الأساسية للوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">3 (يلبي جزئياً الحد الأدنى لمتطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">1 (لا يلبي متطلبات الوظيفة)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: gray;font-size:1.5rem" colspan="4">إجمالي نقاط التقييم</td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>
+                                            <t t-esc="doc.total_score"/>
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="word-wrap: break-word;word-break: break-word">6 (يفوق متطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">7-12 (يلبي المتطلبات الأساسية للوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">13-18(يلبي جزئياً الحد الأدنى لمتطلبات الوظيفة)</td>
+                                        <td style="word-wrap: break-word;word-break: break-word">19-24  (لا يلبي متطلبات الوظيفة)</td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

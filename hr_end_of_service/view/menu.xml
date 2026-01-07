@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		
+	<menuitem id="menu_hr_end_of_service" action="action_hr_end_of_service" parent="hr.menu_hr_root" sequence="20" />
+	
+	<menuitem id="menu_hr_end_of_service_reason" action="action_hr_end_of_service_reason" parent="hr.menu_human_resources_configuration" sequence="10" />
+	<menuitem id="menu_hr_end_of_service_termination_reason" action="action_hr_end_of_service_termination_reason" parent="hr.menu_human_resources_configuration" sequence="11" />
+
+</odoo>

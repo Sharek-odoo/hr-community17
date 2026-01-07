@@ -1,0 +1,43 @@
+<odoo>
+    <!-- Group Category: Employee Training -->
+    <record id="category_employee_training" model="ir.module.category">
+        <field name="name">Employee Training</field>
+        <field name="description">Access rights for employee training workflow approvals</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- Group: Training Submitter -->
+    <record id="group_training_submitter" model="res.groups">
+        <field name="name">Training Submitter</field>
+        <field name="category_id" ref="sharek_hr_employee_training.category_employee_training"/>
+    </record>
+
+    <!-- Group: Training Manager Approver -->
+    <record id="group_training_manager" model="res.groups">
+        <field name="name">Training Manager Approver</field>
+        <field name="category_id" ref="sharek_hr_employee_training.category_employee_training"/>
+    </record>
+
+    <!-- Group: Training HR Approver -->
+    <record id="group_training_hr" model="res.groups">
+        <field name="name">Training HR Approver</field>
+        <field name="category_id" ref="sharek_hr_employee_training.category_employee_training"/>
+    </record>
+
+    <!-- Group: Training CEO Approver -->
+    <record id="group_training_ceo" model="res.groups">
+        <field name="name">Training CEO Approver</field>
+        <field name="category_id" ref="sharek_hr_employee_training.category_employee_training"/>
+    </record>
+
+     <record id="group_training_user" model="res.groups">
+        <field name="name">Training User</field>
+        <field name="category_id" ref="sharek_hr_employee_training.category_employee_training"/>
+    </record>
+
+    <!-- Group: Training HR Final Approver -->
+    <record id="group_training_hr_final" model="res.groups">
+        <field name="name">Training HR Final Approver</field>
+        <field name="category_id" ref="sharek_hr_employee_training.category_employee_training"/>
+    </record>
+</odoo>

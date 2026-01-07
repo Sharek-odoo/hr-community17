@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_appraisal_job_competence_view_form" model="ir.ui.view">
+            <field name="name">Job Competences</field>
+            <field name="model">hr.appraisal.job.competence</field>
+            <field name="arch" type="xml">
+                <form string="Job Competences">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="name"/>
+                                <field name="description" invisible="1"/>
+                                <field name="company_id" options="{'no_open': True, 'no_create': True}" groups="base.group_multi_company"/>
+
+                            </group>
+                            <group>
+                                <field name="sequence"/>
+                                <!-- <field name="competence_level_id" requied="1"/> -->
+                                <field name="weight"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Competency Indexes">
+                                <field name="competency_index_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="competence_id" column_invisible="1"/>
+                                        <field name='sequence' widget='handle'/>
+                                        <field name="name"/>
+                                        <field name="description"/>
+                                        <field name="competence_level_id" required="1"/>
+                                        <!-- <field name="weight" sum="Total Weight"/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_appraisal_job_competence_view_tree" model="ir.ui.view">
+            <field name="name">Job Competences</field>
+            <field name="model">hr.appraisal.job.competence</field>
+            <field name="arch" type="xml">
+                <tree string="Job Competences">
+                    <field name='sequence' widget='handle'/>
+                    <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_appraisal_job_competence_view_search" model="ir.ui.view">
+            <field name="name">hr.appraisal.job.competence.view.search</field>
+            <field name="model">hr.appraisal.job.competence</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <separator/>
+                    <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_appraisal_job_competence" model="ir.actions.act_window">
+            <field name="name">Job Competences</field>
+            <field name="res_model">hr.appraisal.job.competence</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_appraisal_job_competence_view_tree"/>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="hr_appraisal_job_competence_view_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your job competences here.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_appraisal_job_competence" name="Job Competences" sequence="3"
+                  parent="sharek_hr_appraisal.menu_appraisal_configuration"
+                  action="action_hr_appraisal_job_competence"
+        />
+
+        <!--Competency index-->
+        <record id="hr_appraisal_job_competence_index_view_form" model="ir.ui.view">
+            <field name="name">Competences Indexes</field>
+            <field name="model">hr.appraisal.job.competence.index</field>
+            <field name="arch" type="xml">
+                <form string="Competences Indexes">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="name"/>
+                                <field name="competence_id" required="1"/>
+                                <field name="description" invisible="1"/>
+                                 <field name="company_id" options="{'no_open': True, 'no_create': True}"
+                                       groups="base.group_multi_company"/>
+                            </group>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="competence_level_id" required="1"/>
+                                <!-- <field name="weight" /> -->
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_appraisal_job_competence_index_view_tree" model="ir.ui.view">
+            <field name="name">Competences Indexes</field>
+            <field name="model">hr.appraisal.job.competence.index</field>
+            <field name="arch" type="xml">
+                <tree string="Competences Indexes">
+                    <field name='sequence' widget='handle'/>
+                    <field name="name"/>
+                    <field name="competence_id"/>
+                    <field name="competence_level_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_appraisal_job_competence_index_view_search" model="ir.ui.view">
+            <field name="name">hr.appraisal.job.competence.index.view.search</field>
+            <field name="model">hr.appraisal.job.competence.index</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="competence_id"/>
+                    <field name="competence_level_id"/>
+                    <separator/>
+                    <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="competence_id" string="Competence" domain="[]"/>
+                        <filter name="competence_level_id" string="Competence Level" domain="[]"/>
+                        <filter name="company_id" string="Company" domain="[]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_appraisal_job_competence_index" model="ir.actions.act_window">
+            <field name="name">Competences Indexes</field>
+            <field name="res_model">hr.appraisal.job.competence.index</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_appraisal_job_competence_index_view_tree"/>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="hr_appraisal_job_competence_index_view_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your competences indexes here.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_appraisal_job_competence_index" name="Competences Indexes" sequence="4"
+                  parent="sharek_hr_appraisal.menu_appraisal_configuration"
+                  action="action_hr_appraisal_job_competence_index"
+        />
+
+    </data>
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+  <data noupdate="1">
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+      <value>hr.applicant</value>
+      <value eval="[
+        'partner_name',
+        'email_from',
+        'partner_phone',
+        'description',
+        'job_id',
+        'department_id',
+        'linkedin_profile',
+        'years_of_experience',
+        'notice_period',
+        'salary_expected',
+        'gender',
+        'certificate_two',
+        'source_id',
+        'city_residence'
+      ]"/>
+    </function>
+  </data>
+</odoo>

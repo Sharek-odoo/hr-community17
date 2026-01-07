@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_training_academy_tree" model="ir.ui.view">
+        <field name="name">training.academy.tree</field>
+        <field name="model">training.academy</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View (optional for edit) -->
+    <record id="view_training_academy_form" model="ir.ui.view">
+        <field name="name">training.academy.form</field>
+        <field name="model">training.academy</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_training_academy" model="ir.actions.act_window">
+        <field name="name">Training Academies</field>
+        <field name="res_model">training.academy</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create training academies here.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item (under Configuration) -->
+
+    <menuitem id="menu_training_academy"
+              name="Training Academies"
+              parent="menu_training_root"
+              action="action_training_academy"
+              sequence="10"/>
+
+</odoo>

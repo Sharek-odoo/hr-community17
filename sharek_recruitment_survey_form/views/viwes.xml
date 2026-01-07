@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_interview_form_view_form" model="ir.ui.view">
+        <field name="name">hr.interview_.orm.view.form</field>
+        <field name="model">hr.interview.form</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button name="action_submit" type="object" string="Submit" invisible="state != 'draft'" class="btn-primary"/>
+                    <button name="action_set_draft" type="object" string="Set To Draft" invisible="state != 'submit'" class="btn-primary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" class="oe_inline" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="candidate_name"/>
+                            <field name="applied_job_id" readonly="1" string="Applied Job"/>
+                            <!-- <field name="applied_job_name"   /> -->
+                            <field name="department_id" />
+                            <field name="nationality" readonly="state != 'draft'"/>
+                            <field name="recommendations" widget="radio" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="recruiter_id" options="{'no_create':True,'no_edit':True}"  readonly="state != 'draft'"/>
+                            <field name="strengths" readonly="state != 'draft'"/>
+                            <field name="weaknesses" readonly="state != 'draft'"/>
+                            <field name="interviewer_ids" widget="many2many_tags" options="{'no_create':True,'no_edit':True}" readonly="state != 'draft'" />
+                            <field name="total_score" />
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name="criteria_ids" string="Interviewer">
+                            <field name="criteria_ids" readonly="state != 'draft'">
+                                <tree editable="bottom">
+                                    <!-- <field name="name" /> -->
+                                    <field name="factor" />
+                                    <field name="indicator" />
+                                    <field name="score" />
+                                </tree>
+                            </field>
+                            <group>
+                                <field name="factor_notes" placeholder="Enter additional information or comments here..." readonly="state != 'draft'"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_interview_form_view_tree" model="ir.ui.view">
+        <field name="name">hr.interview.form.view.tree</field>
+        <field name="model">hr.interview.form</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="interviewer_ids" widget="many2many_tags"/>
+                <field name="applied_job_id" />
+                <field name="total_score" />
+                <field name="state" decoration-success="state in ('submit')" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_interview_form_view_action" model="ir.actions.act_window">
+        <field name="name">Interview Form</field>
+        <field name="res_model">hr.interview.form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="hr_interview_form_view_menu" name="Interview Form" parent="hr_recruitment.menu_hr_recruitment_root"
+        groups="hr_recruitment.group_hr_recruitment_user" action="hr_interview_form_view_action" sequence="9"/>
+
+
+
+    <record id="view_hr_job_form_inherit_factor_indicator" model="ir.ui.view">
+        <field name="name">hr.job.form.inherit.factor.indicator</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Factors  &amp; Indicators">
+                    
+                        <field name="factor_indicator_line_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="factor"/>
+                                <field name="indicator"/>
+                            </tree>
+                        </field>
+                    <group>
+                        <field name="factor_notes" placeholder="Enter additional information or comments here..."/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>  
+
+</odoo>

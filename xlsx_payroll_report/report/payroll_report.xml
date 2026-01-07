@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data>
+<!-- 
+        <report
+        id="payroll_report"
+        model="hr.payslip.run"
+        string="Payroll Report"
+        report_type="xlsx"
+        name="xlsx_payroll_report.xlsx_payroll_report"
+        file="Payroll Report"
+        attachment_use="False"
+        /> -->
+
+        <record id="payroll_report" model="ir.actions.report">
+                <field name="name">Payroll Report</field>
+                <field name="model">hr.payslip.run</field>
+                <field name="report_type">xlsx</field>
+                <field name="report_name">xlsx_payroll_report.xlsx_payroll_report</field>
+                <field name="report_file">xlsx_payroll_report.xlsx_payroll_report_file</field>
+                <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+                <field name="binding_type">report</field>
+            </record>
+
+            <!-- <record id="payroll_report_payslipss" model="ir.actions.report">
+                <field name="name">Print to XLSX</field>
+                <field name="model">hr.payslip</field>
+                <field name="report_type">xlsx</field>
+                <field name="report_name">xlsx_payroll_report.xlsx_payroll_report</field>
+                <field name="report_file">xlsx_payroll_report.xlsx_payroll_report_file</field>
+            </record> -->
+
+        <!-- <report        
+        id="payroll_report_payslipss"
+        model="hr.payslip"
+        string="Payroll Report"
+        report_type="xlsx"
+        name="xlsx_payroll_report.xlsx_payroll_report"
+        file="Payroll Report"
+        attachment_use="False"
+        /> -->
+        </data>
+
+</odoo>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_hr_leave_form_manager_readonly_fix" model="ir.ui.view">
+        <field name="name">hr.leave.form.manager.readonly.fix</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+            <attribute name="readonly">state != 'draft'</attribute>
+        </xpath>
+             <xpath expr="//form[1]/sheet[1]/div[2]/div[1]/group[@name='col_left']/field[@name='employee_ids']" position="attributes">
+                <attribute name="readonly">state != "draft"</attribute>
+              </xpath>
+        </field>
+    </record>
+
+    <record id="hr_leave_view_form_time_off" model="ir.ui.view">
+        <field name="name">hr.leave.view.form.time</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Replace Confirm button -->
+            <xpath expr="//header/button[@name='action_confirm']" position="replace">
+                <button name="action_confirm" string="Submit to Manager" type="object"
+                    invisible="state != 'draft'"
+                         class="oe_highlight" groups="sharek_hr_time_off.group_employee_submit"/>
+            </xpath>
+            <field name="holiday_status_id" position="after">
+                <field name="_available_leave_types" invisible="1"/>
+            </field>
+            <field name="holiday_status_id" position="attributes">
+                <attribute name="domain">[('id', 'in', _available_leave_types)]</attribute>
+            </field>
+
+            <xpath expr="//field[@name='supported_attachment_ids']" position="attributes">
+                <attribute name="readonly">state != 'draft'</attribute>
+            </xpath>
+
+            <!-- Replace Approve button -->
+            <xpath expr="//header/button[@name='action_approve']" position="replace">
+                <button name="action_approve" string="Manager Approval" type="object" invisible="state != 'manager'"
+                         class="oe_highlight" groups="sharek_hr_time_off.group_direct_manager"/>
+            </xpath>
+
+            <!-- Replace Validate button -->
+            <xpath expr="//header/button[@name='action_validate']" position="replace">
+                <button name="action_validate" string="Sector Manager Approval" type="object" invisible="state != 'sector_manager'"
+                         class="oe_highlight" groups="sharek_hr_time_off.group_sector_manager"/>
+            </xpath>
+
+            <!-- Add CEO Approval button after Validate -->
+            <xpath expr="//header/button[@name='action_validate']" position="after">
+                <button name="action_ceo_approve" string="CEO Approval" type="object" groups="sharek_hr_time_off.group_ceo" invisible="state != 'ceo'"
+                         class="oe_highlight"/>
+            </xpath>
+
+            <!-- Add HR Approval button after CEO -->
+            <xpath expr="//header/button[@name='action_refuse']" position="before">
+                <button name="action_hr_approve" string="HR Approval" type="object" invisible="state != 'validate1'"
+                         class="oe_highlight" groups="sharek_hr_time_off.group_hr_timeoff"/>
+            </xpath>
+
+            <!-- Refuse by Direct Manager -->
+            <xpath expr="//header/button[@name='action_refuse']" position="replace">
+                <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        groups="sharek_hr_time_off.group_direct_manager"
+                        invisible="state != 'manager'"/>
+            </xpath>
+
+            <!-- Refuse by Sector Manager -->
+            <xpath expr="//header/button[@name='action_refuse']" position="after">
+                <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        groups="sharek_hr_time_off.group_sector_manager"
+                        invisible="state != 'sector_manager'"/>
+            </xpath>
+
+            <!-- Refuse by CEO -->
+            <xpath expr="//header/button[@name='action_refuse']" position="after">
+                <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        groups="sharek_hr_time_off.group_ceo"
+                        invisible="state != 'ceo'"/>
+            </xpath>
+
+            <!-- Refuse by HR -->
+            <xpath expr="//header/button[@name='action_refuse']" position="after">
+                <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        groups="sharek_hr_time_off.group_hr_timeoff"
+                        invisible="state != 'validate1'"/>
+            </xpath>
+
+            <!-- Reset to Draft by Direct Manager -->
+            <xpath expr="//header/button[@name='action_draft']" position="replace">
+                <button name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        groups="sharek_hr_time_off.group_direct_manager"
+                        invisible="state != 'manager'"/>
+            </xpath>
+
+            <!-- Reset to Draft by Sector Manager -->
+            <xpath expr="//header/button[@name='action_draft']" position="after">
+                <button name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        groups="sharek_hr_time_off.group_sector_manager"
+                        invisible="state != 'sector_manager'"/>
+            </xpath>
+
+            <!-- Reset to Draft by CEO -->
+            <xpath expr="//header/button[@name='action_draft']" position="after">
+                <button name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        groups="sharek_hr_time_off.group_ceo"
+                        invisible="state != 'ceo'"/>
+            </xpath>
+
+            <!-- Reset to Draft by HR -->
+            <xpath expr="//header/button[@name='action_draft']" position="after">
+                <button name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        groups="sharek_hr_time_off.group_hr_timeoff"
+                        invisible="state != 'validate1'"/>
+            </xpath>
+
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">sharek_hr_time_off.group_hr_timeoff</attribute> 
+                <!-- <attribute name="invisible">1</attribute> -->
+            </xpath>
+
+
+            <!-- <xpath expr="//header/button[@name='action_refuse']" position="replace">
+                <button name="action_refuse" string="Refuse" type="object" invisible="state not in ('draft','manager','sector_manager','ceo','validate1')"
+                        />
+            </xpath>
+
+            <xpath expr="//header/button[@name='action_draft']" position="replace">
+                <button name="action_draft" string="Reset to Draft" type="object"  invisible="state not in ('manager','sector_manager','ceo','validate1','refuse')"
+                        />
+            </xpath>-->
+
+            <xpath expr="//field[@name='holiday_status_id']" position="attributes">
+                <!-- Override readonly condition -->
+                <attribute name="readonly">state != 'draft'</attribute>
+            </xpath>
+
+            
+
+            <!-- Update statusbar states -->
+            <xpath expr="//header/field[@name='state']" position="attributes">
+                <attribute name="statusbar_visible">draft,manager,sector_manager,ceo,validate1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_leave_tree_inherit_hide_buttons" model="ir.ui.view">
+        <field name="name">hr.leave.tree.inherit.hide.buttons</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_approve']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_validate']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_refuse']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_leave_allocation_tree_inherit_hide_buttons" model="ir.ui.view">
+        <field name="name">hr.leave.allocation.tree.inherit.hide.buttons</field>
+        <field name="model">hr.leave.allocation</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_tree"/>
+        <field name="arch" type="xml">
+            <!-- Hide Validate button -->
+            <xpath expr="//button[@name='action_validate']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Hide Refuse button -->
+            <xpath expr="//button[@name='action_refuse']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_leave_view_search_time_off" model="ir.ui.view">
+    <field name="name">hr.leave.view.search.time.off</field>
+    <field name="model">hr.leave</field>
+    <field name="inherit_id" ref="hr_holidays.view_hr_holidays_filter"/>
+    <field name="arch" type="xml">
+        <!-- Replace existing Waiting For Me filter -->
+        <xpath expr="//filter[@name='waiting_for_me']" position="replace">
+
+            <filter name="waiting_for_me" string="Waiting For Me" domain="[]" 
+                    groups="sharek_hr_time_off.group_direct_manager,
+                            sharek_hr_time_off.group_sector_manager,
+                            sharek_hr_time_off.group_ceo,
+                            sharek_hr_time_off.group_hr_timeoff,
+                            sharek_hr_time_off.group_employee_submit"/>
+        
+   <!--  <filter name="waiting_for_me"
+            string="Waiting For Me"
+            domain="[
+                '|',
+                    '|',
+                        '&amp;',
+                            ('state', '=', 'manager'),
+                            ('employee_id.parent_id.user_id', '=', uid),
+                        '&amp;',
+                            ('state', '=', 'sector_manager'),
+                            '|',
+                                ('employee_id.parent_id.parent_id.user_id', '=', uid),
+                                ('employee_id.parent_id.user_id', '=', uid),
+                    '|',
+                        ('state', '=', 'ceo'),
+                        '|',
+                            '&amp;',
+                                ('state', 'in', ('draft','validate')),
+                                ('employee_id.user_id', '=', uid),
+                            ('state', '=', 'validate1')
+            ]"
+            groups="sharek_hr_time_off.group_direct_manager,
+                    sharek_hr_time_off.group_sector_manager,
+                    sharek_hr_time_off.group_ceo,
+                    sharek_hr_time_off.group_hr_timeoff,
+                    sharek_hr_time_off.group_employee_submit"/> -->
+</xpath>
+
+    </field>
+</record>
+
+</odoo>

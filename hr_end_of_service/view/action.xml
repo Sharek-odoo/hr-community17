@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="action_hr_end_of_service_reason" model="ir.actions.act_window">
+		<field name="name">End of Service Reason</field>
+		<field name="res_model">hr.end_of_service.reason</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_hr_end_of_service_termination_reason" model="ir.actions.act_window">
+		<field name="name">End of Service Termination Reason</field>
+		<field name="res_model">hr.end_of_service.termination_reason</field>
+		<field name="view_mode">tree</field>
+	</record>
+
+	<record id="action_hr_end_of_service" model="ir.actions.act_window">
+		<field name="name">End of Service</field>
+		<field name="res_model">hr.end_of_service</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+	
+</odoo>

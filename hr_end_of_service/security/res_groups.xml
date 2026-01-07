@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_end_of_service" model="res.groups">
+        <field name="name">End of Service</field>
+        <field name="implied_ids" eval="[(4, ref('hr.group_hr_user'))]"/>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>    
+
+    <record id="hr.group_hr_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_end_of_service'))]"/>
+    </record>    
+
+</odoo>

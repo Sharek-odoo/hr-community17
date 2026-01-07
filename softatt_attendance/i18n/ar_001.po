@@ -1,0 +1,1413 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* softatt_attendance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-05 10:18+0000\n"
+"PO-Revision-Date: 2025-05-05 10:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "- Minutes"
+msgstr "الدقائق"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "201.101.101.101"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "5432"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.absence_report
+msgid "<strong>Date From:</strong>"
+msgstr "من تاريخ"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.absence_report
+msgid "<strong>Date To:</strong>"
+msgstr "الى تاريخ"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+msgid "<strong>Date:</strong>"
+msgstr "التاريخ"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_att_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "<strong>From:</strong>"
+msgstr "من :"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_att_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "<strong>To:</strong>"
+msgstr "الى :"
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__res_config_settings__softatt_comm_mode__api
+msgid "API"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__hubid
+msgid "ATT ID"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_attendance_absence
+msgid "Absence"
+msgstr "الغياب"
+
+#. module: softatt_attendance
+#: model:ir.actions.report,name:softatt_attendance.action_absence_report
+#: model:ir.actions.report,print_report_name:softatt_attendance.action_absence_report
+#: model:ir.model,name:softatt_attendance.model_report_softatt_attendance_absence_report
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_report_absence
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.absence_report
+msgid "Absence Report"
+msgstr "تقرير الغياب"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_absence
+msgid "Absence Report Wizard"
+msgstr "شاشة تقرير الغياب"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Absence(D)"
+msgstr "الغياب"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#, python-format
+msgid "Absence/Department"
+msgstr "الغياب/قسم"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+#, python-format
+msgid "Absent"
+msgstr "الغياب"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_tree
+msgid "Are you Sure?"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "Are you sure you want to register this server?"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_attendance__resource_calendar_id
+msgid "Assigned Shift"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_hr_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+msgid "Attendance"
+msgstr "الحضور "
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__softatt_comm_mode
+msgid "Attendance Communication Mode"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.actions.client,name:softatt_attendance.action_attendance_dashboard
+msgid "Attendance Dashboard"
+msgstr "لوحة الحضور"
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_attendance_log
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_attendance_log
+msgid "Attendance Logs"
+msgstr "سجلات الحضور"
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_attendance_att_wizard
+#: model:ir.actions.report,name:softatt_attendance.action_att_report
+#: model:ir.actions.report,print_report_name:softatt_attendance.action_att_report
+#: model:ir.model,name:softatt_attendance.model_report_softatt_attendance_sa_att_report
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_report_att
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_att_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_att_form
+msgid "Attendance Report"
+msgstr "تقرير الحضور"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_att_report
+msgid "Attendance Report Wizard"
+msgstr "شاشة تقرير الحضور"
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_att_tag
+#: model:ir.model,name:softatt_attendance.model_sa_calendar_tag
+msgid "Attendance Tags"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_employee__attendance_type
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_employee_public__attendance_type
+msgid "Attendance Type"
+msgstr "نوع الحضور"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+msgid "Attended"
+msgstr "الحضور"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Balance"
+msgstr "الرصيد"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_biometric_device
+msgid "Biometric Device"
+msgstr "اجهزة البصمة"
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_biometric_device
+msgid "Biometric Devices"
+msgstr "اجهزة البصمة"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__calendar_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__calender_id
+msgid "Calender"
+msgstr "التقويم"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_absence_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_att_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_daily_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_report_wiz_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_monthly_form
+msgid "Cancel/الغاء"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_punch_state__punch_type__in
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__punch_type__in
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Check In"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__check_in_check_out
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "Check In/Check Out"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_punch_state__punch_type__out
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__punch_type__out
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Check Out"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.att_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.attendance_report_content
+msgid "Check-In"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.att_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.attendance_report_content
+msgid "Check-Out"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__code
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__code
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__code
+msgid "Code"
+msgstr "كود"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_employee__code_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_employee_public__code_ids
+msgid "Codes"
+msgstr "الاكواد"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_monthly_form
+msgid "Columns"
+msgstr "الاعمدة"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__company_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__company_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_res_config_settings
+msgid "Config Settings"
+msgstr "تهيئة الإعدادات "
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_db_link_server
+msgid "Configration For DB-Link servers"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.sa_attendance_res_settings_menu
+msgid "Configuration"
+msgstr "الاعدادت"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Configure your preferred communication method"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Connfigure DB-Link Servers"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_dashboard__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__create_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_dashboard__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__create_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "Current Server Settings"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__current_user
+msgid "Current User"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__name
+msgid "DB Alias(lower case)"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "DB port"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__res_config_settings__softatt_comm_mode__dblink
+#: model:ir.ui.menu,name:softatt_attendance.sa_db_link_conf_menu
+msgid "DB-Link"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.sa_server_conf_action
+msgid "DB-Link Server Configuration"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.sa_db_link_server_conf_menu
+msgid "DB-Link Servers"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid ""
+"DB-Link: Executes an SQL query to retrieve attendance records directly from "
+"your servers. (Note: This option is not available on Odoo.sh)"
+"                 API: Utilizes an API request to fetch attendance records "
+"from your servers. (This option is available on Odoo.sh)                 For"
+" a detailed comparison of the pros and cons of each method, please refer to "
+"the documentation for this module."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__user_name
+msgid "DB-USER"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_attendance_daily
+msgid "Daily"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_daily_form
+msgid "Daily Attendance"
+msgstr "الحضور اليومي"
+
+#. module: softatt_attendance
+#: model:ir.actions.report,name:softatt_attendance.action_daily_report
+#: model:ir.actions.report,print_report_name:softatt_attendance.action_daily_report
+#: model:ir.model,name:softatt_attendance.model_report_softatt_attendance_sa_daily_report
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_report_daily
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+msgid "Daily Report"
+msgstr "التقرير اليومي"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_daily_report
+msgid "Daily Report Wizard"
+msgstr "شاشة التقرير اليومي"
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_attendance_dashboard
+msgid "Dashboard"
+msgstr "الداشبورد"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__att_db
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Database"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__date
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_absence__group_by__date
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_daily_report__group_by__date
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_monthly_report__group_by__date
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Date"
+msgstr "تاريخ"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__dayofweek
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__dayofweek
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__dayofweek
+msgid "Day of Week"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__db_name
+msgid "Db Name"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__db_name
+msgid "Db name"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Deductions"
+msgstr "الخصومات"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/late/late.xml:0
+#: code:addons/softatt_attendance/static/src/components/logs/log.xml:0
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_attendance__department_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__department_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__department_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__department_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__department_ids
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_absence__group_by__department
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_daily_report__group_by__department
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_monthly_report__group_by__department
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.absence_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.att_report_content
+#, python-format
+msgid "Department"
+msgstr "القسم"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__department_ids
+msgid "Departments"
+msgstr "الاقسام"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__device_id
+msgid "Device"
+msgstr "الجهاز"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.hr_employee_softatt_form
+msgid "Device Codes"
+msgstr "رموز الاجهزة"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__device_code
+msgid "Device ID"
+msgstr "رقم الجهاز"
+
+#. module: softatt_attendance
+#: model:ir.model.constraint,message:softatt_attendance.constraint_sa_attendance_employee_code_unique_device_id_code
+msgid "Device and Code must be unique together!"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_dashboard__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__display_name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_attendance_log_kanban
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_attendance_log_tree
+msgid "Download"
+msgstr "تحميل"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "EMP Code"
+msgstr "رقم الموظف"
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__name__early
+msgid "Early"
+msgstr "الخروج مبكرا"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/late/late.xml:0
+#: code:addons/softatt_attendance/static/src/components/logs/log.xml:0
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_attendance_employee_report_wizard
+#: model:ir.model,name:softatt_attendance.model_hr_employee
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__employee_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__employee_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__public_employee_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__employee_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__employee_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__employee_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__employee_ids
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.absence_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.att_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.attendance_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+#, python-format
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_absence_form
+msgid "Employee Absence"
+msgstr "غياب الموظف"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_attendance_employee_code
+msgid "Employee Code"
+msgstr "رقم الموظف"
+
+#. module: softatt_attendance
+#: model:ir.actions.report,name:softatt_attendance.action_employee_report
+#: model:ir.actions.report,print_report_name:softatt_attendance.action_employee_report
+#: model:ir.model,name:softatt_attendance.model_report_softatt_attendance_employee_report
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_report_employee
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_report_wiz_form
+msgid "Employee Report"
+msgstr "تقرير الموظف"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_employee_report_wizard
+msgid "Employee Report Wizard"
+msgstr "شاشة تقرير الموظف"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Employee:"
+msgstr "الموظف :"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__employee_ids
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+#, python-format
+msgid "Employees"
+msgstr "اجمالي الموظفين"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__date_to
+msgid "End Date"
+msgstr "تاريخ النهاية"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_absence_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_report_wiz_form
+msgid "Excel/إكسيل"
+msgstr ""
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#, python-format
+msgid "Exempt Employees"
+msgstr "الموظفين المعفيين"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__externalid
+msgid "Externalid"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__datas
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__datas
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__datas
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__datas
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__datas
+msgid "File"
+msgstr "ملف"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_monthly_form
+msgid "Filters"
+msgstr "الفلاتر"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__4
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__4
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__4
+msgid "Friday"
+msgstr "الجمعة"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__date_from
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__date_from
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__date_from
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_inherit_view_resource_calendar_attendance_tree
+msgid "From"
+msgstr "من"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__group_by
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__group_by
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__group_by
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.attendance_report_content
+msgid "Hours"
+msgstr "الساعات"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_attendance_shift_kanban
+msgid "Hours per day"
+msgstr "الساعات في اليوم"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_dashboard__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__id
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "ID"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__message_has_error
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_periods
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.inherit_resource_calendar_form
+msgid "In/Out Hours"
+msgstr "ساعات الخول/الخروح"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_resource_calendar_periods
+msgid "In/Out Periods"
+msgstr "فترات الدخول /الخروج"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__include_absence
+msgid "Include Absence"
+msgstr "تضمين الغياب"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__include_deductions
+msgid "Include Deductions"
+msgstr "تضمين الخصومات"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__include_late_minutes
+msgid "Include Late Minutes"
+msgstr "تضمين الدقائق المتأخرة"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__include_overtime
+msgid "Include Overtime"
+msgstr "تضمين الساعات الاضافية"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "Indicates whether this server has been registered."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__ip_address
+msgid "Ip Address"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#, python-format
+msgid "Last 5 Records"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "Last 7 days"
+msgstr "آخر 7 ايام"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_dashboard__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__write_uid
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_dashboard__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_employee_code__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__write_date
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__name__late
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_daily_report
+msgid "Late"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_attendance__late_minutes
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Late Minutes"
+msgstr "الدقائق المتأخرة"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#, python-format
+msgid "Late Today"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.att_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.attendance_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Late(M)"
+msgstr "التأخير(دقائق)"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Limit Per Request"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_hr_attendance__location_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__location_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__location_id
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__location_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__location_ids
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_absence__group_by__location
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_daily_report__group_by__location
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_monthly_report__group_by__location
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.absence_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.att_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.attendance_report_content
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "Location"
+msgstr "الموقع"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__location_alias
+msgid "Location Alias"
+msgstr "اسماء المواقع"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__location_ids
+msgid "Locations"
+msgstr "المواقع"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__0
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__0
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__0
+msgid "Monday"
+msgstr "الاثنين"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_monthly_form
+msgid "Monthly Attendance"
+msgstr "الحضور الشهري"
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_sa_attendance_monthly
+#: model:ir.actions.report,name:softatt_attendance.action_monthly_report
+#: model:ir.actions.report,print_report_name:softatt_attendance.action_monthly_report
+#: model:ir.model,name:softatt_attendance.model_report_softatt_attendance_sa_monthly_report
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_report_monthly
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Monthly Report"
+msgstr "التقرير الشهري"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_monthly_report
+msgid "Monthly Report Wizard"
+msgstr "شاشة التقرير الشهري"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__name
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_resource_calendar_attendance__next_dayofweek
+msgid "Next Dayofweek"
+msgstr "يوم الاسبوع القادم"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__name__on-time
+msgid "On-Time"
+msgstr "في الوقت"
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.sa_attendance_settings_menu
+msgid "Other Settings"
+msgstr "اعدادات أخرى"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_resource_calendar__overnight_shift
+msgid "Overnight Shift"
+msgstr "الشفت المسائي"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Overtime"
+msgstr "الاضافي"
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.sa_attendance_reports_menu
+msgid "PDF Reports"
+msgstr "التقارير PDF"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__att_password
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__password
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Password"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_monthly_form
+msgid "Period"
+msgstr "الفترة"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__port
+msgid "Port"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "PostgreSQL user of the remote server."
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "PostgreSQL user password of the remote server."
+msgstr ""
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/dashboard/dashboard.xml:0
+#, python-format
+msgid "Present"
+msgstr "الحضور"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_attendance_log_kanban
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_attendance_log_tree
+msgid "Process"
+msgstr "معالجة"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_hr_employee_public
+msgid "Public Employee"
+msgstr "موظف في القطاع العام"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_punch_state
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__punch_state
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "Punch State"
+msgstr "حالة السجل"
+
+#. module: softatt_attendance
+#: model:ir.actions.act_window,name:softatt_attendance.action_conf_punch_state_tree
+#: model:ir.ui.menu,name:softatt_attendance.sa_attendance_punch_states_menu
+msgid "Punch States"
+msgstr "حالات السجل"
+
+#. module: softatt_attendance
+#. odoo-javascript
+#: code:addons/softatt_attendance/static/src/components/late/late.xml:0
+#: code:addons/softatt_attendance/static/src/components/logs/log.xml:0
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_attendance_log__punch_time
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+#, python-format
+msgid "Punch Time"
+msgstr "وقت الحضور"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_punch_state__punch_type
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__punch_type
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__hr_employee__attendance_type__punch
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__hr_employee_public__attendance_type__punch
+msgid "Punch Type"
+msgstr "يدوي"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_tree
+msgid "Register"
+msgstr "تسجيل"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_db_link_server__registered
+msgid "Registered"
+msgstr "تم التسجيل"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "Remote Server Settings"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__att_limit
+msgid "Request Limit"
+msgstr "حد الطلب"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__resource_calendar_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_daily_report__resource_calendar_ids
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__resource_calendar_ids
+msgid "Resource Calendar"
+msgstr "اوقات الدوام"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_resource_calendar
+msgid "Resource Working Time"
+msgstr "فترة عمل المَورِد "
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__activity_user_id
+msgid "Responsible User"
+msgstr "الموظف المسؤول"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_resource_calendar__sa_calendar_tag_ids
+msgid "Sa Calendar Tag"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_resource_calendar__sa_in_out_periods
+msgid "Sa In Out Periods"
+msgstr "فترات الدخول"
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__5
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__5
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__5
+msgid "Saturday"
+msgstr "السبت"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "Server Details"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid ""
+"Set a Short name or Alias for the database. (In lower case, Must be unique)"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_absence__group_by__shift
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_daily_report__group_by__shift
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_monthly_report__group_by__shift
+msgid "Shift"
+msgstr "اوقات الدوام"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Shift:"
+msgstr "اوقات الدوام"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__resource_calendar_ids
+msgid "Shifts"
+msgstr "اوقات الدوام"
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__hr_employee__attendance_type__smart
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__hr_employee_public__attendance_type__smart
+msgid "Smart"
+msgstr "ذكي"
+
+#. module: softatt_attendance
+#: model:ir.actions.server,name:softatt_attendance.latest_logs_cron_ir_actions_server
+msgid "Softatt : Download Logs"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Softatt Settings"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_att_report__date_from
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_calendar_tag__hour_from
+#: model:ir.model.fields,help:softatt_attendance.field_sa_resource_calendar_periods__hour_from
+msgid ""
+"Start and End time of working.\n"
+"A specific value of 24:00 is interpreted as 23:59:59.999999."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__6
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__6
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__6
+msgid "Sunday"
+msgstr "الاحد"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_ir_config_parameter
+msgid "System Parameter"
+msgstr "معيار النظام "
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.inherit_resource_calendar_form
+msgid "Tags"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "The Databse Name of the remote server."
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "The IP address of the remote server."
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "The PostgreSQL User for this server"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "The PostgreSQL User for this server. Usually The Value Is 'odoo'"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.constraint,message:softatt_attendance.constraint_sa_biometric_device_unique_externalid
+msgid "The external ID must be unique."
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_db_link_server_form
+msgid "The port used to connect to the remote server."
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "This Month"
+msgstr "هذا الشهر"
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__3
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__3
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__3
+msgid "Thursday"
+msgstr "الخميس"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Title:"
+msgstr "العنوان"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_absence__date_to
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_employee_report_wizard__date_to
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_monthly_report__date_to
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_inherit_view_resource_calendar_attendance_tree
+msgid "To"
+msgstr "الى"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_log_search
+msgid "Today"
+msgstr "اليوم"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+msgid "Total"
+msgstr "الاجمالي"
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__1
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__1
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__1
+msgid "Tuesday"
+msgstr "الثلاثاء"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.actions.server,name:softatt_attendance.action_download_latest_logs
+msgid "Upload Latest Logs"
+msgstr "تحميل اخر سجلات"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__att_server_url
+msgid "Url"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__module_softatt_lateness_deductions
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Use Lateness Deductions"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_res_config_settings__att_username
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "Username"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_absence_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_att_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_daily_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_employee_report_wiz_form
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.view_sa_attendance_monthly_form
+msgid "View/عرض"
+msgstr ""
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Wage"
+msgstr "الأجر الاساسي"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_biometric_device__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,help:softatt_attendance.field_sa_biometric_device__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_attendance_log__dayofweek__2
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_calendar_tag__dayofweek__2
+#: model:ir.model.fields.selection,name:softatt_attendance.selection__sa_resource_calendar_periods__dayofweek__2
+msgid "Wednesday"
+msgstr "الاربعاء"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_resource_calendar_attendance
+msgid "Work Detail"
+msgstr "تفاصيل العمل"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.employee_report
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.sa_monthly_report
+msgid "Worked Hours"
+msgstr "ساعات العمل"
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_biometric_device
+msgid "ZK Devices"
+msgstr "اجهزة ZK"
+
+#. module: softatt_attendance
+#: model:ir.ui.menu,name:softatt_attendance.menu_sa_biometric
+msgid "ZKteco"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__color
+msgid "color"
+msgstr "اللون"
+
+#. module: softatt_attendance
+#: model_terms:ir.ui.view,arch_db:softatt_attendance.res_config_settings_view_form
+msgid "domain.com"
+msgstr ""
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__hour_from
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__hour_from
+msgid "from"
+msgstr "من"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_attendance_dashboard
+msgid "sa Attendance Dashboard"
+msgstr "لوحة الحضور"
+
+#. module: softatt_attendance
+#: model:ir.model,name:softatt_attendance.model_sa_attendance_log
+msgid "sa Attendance Log"
+msgstr "سجلات الحضور"
+
+#. module: softatt_attendance
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_calendar_tag__hour_to
+#: model:ir.model.fields,field_description:softatt_attendance.field_sa_resource_calendar_periods__hour_to
+msgid "to"
+msgstr "الى"

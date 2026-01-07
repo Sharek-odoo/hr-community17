@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Tree View (editable at the bottom) -->
+    <record id="view_academic_year_tree" model="ir.ui.view">
+        <field name="name">academic.year.tree</field>
+        <field name="model">academic.year</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_academic_year_form" model="ir.ui.view">
+        <field name="name">academic.year.form</field>
+        <field name="model">academic.year</field>
+        <field name="arch" type="xml">
+            <form string="Academic Year">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_academic_year" model="ir.actions.act_window">
+        <field name="name">Academic Years</field>
+        <field name="res_model">academic.year</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the academic years used for student financial support.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_academic_year_root"
+              name="Academic Years"
+              parent="menu_financial_request_config"
+              action="action_academic_year"
+              sequence="2"/>
+
+</odoo>

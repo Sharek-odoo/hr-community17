@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Access Groups -->
+
+    <record model="ir.module.category" id="hr_leave_summary_groups">
+        <field name="name">Leave Summary</field>
+    </record>
+
+    <record id="hr_leave_summary_user" model="res.groups">
+        <field name="name">Leave Summary User</field>
+        <field name="category_id" ref="sharek_hr_employee_leave_balance.hr_leave_summary_groups"/>
+    </record>
+    <record id="hr_leave_summary_approver" model="res.groups">
+        <field name="name">Leave Summary Approver</field>
+        <field name="category_id" ref="sharek_hr_employee_leave_balance.hr_leave_summary_groups"/>
+        <field name="implied_ids" eval="[(4, ref('sharek_hr_employee_leave_balance.hr_leave_summary_user'))]"/>
+    </record>
+    <record id="hr_leave_summary_manager" model="res.groups">
+        <field name="name">Leave Summary Manager</field>
+        <field name="category_id" ref="sharek_hr_employee_leave_balance.hr_leave_summary_groups"/>
+        <field name="implied_ids" eval="[(4, ref('sharek_hr_employee_leave_balance.hr_leave_summary_approver'))]"/>
+    </record>
+
+    <!-- Access Rights -->
+    <record id="model_hr_employee_summary_access" model="ir.model.access">
+        <field name="name">hr.employee.summary access</field>
+        <field name="model_id" ref="model_hr_employee_summary"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="model_hr_employee_summary_line_access" model="ir.model.access">
+        <field name="name">hr.employee.summary.line access</field>
+        <field name="model_id" ref="model_hr_employee_summary_line"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+
+    <record id="model_hr_employee_end_services_summary_access" model="ir.model.access">
+        <field name="name">hr.employee.end.services.summary access</field>
+        <field name="model_id" ref="model_hr_employee_end_services_summary"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="model_hr_employee_end_services_summary_line_access" model="ir.model.access">
+        <field name="name">hr.employee.end.services.summary.line access</field>
+        <field name="model_id" ref="model_hr_employee_end_services_summary_line"/>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>

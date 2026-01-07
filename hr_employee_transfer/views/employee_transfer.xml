@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_transfer_list" model="ir.ui.view">
+        <field name="name">employee.transfer.list</field>
+        <field name="model">hr.employee.transfer</field>
+        <field name="arch" type="xml">
+            <tree string="Transfers">
+                <field name="name"/>
+                <field name="employee_no"/>
+                <field name="employee_id"/>
+                <field name="request_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_transfer_view_kanban" model="ir.ui.view">
+        <field name="name">employee.transfer.kanban</field>
+        <field name="model">hr.employee.transfer</field>
+        <field name="arch" type="xml">
+            <kanban quick_create="false" default_order="state desc, request_date" class="o_hr_employee_kanban" js_class="appraisal_kanban" sample="1">
+                <field name="state"/>
+                <field name="activity_ids"/>
+                <field name="activity_state"/>
+                <progressbar field="activity_state" colors="{&quot;planned&quot;: &quot;success&quot;, &quot;today&quot;: &quot;warning&quot;, &quot;overdue&quot;: &quot;danger&quot;}"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click o_kanban_record_has_image_fill o_kanban_card_probation">
+                            <field name="avatar_128" widget="image" class="o_kanban_image_fill_left" options="{'background': true, 'preventClicks': false}"/>
+                            <div class="ribbon ribbon-top-right" invisible="state != 'approve'">
+                                <span class="bg-success">Approved</span>
+                            </div>
+                            <div class="ribbon ribbon-top-right" invisible="state != 'refuse'">
+                                <span class="bg-info">Refused</span>
+                            </div>
+                            <div class="ribbon ribbon-top-right" invisible="state != 'cancel'">
+                                <span class="bg-secondary">Cancelled</span>
+                            </div>
+                            <div class="oe_kanban_details d-flex justify-content-between flex-column">
+                                <div>
+                                    <div class="o_kanban_record_top align-items-start">
+                                        <div class="o_kanban_record_headings">
+                                            <strong class="o_kanban_record_title">
+                                                <field name="employee_id"/>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <field name="current_department_id"/>
+                                    </div>
+                                    <div class="o_kanban_inline_block">
+
+                                        <div invisible="state in  ('approve', 'cancel')">
+                                            <t t-if="record.request_date.raw_value and record.request_date.raw_value &lt; (new Date())" t-set="red">oe_kanban_text_red
+                                            </t>
+                                            <span t-attf-class="#{red}">
+                                                <field name="request_date"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oe_clear"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+
+        </field>
+    </record>
+
+    <record id="employee_transfer_form" model="ir.ui.view">
+        <field name="name">employee.transfer.form</field>
+        <field name="model">hr.employee.transfer</field>
+        <field name="arch" type="xml">
+            <form string="Transfer">
+                <header>
+
+                    <button name="action_employee_approve"
+                            string="Employee Approval"
+                            type="object"
+                            class="btn-info"
+                            groups="hr_employee_transfer.group_employee_transfer_user"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_approve_current_department_manager"
+                            string="Approve Current Dept Manager"
+                            type="object"
+                            class="btn-info"
+                            groups="hr_employee_transfer.group_transfer_department_manager"
+                            invisible="state != 'employee_approval'"/>
+
+                    <button name="action_approve_new_department_manager"
+                            string="Approve New Dept Manager"
+                            type="object"
+                            class="btn-warning"
+                            groups="hr_employee_transfer.group_transfer_department_manager"
+                            invisible="state != 'current_department_manager' or need_new_department_approval == False"/>
+
+                    <button name="action_submit_hr"
+                            string="HR Approve"
+                            type="object"
+                            class="btn-secondary"
+                            groups="hr_employee_transfer.group_transfer_hr"
+                            invisible="not need_show_submit_hr"/>
+
+                    <button name="action_submit_ceo"
+                            string="CEO Approve"
+                            type="object"
+                            class="btn-secondary"
+                            groups="hr_employee_transfer.group_transfer_ceo"
+                            invisible="state != 'hr'"/>
+
+                    <button name="action_submit_hr_manager"
+                            string="HR Manager Approve"
+                            type="object"
+                            class="btn-secondary"
+                            groups="hr_employee_transfer.group_transfer_hr_manager"
+                            invisible="state != 'ceo'"/>
+
+                   <!--  <button name="action_approve"
+                            string="Approve"
+                            type="object"
+                            class="oe_highlight"
+                            groups="hr_employee_transfer.group_transfer_hr_manager"
+                            invisible="state != 'hr_manager'"/> -->
+
+                    <button name="action_cancel"
+                            string="Cancel"
+                            type="object"
+                            class="btn-secondary"
+                            groups="hr_employee_transfer.group_employee_transfer_manager"
+                            invisible="state != 'refuse'"/>
+
+                    <button name="action_refuse"
+                            string="Refuse"
+                            type="object"
+                            class="btn-secondary"
+                            groups="hr_employee_transfer.group_employee_transfer_manager"
+                            invisible="state != 'employee_approval'"/>
+
+                    <button name="action_refuse"
+                            string="Refuse"
+                            type="object"
+                            class="btn-secondary"
+                            groups="hr_employee_transfer.group_transfer_department_manager"
+                            invisible="state != 'current_department_manager'"/>
+
+                    <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        class="btn-secondary"
+                        groups="hr_employee_transfer.group_transfer_hr"
+                        invisible="state != 'new_department_manager'"/>
+
+                    <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        class="btn-secondary"
+                        groups="hr_employee_transfer.group_transfer_ceo"
+                        invisible="state != 'hr'"/>
+
+                    <button name="action_refuse"
+                        string="Refuse"
+                        type="object"
+                        class="btn-secondary"
+                        groups="hr_employee_transfer.group_transfer_hr_manager"
+                        invisible="state != 'ceo'"/>
+                    
+                    <button name="action_set_draft"
+                        string="Set To Draft"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="state != 'cancel'"/>
+
+
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,employee_approval,current_department_manager,new_department_manager,hr,ceo,hr_manager"
+                           options="{'fold_field': 'fold'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                            <field name="promotion_url" invisible="1"/>
+                        </h1>
+                    </div>
+                    <group string="Request Details">
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="employee_no"/>
+                            <field name="join_date"/>
+                            <field name="need_new_department_approval" invisible="0"/>
+                            <field name="need_show_submit_hr"/>
+                        </group>
+                        <group>
+                            <field name="request_date"/>
+                            <field name="effective_date"/>
+                            <field name="company_id" groups="base.group_multi_company" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Previous Position">
+                            <field name="current_department_id" force_save="1"/>
+                            <field name="current_job_id" force_save="1"/>
+                            <field name="grade_id" force_save="1"/>
+                            <field name="manager_id" force_save="1"/>
+                            <field name="contract_id" force_save="1"/>
+                            <field name="salary" force_save="1"/>
+                        </group>
+                        <group string="New Position">
+                            <field name="new_department_id" required="1"/>
+                            <field name="new_job_id" required="1"/>
+                            <field name="new_grade" required="1"/>
+                            <field name="new_manager_id" required="1"/>
+                            <field name="new_contract_id" force_save="1" readonly="1"/>
+                            <field name="new_salary" required="1"/>
+                        </group>
+                    </group>
+                    <group name="notes" string="Comments" colspan="12" col="1">
+                        <field name="notes" placeholder="Notes &amp; Comments" widget="html" readonly="state in  ('hr_manager','cancel', 'refuse')" class="oe-bordered-editor" options="{'style-inline': true}" nolabel="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_transfer_filter" model="ir.ui.view">
+        <field name="name">employee.transfer.search</field>
+        <field name="model">hr.employee.transfer</field>
+        <field name="arch" type="xml">
+            <search string="Search Transfer">
+                <field name="employee_id" string="employee " filter_domain="[('employee_id', 'ilike', self)]"/>
+                <field name="manager_id"/>
+                <field name="current_job_id"/>
+                <field name="current_department_id"/>
+                <separator/>
+                <filter name="draft" string="New" domain="[('state', '=', 'draft')]"/>
+                <filter name="approved" string="Approved" domain="[('state', '=', 'hr_manager')]"/>
+                <filter name="confirmed" string="Confirmed" domain="[('state', '=', 'confirm')]"/>
+                <filter name="canceled" string="Canceled" domain="[('state', '=', 'cancel')]"/>
+                <filter name="refused" string="Refused" domain="[('state', '=', 'refuse')]"/>
+                <group col="8" colspan="4" expand="0" string="Group By">
+                    <filter string="department" name="Department" context="{'group_by': 'current_department_id'}"/>
+                    <filter string="job_title" name="Job Position" context="{'group_by': 'current_job_id'}"/>
+                    <filter string="state" name="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_employee_transfer" model="ir.actions.act_window">
+        <field name="name">Employee Transfer</field>
+        <field name="res_model">hr.employee.transfer</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="employee_transfer_filter"/>
+    </record>
+
+
+    <!-- MenuItems -->
+    <menuitem id="transfer_main" name="Employee Transfer" groups="base.group_user" web_icon="hr_employee_transfer,static/description/icon.png" />
+
+    <menuitem id="menu_view_transfer_evaluation" action="action_employee_transfer" name="Transfers" parent="transfer_main" sequence="36"/>
+
+
+    <record id="view_hr_contract_form_inherit_transfer" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherit.transfer</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Transfer Log">
+                    <field name="transfer_log_ids">
+                        <tree>
+                            <field name="promotion_id"/>
+                            <field name="promotion_date"/>
+                            <field name="effective_date"/>
+                            <field name="old_wage"/>
+                            <field name="new_wage"/>
+                            <field name="old_grade"/>
+                            <field name="new_grade"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_payslip_form_inherit_transfer" model="ir.ui.view">
+        <field name="name">hr.payslip.form.inherit.transfer</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+          
+          <!-- Place promotion_id below the 'employee_id' field -->
+          <xpath expr="//field[@name='struct_id']" position="after">
+            <field name="transfer_id" readonly="1"/>
+          </xpath>
+
+        </field>
+  </record>
+</odoo>

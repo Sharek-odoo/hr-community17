@@ -1,0 +1,92 @@
+<odoo>
+  <template id="custom_hr_recruitment_form" inherit_id="website_hr_recruitment.hr_recruitment_form" priority="20">
+    <xpath expr="//form[@id='hr_recruitment_form']/div/div" position="inside">
+
+      <!-- Years of Experience -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="integer" data-name="Years of Experience">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="years_of_experience">
+            <span class="s_website_form_label_content">Years of Experience</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="years_of_experience" name="years_of_experience" type="number" class="form-control s_website_form_input" required="1"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notice Period -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="char" data-name="Notice Period">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="notice_period">
+            <span class="s_website_form_label_content">Notice Period</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="notice_period" name="notice_period" type="text" class="form-control s_website_form_input" required="1"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expected Salary (existing field: salary_expected) -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="float" data-name="Expected Salary">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="salary_expected">
+            <span class="s_website_form_label_content">Expected Salary</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="salary_expected" name="salary_expected" type="number" class="form-control s_website_form_input" step="any" required="1"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="selection" data-name="Gender">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="gender">
+            <span class="s_website_form_label_content">Gender</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <select id="gender" name="gender" class="form-control s_website_form_input" required="1">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate Level -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="selection" data-name="Certificate Level">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="certificate_two">
+            <span class="s_website_form_label_content">Certificate Level</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <select id="certificate_two" name="certificate_two" class="form-control s_website_form_input" required="1">
+              <option value="primary">Primary School</option>
+              <option value="middle">Middle School</option>
+              <option value="high">High School</option>
+              <option value="diploma">Diploma</option>
+              <option value="bachelor">Bachelor</option>
+              <option value="master">Master</option>
+              <option value="phd">PhD</option>
+              <option value="other" selected="selected">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source (existing field: source_id) -->
+      <div class="col-12 mb-0 py-2 s_website_form_field" data-type="many2one" data-name="Source">
+        <div class="row">
+          <label class="col-4 col-sm-auto s_website_form_label" for="source_id">
+            <span class="s_website_form_label_content">Source</span><span class="s_website_form_mark">*</span>
+          </label>
+          <div class="col-sm">
+            <input id="source_id" name="source_id" type="text" class="form-control s_website_form_input" required="1" placeholder="Enter source manually (or customize to a dropdown)"/>
+          </div>
+        </div>
+      </div>
+
+    </xpath>
+  </template>
+</odoo>

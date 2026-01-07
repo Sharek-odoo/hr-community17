@@ -1,0 +1,457 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_hr_probation_evaluation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-10 08:58+0000\n"
+"PO-Revision-Date: 2025-08-10 08:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation_line__grade__1
+msgid "1 - Failed to meet target."
+msgstr "1- لم يحقق الهدف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation_line__grade__2
+msgid "2 - Slightly below target"
+msgstr "2 - حقق أقل من الهدف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation_line__grade__3
+msgid "3 - Met target"
+msgstr "3 - حقق الهدف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation_line__grade__4
+msgid "4 - Exceeded target"
+msgstr "4 - حقق أكثر من الهدف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Approve"
+msgstr "اعتماد"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__state__approved
+msgid "Approved"
+msgstr "معتمدة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__average_score
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Average Grade"
+msgstr "متوسط ​​الدرجة"
+
+#. module: sharek_hr_probation_evaluation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__recommendation__confirm
+msgid "Confirm Employee"
+msgstr "تثبيت الموظف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__state__confirmed
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__contract_id
+msgid "Contract"
+msgstr "عقد"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model,name:sharek_hr_probation_evaluation.model_hr_contract
+msgid "Contract Extension"
+msgstr "عقد الموظف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__create_uid
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__create_date
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__department_id
+msgid "Department"
+msgstr "إدارة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__designation
+msgid "Designation"
+msgstr "تعيين"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__display_name
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__display_name
+msgid "Display Name"
+msgstr "إسم العرض"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__recommendation__reject
+msgid "Do Not Confirm"
+msgstr "لا يتم تثبيته"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__element_g
+msgid "Element"
+msgstr "عناصر"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__employee_id
+msgid "Employee"
+msgstr "موظف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.ui.menu,name:sharek_hr_probation_evaluation.menu_hr_probation_root
+msgid "Employee Evaluations"
+msgstr "تقييم فترة التجربة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__employee_number
+msgid "Employee Number"
+msgstr "رقم الموظف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model,name:sharek_hr_probation_evaluation.model_hr_probation_evaluation
+msgid "Employee Probation Evaluation"
+msgstr "تقييم فترة اختبار الموظف"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__end_trial_period
+msgid "End of Trial Period"
+msgstr "نهاية فترة التجربة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__evaluation_id
+msgid "Evaluation"
+msgstr "تقييم"
+
+#. module: sharek_hr_probation_evaluation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Evaluation Criteria"
+msgstr "معايير التقييم"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__date
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__evaluation_date
+msgid "Evaluation Date"
+msgstr "تاريخ التقييم"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__line_ids
+msgid "Evaluation Lines"
+msgstr "بنود التقييم"
+
+#. module: sharek_hr_probation_evaluation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_contract_form_inherit_trial
+msgid "Evaluation Log"
+msgstr "سجل التقييم"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.ui.menu,name:sharek_hr_probation_evaluation.menu_hr_probation_evaluation
+msgid "Evaluations"
+msgstr "التقييمات"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__evaluator_id
+msgid "Evaluator"
+msgstr "مقيم"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__recommendation__extend
+msgid "Extension of Probation Period"
+msgstr "تمديد فترة التجربة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__notes
+msgid "General Notes"
+msgstr "ملاحظات عامة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__grade
+msgid "Grade"
+msgstr "درجة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__id
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__id
+msgid "ID"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_has_error
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_contract__in_trial_period
+msgid "In Trial Period"
+msgstr "في الفترة التجريبية"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__write_uid
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__write_date
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#. odoo-python
+#: code:addons/sharek_hr_probation_evaluation/models/probation_evaluation.py:0
+#: code:addons/sharek_hr_probation_evaluation/models/probation_evaluation.py:0
+#: code:addons/sharek_hr_probation_evaluation/models/probation_evaluation.py:0
+#: code:addons/sharek_hr_probation_evaluation/models/probation_evaluation.py:0
+#, python-format
+msgid "New"
+msgstr "جديد"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation_line__notes
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__previous_end_trial_period
+msgid "Previous Trial End Date"
+msgstr "تاريخ انتهاء التجربة السابقة"
+
+#. module: sharek_hr_probation_evaluation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Probation Evaluation"
+msgstr "تقييم الاختبار"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model,name:sharek_hr_probation_evaluation.model_hr_probation_evaluation_line
+msgid "Probation Evaluation Line"
+msgstr "بند تقييم الاختبار"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.actions.act_window,name:sharek_hr_probation_evaluation.action_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_contract__evaluation_ids
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_tree
+msgid "Probation Evaluations"
+msgstr "تقييم فترة التجربة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__recommendation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Recommendation"
+msgstr "توصية"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__name
+msgid "Reference"
+msgstr "مرجع"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__starting_date
+msgid "Sart Work Date"
+msgstr "تاريخ بدء العمل"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__state
+msgid "Status"
+msgstr "حالة"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model_terms:ir.ui.view,arch_db:sharek_hr_probation_evaluation.view_hr_probation_evaluation_form
+msgid "Submit"
+msgstr "ارسال"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields.selection,name:sharek_hr_probation_evaluation.selection__hr_probation_evaluation__state__submit
+msgid "Submitted"
+msgstr "تم الإرسال"
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,field_description:sharek_hr_probation_evaluation.field_hr_probation_evaluation__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sharek_hr_probation_evaluation
+#: model:ir.model.fields,help:sharek_hr_probation_evaluation.field_hr_probation_evaluation__website_message_ids
+msgid "Website communication history"
+msgstr ""

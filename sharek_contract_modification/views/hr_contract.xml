@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_contract_view_form_inherit_con_type" model="ir.ui.view">
+        <field name="name">hr.contract.form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='contract_type_id'][2]" position="after">
+                <field name="contract_type"/>
+                <field name="no_year" invisible="contract_type == 'unspecified'"/>
+            </xpath>
+
+            <xpath expr="//div[@id='resource_calendar_warning']" position="after">
+                <field name="need_trial_period"/>
+                <field name="trial_period" invisible="need_trial_period == False" required="need_trial_period == True"/>
+                        <field name="end_trial_period" invisible="trial_period == 'without_period' or need_trial_period == False" />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Leave Log">
+                    <group>
+                        <field name="original_trial_end_date" readonly="1"/>
+                    </group>
+                    <field name="leave_log_ids">
+                        <tree editable="bottom">
+                            <field name="leave_type_id"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="days"/>
+                            <field name="original_end_trial_period"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

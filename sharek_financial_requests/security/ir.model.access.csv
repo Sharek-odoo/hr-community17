@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_children_education_allowance_user,Children Education Allowance User,model_children_education_allowance,base.group_user,1,1,1,1
+access_children_education_allowance_line,children.education.allowance.line,model_children_education_allowance_line,base.group_user,1,1,1,1
+access_advance_salary_user,access.advance.salary.user,model_advance_salary,base.group_user,1,1,1,1
+access_financial_claim_user,access.financial.claim.user,model_financial_claim,base.group_user,1,1,1,1
+access_perpetual_custody_user,access.perpetual.custody.user,model_perpetual_custody,base.group_user,1,1,1,1
+access_temporary_custody_user,access.temporary.custody.user,model_temporary_custody,base.group_user,1,1,1,1
+access_overtime_request_user,access.overtime.request.user,model_overtime_request,base.group_user,1,1,1,1
+access_overtime_request_line_user,access.overtime.request.line.user,model_overtime_request_line,base.group_user,1,1,1,1
+access_advance_salary_reject_wizard_user,advance.salary.reject.wizard.user,model_advance_salary_reject_wizard,base.group_user,1,1,1,1
+access_academic_year_user,academic.year.user,model_academic_year,base.group_user,1,1,1,1

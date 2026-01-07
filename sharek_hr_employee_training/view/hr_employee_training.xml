@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    <!-- Action -->
+    <record id="action_hr_employee_training" model="ir.actions.act_window">
+        <field name="name">Employee Trainings</field>
+        <field name="res_model">hr.employee.training</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Menus -->
+
+    <menuitem id="menu_training_needs_root" name="Training Management"
+              groups="sharek_hr_employee_training.group_training_submitter"
+              web_icon="sharek_hr_employee_training,static/description/icon.png" sequence="30"/>
+    <menuitem id="menu_hr_employee_training" name="Employee Trainings"
+              groups="sharek_hr_employee_training.group_training_submitter"
+              parent="menu_training_needs_root" action="action_hr_employee_training"/>
+
+    <!-- Tree View -->
+    <record id="view_hr_employee_training_tree" model="ir.ui.view">
+        <field name="name">hr.employee.training.tree</field>
+        <field name="model">hr.employee.training</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Training">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="job_title"/>
+                <field name="employee_number"/>
+                <field name="department_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hr_employee_training_form" model="ir.ui.view">
+        <field name="name">hr.employee.training.form</field>
+        <field name="model">hr.employee.training</field>
+        <field name="arch" type="xml">
+            <form string="Employee Training">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,direct_manager,hr,hr_final,approved"/>
+
+                    <button name="action_submit" type="object" string="Submit" invisible="state != 'draft'" class="btn-primary" groups="sharek_hr_employee_training.group_training_submitter"/>
+                    <button name="%(action_open_training_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                     invisible="state != 'draft'" groups="sharek_hr_employee_training.group_training_submitter"/>
+
+                    <button name="action_approve_direct_manager" type="object" string="Direct Manager Approve"  invisible="state != 'direct_manager'" groups="sharek_hr_employee_training.group_training_manager" class="btn-primary"/>
+                    <button name="%(action_open_training_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                       invisible="state != 'direct_manager'" groups="sharek_hr_employee_training.group_training_manager" />
+                    <button name="action_set_draft" string="Set To Draft" type="object" class="btn-primary"
+                             invisible="state != 'direct_manager'" groups="sharek_hr_employee_training.group_training_manager" />
+
+                    <button name="action_approve_hr" type="object" string="HR Approve"  invisible="state != 'hr'" groups="sharek_hr_employee_training.group_training_hr" class="btn-primary"/>
+                      <button name="%(action_open_training_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                       invisible="state != 'hr'" groups="sharek_hr_employee_training.group_training_hr" />
+                      <button name="action_set_draft" string="Set To Draft" type="object" class="btn-primary"
+                            invisible="state != 'hr'" groups="sharek_hr_employee_training.group_training_hr" />
+
+                    <button name="action_approve_hr_final" type="object" string="Final HR Approve"  invisible="state != 'hr_final'" groups="sharek_hr_employee_training.group_training_hr_final" class="btn-primary"/>
+                     <button name="%(action_open_training_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                        invisible="state != 'hr_final'" groups="sharek_hr_employee_training.group_training_hr_final" />
+                    <button name="action_set_draft" string="Set To Draft" type="object" class="btn-primary"
+                            invisible="state != 'hr_final'" groups="sharek_hr_employee_training.group_training_hr_final" />
+
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'"/>
+                            <field name="job_title" readonly="1"/>
+                            <field name="employee_number" readonly="1"/>
+                            <field name="email" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="department_id" readonly="1"/>
+                            <field name="manager_id" readonly="1"/>
+                            <label for="date_from" string="Period"/>
+                            <div>
+                                <field name="date_from" class="oe_inline" readonly="state != 'draft'"/> - <field name="date_to" class="oe_inline" readonly="state != 'draft'"/>
+                            </div>
+                            <field name="need_request_id" readonly="1"/>
+                            <field name="training_course_ids" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+
+                        <group string="Venue">
+                            <field name="in_company"  readonly="out_company == True or out_country == True or state != 'draft'"/>
+                            <field name="out_company" readonly="in_company == True or out_country == True or state != 'draft'"/>
+                            <field name="out_country" readonly="in_company == True or out_company == True or state != 'draft'"/>
+                        </group>
+
+                        <group string="Type">
+                            <field name="training_course" readonly="workshop == True or conference == True or webinar == True or seminar == True or expo == True or other == True or state != 'draft'"/>
+                            <field name="workshop" readonly="training_course == True or conference == True or webinar == True or seminar == True or expo == True or other == True or state != 'draft'"/>
+                            <field name="conference" readonly="workshop == True or training_course == True or webinar == True or seminar == True or expo == True or other == True or state != 'draft'"/>
+                            <field name="webinar" readonly="workshop == True or conference == True or training_course == True or seminar == True or expo == True or other == True or state != 'draft'"/>
+                            <field name="seminar" readonly="workshop == True or conference == True or webinar == True or training_course == True or expo == True or other == True or state != 'draft'"/>
+                            <field name="expo" readonly="workshop == True or conference == True or webinar == True or seminar == True or training_course == True or other == True or state != 'draft'"/>
+                            <field name="other" readonly="workshop == True or conference == True or webinar == True or seminar == True or expo == True or training_course == True or state != 'draft'"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Training Lines">
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <tree editable="bottom">
+                                    <field name="training_course_id" 
+                                        domain="[('id', 'in', parent.training_course_ids)]"/>
+                                    <field name="domain_id"/>
+                                    <field name="impact_id"/>
+                                    <field name="academy_id"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="number_of_days" readonly="1"/>
+                                    <field name="cost"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Refused Reason">
+                            <field name="refuse_reason" readonly="1"/>
+                        </page>
+                    </notebook>
+                    <group colspan="12">
+                        <group colspan="8">
+                        </group>
+                    <group colspan="4">
+                        <group class="oe_subtotal_footer" name="training_cost_box">
+                            <label for="total_training_cost" string="Total Cost"/>
+                            <div>
+                                <field name="total_training_cost" readonly="1"/>
+                            </div>
+                            <label for="remaining_before" string="Remaining Cost Before"/>
+                            <div>
+                                <field name="remaining_before" readonly="1"/>
+                            </div>
+                            <label for="remaining_after" string="Remaining Cost After"/>
+                            <div>
+                                <field name="remaining_after" readonly="1"/>
+                            </div>
+                            <!-- <label for="remaining_cost" string="Remaining Cost:"/>
+                            <div>
+                                <field name="remaining_cost" readonly="1"/>
+                            </div> -->
+                        </group>
+                    </group>    
+                </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

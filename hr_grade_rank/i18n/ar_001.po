@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_grade_rank
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-23 11:32+0000\n"
+"PO-Revision-Date: 2025-04-23 11:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: hr_grade_rank
+#: model:ir.model,name:hr_grade_rank.model_hr_contract
+msgid "Contract Extension"
+msgstr "عقد الموظف"
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__description
+#: model_terms:ir.ui.view,arch_db:hr_grade_rank.view_employee_grade_form
+msgid "Description"
+msgstr "الوصف"
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hr_grade_rank
+#: model:ir.model,name:hr_grade_rank.model_hr_employee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: hr_grade_rank
+#: model:ir.ui.menu,name:hr_grade_rank.menu_employee_grade_rank
+msgid "Employee Grades and Rank"
+msgstr "الدرجات الوظيفية"
+
+#. module: hr_grade_rank
+#: model_terms:ir.ui.view,arch_db:hr_grade_rank.view_employee_grade_form
+msgid "Employees Grade"
+msgstr "درجة الموظف"
+
+#. module: hr_grade_rank
+#: model:ir.model,name:hr_grade_rank.model_grade_grade
+#: model:ir.model.fields,field_description:hr_grade_rank.field_hr_contract__grade_id
+#: model:ir.model.fields,field_description:hr_grade_rank.field_hr_employee__grade_id
+#: model_terms:ir.ui.view,arch_db:hr_grade_rank.view_employee_filter_grade_rank
+msgid "Grade"
+msgstr "الدرجة الوظيفية"
+
+#. module: hr_grade_rank
+#: model:ir.actions.act_window,name:hr_grade_rank.action_employee_grade
+#: model:ir.ui.menu,name:hr_grade_rank.menu_grade
+msgid "Grades"
+msgstr "الدرجات الوظيفية"
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__id
+msgid "ID"
+msgstr ""
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__name
+msgid "Name"
+msgstr "اسم الدرجة"
+
+#. module: hr_grade_rank
+#: model:ir.model.fields,field_description:hr_grade_rank.field_grade_grade__hr_percentage
+msgid "Transportation Percentage %"
+msgstr "نسبة بدل السكن %"

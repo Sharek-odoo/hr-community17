@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="hr_deputations_kanban">
+            <field name="name">hr.deputations.kanban</field>
+            <field name="model">hr.deputations</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="from_date"/>
+                    <field name="duration"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_res_partner_kanban">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title oe_partner_heading">
+                                        <field name="name"/>
+                                    </strong>
+
+                                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                    <ul>
+                                        <li t-if="record.employee_id.raw_value">
+                                            Employee:
+                                            <field name="employee_id"/>
+                                        </li>
+                                        <li t-if="record.from_date.raw_value">
+                                            From:
+                                            <field name="from_date"/>
+                                        </li>
+
+                                        <li t-if="record.state.raw_value">
+                                            status :
+                                            <field name="state"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record id="hr_deputations_form" model="ir.ui.view">
+            <field name="name">hr_deputations.form</field>
+            <field name="model">hr.deputations</field>
+            <field name="arch" type="xml">
+                <form edit="1">
+                    <header>
+                        <button name="%(deputation_summary_wizard_action)d" string="Reporting" invisible="state == 'approve' " type="action" />
+<!--                        <button name="%(deputation_summary_wizard_action)d" string="Reporting" invisible="state == 'approve' or end_date is False" type="action" />-->
+                        <button name="action_confirm" groups="hr_deputation.group_deputation_manager" string="Confirm" invisible="state != 'draft'" type="object" class="oe_highlight"/>
+                        <button name="action_approve" groups="hr_deputation.group_deputation_manager" string="Approve" type="object" invisible="state != 'confirm'" class="oe_highlight"/>
+                        <button name="action_create_ticket" groups="hr_deputation.group_deputation_manager" string="Book Ticket" invisible="state != 'approve' and (travel_by != 'air' or ticket_count != 0)" type="object" class="oe_highlight"/>
+                        <button name="action_draft" string="Reset To Draft" type="object" class="oe_highlight" invisible="state != 'confirm'" groups="hr_deputation.group_deputation_manager"/>
+                        <button name="action_cancel" invisible="state != 'draft'" string="Cancel" groups="hr_deputation.group_deputation_manager" type="object" class="oe_highlight"/>
+                        <widget name="attach_document" string="Attach Document" action="attach_document"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,manager,sector_manager,hr_manager,approve,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_get_attachment_view" class="oe_stat_button" icon="fa-file-text-o" type="object">
+                                <field name="attachment_number" widget="statinfo" string="Documents" options="{'reload_on_button': true}"/>
+                            </button>
+                            <button invisible="payment_count != 0" name="action_payment_view" class="oe_stat_button" string="Payment" icon="fa-file-text-o" type="object">
+                                <field name="payment_count"/>
+                            </button>
+                            <button invisible="ticket_count != 0" name="action_ticket_view" class="oe_stat_button" string="Tickets" icon="fa-file-text-o" type="object">
+                                <field name="ticket_count"/>
+                            </button>
+                            <button name="action_view_receipt" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="move_id != False" help="show receipts for this deputation">
+                                <field name="receipt_count" widget="statinfo" string="Receipts"/>
+                            </button>
+                        </div>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                        <group col="12">
+                            <group colspan="5">
+                                <!-- <field name="deputations_allownce_id" required="1"/> -->
+                                <field name="deputation_type" required="1" readonly="state != 'draft'"/>
+                                <field name="travel_type" required="1" readonly="state != 'draft'"/>
+                                <field name="employee_id" required="1"/>
+                                <field name="employee_no"/>
+                                <field name="department_id"/>
+                                <field name="grade_id"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="move_id" invisible="1"/>
+                                <field name="country_id" invisible="travel_type == 'internal'"/>
+                                <field name="destination_country" invisible="travel_type == 'internal'" required="travel_type != 'internal'" />
+                                
+
+                                <!-- <field name="from_city" required="1" domain="[('country_id', '=', country_id)]"/>
+                                <field name="to_city" domain="[('country_id', '=', destination_country)]" required="1"/> -->
+                            <!-- </group>
+                            <group col="4"> -->
+                                <field name="has_tickit"/>
+                                <field name="has_housing"/>
+                            </group>
+
+                            <group colspan="6">
+                                <field name="has_transport"/>
+                                <field name="has_pay_advance"/>
+                                
+                                <field name="request_date"/>
+                                <label for="from_date" string="Dates" id="label_dates"/>
+                                <div>
+                                    <div class="o_row o_row_readonly">
+                                        <span class="oe_inline">
+                                            From
+                                        </span>
+                                        
+                                        <field name="from_date" required="1" class="oe_inline" nolabel="1" widget="daterange" options="{'related_end_date': 'to_date'}"/>
+                                        <span class="oe_inline">
+                                            To
+                                        </span>
+                                        <field name="to_date" class="oe_inline" widget="daterange" required="1" options="{'related_start_date': 'from_date'}"/>
+                                    </div>
+                                </div>
+
+
+                                <label for="duration" string="Duration"/>
+
+                                <div>
+                                    <field name="duration" class="oe_inline"/>
+                                    Day
+                                </div>
+                                <field name="days_before"/>
+                                <field name="days_after"/>
+
+                                <field name="end_date" invisible="1"/>
+                                <field name="travel_by"/>
+                                <!-- <field name="housing_by"/>
+                                <field name="tansp_cost"/> -->
+
+                            </group>
+
+
+                        </group>
+                        <group>
+                            <group name="note_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="6">
+                                    <field name="description" class="oe-bordered-editor" nolabel="1" placeholder="Deputation Description"/>
+                                </group>
+
+                                <div class="oe_clear"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Deputation Allownce">
+
+
+                                <field name="line_ids">
+                                    <tree editable="bottom">
+                                        <field name="allownce_type"/>
+                                        <field name="amount"/>
+
+                                    </tree>
+                                </field>
+
+                                <group class="oe_subtotal_footer oe_right">
+
+
+                                    <field name="basic_allownce" readonly="1" force_save="1"/>
+                                    <field name="other_allownce"/>
+                                    <field name="total_amount"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </page>
+
+
+                            <page string="Deputation Summary" groups="hr_deputation.group_deputation_manager" invisible="state != 'approve'">
+                                <group col="12">
+                                    <group colspan="6">
+                                        <div>
+                                            <p>
+                                                <field name="end_report" readonly="1"/>
+                                            </p>
+                                        </div>
+                                    </group>
+                                    <group colspan="5">
+
+                                        <field name="end_date"/>
+
+                                    </group>
+
+                                </group>
+
+                            </page>
+                            <page string="Other Information">
+                                <group>
+                                    <group>
+                                        <field name="deputation_account"/>
+                                    </group>
+                                </group>
+
+
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_deputations_tree" model="ir.ui.view">
+            <field name="name">hr_deputations.tree</field>
+            <field name="model">hr.deputations</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="deputation_type"/>
+                    <field name="state"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- <record id="hr_deputations_calendar" model="ir.ui.view">
+            <field name="name">hr.deputations.calendar</field>
+            <field name="model">hr.deputations</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar date_start="from_date" string="Deputations" mode="month" color="employee_id" event_limit="5" hide_time="true" js_class="deptations_calendar" event_open_popup="true" quick_add="false">
+                    <field name="employee_id" filters="1"/>
+
+                </calendar>
+            </field>
+        </record> -->
+
+
+        <record id="hr_deputations_search" model="ir.ui.view">
+            <field name="name">hr_deputations.search</field>
+            <field name="model">hr.deputations</field>
+            <field name="arch" type="xml">
+                <search string="Hr Deputataion">
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="grade_id"/>
+                    <filter string="Draft" name="draft_deptuation" domain="[('state','=','draft')]"/>
+                    <filter string="Confirm" name="confirm_deptuation" domain="[('state','=','confirm')]"/>
+                    <filter string="Approved" name="approve_deptuation" domain="[('state','=','approve')]"/>
+                    <filter string="Cancelled" name="cancel_deptuation" domain="[('state','=','cancel')]"/>
+
+                    <group expand="1" string="Group By">
+                        <filter string="Employee" name="group_employee_id" context="{'group_by':'employee_id'}"/>
+                        <filter string="Deputation Type" name="group_deputation_type" context="{'group_by':'deputation_type'}"/>
+                        <filter string="job" name="group_grade_id" context="{'group_by':'grade_id'}"/>
+                        <filter string="Department" name="group_department_id" context="{'group_by':'department_id'}"/>
+                        <filter string="Travel By" name="group_travel_by" context="{'group_by':'travel_by'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="act_hr_deputations_view" model="ir.actions.act_window">
+            <field name="name">Deputations</field>
+            <field name="res_model">hr.deputations</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="target">current</field>
+        </record>
+
+
+        <menuitem id="deputations_main_menu" name="Deputations" web_icon="hr_deputation,static/description/icon.png"/>
+        <menuitem id="deputations_requests_menu" parent="deputations_main_menu" action="act_hr_deputations_view" name="Deputations"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_attendess_wiz_xlsx_report" model="ir.actions.report">
+        <field name="name">Hr Attendes Report</field>
+        <field name="model">hr.attendess.wizard</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">sharek_hr_attendess.hr_attendess_report_xlsx</field>
+        <field name="report_file">sharek_hr_attendess.hr_attendess_report_xlsx</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,82 @@
+<odoo>
+    <!-- Top Configuration Menu -->
+    <menuitem id="menu_training_root"
+              name="Training Configuration"
+              parent="menu_training_needs_root"
+              groups="sharek_hr_employee_training.group_training_manager"
+              sequence="20"/>
+
+
+    <record id="view_training_domain_tree" model="ir.ui.view">
+        <field name="name">training.Domain.tree</field>
+        <field name="model">training.domain</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>          
+
+    <!-- Training Domain -->
+    <record id="action_training_domain" model="ir.actions.act_window">
+        <field name="name">Training Domains</field>
+        <field name="res_model">training.domain</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create training domains for classification.</p>
+        </field>
+    </record>
+
+    
+
+    <menuitem id="menu_training_domain"
+              name="Training Domains"
+              parent="menu_training_root"
+              action="action_training_domain"
+              sequence="10"/>
+
+    <record id="view_training_impact_tree" model="ir.ui.view">
+        <field name="name">training.Impact.tree</field>
+        <field name="model">training.impact</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>          
+
+    <!-- Training Impact -->
+    <record id="action_training_impact" model="ir.actions.act_window">
+        <field name="name">Training Impacts</field>
+        <field name="res_model">training.impact</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Define the impact levels of a training course.</p>
+        </field>
+    </record>
+
+
+
+    <menuitem id="menu_training_impact"
+              name="Training Impacts"
+              parent="menu_training_root"
+              action="action_training_impact"
+              sequence="20"/>
+
+    <!-- Training Courses -->
+    <record id="action_training_course" model="ir.actions.act_window">
+        <field name="name">Training Courses</field>
+        <field name="res_model">training.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Manage training courses and assign domain, impact, and cost.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_training_course"
+              name="Training Courses"
+              parent="menu_training_root"
+              action="action_training_course"
+              groups="sharek_hr_employee_training.group_training_submitter"
+              sequence="30"/>
+</odoo>

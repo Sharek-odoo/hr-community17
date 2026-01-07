@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hr_contract_grade_view">
+            <field name="name">hr.contract.grade.form.inherit.view</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_end']" position="after">
+                            <field name="grade_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

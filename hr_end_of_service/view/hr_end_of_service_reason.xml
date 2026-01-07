@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="view_hr_end_of_service_reason_tree">
+		<field name="name">hr.end_of_service.reason.tree</field>
+		<field name="model">hr.end_of_service.reason</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="code" />
+			</tree>
+		</field>
+	</record>
+	   <record id="view_eos_reason_configuration_form" model="ir.ui.view">
+            <field name="name">view.hr.end_of_service.reason.configuration</field>
+            <field name="model">hr.end_of_service.reason</field>
+            <field name="arch" type="xml">
+                <form string="End Of Service Reason">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" required="1" placeholder="e.g. Employee Resignation"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="reason_type" widget="radio" required="1"/>
+                        </group>
+                        <notebook>
+                            <page name="configuration_rules" string="Rules">
+                                <field name="eos_rule_ids">
+                                    <tree string="Configuration" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="period_from"/>
+                                        <field name="period_to"/>
+                                        <field name="percentage"/>
+                                        <field name="reward_ratio"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+</odoo>

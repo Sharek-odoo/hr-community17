@@ -1,0 +1,95 @@
+<odoo>
+    <!-- Form View for Financial Request Settings -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">res.config.settings.children.education.set</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//form" position="inside">
+            <app data-string="Financial Requests" string="Financial Requests" name="financial_req" logo="/sharek_financial_requests/static/description/icon.png">
+                        <block title="Financial Requests" name="financial_requests_setting_container">
+                            <setting string="Financial Requests Journal" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                            <label for="financial_request_journal_id" string="Financial Requests Journal" class="col-2 o_light_label"/>
+                                            <field name="financial_request_journal_id"/>
+                                        </div>
+                                </div>
+                            </setting>
+                            <setting>
+                            </setting>
+                            <setting string="Children Education Account" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                            <label for="education_child_account_id" string="Children Education Account" class="col-2 o_light_label"/>
+                                            <field name="education_child_account_id"/>
+                                            
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting string="Advance Salary Account" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="advance_salary_account_id" string="Advance Salary Account" class="col-2 o_light_label"/>
+                                            <field name="advance_salary_account_id"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting string="Financial Claim Account" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="financial_claim_account_id" string="Financial Claim Account" class="col-2 o_light_label"/>
+                                            <field name="financial_claim_account_id"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting string="Overtime Account" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="overtime_request_account_id" string="Overtime Account" class="col-2 o_light_label"/>
+                                            <field name="overtime_request_account_id"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            <setting string="Perpetual Custody Account" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="perpetual_custody_account_id" string="Perpetual Custody Account" class="col-2 o_light_label"/>
+                                            <field name="perpetual_custody_account_id"/>
+                                    </div>
+                                </div>
+                            </setting>
+                            
+                            <setting string="Temporary Custody Account" company_dependent="1">
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="temporary_custody_account_id" string="Temporary Custody Account" class="col-2 o_light_label"/>
+                                            <field name="temporary_custody_account_id"/>
+                                    </div>
+                                </div>
+                            </setting>
+                        </block>
+                    </app>
+        </xpath>
+    </field>
+</record>
+
+    <!-- Action for the settings -->
+
+        <record id="action_open_financial_request_setting" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="context">{'module' : 'sharek_financial_requests'}</field>
+        </record>
+
+
+        <menuitem id="menu_financial_request_config" name="Configuration"
+              parent="menu_financial_request_root" sequence="99"/>
+
+    <menuitem id="menu_setting_financial_request" name="Settings"
+              parent="menu_financial_request_config"
+              action="action_open_financial_request_setting" groups="base.group_system" sequence="0"/> 
+</odoo>

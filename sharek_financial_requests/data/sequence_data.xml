@@ -1,0 +1,55 @@
+<odoo>
+    <record id="seq_children_education_allowance" model="ir.sequence">
+        <field name="name">Children Education Allowance</field>
+        <field name="code">children.education.allowance</field>
+        <field name="prefix">EDU-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="seq_salary_advance" model="ir.sequence">
+        <field name="name">Salary Advance</field>
+        <field name="code">salary.advance.allowance</field>
+        <field name="prefix">SAD-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+     <record id="seq_financial_claim" model="ir.sequence">
+        <field name="name">Financial Claim</field>
+        <field name="code">financial.claim.allowance</field>
+        <field name="prefix">CLAIM-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="seq_perpetual_custody" model="ir.sequence">
+        <field name="name">Perpetual Custody</field>
+        <field name="code">perpetual.custody</field>
+        <field name="prefix">PERCUS-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="seq_temporary_custody" model="ir.sequence">
+        <field name="name">Temporary Custody</field>
+        <field name="code">temporary.custody</field>
+        <field name="prefix">TEMPCUS-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="seq_overtime_request" model="ir.sequence">
+        <field name="name">Overtime Request</field>
+        <field name="code">overtime.request</field>
+        <field name="prefix">OVER-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

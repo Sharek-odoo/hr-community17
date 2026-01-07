@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hr_deputations_manager,access.hr.deputations.manager,model_hr_deputations,hr_deputation.group_deputation_manager,1,1,1,0
+access_hr_deputations_users,access.hr.deputations.users,model_hr_deputations,hr_deputation.group_deputation_user,1,0,0,0
+access_hr_ticketing,access.hr.ticketing,model_hr_ticketing,,1,1,1,1
+access_hr_deptuation_lines,access.hr.deputations.allownce.lines,model_hr_deputations_allownce_lines,,1,1,1,1
+access_hr_deptuation_basic_allownce,access.hr.deputations.allownce,model_hr_deputations_allownce,,1,1,1,1
+access_hr_deptuation_other_allownce,access.hr.deput.other.allownce,model_hr_deput_other_allownce,,1,1,1,1
+access_hr_basic_allownce_lines,access.hr_basic_allownce_lines,model_hr_basic_allownce_lines,,1,1,1,1
+access_country_groups,access.country.groups,model_country_groups,,1,1,1,1
+access_hr_deput_other_allownce_type,access.hr.deput.other.allownce.type,model_hr_deput_other_allownce_type,,1,1,1,1
+access_deputation_summary_wizard,deputation.summary.wizard,model_deputation_summary_wizard,,1,1,1,1
+

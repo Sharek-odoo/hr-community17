@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <menuitem name="Employee Appraisal"
+                  id="menu_appraisal"
+                    web_icon="sharek_hr_appraisal,static/description/icon.png"
+                  sequence="50"/>
+        
+        <menuitem id="menu_appraisal_configuration" name="Configuration" sequence="35" 
+            parent="menu_appraisal"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,186 @@
+<odoo>
+
+    <record id="view_hr_employee_training_needs_tree" model="ir.ui.view">
+        <field name="name">training.needs.request.tree</field>
+        <field name="model">training.needs.request</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Training Needs">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="job_title"/>
+                <field name="employee_number"/>
+                <field name="department_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_training_needs_form" model="ir.ui.view">
+        <field name="name">training.needs.request.form</field>
+        <field name="model">training.needs.request</field>
+        <field name="arch" type="xml">
+            <form string="Training Needs Request">
+                <header>
+
+                    <button name="action_submit_to_manager" string="Submit to Manager" type="object"
+                            invisible="state != 'draft'" class="btn-primary"
+                            groups="sharek_hr_employee_training.group_training_submitter"/>
+                       <button name="action_set_draft" string="Set To Draft" type="object"
+                             invisible="state != 'refused'" class="btn-primary"
+                              groups="sharek_hr_employee_training.group_training_submitter"/>
+
+                    <button name="action_approve_manager" string="Manager Approve" type="object"
+                            invisible="state != 'manager'" class="btn-primary"
+                            groups="sharek_hr_employee_training.group_training_manager"/>
+                    <button name="%(action_open_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                              invisible="state != 'manager'"
+                      groups="sharek_hr_employee_training.group_training_manager"/>
+                      <button name="action_set_draft" string="Set To Draft" type="object"
+                            invisible="state != 'manager'" class="btn-primary"
+                            groups="sharek_hr_employee_training.group_training_manager"/>
+
+
+                    <button name="action_approve_hr" string="HR Approve" type="object" invisible="state != 'hr'"
+                            class="btn-primary" groups="sharek_hr_employee_training.group_training_hr"/>
+                    <button name="%(action_open_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                             invisible="state != 'hr'"
+                      groups="sharek_hr_employee_training.group_training_hr"/>
+                    <button name="action_set_draft" string="Set To Draft" type="object"
+                             invisible="state != 'hr'"
+                            class="btn-primary" groups="sharek_hr_employee_training.group_training_hr"/>
+
+                    <button name="action_ceo_approve" string="CEO Approve" type="object" invisible="state != 'ceo'"
+                            class="btn-primary" groups="sharek_hr_employee_training.group_training_ceo"/>
+                       <button name="%(action_open_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                             invisible="state != 'ceo'"
+                      groups="sharek_hr_employee_training.group_training_ceo"/>
+                    <button name="action_set_draft" string="Set To Draft" type="object"
+                             invisible="state != 'ceo'"
+                            class="btn-primary" groups="sharek_hr_employee_training.group_training_ceo"/>
+
+
+                    <button name="action_hr_final_approve" string="HR Final Approve" type="object"
+                            invisible="state != 'hr_final'" class="btn-success"
+                            groups="sharek_hr_employee_training.group_training_hr_final"/>
+                    <button name="%(action_open_refuse_wizard)d"
+                            string="Refuse"
+                            type="action"
+                            class="btn btn-danger"
+                             invisible="state != 'hr_final'"
+                      groups="sharek_hr_employee_training.group_training_hr_final"/>
+
+
+                    <button name="action_set_draft" string="Set To Draft" type="object"
+                             invisible="state != 'hr_final'" class="btn-primary"
+                              groups="sharek_hr_employee_training.group_training_hr_final"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,manager,hr,ceo,approved"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_open_trainings_employee"
+                                string="View Trainings"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-graduation-cap"
+                                invisible="not training_ids"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'"/>
+                            <field name="department_id" readonly="1"/>
+                            <field name="manager_id" readonly="1"/>
+                            <field name="job_title" readonly="1"/>
+                            <field name="email" readonly="1"/>
+                            <field name="training_ids" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="employee_number" readonly="1"/>
+                            <label for="request_date_from" string="Period"/>
+                            <div>
+                                <field name="request_date_from" class="oe_inline"
+                                       groups="sharek_hr_employee_training.group_training_hr"/>
+                                <field name="request_date_from" class="oe_inline" readonly="1"
+                                       groups="sharek_hr_employee_training.group_training_user"/>
+                                -
+                                <field name="request_date_to" class="oe_inline"
+                                       groups="sharek_hr_employee_training.group_training_hr"/>
+                                <field name="request_date_to" class="oe_inline" readonly="1"
+                                       groups="sharek_hr_employee_training.group_training_user"/>
+                            </div>
+                            <field name="last_appraisal_id" readonly="1"/>
+                            <field name="last_overall_grade" readonly="1"/>
+                            <field name="request_date" readonly="1"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Courses">
+                            <field name="line_ids" readonly="state not in ['draft','manager']">
+                                <tree editable="bottom">
+                                    <field name="training_course_id"/>
+                                    <field name="domain_id" readonly="1" force_save="1"/>
+                                    <field name="impact_id" readonly="1" force_save="1"/>
+                                    <field name="period"/>
+                                    <field name="cost" force_save="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Refused Reason">
+                            <field name="refuse_reason" readonly="1"/>
+                        </page>
+                    </notebook>
+                    <group colspan="12">
+                        <group colspan="8">
+                        </group>
+                        <group colspan="4">
+                            <group class="oe_subtotal_footer" name="cost_box">
+                                <label for="total_cost" string="Total Cost"/>
+                                <div>
+                                    <field name="total_cost" readonly="1"/>
+                                </div>
+                                <label for="remaining_cost" string="Remaining Cost"/>
+                                <div>
+                                    <field name="remaining_cost" readonly="1"/>
+                                </div>
+                            </group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_training_needs_request" model="ir.actions.act_window">
+        <field name="name">Training Needs</field>
+        <field name="res_model">training.needs.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_training_needs_root" name="Training Management" parent="sharek_hr_appraisal.menu_appraisal"
+              sequence="30"/>
+    <menuitem id="menu_training_needs" action="action_training_needs_request" name="Training Needs"
+              parent="menu_training_needs_root" sequence="1"/>
+    <!-- <menuitem id="menu_training_needs_request" name="Requests"
+              parent="menu_training_needs" action="action_training_needs_request" /> -->
+</odoo>
