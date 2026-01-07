@@ -1,0 +1,223 @@
+<odoo>
+    <data>
+
+        <!-- Insurance Policy form view -->
+        <record id="insurance_policy_form_view" model="ir.ui.view">
+            <field name="name">insurance.policy.form.view</field>
+            <field name="model">insurance.policy</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="compute_installment" type="object" string="Compute Installment"
+                                class="oe_highlight"
+                                invisible=" state in ('bill', 'expire') or payment_type == 'fixed'"/>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                invisible="state != 'draft'" groups="hr.group_hr_user"/>
+                        <button name="action_create_bill" string="Create Bill" type="object" class="oe_highlight"
+                                invisible="state != 'confirm'" groups="hr.group_hr_manager"/>
+                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                invisible="state in ('draft','expire') or invoice_id != False"
+                                groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"
+                               status_visible="draft, confirm, bill, expire"/>
+                    </header>
+
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_bill"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-pencil-square-o"
+                                    invisible="invoice_id == False"
+                                    help="show the vendor bills for this policy">
+                                <field name="bill_count" widget="statinfo" string="Bills"/>
+                            </button>
+                        </div>
+                        <group string="General Information">
+                            <group>
+                                <field name="invoice_id" invisible="1"/>
+                                <field name="company_id" invisible="1" force_save="1"/>
+                                <field name="name" required="1" readonly="state != 'draft'"/>
+                                <field name="start_date" required="1" readonly="state != 'draft'"/>
+                                <label for="beneficiary_number"/>
+                                <div class="o_row">
+                                    <field name="beneficiary_number" required="1"
+                                           readonly="state != 'draft'"/>
+                                    <span>Agents</span>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="insurance_company_id" required="1"
+                                       readonly="state != 'draft'"/>
+                                <field name="end_date" required="1" readonly="state != 'draft'"/>
+                                <field name="invoice_payment_term_id" required="1" readonly="state != 'draft'"/>
+                            </group>
+                        </group>
+
+                        <group string="Policy Details">
+                            <group>
+                                <label for="amount"/>
+                                <div class="o_row">
+                                    <field name="amount" required="1" readonly="state != 'draft'"/>
+                                    <field name="currency_id" groups="base.group_multi_currency"
+                                           readonly="state != 'draft'"/>
+                                </div>
+                                <field name="tax_amount" readonly="1" force_save="1"/>
+                                <field name="payment_type" required="1"
+                                       readonly="state != 'draft'"/>
+
+                                <field name="payment_date" invisible="payment_type == 'fixed'" required="payment_type != 'fixed'" readonly="state != 'draft'"/>
+                                <field name="advance_amount"
+                                invisible="advance_payment == False" required="advance_payment == 'True'" readonly="state != 'draft'"/>
+                                <field name="paid_amount"/>
+                            </group>
+                            <group>
+                                <field name="tax_ids" widget="many2many_tags" readonly="state != 'draft'"/>
+                                <field name="total_amount" readonly="1" force_save="1"/>
+                                <field name="installment" invisible="payment_type == 'fixed'" readonly="state != 'draft'"/>
+                                <field name="advance_payment" invisible="payment_type == 'fixed'" readonly="state != 'draft'"/>
+                                <field name="advance_payment_date" invisible="advance_payment == False" required="advance_payment == 'True'" readonly="state != 'draft'"/>
+                                <field name="balance_amount"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="notes" placeholder="Notes..." readonly="state != 'draft'"/>
+                        </group>
+                        <notebook>
+                            <page string="Insurance Classes">
+                                <field name="policy_class_ids" nolabel="1" readonly="state != 'draft'">
+                                    <tree editable="bottom">
+                                        <field name="class_id" required="1"/>
+<!--                                        <field name="amount" required="1"/>-->
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Installments" invisible="payment_type == 'fixed'">
+                                <field name="insurance_installment_ids" readonly="1" nolabel="1">
+                                    <tree>
+                                        <field name="date"/>
+                                        <field name="amount"/>
+                                        <field name="currency_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Insurance Policy tree view -->
+        <record id="insurance_policy_tree_view" model="ir.ui.view">
+            <field name="name">insurance.policy.tree.view</field>
+            <field name="model">insurance.policy</field>
+            <field name="arch" type="xml">
+                <tree string="Insurance Policy">
+                    <field name="name"/>
+                    <field name="insurance_company_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="amount"/>
+                    <field name="currency_id"/>
+                    <field name="state" decoration-success="state == 'bill'"
+                           decoration-info="state == 'draft' or state == 'confirm'"
+                           decoration-danger="state == 'expire'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Insurance Policy search view -->
+        <record id="insurance_policy_search_view" model="ir.ui.view">
+            <field name="name">insurance.policy.search.view</field>
+            <field name="model">insurance.policy</field>
+            <field name="arch" type="xml">
+                <search string="Insurance Policy">
+                    <field name="name"/>
+                    <field name="insurance_company_id"/>
+                    <separator/>
+
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_insurance_company_id" string="Insurance Company" domain="[]"
+                                context="{'group_by': 'insurance_company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Insurance Policy Class form view -->
+        <record id="insurance_policy_class_form_view" model="ir.ui.view">
+            <field name="name">insurance.policy.class.form.view</field>
+            <field name="model">insurance.class</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Insurance Class tree view -->
+        <record id="insurance_policy_class_tree_view" model="ir.ui.view">
+            <field name="name">insurance.policy.class.tree.view</field>
+            <field name="model">insurance.class</field>
+            <field name="arch" type="xml">
+                <tree string="Insurance Classes">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Insurance Policy Action -->
+        <record id="insurance_policy_action" model="ir.actions.act_window">
+            <field name="name">Insurance Policy</field>
+            <field name="res_model">insurance.policy</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Insurance Policy Classes Action -->
+        <record id="insurance_policy_class_action" model="ir.actions.act_window">
+            <field name="name">Insurance Classes</field>
+            <field name="res_model">insurance.class</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Medical Insurance Configuration Menu -->
+        <menuitem
+                id="medical_insurance_config_menu"
+                name="Medical Insurance"
+                parent="hr.menu_human_resources_configuration"
+                groups="hr.group_hr_manager"
+                sequence="100"
+        />
+
+        <!-- Violation Type Menu -->
+        <menuitem
+                id="insurance_policy_menu"
+                name="Insurance Policy"
+                parent="medical_insurance_config_menu"
+                action="insurance_policy_action"
+                groups="hr.group_hr_manager"
+                sequence="1"
+        />
+
+        <!-- Penalty Menu -->
+        <menuitem
+                id="insurance_policy_class_menu"
+                name="Insurance Classes"
+                parent="medical_insurance_config_menu"
+                action="insurance_policy_class_action"
+                groups="hr.group_hr_manager"
+                sequence="2"
+        />
+
+    </data>
+</odoo>

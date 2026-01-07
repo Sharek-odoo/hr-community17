@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="other_earnings_tree_view" model="ir.ui.view">
+        <field name="name">other.earnings.tree.view</field>
+        <field name="model">other.earnings</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="applied_to"/>
+                <field name="type"/>
+                <field name="amount"/>
+                <field name="state" decoration-success="state == 'confirm' or state == 'paid'" decoration-info="state == 'draft'" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="other_earnings_form_view" model="ir.ui.view">
+        <field name="name">other.earnings.form.view</field>
+        <field name="model">other.earnings</field>
+        <field name="arch" type="xml">
+            <form string="Other Earnings">
+                <header>
+                     <button name="action_reset_to_draft" type="object" string="Reset to Draft" class="oe_highlight"
+                    invisible="state == 'draft'"
+                    />
+                    <!-- <button name="action_cancel" type="object" string="Cancel" class="oe_highlight"
+                    invisible="state not in ('under_approval','approve','confirm','cancel')"
+                    /> -->
+                    <button name="compute_amount" type="object" string="Compute" class="oe_highlight" invisible="state not in ['draft','under_approval','approve']"/>
+                    <button name="action_under_approval" type="object" string="Submit" class="oe_highlight"  invisible="state != 'draft'"/>
+                    <button name="action_confirm" type="object" string="Confirm" invisible="state != 'approve'" class="oe_highlight"/>
+                    <button name="action_approve" type="object" string="Approve" invisible="state != 'under_approval'" class="oe_highlight"/>
+                    <button name="action_paid" type="object" string="Paid" class="oe_highlight"
+                    invisible="state != 'confirm' or earnings_type == 'payroll'"
+                    />
+                    <button name="action_cancel" type="object" invisible="state in ['under_approval','approve','confirm','paid']" string="Cancel" />
+                    <!-- ['draft','under_approval','approve','confirm','paid','cancel']" string="Cancel" /> -->
+<!--                    attrs="{'invisible': ['|', ('state','in', 'cancel'), ('journal_count','>', 0), ('state','not in', ['draft', 'under_approval', 'approve', 'confirm', 'paid'])]}"-->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_journal_entries" type="object" icon="fa-usd" invisible="journal_count == 0"
+                        >
+                            <field name="journal_count" widget="statinfo" />
+                        </button>
+                    </div>
+                     <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="start_date" required="1"/>
+                            <field name="earnings_type" widget="radio"/>
+                            <field name="applied_to"/>
+                            <field name="company_ids" widget="many2many_tags" invisible="applied_to != 'company'"/>
+                            <field name="department_ids" widget="many2many_tags" invisible="applied_to != 'department'"/>
+                            <field name="project_ids" widget="many2many_tags" invisible="applied_to != 'project'"/>
+                            <field name="task_ids" widget="many2many_tags" invisible="applied_to != 'task'"/>
+                             <field name="employee_ids" widget="many2many_tags" invisible="applied_to != 'emplopyee'"/>
+                        </group>
+                        <group>
+                            <field name="journal_id" required="earnings_type == 'receipt'" invisible="earnings_type != 'receipt'"/>
+                            <field name="type" required="1"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Other Earnings Line">
+                            <field name="earnings_ids">
+                                <tree editable="bottom">
+                                    <field name="employee_id" required="1"/>
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+
+                            </group>   
+                        </page>
+                    </notebook> 
+                    
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="other_earnings_line_tree_view" model="ir.ui.view">
+        <field name="name">other.earnings.line.tree.view</field>
+        <field name="model">other.earnings.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="earnings_line_id"/>
+                <field name="date" required="1"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="other_earnings_line_view_form_inherit" model="ir.ui.view">
+        <field name="name">other.earnings.line.view</field>
+        <field name="model">other.earnings.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="earnings_line_id" required="1"/>
+                        </group>
+                        <group>
+                            <field name="date" required="1"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record model="ir.actions.act_window" id="action_view_of_other_earnings">
+        <field name="name">Other Earnings</field>
+        <field name="res_model">other.earnings</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+       
+    <record model="ir.actions.act_window" id="action_view_of_other_earnings_lines">
+        <field name="name">Other Earning Lines</field>
+        <field name="res_model">other.earnings.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="other_earnings_line_tree_view"/>
+    </record>     
+
+    <menuitem
+        id="menu_config_other_earning"
+        name="Other Earnings"
+        parent="hr.menu_hr_employee_payroll"
+        sequence="100"/>
+
+        <menuitem
+            id="menu_config_plan_types"
+            name="Other Earnings"
+            action="action_view_of_other_earnings"
+            parent="menu_config_other_earning"
+            sequence="99"/>
+
+        <menuitem
+            id="menu_for_other_earning_lines"
+            name="Other Earning Lines"
+            action="action_view_of_other_earnings_lines"
+            parent="menu_config_other_earning"
+            sequence="100"/>
+        
+</odoo>

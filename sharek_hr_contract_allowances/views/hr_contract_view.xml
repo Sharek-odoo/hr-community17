@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+    <!-- Contract View -->
+        <record id="hr_contract_form_inherit_allowances" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='salary_info']" position="after">
+                    <group>
+                        <label for="target_allowance"/>
+                        <div class="o_row">
+                            <field name="target_allowance"/>
+                        </div>
+                        <label for="hr_fuel_allowance"/>
+                        <div class="o_row">
+                            <field name="hr_fuel_allowance"/>
+                        </div>
+                        <label for="hr_cell_phone_allowance"/>
+                        <div class="o_row">
+                            <field name="hr_cell_phone_allowance"/>
+                        </div>
+                        <label for="hr_ticket_allowance"/>
+                        <div class="o_row">
+                            <field name="hr_ticket_allowance"/>
+                        </div>
+                        <label for="hr_vacation_allowance"/>
+                        <div class="o_row">
+                            <field name="hr_vacation_allowance"/>
+                        </div>
+                        <label for="food_allowance"/>
+                        <div class="o_row">
+                            <field name="food_allowance"/>
+                        </div>
+                         <label for="fixed_overtime"/>
+                        <div class="o_row">
+                            <field name="fixed_overtime"/>
+                        </div>
+
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

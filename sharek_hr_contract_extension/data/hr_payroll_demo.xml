@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+        <!-- Salary Rules for Worker Pay-->
+        <record id="hr_payroll_structure_regular" model="hr.payroll.structure">
+            <field name="name">Reqular</field>
+            <field name="type_id" ref="hr_contract.structure_type_employee"/>
+            <field name="report_id" ref="om_hr_payroll.action_report_payslip"/>
+            <field name="use_worked_day_lines" eval="True"/>
+        </record>
+        <record id="hr_salary_rule_housing" model="hr.salary.rule">
+            <field name="code">HOUSING</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="name">Housing</field>
+            <field name="sequence" eval="5"/>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="struct_id" ref="hr_payroll_structure_regular"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.compute_allowance(payslip, 'HOUSING')</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.compute_allowance(payslip, 'HOUSING')</field>
+        </record>
+        <record id="hr_salary_rule_transport" model="hr.salary.rule">
+            <field name="code">Transport</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="name">TRANSPORT</field>
+            <field name="sequence" eval="6"/>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="struct_id" ref="hr_payroll_structure_regular"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.compute_allowance(payslip, 'TRANSPORTATION')</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.compute_allowance(payslip, 'TRANSPORTATION')</field>
+        </record>
+        <record id="hr_salary_rule_gosi" model="hr.salary.rule">
+            <field name="code">GOSI</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="name">GOSI</field>
+            <field name="sequence" eval="100"/>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="struct_id" ref="sharek_hr_contract_extension.hr_payroll_structure_regular"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.compute_deduction(payslip, 'GOSI')</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.compute_deduction(payslip, 'GOSI')</field>
+        </record>
+
+</odoo>

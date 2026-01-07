@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.actions.act_window" id="action_allowance_type">
+      <field name="name">Allowance Types</field>
+      <field name="res_model">allowance.type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+ <menuitem name="Allowance Types" id="menu_allowance_type" parent="hr.menu_config_employee"  action="action_allowance_type" />
+
+    <record model="ir.ui.view" id="sharek_hr_contract_allowances_form">
+      <field name="name">hr.contract</field>
+      <field name="model">hr.contract</field>
+      <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+            <page string="Allowances">
+                <field name="allowances" >
+                    <tree editable="bottom">
+                        <field name="contract_id" invisible="1"/>
+                        <field name="allowance_id" />
+                        <field name="code" />
+                        <field name="allowance_value" />
+                    </tree>
+                </field>
+            </page>
+        </xpath>
+      </field>
+    </record>
+
+
+   
+  </data>
+</odoo>

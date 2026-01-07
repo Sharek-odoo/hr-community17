@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="new_sharek_hr_employee_loan_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+
+                        <div class="page">
+                            <h3 class="text-center">Employee Loan Report</h3>
+                            <br/>
+                            <br/>
+                            <h2 class="mt16">
+                                <span>#</span>
+                                <span t-field="o.name"/>
+                            </h2>
+                            <div class="row">
+                                <div class="col-4">
+                                    <strong>Employee:</strong>
+                                    <span t-field="o.employee_id.name"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>Date:</strong>
+                                    <span t-field="o.date"/>
+                                </div>
+
+                                <div class="col-4">
+                                    <strong>Loan Amount:</strong>
+                                    <span t-field="o.loan_amount"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <strong>Department:</strong>
+                                    <span t-field="o.department_id.name"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>Payment Date:</strong>
+                                    <span t-field="o.payment_date"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>Paid Amount:</strong>
+                                    <span t-field="o.total_paid_amount"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <strong>Job Position:</strong>
+                                    <span t-field="o.job_position.name"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>No Of Installments:</strong>
+                                    <span t-field="o.installment"/>
+                                </div>
+                                <div class="col-4">
+                                    <strong>Balance Amount:</strong>
+                                    <span t-field="o.balance_amount"/>
+                                </div>
+
+                            </div>
+                            <br/>
+                            <br/>
+                            <h3>Installments Details</h3>
+                            <br/>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <strong>#</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>Payment Date</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>Amount</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>Installment Status</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <t t-set="no" t-value="1"/>
+                                    <t t-foreach="o.loan_lines" t-as="line">
+                                        <tr>
+                                            <td class="text-center">
+                                                <span t-esc="no"></span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.date"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.amount"/>
+                                            </td>
+                                            <td t-if="line.paid != False" class="text-center">
+                                                <span>Paid</span>
+                                            </td>
+                                            <td t-if="line.paid == False" class="text-center">
+                                                <span>Un Paid</span>
+                                            </td>
+                                        </tr>
+                                        <t t-set="no" t-value="no+1"/>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+
+                </t>
+            </t>
+        </template>
+
+
+        <template id="sharek_hr_employee_loan_template">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h3 class="text-center">Employee Loan Report</h3>
+                        <br/>
+                        <br/>
+                        <center>
+                            <div class="row ">
+                                <div class="col-auto ">
+                                    <strong>From:</strong>
+                                    <span t-esc="date_from"/>
+                                </div>
+                                <div class="col-auto ">
+                                    <strong>To:</strong>
+                                    <span t-esc="date_to"/>
+                                </div>
+                            </div>
+                        </center>
+                        <br/>
+                        <br/>
+                        <table border="1" class="text-right table table-condensed table-hover;">
+                            <t t-foreach="data" t-as="do">
+                                <tr>
+                                    <th colspan="9" class="text-center" style="border:1px solid black;">
+                                        <t t-esc="do['employee']"/>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center" style="border:1px solid black;">#NO</th>
+                                    <th class="text-center" style="border:1px solid black;">Loan Name</th>
+                                    <th class="text-center" style="border:1px solid black;">Date Confirm</th>
+                                    <th class="text-center" style="border:1px solid black;">Payment Start Date</th>
+                                    <th class="text-center" style="border:1px solid black;">Payment Last Date</th>
+                                    <th class="text-center" style="border:1px solid black;">Installment</th>
+                                    <th class="text-center" style="border:1px solid black;">Loan Amount</th>
+                                    <th class="text-center" style="border:1px solid black;">Paid Amount</th>
+                                    <th class="text-center" style="border:1px solid black;">Balance</th>
+                                </tr>
+                                <t t-set="loan_amount_total" t-value="0.0"/>
+                                <t t-set="paid_total" t-value="0.0"/>
+                                <t t-set="unpaid_total" t-value="0.0"/>
+                                <t t-foreach="do['loan_values']" t-as="line">
+                                    <tr>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line_index + 1"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['name']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['date_confirm']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['start_payment_date']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['last_payment_date']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['installment']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['loan_amount']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['total_paid_amount']"/>
+                                        </td>
+                                        <td class="text-center" style="border:1px solid black;">
+                                            <t t-esc="line['balance_amount']"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="loan_amount_total" t-value="loan_amount_total + line['loan_amount']"/>
+                                    <t t-set="paid_total" t-value="paid_total + line['total_paid_amount']"/>
+                                    <t t-set="unpaid_total" t-value="unpaid_total + line['balance_amount']"/>
+                                </t>
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong>
+                                            <span>
+                                                <t t-esc="'{0:,.2f}'.format(loan_amount_total)"/>
+                                            </span>
+                                        </strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong>
+                                            <span>
+                                                <t t-esc="'{0:,.2f}'.format(paid_total)"/>
+                                            </span>
+                                        </strong>
+                                    </td>
+                                    <td class="text-center">
+                                        <strong>
+                                            <span>
+                                                <t t-esc="'{0:,.2f}'.format(unpaid_total)"/>
+                                            </span>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

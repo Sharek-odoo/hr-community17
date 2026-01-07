@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+
+        <!-- QWeb Reports -->
+        <report
+                id="new_action_employee_loan_report"
+                model="hr.loan"
+                report_type="qweb-pdf"
+                string="Employee Loan"
+                menu="True"
+                name="sharek_hr_employee_loan.new_sharek_hr_employee_loan_template"
+                file="sharek_hr_employee_loan.new_sharek_hr_employee_loan_template"
+        />
+        <record id="action_sharek_hr_employee_loan_report" model="ir.actions.report">
+            <field name="name">Employee Loan</field>
+            <field name="model">hr.loan</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sharek_hr_employee_loan.sharek_hr_employee_loan_template</field>
+            <field name="report_file">sharek_hr_employee_loan.sharek_hr_employee_loan_template</field>
+        </record>
+        <!-- <report
+                id="action_sharek_hr_employee_loan_report"
+                model="hr.loan"
+                report_type="qweb-pdf"
+                string="Employee Loan"
+                menu="False"
+                name="sharek_hr_employee_loan.sharek_hr_employee_loan_template"
+                file="sharek_hr_employee_loan.sharek_hr_employee_loan_template"
+        /> -->
+
+
+    </data>
+</odoo>

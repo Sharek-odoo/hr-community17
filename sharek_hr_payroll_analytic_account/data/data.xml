@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="account_asset_receivable" model="account.type.selection">
+            <field name="name">Receivable</field>
+            <field name="account_type">asset_receivable</field>
+        </record>
+        <record id="account_asset_cash" model="account.type.selection">
+            <field name="name">Bank and Cash</field>
+            <field name="account_type">asset_cash</field>
+        </record>
+        <record id="account_asset_current" model="account.type.selection">
+            <field name="name">Current Assets</field>
+            <field name="account_type">asset_current</field>
+        </record>
+        <record id="account_asset_non_current" model="account.type.selection">
+            <field name="name">Non-current Assets</field>
+            <field name="account_type">asset_non_current</field>
+        </record>
+        <record id="account_asset_prepayments" model="account.type.selection">
+            <field name="name">Prepayments</field>
+            <field name="account_type">asset_prepayments</field>
+        </record>
+        <record id="account_asset_fixed" model="account.type.selection">
+            <field name="name">Fixed Assets</field>
+            <field name="account_type">asset_fixed</field>
+        </record>
+        <record id="account_liability_payable" model="account.type.selection">
+            <field name="name">Payable</field>
+            <field name="account_type">liability_payable</field>
+        </record>
+        <record id="account_liability_credit_card" model="account.type.selection">
+            <field name="name">Credit Card</field>
+            <field name="account_type">liability_credit_card</field>
+        </record>
+        <record id="account_liability_current" model="account.type.selection">
+            <field name="name">Current Liabilities</field>
+            <field name="account_type">liability_current</field>
+        </record>
+        <record id="account_liability_non_current" model="account.type.selection">
+            <field name="name">Non-current Liabilities</field>
+            <field name="account_type">liability_non_current</field>
+        </record>
+        <record id="account_equity" model="account.type.selection">
+            <field name="name">Equity</field>
+            <field name="account_type">equity</field>
+        </record>
+        <record id="account_equity_unaffected" model="account.type.selection">
+            <field name="name">Current Year Earnings</field>
+            <field name="account_type">equity_unaffected</field>
+        </record>
+        <record id="account_income" model="account.type.selection">
+            <field name="name">Income</field>
+            <field name="account_type">income</field>
+        </record>
+        <record id="account_income_other" model="account.type.selection">
+            <field name="name">Other Income</field>
+            <field name="account_type">income_other</field>
+        </record>
+        <record id="account_expense" model="account.type.selection">
+            <field name="name">Expenses</field>
+            <field name="account_type">expense</field>
+        </record>
+        <record id="account_expense_depreciation" model="account.type.selection">
+            <field name="name">Depreciation</field>
+            <field name="account_type">expense_depreciation</field>
+        </record>
+        <record id="account_expense_direct_cost" model="account.type.selection">
+            <field name="name">Cost of Revenue</field>
+            <field name="account_type">expense_direct_cost</field>
+        </record>
+        <record id="account_off_balance" model="account.type.selection">
+            <field name="name">Off-Balance Sheet</field>
+            <field name="account_type">off_balance</field>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <!-- <field name="groups_id" eval="[(4, ref('hr.group_hr_user'))]"/> -->
+        <field name="arch" type="xml">
+            <div name="button_box" position="after">
+                <div class="oe_title">
+                    <label for="employee_no" class="oe_edit_only"/>
+                    <h2>
+                        <field name="employee_no"
+                               redonly="employee_id_option == 'auto'" required="employee_id_option == 'manual'"/>
+                        <field name="employee_id_option" invisible="1"/>
+                    </h2>
+                </div>
+                <div class="oe_title">
+                    <h2 class="d-flex">
+                        <field name="arabic_name" placeholder="Employee's arabic name" />
+                    </h2>
+                </div>
+            </div>
+              <!-- <xpath expr="//field[@name='employee_type']" position="after"> -->
+              <!-- <xpath expr="//group[@name='active_group']" position="inside">
+                <field name="join_date" required="1"/>
+            </xpath> -->
+          <!--   <xpath expr="//field[@name='user_id']" position="after">
+                <field name="join_date" required="1"/>
+            </xpath> -->
+
+            <xpath expr="//field[@name='country_id']" position="after">
+
+                 <field name="is_stranger"/>
+                 <field name="have_gosi"/>
+            </xpath>
+
+            <xpath expr="//field[@name='identification_id']" position="after">
+                <field name="identification_end_date"
+                       required="country_code == 'SA'" invisible="country_code != 'SA'"/>
+            </xpath>
+            <xpath expr="//field[@name='identification_id']" position="attributes">
+                <attribute name="required">country_code =='SA'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='passport_id']" position="after">
+                <field name="passport_end_date"/>
+                <field name="visa_type"
+                       required="country_code != 'SA'" invisible="country_code == 'SA'"/>
+                <field name="visit_id"
+                       required="country_code != 'SA' and visa_type == 'iqama'" invisible=" country_code == 'SA' or visa_type =='iqama' "/>
+                <field name="visit_end_date"
+                       required="country_code != 'SA' and visa_type == 'visit'" invisible=" country_code == 'SA' or visa_type == 'iqama'"/>
+                <field name="iqama_id"
+                       required="country_code != 'SA' and visa_type == 'visit'" invisible=" country_code == 'SA' or visa_type != 'iqama'"/>
+                <field name="iqama_end_date"
+                       required="country_code != 'SA' and visa_type == 'visit'" invisible=" country_code == 'SA' or visa_type != 'iqama'"/>
+                <field name="border_no" invisible="country_code == 'SA'"/>
+            </xpath>
+            <!-- <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='country_id']" position="after">
+                <field name="country_code" invisible="1"/>
+            </xpath>
+            <field name="job_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="coach_id" position="after">
+                <field name="job_id"/>
+            </field>
+           <!--  <xpath expr="//group[@name='has_work_permit']" position="attributes">
+                <attribute name="attrs">{'invisible':[('country_code', '=', 'SA')]}</attribute>
+            </xpath> -->
+             <xpath expr="//field[@name='has_work_permit']" position="attributes">
+                <attribute name="invisible">country_code =='SA'</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_tree_view_employees" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="employee_no"/>
+                <field name="arabic_name"/>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="string">English Name</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_kanban_view_employees" model="ir.ui.view">
+        <field name="name">hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <div class="o_kanban_record_top" position="inside">
+                <div class="o_kanban_primary_right">
+                    <field name="employee_no"/>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_employee_filter" model="ir.ui.view">
+        <field name="name">hr.employee.search</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">
+                    ['|','|','|',('work_email','ilike',self),('name','ilike',self),('employee_no','=',self),('arabic_name','ilike',self)]
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Iqama form view -->
+    <record id="view_employee_iqama_form" model="ir.ui.view">
+        <field name="name">hr.employee.iqama.form</field>
+        <field name="model">hr.employee.iqama</field>
+        <field name="arch" type="xml">
+            <form string="Employee Iqama">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="place_of_issue" required="1"/>
+                            <field name="issuing_date" required="1"/>
+                            <field name="expiry_date" required="1"/>
+                            <field name="date_of_birth" required="1"/>
+                        </group>
+                        <group>
+                            <field name="copy_number" required="1"/>
+                            <field name="partner_id" required="1"/>
+                            <field name="entry_date" required="1"/>
+                            <field name="blood_group" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Iqama tree view -->
+    <record id="view_employee_iqama_tree" model="ir.ui.view">
+        <field name="name">hr.employee.iqama.tree</field>
+        <field name="model">hr.employee.iqama</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Iqama">
+                <field name="name"/>
+                <field name="copy_number"/>
+                <field name="partner_id"/>
+                <field name="issuing_date"/>
+                <field name="expiry_date"/>
+                <field name="date_of_birth"/>
+                <field name="entry_date"/>
+                <field name="place_of_issue"/>
+                <field name="blood_group"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Iqama action -->
+    <record id="employee_iqama_action" model="ir.actions.act_window">
+        <field name="name">Employee Iqama</field>
+        <field name="res_model">hr.employee.iqama</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Iqama menu -->
+    <menuitem
+            id="employee_iqama_menu"
+            name="Employee Iqama"
+            parent="hr.menu_hr_employee_payroll"
+            action="employee_iqama_action"
+            groups="hr.group_hr_user"
+            sequence="99"
+    />
+
+</odoo>

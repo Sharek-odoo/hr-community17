@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="hr_leave_view_form" model="ir.ui.view">
+        <field name="name">hr.leave.view.form</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='col_left']" position="before">
+                <div class="oe_title">
+                    <h1>
+                        <field name="number"/>
+                    </h1>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="attachment_ids" widget="many2many_binary"
+                       readonly="state not in ('draft', 'confirm')"/>
+                <field name="balance" readonly="1"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <group name="col_right">
+                    <field name="required_delegation" invisible="1"/>
+                    <field name="delegated_id"
+                           requierd="required_delegation == True" invisible="required_delegation == False"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_leave_view_tree" model="ir.ui.view">
+        <field name="name">hr.leave.tree</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="before">
+                <field name="number"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_hr_holidays_filter" model="ir.ui.view">
+        <field name="name">hr.leave.search</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.view_hr_holidays_filter"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="number"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

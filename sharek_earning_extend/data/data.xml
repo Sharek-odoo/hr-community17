@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+        <record id="hr_salary_rule_reward_allowance" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">none</field>
+            <field name="amount_python_compute">result = payslip.reward_allowance</field>
+            <field name="code">REWARD</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="name">Reward Allowance</field>
+            <field name="sequence" eval="197"/>
+        </record>
+        <record id="hr_salary_rule_target1_allowance" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">none</field>
+            <field name="amount_python_compute">result = payslip.target1_allowance</field>
+            <field name="code">TARG1</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="name">Target 1 Allowance</field>
+            <field name="sequence" eval="197"/>
+        </record>
+        <record id="hr_salary_rule_target2_allowance" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">none</field>
+            <field name="amount_python_compute">result = payslip.target2_allowance</field>
+            <field name="code">TARG2</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="name">Target 2 Allowance</field>
+            <field name="sequence" eval="197"/>
+        </record>
+        <record id="hr_salary_rule_other_allowance" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">none</field>
+            <field name="amount_python_compute">result = payslip.other_allowance</field>
+            <field name="code">OTEA</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="name">Other Earning Allowance</field>
+            <field name="sequence" eval="197"/>
+        </record>
+
+         <record id="hr_salary_rule_gosi_deduction" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">none</field>
+            <field name="amount_python_compute">result = -payslip.gosi_deduction</field>
+            <field name="code">GOSIDEDUCTION</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="name">GOSI Deduction</field>
+            <field name="sequence" eval="198"/>
+        </record>
+
+
+       
+
+	</data>
+</odoo>

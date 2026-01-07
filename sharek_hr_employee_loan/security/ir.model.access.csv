@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_loan_user,hr.loan.group_user,model_hr_loan,base.group_user,1,1,1,0
+access_hr_jobuser,hr.job.group_user,hr.model_hr_job,base.group_user,1,1,1,0
+access_hr_loan_line_user,hr.loan.line.group_user,model_hr_loan_line,base.group_user,1,1,0,0
+access_hr_loan_officer,hr.loan.group_hr_user,model_hr_loan,hr.group_hr_user,1,1,1,1
+access_hr_loan_line_officer,hr.loan.line.group_hr_user,model_hr_loan_line,hr.group_hr_user,1,1,1,1
+access_hr_loan_manager,hr.loan,model_hr_loan,hr.group_hr_manager,1,1,1,1
+access_hr_loan_line_manager,hr.loan.line,model_hr_loan_line,hr.group_hr_manager,1,1,1,1
+access_hr_loan_payment_wizard,hr.loan.payment.wizard,model_hr_loan_payment_wizard,,1,1,1,1
+access_reschedule_installment_wizard,reschedule.installment.wizard,model_reschedule_installment_wizard,,1,1,1,1
+access_hr_reschedule_loan_installment,hr.reschedule.loan.installment,model_hr_reschedule_loan_installment,,1,1,1,1
+,,,,
+access_hr_loan_type_user,hr.loan.type.group_user,model_loan_type,base.group_user,1,0,0,0
+access_hr_loan_type_manager,hr.loan.type.manager,model_loan_type,hr.group_hr_manager,1,1,1,1
+,,,,
+access_employee_loan_report_wizard,employee_loan_report_wizard,model_employee_loan_report_wizard,base.group_user,1,1,1,1
+

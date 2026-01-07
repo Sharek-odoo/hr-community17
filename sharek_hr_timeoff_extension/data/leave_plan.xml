@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+
+    <!-- Accrual Plan -->
+<!--    <record id="hr_annual_leave_accrual_plan" model="hr.leave.accrual.plan">-->
+<!--        <field name="name">Annual Leave Plan</field>-->
+<!--        <field name="time_off_type_id" ref="sharek_hr_timeoff_extension.holiday_status_annual_calendar_days"/>-->
+<!--    </record>-->
+
+<!--    <record id="hr_annual_leave_accrual_level_1" model="hr.leave.accrual.level">-->
+<!--        <field name="accrual_plan_id" ref="hr_annual_leave_accrual_plan" />-->
+<!--        <field name="start_count">1</field>-->
+<!--        <field name="start_type">day</field>-->
+<!--        <field name="added_value">1.75</field>-->
+<!--        <field name="frequency">monthly</field>-->
+<!--    </record>-->
+<!--    <record id="hr_annual_leave_accrual_level_2" model="hr.leave.accrual.level">-->
+<!--        <field name="accrual_plan_id" ref="hr_annual_leave_accrual_plan" />-->
+<!--        <field name="start_count">4</field>-->
+<!--        <field name="start_type">year</field>-->
+<!--        <field name="added_value">2.5</field>-->
+<!--        <field name="frequency">monthly</field>-->
+<!--    </record>-->
+</data>
+</odoo>

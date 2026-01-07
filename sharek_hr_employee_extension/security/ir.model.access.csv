@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_iqama_user,access_hr_employee_iqama_user,model_hr_employee_iqama,hr.group_hr_user,1,1,1,1
+access_hr_employee_iqama_manager,access_hr_employee_iqama_manager,model_hr_employee_iqama,hr.group_hr_manager,1,1,1,1

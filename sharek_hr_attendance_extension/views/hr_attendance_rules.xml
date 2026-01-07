@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_attendance_rule_form" model="ir.ui.view">
+            <field name="name">hr.attendance.rule.form</field>
+            <field name="model">hr.attendance.rule</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <form string="Attendance Rules">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                                invisible="active == True"/>
+                        <label for="name" string="Rule Name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. General Attendance Rules"/>
+                        </h1>
+                        <group name="main_details">
+                            <group>
+                                <field name="rule_type"/>
+                                <field name="employee_id" options="{'no_create': 1, 'no_edit': 1}"
+                                       required="rule_type == 'employee'" invisible="rule_type != 'employee'"/>
+                                <field name="department_id" options="{'no_create': 1, 'no_edit': 1}"
+                                       required="rule_type == 'department'" invisible="rule_type != 'department'"/>
+                                <field name="company_id" options="{'no_create': 1, 'no_edit': 1}"
+                                       required="rule_type == 'company'" invisible="rule_type != 'company'"/>
+                            </group>
+                            <group>
+                                <field name="active" widget="boolean_toggle"/>
+                                <field name="overtime_calculate" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                        <notebook colspan="6">
+                            <page name="general" string="General">
+                                <group name="general_conditions">
+                                    <group string="Check-In &amp; Check-Out Rules">
+                                        <label for="allow_late_in" string="Allow Late-In"/>
+                                        <div name="allow_late_in">
+                                            <div class="o_row">
+                                                <div class="o_row">
+                                                    <field name="allow_late_in" nolabel="1"
+                                                           class="oe_inline"/>
+                                                    <span>Minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <label for="allow_early_out" string="Allow Early-Out"/>
+                                        <div name="allow_early_out">
+                                            <div class="o_row">
+                                                <div class="o_row">
+                                                    <field name="allow_early_out" nolabel="1"
+                                                           class="oe_inline"/>
+                                                    <span>Minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <label for="minimum_deduct_minutes" string="Minimum Deduct"/>
+                                        <div name="minimum_deduct_minutes">
+                                            <div class="o_row">
+                                                <div class="o_row">
+                                                    <field name="minimum_deduct_minutes" nolabel="1"
+                                                           class="oe_inline"/>
+                                                    <span>Minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </group>
+                                    <group string="Overtime Rules">
+                                        <field name="overtime_start" widget="float_time"/>
+                                        <field name="overtime_end" widget="float_time"/>
+                                        <label for="max_overtime_duration" string="Max OT Duration"/>
+                                        <div name="duration_display">
+                                            <div class="o_row">
+                                                <div class="o_row">
+                                                    <field name="max_overtime_duration" nolabel="1"
+                                                           class="oe_inline"/>
+                                                    <span>Minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="hr_attendance_rule_view_tree" model="ir.ui.view">
+            <field name="name">hr.attendance.rule.view.tree</field>
+            <field name="model">hr.attendance.rule</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="rule_type"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="attendance_rule_action" model="ir.actions.act_window">
+            <field name="name">Attendance Rules</field>
+            <field name="res_model">hr.attendance.rule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="attendance_rule_action" id="hr_attendance_rule_menu"
+                  parent="hr_attendance.menu_hr_attendance_root" sequence="29"/>
+
+    </data>
+</odoo>

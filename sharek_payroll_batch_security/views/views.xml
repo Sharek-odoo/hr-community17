@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+     <record id="payroll_extension_inherit_view_slip_form" model="ir.ui.view">
+        <field name="name">payroll.extension.inherit.hr.payslip.form</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='refund_sheet']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_slips_refund</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_cancel']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_slips_cancel</attribute>
+            </xpath>
+            <xpath expr="//button[@name='compute_sheet']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_slips_compute_sheet</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_done']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_slips_create_entery</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_draft']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_slips_draft</attribute>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="payroll_extension_inherit_view_batch_form" model="ir.ui.view">
+        <field name="name">payroll.extension.inherit.hr.payslip.run.form</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//button[@name='action_cancel']" position="after"> -->
+            <xpath expr="//header" position="inside">
+                <button string="Cancel" name="action_cancel_done_batch" type="object"
+                           invisible="state != 'close'"  groups="sharek_payroll_batch_security.group_bacth_slips_cancel"/>
+            </xpath>
+           <!--  <xpath expr="//button[@name='action_paid']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_bacth_slips_paid</attribute>
+            </xpath> -->
+            <xpath expr="//button[@name='close_payslip_run']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_bacth_slips_cancel_standard</attribute>
+            </xpath>
+           <!--  <xpath expr="//button[@name='action_validate']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_bacth_slips_validate</attribute>
+            </xpath> -->
+            <xpath expr="//button[@name='action_approve']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_approve_payroll_batch</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_refuse']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_refuse_payroll_batch</attribute>
+            </xpath>
+           <!--  <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_cancel_payroll_batch</attribute>
+            </xpath> -->
+            <xpath expr="//button[@name='action_draft']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_rest_to_draft_payroll_batch</attribute>
+            </xpath>
+            <!-- <xpath expr="//button[@name='action_register_payment']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_payment_payroll_batch</attribute>
+            </xpath> -->
+           
+            <xpath expr="//button[@name='action_post']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_post_payroll_batch</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm']" position="attributes">
+                <attribute name="groups">sharek_payroll_batch_security.group_confirm_payroll_batch</attribute>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>

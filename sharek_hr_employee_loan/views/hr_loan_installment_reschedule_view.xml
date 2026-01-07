@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_loan_line_tree" model="ir.ui.view">
+        <field name="name">hr.loan.loan.line.tree</field>
+        <field name="model">hr.loan.line</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Loan">
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="loan_id"/>
+                <field name="amount"/>
+                <field name="paid"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_loan_installment_reschedule_tree" model="ir.ui.view">
+        <field name="name">hr.reschedule.loan.installment.tree</field>
+        <field name="model">hr.reschedule.loan.installment</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Loan">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="loan_id"/>
+                <field name="installment_id"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_loan_installment_form" model="ir.ui.view">
+        <field name="name">hr.reschedule.loan.installment.form</field>
+        <field name="model">hr.reschedule.loan.installment</field>
+        <field name="arch" type="xml">
+            <form string="Employee Loan">
+                <header>
+                    <button name="confirm_request" string="Confirm" invisible="state != 'draft'" type="object" class="oe_highlight"
+                            groups="base.group_user"/>
+                    <button name="set_to_cancel" string="Cancel" invisible="state != 'draft'" type="object" groups="base.group_user"/>
+                    <button name="approve_request" string="Approve" invisible="state != 'confirm'" type="object"
+                            groups="hr.group_hr_manager" class="oe_highlight"/>
+                    <button name="refuse_request" string="Refuse" invisible="state != 'confirm'" groups="hr.group_hr_user"
+                            type="object"/>
+                    <button name="set_to_draft" string="Reset to Draft" invisible="state in ('refuse', 'cancel')" groups="hr.group_hr_user"
+                            type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="state != 'draft'"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'"
+                                   groups="hr.group_hr_user"/>
+                            <field name="loan_id" readonly="1"/>
+                            <field name="installment_id" readonly="1" options="{'no_create': 1, 'no_open': 1,'no_edit': 1}"/>
+                            <field name="company_id" readonly="state != 'draft'"
+                                   options="{'no_create': True}" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="date" string="Request Date" readonly="state != 'draft'"/>
+                            <field name="old_date" readonly="1"/>
+                            <field name="new_date" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_reschedule_installment">
+        <field name="name">Reschedule Installment</field>
+        <field name="res_model">hr.reschedule.loan.installment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': 0}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                no reschedule requests.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Installment Reschedule Request" id="menu_installment_reschedule"
+              parent="sharek_hr_employee_loan.menu_base_hr_loan_request" action="action_reschedule_installment" sequence="2"/>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_loan_inherited" model="ir.ui.view">
+            <field name="name">hr loan</field>
+            <field name="model">hr.loan</field>
+            <field name="inherit_id" ref="sharek_hr_employee_loan.hr_loan_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="replace">
+                    <header>
+                        <button name="compute_installment" type="object" string="Compute Installment"
+                                class="oe_highlight" invisible="state in ('approve', 'refuse')"/>
+                        <button name="action_submit" type="object" string="Submit" invisible="state != 'draft'" class="oe_highlight"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="state != 'draft'"/>
+                        <button name="action_hr_manager_approve" class="oe_highlight" type="object"
+                                string="Approve" invisible="state != 'waiting_approval_1'"
+                                groups="hr.group_hr_manager,hr.group_hr_user"/>
+                        <button name="action_approve" type="object" string="Approve" invisible="state != 'wait_financial_manager'"
+                                class="oe_highlight" groups="account.group_account_invoice"/>
+                        <button name="action_double_approve" type="object" string="Approve" invisible="state != 'waiting_approval_2'"
+                                class="oe_highlight" groups="account.group_account_user,account.group_account_manager"/>
+                        <button name="action_register_payment" type="object"
+                                class="oe_highlight"
+                                invisible="state != 'approve' or payment_state not in ('not_paid', 'in_payment') or installment_type == 'base_on'"
+                                context="{'dont_redirect_to_payments': True}" string="Register Payment" data-hotkey="g"
+                                groups="account.group_account_invoice"/>
+                        <button name="action_refuse" type="object" string="Refuse"
+                                invisible="state in ('waiting_approval_1', 'waiting_approval_2', 'wait_financial_manager')"
+                                groups="hr.group_hr_manager,hr.group_hr_user"/>
+                        <button name="action_set_to_draft" type="object" string="Set To Draft" invisible="state != 'cancel', 'refuse'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,waiting_approval_1,approve"/>
+                        <field name="payment_state" invisible="1"/>
+                    </header>
+                </xpath>
+
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="button_open_journal_entry" type="object" class="oe_stat_button" icon="fa-bars">
+                        Journal Entry
+                    </button>
+                </xpath>
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="employee_account_id" options="{'no_create': True,'no_open': True}"
+                           invisible="state == 'draft'" readonly="state in ('approve', 'refuse')"/>
+                    <field name="journal_id" options="{'no_create': True,'no_open': True}"
+                           invisible="state == 'draft'" readonly="state in ('approve', 'refuse')"/>
+                </xpath>
+                <xpath expr="//field[@name='installment']" position="after">
+                    <field name="treasury_account_id" options="{'no_create': True,'no_open': True}"
+                           invisible="state == 'draft'" readonly="state in ('approve', 'refuse')"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

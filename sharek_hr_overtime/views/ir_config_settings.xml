@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_overtime" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.overtime</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="25"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Overtime" string="Overtime"
+                         name ="hr_overtime">
+                    <block title="Hour Rate" name="hour_rate_setting">
+                        <setting id="hour_rate" company_dependent="1"
+                                 help="define overtime hour rate in hours for working days and other days."
+                                 string=" ">
+                            <label for="default_weekday_hour_rate"/>
+                            <div>
+                                <field name="default_weekday_hour_rate"/>
+                            </div>
+                            <label for="default_weekend_hour_rate"/>
+                            <div>
+                                <field name="default_weekend_hour_rate"/>
+                            </div>
+                            <label for="default_holiday_hour_rate"/>
+                            <div>
+                                <field name="default_holiday_hour_rate"/>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+
+<!--                <div class="app_settings_block" data-string="Overtime" string="Overtime" data-key="hr_overtime">-->
+<!--                    <h2>Hour Rate</h2>-->
+<!--                    <div class="row mt16 o_settings_container" name="overtime_setting_container">-->
+<!--                        <div class="col-12 col-lg-6 o_setting_box" id="weekday_hour_rate">-->
+
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <div class="text-muted">-->
+<!--                                    define overtime hour rate in hours for working days and other days-->
+<!--                                </div>-->
+<!--                                <div class="content-group" >-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label for="default_weekday_hour_rate" class="col-lg-4 o_light_label"/>-->
+<!--                                        <field name="default_weekday_hour_rate"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                        <label for="default_weekend_hour_rate" class="col-lg-4 o_light_label"/>-->
+<!--                                        <field name="default_weekend_hour_rate"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="row mt16">-->
+<!--                                     <label for="default_holiday_hour_rate" class="col-lg-4 o_light_label"/>-->
+<!--                                        <field name="default_holiday_hour_rate"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_overtime_configuration" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'hr_overtime', 'bin_size': False}</field>
+    </record>
+
+     <!-- MenuItems -->
+        <menuitem id="overtime_configuration_submenu" name="Configuration"
+                  parent="overtime_submenu" sequence="20"/>
+      <menuitem id="menu_overtime_general_settings" name="Settings"
+                  parent="overtime_configuration_submenu"
+                  groups="base.group_system"
+                 sequence="0"
+                  action="action_overtime_configuration"/>
+
+</odoo>

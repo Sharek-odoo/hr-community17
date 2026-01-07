@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit HR Settings Form View to Modify it -->
+        <record id="view_res_config_settings_form_government_relation_inherit" model="ir.ui.view">
+            <field name="name">view.res.config.settings.form.government.relation.inherit</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="hr.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//block[@name='employee_rights_setting_container']" position="after">
+                    <h2>HR Exit and Return</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted content-group mt16">
+                                    <label for="exit_return_account_id"/>
+                                    <field name="exit_return_account_id" required="1"/>
+
+                                    <br/>
+                                    <label for="exit_return_journal_id"/>
+                                    <field name="exit_return_journal_id" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Iqama Renewal</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted content-group mt16">
+                                    <label for="iqama_renewal_account_id"/>
+                                    <field name="iqama_renewal_account_id" required="1"/>
+
+                                    <br/>
+                                    <label for="iqama_renewal_journal_id"/>
+                                    <field name="iqama_renewal_journal_id" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

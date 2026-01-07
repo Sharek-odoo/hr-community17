@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--    Employee Report    -->
+        <report
+            id="report_employee_details"
+            model="hr.employee" 
+            string="Employee Details"
+            report_type="qweb-pdf"
+            name="sharek_hr_employee_extension.employee_details" 
+            file="sharek_hr_employee_extension.employee_details"
+        />
+
+<!--        Template Purchase Requisition-->
+        <template id="employee_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="report_name" t-value="doc"/>
+                   <t t-call="web.external_layout">
+                        <div class="page" dir="rtl">
+                             <style type="text/css">
+                                /* Declare fonts */
+                                @font-face {
+                                font-family: Droid Arabic Kufi;
+                                src: url(/sharek_hr_employee_extension/static/src/fonts/Kufi/DroidKufi-Regular.ttf) format('truetype');
+                                }
+                                * {
+                                    font-family: 'Droid Arabic Kufi';
+                                    font-weight: 900 !important;
+                                 }
+                                th,td {
+                                    border : 2px solid #D3D3D3;
+                                    height : 50px;
+                                    vertical-align: middle;
+                                    width:25%:
+                                 }
+                            </style>
+<!--                            Table 1-->
+                            <table class="text-center mb32" style="width:100%">
+                                <tr>
+                                    <td style="width:25%;font-size:16px;color:#50305f;background-color: #DCDCDC;font-weight:bold;">الإسم :</td>
+                                    <td style="width:25%;font-size:14px;"><span t-field="doc.name"/></td>
+                                    <td style="width:25%;font-size:16px;color:#50305f;background-color: #DCDCDC;font-weight:bold;">الادارة :</td>
+                                    <td style="width:25%;font-size:14px;"><span t-field="doc.department_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:25%;font-size:16px;color:#50305f;background-color: #DCDCDC;font-weight:bold;"> المسمى الوظيفي :</td>
+                                    <td style="width:25%;font-size:14px;"><span t-field="doc.job_id.name"/></td>
+                                    <td style="width:25%;font-size:16px;color:#50305f;background-color: #DCDCDC;font-weight:bold;">تاريخ التعيين :</td>
+                                    <td style="width:25%;font-size:14px;"><span t-field="doc.join_date"/></td>
+                                </tr>
+                            </table>
+                            <br/>
+<!--                            Table 2-->
+                            <table class="mb32" style="width:100%">
+                                <thead >
+                                    <tr>
+                                        <th width="5%" class="text-center"  style="font-weight: bold;font-size:16px;background-color: #DCDCDC;color:#50305f;">م</th>
+                                        <th width="40%" class="text-center"  style="font-weight: bold;font-size:16px;background-color: #DCDCDC;color:#50305f;"> البند</th>
+                                        <th width="35%" class="text-center"  style="font-weight: bold;font-size:16px;background-color: #DCDCDC;color:#50305f;">البيان</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="count" t-value="0"/>
+                                    <t t-foreach="doc.contract_id" t-as="line">
+                                        <tr>
+                                            <td class="text-center" style="font-size:14px;">الأساسي</td>
+                                            <td class="text-center" style="font-size:14px;"> <span t-esc="line.wage"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center" style="font-size:14px;">الإجمالي</td>
+                                            <td class="text-center" style="font-size:14px;"> <span t-field="line.total_gross_salary"/></td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td class="text-center" style="font-size:14px;">الصافي</td>
+                                            <td class="text-center" style="font-size:14px;"> <span t-field="line.net_salary"/></td>
+                                        </tr> -->
+                                    </t>
+                                </tbody>
+                            </table>
+<!--                            Remarque-->
+                            <div class="row text-center mb32">
+                                <div class="col-4" style="font-size:14px;color:#50305f;font-weight:bold;">
+                                    ملاحظــــات :
+                                </div>
+                                <div class="col-8 text-left" style="font-size:12px;opacity:0.5;">
+                                    ................................................................................................
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+               </t>
+            </t>
+        </template>
+        
+  </data>
+</odoo>

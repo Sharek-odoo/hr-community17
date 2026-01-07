@@ -1,0 +1,418 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_hr_attendance_extension
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-17 14:38+0000\n"
+"PO-Revision-Date: 2023-02-17 14:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "<span>Minutes</span>"
+msgstr "<span>الدقائق</span>"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__act_hours
+msgid "ACT-Hours"
+msgstr "ساعات الفعلية"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__absence_days
+msgid "Absence Days"
+msgstr "ايام الغياب"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__allow_early_out
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Allow Early-Out"
+msgstr "سماح خروج المبكر"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__allow_late_in
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Allow Late-In"
+msgstr "سماح دخول المتاخر"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_sheet__state__approve
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_view_form
+msgid "Approve"
+msgstr "اعتماد"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_search
+msgid "Approved"
+msgstr "معتمد"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model,name:sharek_hr_attendance_extension.model_hr_attendance
+msgid "Attendance"
+msgstr "الحضور"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.actions.act_window,name:sharek_hr_attendance_extension.attendance_rule_action
+#: model:ir.ui.menu,name:sharek_hr_attendance_extension.hr_attendance_rule_menu
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Attendance Rules"
+msgstr "سياسة الحضور و الانصراف"
+
+#. module: sharek_hr_attendance_extension
+#: code:addons/sharek_hr_attendance_extension/models/hr_attendance_sheet.py:0
+#: model:ir.actions.act_window,name:sharek_hr_attendance_extension.attendance_sheet_action
+#: model:ir.ui.menu,name:sharek_hr_attendance_extension.hr_attendance_sheet_menu
+#, python-format
+msgid "Attendance Sheet"
+msgstr "سجل الحضور و الانصراف"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_view_form
+msgid "Attendance Summary"
+msgstr "تقرير الحضور و الانصراف"
+
+#. module: sharek_hr_attendance_extension
+#: code:addons/sharek_hr_attendance_extension/models/hr_payslip.py:0
+#, python-format
+msgid "Attendance sheet for %s has not been approved"
+msgstr "سجل الحضور و الانصراف لشهر %s لا يوجد او غير معتمد"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_rule__rule_type__company
+msgid "By Company"
+msgstr "حسب الشركة"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_rule__rule_type__department
+msgid "By Department"
+msgstr "حسب القسم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_rule__rule_type__employee
+msgid "By Employee"
+msgstr "حسب الموظزف"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__overtime_calculate
+msgid "Calculate Overtime"
+msgstr "حساب العمل الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_sheet__state__cancel
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_view_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Check-In & Check-Out Rules"
+msgstr "سياسة الدخول و الخروج"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__company_id
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_view_form
+msgid "Compute Attendance"
+msgstr "احتساب الحضور و الانصراف"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_view_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_sheet__state__confirm
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_search
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__create_uid
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__create_uid
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__create_date
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__create_date
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__date_from
+msgid "Date From"
+msgstr "من تاريخ"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__date_to
+msgid "Date To"
+msgstr "الى تاريخ"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__deducted
+msgid "Deducted"
+msgstr "تم الخصم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__deduction_amount
+msgid "Deduction Amount"
+msgstr "مبلغ الخصم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__department_id
+msgid "Department"
+msgstr "القسم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__diff_time
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__diff_time
+msgid "Diff Time"
+msgstr "فرق الساعات"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__display_name
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__display_name
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields.selection,name:sharek_hr_attendance_extension.selection__hr_attendance_sheet__state__draft
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_search
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__early_exit
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__early_exit
+msgid "Early Exit"
+msgstr "خروج المبكر"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__employee_id
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "General"
+msgstr "عام"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_search
+msgid "Group By"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model,name:sharek_hr_attendance_extension.model_hr_attendance_sheet
+msgid "HR Attendance Sheet"
+msgstr "سجل الحضور و الانصراف"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model,name:sharek_hr_attendance_extension.model_hr_attendance_rule
+msgid "Hr Attendance Rules"
+msgstr "سياسة الحضور و الانصراف"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__id
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__id
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__id
+msgid "ID"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule____last_update
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet____last_update
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__write_uid
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__write_uid
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__write_date
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__write_date
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__late_in
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__late_in
+msgid "Late In"
+msgstr "دخول المتاخر"
+
+#. module: sharek_hr_attendance_extension
+#: model:hr.salary.rule,name:sharek_hr_attendance_extension.hr_salary_rule_late
+msgid "Late hours"
+msgstr "ساعات التاخير"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__line_ids
+msgid "Lines"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__max_overtime_duration
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Max OT Duration"
+msgstr "اقصي مدة العمل  الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Minimum Deduct"
+msgstr "اقل مدة للخصم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__minimum_deduct_minutes
+msgid "Minimum Minutes To Deduct"
+msgstr "اقل عدد دقائق للخصم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__rule_type
+msgid "Mode"
+msgstr "الوضع"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__name
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__overtime
+msgid "OverTime"
+msgstr "العمل الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__overtime
+msgid "Overtime"
+msgstr "العمل الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__overtime_end
+msgid "Overtime End"
+msgstr "انتهاء العمل الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Overtime Rules"
+msgstr "ساسية العمل الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_rule__overtime_start
+msgid "Overtime Start"
+msgstr "بداية العمل الاضافي"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__planned_hours
+msgid "PL-Hours"
+msgstr "ساعات الدوام"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model,name:sharek_hr_attendance_extension.model_hr_payslip
+msgid "Pay Slip"
+msgstr "إيصال المرتب"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_view_form
+msgid "Period"
+msgstr "الفترة"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__pl_check_in
+msgid "Planned Check-In"
+msgstr "بداية الدوام"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__pl_check_out
+msgid "Planned Check-Out"
+msgstr "نهاية الدوام"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance__pl_hours
+msgid "Planned Hours"
+msgstr "ساعات الدوام"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "Rule Name"
+msgstr "اسم السياسة"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet_line__sheet_id
+msgid "Sheet"
+msgstr "سجل الحضور"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model.fields,field_description:sharek_hr_attendance_extension.field_hr_attendance_sheet__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_sheet_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: sharek_hr_attendance_extension
+#: code:addons/sharek_hr_attendance_extension/models/hr_attendance_rules.py:0
+#, python-format
+msgid ""
+"You can't define multiple rules for the same company\n"
+"please archive active rules in order to create new one"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: code:addons/sharek_hr_attendance_extension/models/hr_attendance_rules.py:0
+#, python-format
+msgid ""
+"You can't define multiple rules for the same department\n"
+"please archive active rules in order to create new one"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: code:addons/sharek_hr_attendance_extension/models/hr_attendance_rules.py:0
+#, python-format
+msgid ""
+"You can't define multiple rules for the same employee\n"
+"please archive active rules in order to create new one"
+msgstr ""
+
+#. module: sharek_hr_attendance_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_attendance_extension.hr_attendance_rule_form
+msgid "e.g. General Attendance Rules"
+msgstr "سياسة الحضور و الانصراف الاداريين"
+
+#. module: sharek_hr_attendance_extension
+#: model:ir.model,name:sharek_hr_attendance_extension.model_hr_attendance_sheet_line
+msgid "hr.attendance.sheet.line"
+msgstr ""

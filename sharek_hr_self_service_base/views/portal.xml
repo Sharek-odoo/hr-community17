@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+<template id="portal_my_home_noptech" inherit_id="portal.portal_my_home">
+         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">My Portal</t>
+                <t t-set="url" t-value="'/hr/self/service'"/>
+                <!-- <t t-set="placeholder_count" t-value="'lead_count'"/> -->
+            </t>
+        </xpath>
+        <!-- <xpath expr="//h3" position="replace"> -->
+        <xpath expr="//div[hasclass('o_portal_my_home')]" position="inside">
+        	<div class = 'row mb-2'>
+            	<div class='col-md-9'>
+            	<!-- <h3 class = 'd-inline'>Documents</h3></div> -->
+                    	<div class='col-md-3 float-right' t-if='is_employee'>
+                            <a href = '/hr/self/service' class = 'btn btn-primary'>My Portal</a>
+                        </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+  
+    <template id="not_employee_template">
+        <t t-call="website.layout">
+        	<div id="wrap" class="oe_structure">
+                        <div class="container mt16 mb16">
+                            <div class="row">
+                                <section class="error">
+                                    <!-- Content -->
+                                    <div class="row p-2">
+                                        <div class="col-md-6 p-3 ">
+                                            <img class="ml-3 img img-responsive rounded-circle "
+                                                 src="/hr_self_service/static/src/img/lo.png"/>
+                                        </div>
+                                        <div class="text-center col-md-6 p-5 mt-5">
+                                            <h1 class="error_message">Employee not
+                                                found
+                                            </h1>
+                                            <br/>
+                                            <div class="message_body">Sorry,
+                                                 you are not an employee.
+                                            </div>
+                                            <br/>
+                                            <a class="btn btn-info public-folder-link"
+                                               href="/">Get Back To Home
+                                            </a>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+        </t>
+    </template>
+</odoo>

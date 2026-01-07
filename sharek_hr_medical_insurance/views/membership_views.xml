@@ -1,0 +1,180 @@
+<odoo>
+    <data>
+         <record id="hr_loan_inherit_form_view" model="ir.ui.view">
+            <field name="name">hr.loan.form.view</field>
+            <field name="model">hr.loan</field>
+            <field name="inherit_id" ref="sharek_hr_employee_loan.hr_loan_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='company_id']" position="before">
+                    <field name="insurance_id" readonly="1" invisible="insurance_id == False"/>
+                 </xpath>
+            </field>
+        </record>
+
+        <!-- Insurance membership form view -->
+        <record id="insurance_membership_form_view" model="ir.ui.view">
+            <field name="name">insurance.membership.form.view</field>
+            <field name="model">insurance.membership</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                invisible="state != 'draft'" groups="hr.group_hr_user"/>
+                        <button name="action_create_loan" string="Create Loan" type="object" class="oe_highlight"
+                                invisible="need_loan != True or loan_count > 0"
+                                groups="hr.group_hr_manager"/>
+                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                invisible=" state == 'draft' or loan_id != False"
+                                groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"
+                               status_visible="draft, confirm, expire"/>
+                    </header>
+
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_loan"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-money"
+                                    invisible="loan_id == False"
+                                    help="show the loan for this employee">
+                                <field name="loan_count" widget="statinfo" string="Loan"/>
+                            </button>
+                        </div>
+
+                        <group>
+                            <field name="membership_type" required="1"
+                                       readonly="state != 'draft'"/>
+                        </group>
+
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" string="Employee"/>
+                                <field name="policy_id" required="1" readonly="state != 'draft'"/>
+                                <field name="start_date"/>
+                                <field name="insurance_company_id"/>
+                                <field name="need_loan" invisible="1"/>
+
+                                <label for="allowed_class_id"/>
+                                <div class="o_row">
+                                    <field name="allowed_class_id" required="1"
+                                           readonly="state != 'draft'"/>
+                                    <field name="allowed_class_amount" required="1"/>
+                                    <field name="currency_id"/>
+                                </div>
+
+                                <label for="amount_difference"/>
+                                <div class="o_row">
+                                    <field name="amount_difference"/>
+                                </div>
+                                 <field name="loan_id" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="agent_employee_id" readonly="state != 'draft' and membership_type == 'employee'"
+                                       invisible="membership_type == 'family_member'"
+                                       force_save="1"/>
+                                <field name="loan_type_id" options="{'no_create': True}" domain="[('medical', '=', True)]"/>
+                                <field name="family_id" readonly="state != 'draft'"
+                                       invisible="membership_type == 'employee'"
+                                       required="membership_type == 'family_member'"
+                                       domain="[('employee_id', '=', employee_id)]"/>
+                                <field name="membership_date" required="1" readonly="state != 'draft'"/>
+                                <field name="end_date"/>
+                                <field name="cost_to_employee" required="1" readonly="state != 'draft'"/>
+
+                                <label for="selected_class_id"/>
+                                <div class="o_row">
+                                    <field name="selected_class_id" required="1"
+                                           readonly="state != 'draft'"/>
+                                    <field name="selected_class_amount" required="1"/>
+                                    <field name="currency_id"/>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Insurance membership tree view -->
+        <record id="insurance_membership_tree_view" model="ir.ui.view">
+            <field name="name">insurance.membership.tree.view</field>
+            <field name="model">insurance.membership</field>
+            <field name="arch" type="xml">
+                <tree string="Insurance Membership">
+                    <field name="membership_type"/>
+                    <field name="employee_id"/>
+                    <field name="family_id"/>
+                    <field name="policy_id"/>
+                    <field name="insurance_company_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="allowed_class_id"/>
+                    <field name="selected_class_id"/>
+                    <field name="amount_difference"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Insurance membership search view -->
+        <record id="insurance_membership_search_view" model="ir.ui.view">
+            <field name="name">insurance.membership.search.view</field>
+            <field name="model">insurance.membership</field>
+            <field name="arch" type="xml">
+                <search string="Insurance Membership">
+                    <field name="membership_type"/>
+                    <field name="employee_id"/>
+                    <field name="family_id"/>
+                    <field name="policy_id"/>
+                    <field name="insurance_company_id"/>
+                    <separator/>
+
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_membership_type" string="Membership Type" domain="[]"
+                                context="{'group_by': 'membership_type'}"/>
+                        <filter name="group_by_policy_id" string="Policy" domain="[]"
+                                context="{'group_by': 'policy_id'}"/>
+                        <filter name="group_by_insurance_company_id" string="Insurance Company" domain="[]"
+                                context="{'group_by': 'insurance_company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Insurance Membership Action -->
+        <record id="insurance_membership_action" model="ir.actions.act_window">
+            <field name="name">Insurance Membership</field>
+            <field name="res_model">insurance.membership</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+         <record id="view_loan_type_form_medical" model="ir.ui.view">
+            <field name="name">view.hr.loan.type.form</field>
+            <field name="model">loan.type</field>
+             <field name="inherit_id" ref="sharek_hr_employee_loan.view_loan_type_form"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="medical" options="{'no_create': True}"/>
+                </field>
+            </field>
+        </record>
+
+
+        <!-- Employee Membership Menu -->
+        <menuitem
+                id="employee_penalty_menu"
+                name="Insurance Membership"
+                parent="hr.menu_hr_root"
+                action="insurance_membership_action"
+                groups="hr.group_hr_user"
+                sequence="12"
+        />
+
+    </data>
+</odoo>

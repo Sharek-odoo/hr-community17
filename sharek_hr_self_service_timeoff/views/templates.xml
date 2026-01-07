@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  
+    <template id="my_time_off" name="HR TimeOff" inherit_id="sharek_hr_self_service_base.my_account">
+        <xpath expr="//div[hasclass('oe_hr_self_service')]" position="inside">
+                <div class="oe_structure"/>
+                <div class="container">
+               
+                <div class="row">
+                      <div class='col-md-3  p-4'>
+                        <a href='/my/time_off'>
+                            <div class='shadow card-border row p-3'>
+                                <div class="">
+                                    <img src='/sharek_hr_self_service_timeoff/static/src/img/time off.png' class='icon-width-2 d-inline'/>
+                                    <span class='ml-5'>
+                                        <h5 class='d-inline'>Time Off</h5>
+                                         <t t-if="time_off">
+                                            <span t-esc='len(time_off)' class='ml-2'></span>
+                                        </t>
+                                        
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                     <div class=' col-md-6  p-4 '>
+                        <a href='/my/leave_allocation'>
+                            <div class='shadow card-border row p-3'>
+                                <div class="">
+                                    <img src='/sharek_hr_self_service_timeoff/static/src/img/leaves.png' class='icon-width-2'/>
+                                    <span class='ml-5'>
+                                        <h5 class='d-inline'>Leave Allocation Requests</h5>
+                                         <t t-if="leave_allocation">
+                                             <span t-esc='len(leave_allocation)' class='ml-2'></span>
+                                        </t>
+                                        
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div>
+
+
+                   
+
+                  </div>
+              </xpath>
+   
+
+    </template>
+
+</odoo>

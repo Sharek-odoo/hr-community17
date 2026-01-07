@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Layout and common templates -->
+
+    <template id="noptechs_assets" inherit_id="web.frontend_layout">
+
+        <xpath expr="//head/link[last()]" position="after">
+
+            <link rel="stylesheet" href="/sharek_hr_self_service_base/static/src/css/hr_self_service.css"/>
+
+        </xpath>
+
+
+    </template>
+
+    <record id="view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.hr.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='hr_settings']/group[1]/group[@name='active_group']/field[@name='user_id']"
+                   position="attributes">
+                <attribute name="domain">[]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
+
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_rule_input_overtime_amount" model="hr.payslip.input.type">
+            <field name="code">OVT</field>
+            <field name="name">Overtime</field>
+        </record>
+
+        <record id="OVER" model="hr.salary.rule.category">
+            <field name="name">Over</field>
+            <field name="code">OVER</field>
+        </record>
+
+        <record id="work_entry_late_in_hours" model="hr.work.entry.type">
+            <field name="name">LateIn</field>
+            <field name="code">LATE</field>
+            <field name="color">0</field>
+        </record>
+
+        <record id="work_entry_early_hours" model="hr.work.entry.type">
+            <field name="name">EarlyExit</field>
+            <field name="code">EARLY</field>
+            <field name="color">0</field>
+        </record>
+
+        <record id="work_entry_overtime_hours" model="hr.work.entry.type">
+            <field name="name">OverTime</field>
+            <field name="code">OVER</field>
+            <field name="color">0</field>
+        </record>
+
+
+        <record id="work_entry_type_absenace" model="hr.work.entry.type">
+            <field name="name">Absence</field>
+            <field name="color">0</field>
+            <field name="code">ABS100</field>
+        </record>
+
+    </data>
+</odoo>

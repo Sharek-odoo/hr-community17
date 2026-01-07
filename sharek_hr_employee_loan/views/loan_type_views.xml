@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="view_loan_type_tree" model="ir.ui.view">
+            <field name="name">view.loan.type.tree</field>
+            <field name="model">loan.type</field>
+            <field name="arch" type="xml">
+                <tree string="Loan Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="account_id"/>
+                    <field name="journal_id"/>
+                    <field name="company_id"/>
+                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_loan_type_form" model="ir.ui.view">
+            <field name="name">view.hr.loan.type.form</field>
+            <field name="model">loan.type</field>
+            <field name="arch" type="xml">
+                <form string="Loan Type">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="......"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" required="1"/>
+                                <field name="treasury_account_id"/>
+                                <field name="installment"/>
+                            </group>
+                            <group>
+                                <field name="account_id"/>
+                                <field name="journal_id"/>
+                                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_loan_type_view" model="ir.actions.act_window">
+            <field name="name">Loan Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">loan.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Click to create new Loan Type.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_laon_type_view"
+                  name="Loan Type"
+                  parent="hr.menu_human_resources_configuration"
+                  action="action_loan_type_view"
+                  sequence="99"/>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payroll_batch_security_approve,sharek_payroll_batch_approve,om_hr_payroll.model_hr_payslip_run,base.group_user,1,1,1,1
+access_payroll_batch_security_confirm,sharek_payroll_batch_confirm,om_hr_payroll.model_hr_payslip_run,base.group_user,1,1,1,1
+access_payroll_batch_security_refuse,sharek_payroll_batch_refuse,om_hr_payroll.model_hr_payslip_run,base.group_user,1,1,1,1
+access_payroll_batch_security_cancel,sharek_payroll_batch_cancel,om_hr_payroll.model_hr_payslip_run,base.group_user,1,1,1,1

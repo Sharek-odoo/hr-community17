@@ -1,0 +1,204 @@
+<odoo>
+    <data>
+
+        <!-- Iqama Renewal form view -->
+        <record id="iqama_renewal_form_view" model="ir.ui.view">
+            <field name="name">iqama.renewal.form.view</field>
+            <field name="model">iqama.renewal</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                invisible="state != 'draft'" groups="hr.group_hr_user"/>
+                        <button name="action_approve" string="Approve" type="object" class="oe_highlight"
+                                invisible="state != 'confirm'" groups="hr.group_hr_manager"/>
+                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                invisible="state in ('draft', 'done')"
+                                groups="hr.group_hr_manager"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="btn-danger" icon="fa-close"
+                                invisible="state != 'confirm'"
+                                groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"
+                               status_visible="draft, confirm, done, cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_bill"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-pencil-square-o"
+                                    invisible="move_id == False"
+                                    help="show the vendor bills for this renewal request">
+                                <field name="bill_count" widget="statinfo" string="Bills"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" readonly="state != 'draft'"/>
+                                <field name="iqama_expire_date"/>
+                                <field name="new_expiration_date" required="1"
+                                       readonly="state != 'draft'"/>
+                                <field name="work_permit_fees" required="1"
+                                       readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="iqama_no"/>
+                                <field name="period"/>
+                                <field name="renewal_fees" required="1" readonly="state != 'draft'"/>
+                                <field name="total_fees"/>
+                                <field name="move_id" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Iqama Renewal form view -->
+        <record id="iqama_renewal_tree_view" model="ir.ui.view">
+            <field name="name">iqama.renewal.tree.view</field>
+            <field name="model">iqama.renewal</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Iqama Renewal">
+                    <field name="employee_id"/>
+                    <field name="iqama_no"/>
+                    <field name="iqama_expire_date"/>
+                    <field name="period"/>
+                    <field name="new_expiration_date"/>
+                    <field name="renewal_fees"/>
+                    <field name="work_permit_fees"/>
+                    <field name="total_fees"/>
+                    <field name="state" decoration-success="state == 'done'"
+                           decoration-info="state == 'confirm' or state == 'submit'"
+                           decoration-danger="state == 'cancel'"
+                           widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Iqama Renewal Batch form view -->
+        <record id="iqama_renewal_batch_form_view" model="ir.ui.view">
+            <field name="name">iqama.renewal.batch.form.view</field>
+            <field name="model">iqama.renewal.batch</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                invisible="state != 'draft'" groups="hr.group_hr_user"/>
+                        <button name="action_approve" string="Approve" type="object" class="oe_highlight"
+                                invisible="state != 'confirm'" groups="hr.group_hr_manager"/>
+                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                invisible="state in ('draft', 'done')"
+                                groups="hr.group_hr_manager"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="btn-danger" icon="fa-close"
+                                invisible="state != 'confirm'"
+                                groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"
+                               status_visible="draft, confirm, done, cancel"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"  readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="date" required="True"
+                                        readonly="state != 'draft'"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Employees">
+                                <field name="line_ids" string="Employees">
+                                    <tree editable="bottom">
+                                        <field name="employee_id"
+                                                invisible="state != 'draft'"/>
+                                        <field name="iqama_no" required="True"/>
+                                        <field name="period" required="True" readonly="state != 'draft'"/>
+                                        <field name="iqama_expire_date" required="True" force_save="1"/>
+                                        <field name="new_expiration_date" required="1"
+                                               readonly="state != 'draft'"/>
+                                        <field name="renewal_fees" required="True"
+                                               readonly="state != 'draft'"/>
+                                        <field name="work_permit_fees" required="True"
+                                               readonly="state != 'draft'"/>
+                                        <field name="total_fees" required="True"/>
+                                        <field name="move_id" readonly="1"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Iqama Renewal Batch form view -->
+        <record id="iqama_renewal_batch_tree_view" model="ir.ui.view">
+            <field name="name">iqama.renewal.batch.tree.view</field>
+            <field name="model">iqama.renewal.batch</field>
+            <field name="arch" type="xml">
+                <tree string="Iqama Renewal Batch">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="state" decoration-success="state == 'done'"
+                           decoration-info="state == 'confirm' or state == 'submit'"
+                           decoration-danger="state == 'cancel'"
+                           widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Employee Iqama Renewal Action -->
+        <record id="iqama_renewal_action" model="ir.actions.act_window">
+            <field name="name">Employee Iqama Renewal</field>
+            <field name="res_model">iqama.renewal</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Iqama Renewal Batch Action -->
+        <record id="iqama_renewal_batch_action" model="ir.actions.act_window">
+            <field name="name">Iqama Renewal Batch</field>
+            <field name="res_model">iqama.renewal.batch</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Iqama Renewal Menu -->
+        <menuitem
+                id="iqama_renewal_menu"
+                name="Iqama Renewal"
+                parent="hr_government_relation_menu"
+                groups="hr.group_hr_user"
+                sequence="2"
+        />
+
+        <!-- Employee Iqama Renewal Menu -->
+        <menuitem
+                id="employee_iqama_renewal_menu"
+                name="Employee Iqama Renewal"
+                parent="iqama_renewal_menu"
+                action="iqama_renewal_action"
+                groups="hr.group_hr_user"
+                sequence="1"
+        />
+
+        <!-- Iqama Renewal Batch Menu -->
+        <menuitem
+                id="iqama_renewal_batch_menu"
+                name="Iqama Renewal Batch"
+                parent="iqama_renewal_menu"
+                action="iqama_renewal_batch_action"
+                groups="hr.group_hr_user"
+                sequence="2"
+        />
+
+    </data>
+</odoo>

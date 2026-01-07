@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- HR Ticket Request form view -->
+        <record id="hr_ticket_request_form_view" model="ir.ui.view">
+            <field name="name">hr.ticket.request.form</field>
+            <field name="model">hr.ticket.request</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_submit" invisible="state != 'draft'" string="Submit" type="object" class="oe_highlight"/>
+                        <button name="action_hr_manager_approve" invisible="state != 'hr_manager'" string="HR Manager Approve"
+                                type="object" class="oe_highlight"/>
+                        <button name="action_finance_manager_approve" invisible="state != 'finance_manager'"
+                                string="Finance Manager Approve" type="object" class="oe_highlight"/>
+                        <button name="action_cancel" invisible="state != 'hr_manager'" string="Cancel" type="object" icon="fa-close"
+                                class="btn-danger"/>
+<!--                        <button name="action_post"-->
+<!--                                attrs="{'invisible': ['|',('account_move_count', '=', 0),('state', '!=', 'done')]}"-->
+<!--                                string="POST" type="object" class="oe_highlight" groups="account.group_account_user"/>-->
+                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                invisible="state in('draft', 'done')" groups="hr.group_hr_manager"
+                                confirm="Are you sure to Rest To Draft This Record?"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="company_id" invisible="1"/>
+                                <field name="request_date" readonly="state != 'draft'" required="1"/>
+                                <field name="from_hr" readonly="state != 'draft'" required="1"/>
+                                <field name="employee_id" required="1"
+                                       readonly="from_hr == False or state != 'draft'"/>
+                                <field name="job_id" string="Job" readonly="1"/>
+                                <field name="nationality_id" string="Nationality" readonly="1"/>
+                                <field name="passport_no" string="Passport Number" readonly="1"/>
+                                <field name="passport_expiry_date" string="Passport Expiration" readonly="1"/>
+                            </group>
+
+                            <group>
+                                <field name="request_for" required="1"
+                                       readonly="state != 'draft'"/>
+                                <field name="request_type"
+                                       readonly="state not in ('draft','review')" required="state in ('draft','review')"/>
+                                <field name="mission_check" string="Mission/Training Not Holiday?"
+                                       readonly="state != 'draft'"/>
+                                <field name="leave_id"
+                                       readonly="state != 'draft'"
+                                       required="request_for in ('employee','all') and mission_check == False"
+                                       invisible="request_for == 'family' or mission_check == True"
+                                       domain="[('employee_id', '=', employee_id)]"/>
+                                <label for="leave_date_from" string="Dates" invisible=" request_for == 'family' or mission_check == True"/>
+                                <div class="o_row o_row_readonly" invisible=" request_for == 'family' or mission_check == True">
+                                    <span class="oe_inline">
+                                        From
+                                    </span>
+                                    <field name="leave_date_from" class="oe_inline" nolabel="1"/>
+                                    <span class="oe_inline">
+                                        To
+                                    </span>
+                                    <field name="leave_date_to" class="oe_inline"/>
+                                </div>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="air_line" readonly="state != 'draft'" required="state == 'review'"/>
+                                <field name="ticket_degree" readonly="state != 'draft'" required="state == 'review'"/>
+                                <field name="travel_agent" readonly="state != 'draft'" required="state == 'review'"/>
+                                <field name="ticket_cost" force_save="1" store="1"
+                                       help="The Amount of the Ticket is calculated according the type of request or the class of the ticket destination"
+                                       readonly="state != 'draft'" required="1"/>
+                                <!--                                <field name="journal_id"-->
+                                <!--                                       attrs="{'readonly':[('state','!=','confirm')],-->
+                                <!--                                       'required':['&amp;',('ticket_cost','&gt;', '0' ),('state','=','confirm')]}"/>-->
+                                <!--                                <field name="move_id" string="Account move" readonly="1"/>-->
+                            </group>
+
+                            <group>
+                                <field name="destination_id"
+                                       readonly="state not in ('draft','review')" required="state in ('draft','review')"/>
+                                <field name="ticket_date"
+                                       readonly="state != 'draft'" required="state == 'review'"/>
+                                <field name="move_id" readonly="1"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Notes">
+                                <separator string="Notes"/>
+                                <field name="note" readonly="state != 'draft'" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- HR Ticket Request tree view -->
+        <record id="hr_ticket_request_tree_view" model="ir.ui.view">
+            <field name="name">hr.ticket.request.tree.view</field>
+            <field name="model">hr.ticket.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id" string="Employee"/>
+                    <field name="request_for" string="Request For"/>
+                    <field name="request_type" string="Request Type"/>
+                    <field name="state" string="Status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- HR Airline form view -->
+        <record id="hr_airline_form_view" model="ir.ui.view">
+            <field name="name">hr.airline.form</field>
+            <field name="model">hr.airline</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- HR Airline tree view -->
+        <record id="hr_airline_tree_view" model="ir.ui.view">
+            <field name="name">hr.airline.form</field>
+            <field name="model">hr.airline</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- HR Ticket Request Type form view -->
+        <record id="ticket_request_type_form_view" model="ir.ui.view">
+            <field name="name">ticket.request.type.form.view</field>
+            <field name="model">hr.ticket.request.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label for="name" class="oe_edit_only"/>
+                                <field name="name" placeholder="Name of Request..." required="1"/>
+                            </h1>
+                        </div>
+                        <group col="4">
+                            <field name="account_debit_id"/>
+                            <field name="journal_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- HR Ticket Request Type tree view -->
+        <record id="ticket_request_type_tree_view" model="ir.ui.view">
+            <field name="name">ticket.request.type.tree.view</field>
+            <field name="model">hr.ticket.request.type</field>
+            <field name="arch" type="xml">
+                <tree string="Ticket Request Type">
+                    <field name="name"/>
+                    <field name="journal_id"/>
+                    <field name="account_debit_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- HR Destination form view -->
+        <record id="hr_destination_form_view" model="ir.ui.view">
+            <field name="name">hr.destination.form.view</field>
+            <field name="model">hr.destination</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label for="name" class="oe_edit_only"/>
+                                <field name="name" placeholder="Name of Destination..." required="1"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <field name="code"/>
+                            <field name="country_id"/>
+                        </group>
+                        <group>
+                            <field name="destination_line_ids" col="4">
+                                <tree editable="bottom">
+                                    <field name="class_id" domain="[('id','not in',parent.destination_line_ids)]"/>
+                                    <field name="price"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids" widget="mail_followers"/>-->
+<!--                        &lt;!&ndash;                        <field name="activity_ids" widget="mail_activity"/>&ndash;&gt;-->
+<!--                        <field name="message_ids" widget="mail_thread"/>-->
+<!--                    </div>-->
+                </form>
+            </field>
+        </record>
+
+        <!-- HR Destination tree view -->
+        <record id="hr_destination_tree_view" model="ir.ui.view">
+            <field name="name">hr.destination.tree.view</field>
+            <field name="model">hr.destination</field>
+            <field name="arch" type="xml">
+                <tree string="Destination">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- HR Ticket Request Action -->
+        <record id="ticket_request_action" model="ir.actions.act_window">
+            <field name="name">Ticket Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.ticket.request</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- HR Airline Action -->
+        <record id="hr_airline_action" model="ir.actions.act_window">
+            <field name="name">Airlines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.airline</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- HR Ticket Request Type Action -->
+        <record id="ticket_request_type_action" model="ir.actions.act_window">
+            <field name="name">Ticket Request Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.ticket.request.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- HR Destination Action -->
+        <record id="hr_destination_action" model="ir.actions.act_window">
+            <field name="name">Destination</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.destination</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Ticketing Root Menu -->
+        <menuitem id="ticketing_root_menu"
+                  name="Ticketing"
+                  parent="hr.menu_hr_root"
+                  sequence="11"
+        />
+
+        <!-- Ticket Request Menu -->
+        <menuitem id="ticket_request_menu"
+                  name="Ticket Request"
+                  parent="ticketing_root_menu"
+                  action="ticket_request_action"
+                  sequence="1"
+        />
+
+        <!-- Ticketing Settings Menu -->
+        <menuitem id="ticket_setting_menu"
+                  name="Ticketing Settings"
+                  parent="ticketing_root_menu"
+                  sequence="2"
+        />
+
+        <!-- Ticket Request Type Menu -->
+        <menuitem id="ticket_request_type_menu"
+                  name="Ticket Request Type"
+                  parent="ticket_setting_menu"
+                  action="ticket_request_type_action"
+                  sequence="1"
+        />
+
+        <!-- Destination Menu -->
+        <menuitem id="destination_menu"
+                  name="Destination"
+                  parent="ticket_setting_menu"
+                  action="hr_destination_action"
+                  sequence="2"
+        />
+
+        <!-- Airlines Menu -->
+        <menuitem id="airline_menu"
+                  name="Airline"
+                  parent="ticket_setting_menu"
+                  action="hr_airline_action"
+                  sequence="3"
+        />
+
+    </data>
+</odoo>

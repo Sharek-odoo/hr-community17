@@ -1,0 +1,73 @@
+<odoo>
+    <data noupdate="1">
+        <!--   Saudi Employee Rules     -->
+        <record id="ksa_hr_housing_allowance_salary_rule" model="hr.salary.rule">
+            <field name="name">Housing Allowance</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="code">HRA</field>
+            <field name="sequence">5</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.hra</field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+        </record>
+        <record id="ksa_transportation_allowance_salary_rule" model="hr.salary.rule">
+            <field name="name">Transportation Allowance</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="code">TRA</field>
+            <field name="sequence">5</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.transport_allowance</field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+        </record>
+        <record id="ksa_other_allowances_salary_rule" model="hr.salary.rule">
+            <field name="name">Other Allowances</field>
+            <field name="category_id" ref="om_hr_payroll.ALW"/>
+            <field name="code">OTA</field>
+            <field name="sequence">5</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.other_allowance</field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+        </record>
+        <record id="ksa_unpaid_leave" model="hr.salary.rule">
+            <field name="name">Unpaid Leave</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="code">UNPAID</field>
+            <field name="sequence">5</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.LEAVE90 and worked_days.LEAVE90.number_of_days and payslip.sum_worked_hours  and contract.resource_calendar_id.hours_per_day</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(worked_days.LEAVE90.number_of_days * (contract.wage +
+                contract.transport_allowance + contract.hra +
+                contract.other_allowance) / (payslip.sum_worked_hours /
+                contract.resource_calendar_id.hours_per_day))
+            </field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+        </record>
+          <record id="hr_salary_rule_gosi_emp_deduction_sa" model="hr.salary.rule">
+            <field name="name">GOSI Contribution for Employee</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="code">GOSI</field>
+            <field name="sequence" eval="105"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0 if employee.country_id.code == 'SA' and employee.have_gosi == True: result= (((categories.BASIC + contract.l10n_sa_housing_allowance) * 0.0975))
+            </field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+
+        </record>
+
+        <record id="hr_salary_rule_gosi_company_deduction" model="hr.salary.rule">
+            <field name="name">GOSI Company Contribution</field>
+            <field name="category_id" ref="om_hr_payroll.COMP"/>
+            <field name="code">GOSI_COMP</field>
+            <field name="sequence" eval="107"/>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0 if employee.country_id.code == 'SA' and employee.have_gosi == True: result= ((categories.BASIC + contract.l10n_sa_housing_allowance) * 0.1175) if employee.country_id.code != 'SA': result= (((categories.BASIC + contract.l10n_sa_housing_allowance) * 0.02))
+            </field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+        </record>
+
+    </data>
+</odoo>

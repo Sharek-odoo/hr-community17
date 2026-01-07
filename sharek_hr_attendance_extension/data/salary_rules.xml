@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+         <record id="hr_salary_rule_late" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+<!--             <field name="rule_ids" eval="[(6, 0, [ref('sharek_hr_payroll_extension.ksa_basic_structure')])]"/>-->
+             <field name="condition_select">python</field>
+             <field name="condition_python">result = worked_days.LATE and worked_days.LATE.number_of_hours and payslip.sum_worked_hours  and contract.resource_calendar_id.hours_per_day</field>
+            <field name="amount_python_compute">result = -((worked_days.LATE.number_of_hours * 60) * ((categories.BASIC + contract.hr_productivity_allowance + contract.hra + contract.transport_allowance + contract.other_allowance) / (((worked_days.ABS100.number_of_days + worked_days.WORK100.number_of_days ) * contract.resource_calendar_id.hours_per_day ) * 60)))</field>
+            <field name="code">LT</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="name">Late IN</field>
+            <field name="sequence" eval="197"/>
+        </record>
+
+         <record id="hr_salary_rule_early" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">python</field>
+             <field name="condition_python">result = worked_days.EARLY and worked_days.EARLY.number_of_hours and payslip.sum_worked_hours  and contract.resource_calendar_id.hours_per_day</field>
+            <field name="amount_python_compute">result = -((worked_days.EARLY.number_of_hours * 60) * ((categories.BASIC + contract.hr_productivity_allowance + contract.hra + contract.transport_allowance + contract.other_allowance) / (((worked_days.ABS100.number_of_days + worked_days.WORK100.number_of_days ) * contract.resource_calendar_id.hours_per_day ) * 60)))</field>
+            <field name="code">EARLY</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="name">Early Exit</field>
+            <field name="sequence" eval="198"/>
+        </record>
+
+        <record id="ksa_salary_rule_overtime" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">python</field>
+             <field name="condition_python">result = worked_days.OVER and worked_days.OVER.number_of_hours and payslip.sum_worked_hours  and contract.resource_calendar_id.hours_per_day</field>
+            <field name="amount_python_compute">result = ((categories.GROSS / (((worked_days.ABS100.number_of_days + worked_days.WORK100.number_of_days ) * contract.resource_calendar_id.hours_per_day )* 60)) * (worked_days.OVER.number_of_hours * 60)) + ((((categories.BASIC +  contract.hr_productivity_allowance) / (((worked_days.ABS100.number_of_days + worked_days.WORK100.number_of_days ) * contract.resource_calendar_id.hours_per_day )* 60)) * 0.5 ) * (worked_days.OVER.number_of_hours * 60))</field>
+            <field name="code">OVER</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="name">Overtime</field>
+            <field name="sequence" eval="199"/>
+        </record>
+
+        <!--OUT of contract rule-->
+         <record id="hr_salary_rule_out" model="hr.salary.rule">
+            <field name="amount_select">code</field>
+             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="condition_select">python</field>
+             <field name="condition_python">result = worked_days.OUT and worked_days.OUT.number_of_days and payslip.sum_worked_hours  and contract.resource_calendar_id.hours_per_day</field>
+            <field name="amount_python_compute">result = -(contract.out_contract_days * (categories.GROSS / 30))</field>
+            <field name="code">OUT</field>
+            <field name="category_id" ref="om_hr_payroll.DED"/>
+            <field name="name">Out Of Contract</field>
+            <field name="sequence" eval="197"/>
+        </record>
+    </data>
+</odoo>

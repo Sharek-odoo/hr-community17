@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Annual leave calendar based-->
+<!--        <record id="holiday_status_annual_calendar_days" model="hr.leave.type">-->
+<!--            <field name="name">Annual Leave</field>-->
+<!--            <field name="requires_allocation">yes</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">black</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">calendar</field>-->
+<!--            <field name="is_annual">True</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; New Born Leave&ndash;&gt;-->
+<!--        <record id="holiday_status_newborn_leave" model="hr.leave.type">-->
+<!--            <field name="name">NewBorn Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">black</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">work</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">3</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Marriage Leave&ndash;&gt;-->
+<!--        <record id="holiday_status_marriage_leave" model="hr.leave.type">-->
+<!--            <field name="name">Marriage Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">black</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">work</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">5</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Death Leave&ndash;&gt;-->
+<!--        <record id="holiday_status_death_leave" model="hr.leave.type">-->
+<!--            <field name="name">Relative Death Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">magenta</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">work</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">5</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Maternity leave&ndash;&gt;-->
+<!--        <record id="holiday_status_maternity_leave" model="hr.leave.type">-->
+<!--            <field name="name">Maternity Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">black</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">calendar</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">70</field>-->
+<!--            <field name="for_specific_gender">True</field>-->
+<!--            <field name="gender">female</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; iddah leave for muslim&ndash;&gt;-->
+<!--        <record id="holiday_status_iddah_leave" model="hr.leave.type">-->
+<!--            <field name="name">Iddah Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">brown</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">calendar</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">130</field>-->
+<!--            <field name="for_specific_gender">True</field>-->
+<!--            <field name="gender">female</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; husband death for non-muslim&ndash;&gt;-->
+<!--        <record id="holiday_status_husband_death_leave" model="hr.leave.type">-->
+<!--            <field name="name">Husband Death (Non-muslim)</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">red</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">work</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">15</field>-->
+<!--            <field name="for_specific_gender">True</field>-->
+<!--            <field name="gender">female</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Haj Leave&ndash;&gt;-->
+<!--        <record id="holiday_status_haj_leave" model="hr.leave.type">-->
+<!--            <field name="name">Haj Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">ivory</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">calendar</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">15</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Haj Leave&ndash;&gt;-->
+<!--        <record id="holiday_status_exam_leave" model="hr.leave.type">-->
+<!--            <field name="name">Exam Leave</field>-->
+<!--            <field name="requires_allocation">no</field>-->
+<!--            <field name="leave_validation_type">both</field>-->
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="color_name">blue</field>-->
+<!--            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>-->
+<!--            <field name="allocation_notif_subtype_id" ref="hr_holidays.mt_leave_allocation"/>-->
+<!--            <field name="calc_type">calendar</field>-->
+<!--            <field name="allow_negative">True</field>-->
+<!--            <field name="negative_limit">30</field>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+<!--        </record>-->
+    </data>
+</odoo>

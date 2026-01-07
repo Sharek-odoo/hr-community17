@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_overtime_type_form_view" model="ir.ui.view">
+            <field name="name">Overtime Type</field>
+            <field name="model">overtime.type</field>
+            <field name="arch" type="xml">
+                <form string="Overtime Type">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" required="0"
+                                       placeholder="Reference ...."/>
+                            </h1>
+
+                        </div>
+                        <group>
+                            <group>
+                                <field name="category"/>
+                                <label for="hour_rate"/>
+                                <div class="o_row">
+                                    <div class="o_row">
+                                        <field name="hour_rate" nolabel="1" class="oe_inline"/>
+                                        <span>/hour</span>
+                                    </div>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_overtime_type_tree_view" model="ir.ui.view">
+            <field name="name">Overtime Type</field>
+            <field name="model">overtime.type</field>
+            <field name="arch" type="xml">
+                <tree string="Overtime Type">
+                    <field name="name"/>
+                    <field name="category"/>
+                    <field name="hour_rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_overtime_type_action" model="ir.actions.act_window">
+            <field name="name">Overtime Types</field>
+            <field name="res_model">overtime.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create new Approval Type.
+                </p>
+            </field>
+        </record>
+
+
+        <!-- MenuItems -->
+        <menuitem id="overtime_configuration_submenu" name="Configuration"
+                  parent="overtime_submenu" sequence="20"/>
+        <menuitem id="overtime_type_submenu" name="Overtime Types"
+                  parent="overtime_configuration_submenu"
+                  groups="hr_holidays.group_hr_holidays_user"
+                  action="hr_overtime_type_action"/>
+
+    </data>
+</odoo>

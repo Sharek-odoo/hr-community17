@@ -1,0 +1,41 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* lm_hr_timeoff
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20191028\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-03 12:51+0000\n"
+"PO-Revision-Date: 2019-11-03 12:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: lm_hr_timeoff
+#: model:ir.model.fields,field_description:lm_hr_timeoff.field_hr_leave_type__calc_type
+msgid "Calculation Type"
+msgstr ""
+
+#. module: lm_hr_timeoff
+#: model:ir.model.fields.selection,name:lm_hr_timeoff.selection__hr_leave_type__calc_type__calendar
+msgid "Calendar Days"
+msgstr ""
+
+#. module: lm_hr_timeoff
+#: model:ir.model,name:lm_hr_timeoff.model_hr_leave
+msgid "Time Off"
+msgstr ""
+
+#. module: lm_hr_timeoff
+#: model:ir.model,name:lm_hr_timeoff.model_hr_leave_type
+msgid "Time Off Type"
+msgstr ""
+
+#. module: lm_hr_timeoff
+#: model:ir.model.fields.selection,name:lm_hr_timeoff.selection__hr_leave_type__calc_type__work
+msgid "Working Days"
+msgstr ""

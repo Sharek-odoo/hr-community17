@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_hr_contract_extension
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-17 12:10+0000\n"
+"PO-Revision-Date: 2023-03-17 12:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_hr_contract_extension
+#: model:ir.model.fields,help:sharek_hr_contract_extension.field_hr_contract__schedule_pay
+msgid "Defines the frequency of the wage payment."
+msgstr "يحدد وتيرة دفع الأجور."
+
+#. module: sharek_hr_contract_extension
+#: model:ir.model,name:sharek_hr_contract_extension.model_hr_contract
+msgid "Employee Contract"
+msgstr "عقد الموظف"
+
+#. module: sharek_hr_contract_extension
+#: model:ir.model.fields,field_description:sharek_hr_contract_extension.field_hr_contract__employee_no
+msgid "Employee ID"
+msgstr "رقم الوظيفي"
+
+#. module: sharek_hr_contract_extension
+#: model:hr.salary.rule,name:sharek_hr_contract_extension.hr_salary_rule_gosi
+msgid "GOSI"
+msgstr "تأمينات الاجتماعية"
+
+#. module: sharek_hr_contract_extension
+#: model:hr.salary.rule,name:sharek_hr_contract_extension.hr_salary_rule_housing
+msgid "Housing"
+msgstr "بدل سكن"
+
+#. module: sharek_hr_contract_extension
+#: model:ir.model.fields,field_description:sharek_hr_contract_extension.field_hr_contract__struct_id
+msgid "Salary Structure"
+msgstr "هيكل الرواتب"
+
+#. module: sharek_hr_contract_extension
+#: model:ir.model.fields,field_description:sharek_hr_contract_extension.field_hr_contract__schedule_pay
+msgid "Scheduled Pay"
+msgstr "الدفع المجدول"
+
+#. module: sharek_hr_contract_extension
+#: model:hr.salary.rule,name:sharek_hr_contract_extension.hr_salary_rule_transport
+msgid "TRANSPORT"
+msgstr "بدل نقل"

@@ -1,0 +1,160 @@
+<odoo>
+    <data>
+
+        <!-- HR Exit and Return form view -->
+        <record id="hr_exit_return_form_view" model="ir.ui.view">
+            <field name="name">hr.exit.return.form.view</field>
+            <field name="model">hr.exit.return</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                                invisible="state != 'draft'" groups="hr.group_hr_user"/>
+                        <button name="action_approve" string="Approve" type="object" class="oe_highlight"
+                                invisible="state != 'confirm'" groups="hr.group_hr_manager"/>
+                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
+                                invisible="state in ('draft', 'done')"
+                                groups="hr.group_hr_manager"/>
+                        <button name="action_cancel" string="Cancel" type="object" class="btn-danger" icon="fa-close"
+                                invisible="state != 'confirm'"
+                                groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"
+                               status_visible="draft, confirm, done, cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_bill"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-pencil-square-o"
+                                    invisible="move_id == False"
+                                    help="show the vendor bills for this exit and return">
+                                <field name="bill_count" widget="statinfo" string="Bills"/>
+                            </button>
+                        </div>
+                        <group col="2">
+                            <group name="employee_info">
+                                <field name="employee_id" required="1"/>
+                                <field name="employee_no"/>
+                                <field name="department_id"/>
+                                <field name="manager_id"/>
+                                <field name="job_id"/>
+                                <field name="move_id" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="without_leave" string="Without Leave"
+                                       readonly="state != 'draft'"/>
+                                <field name="request_for" string="Request For" required="1"
+                                       readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="leave_request_id"
+                                       readonly="state != 'draft'"
+                                       required="request_for in ('employee','all') , without_leave != True"
+                                       invisible=" request_for == 'family' or without_leave == True"
+                                       domain="[('employee_id', '=', employee_id) , ('state', '!=', 'draft') , ('issuing_exit_return','=', True)]"/>
+                                <field name="vacation_start_date" invisible=" request_for == 'family' or without_leave == True"/>
+                                <field name="vacation_end_date" invisible=" request_for == 'family' or without_leave == True"/>
+                                <field name="vacation_duration" invisible=" request_for == 'family' or without_leave == True"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Additional Data">
+                                <group>
+                                    <group>
+                                        <field name="visa_no" readonly="state != 'draft'"/>
+                                        <field name="visa_duration" readonly="state != 'draft'"/>
+                                        <field name="exit_return_type"  readonly="state != 'draft'"/>
+                                        <field name="cost_by_employee" readonly="state != 'confirm'" required="state == 'confirm'"/>
+                                        <field name="cost" readonly="state != 'confirm'" invisible="cost_by_employee == True" required="state == 'confirm'"/>
+                                    </group>
+                                    <group>
+                                        <field name="travel_before_date" required="1"
+                                                readonly="state != 'draft'"/>
+                                        <field name="arrival_before_date" readonly="state != 'draft'" required="exit_return_type != 'final'" invisible="exit_return_type == 'exit_return_type'"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="note" readonly="state != 'draft'"/>
+                                </group>
+                            </page>
+
+                            <page string="Dependants" invisible="request_for == 'employee'">
+                                <field name="family_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="dependant_id" required="1"
+                                               domain="[('employee_id', '=', parent.employee_id)]"/>
+                                        <field name="relationship"/>
+                                        <field name="id_no"/>
+                                        <field name="birth_date"/>
+                                        <field name="phone"/>
+                                        <field name="is_emergency"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- HR Exit and Return tree view -->
+        <record id="hr_exit_return_tree_view" model="ir.ui.view">
+            <field name="name">hr.exit.return.tree.view</field>
+            <field name="model">hr.exit.return</field>
+            <field name="arch" type="xml">
+                <tree string="Exit and Return">
+                    <field name="employee_id"/>
+                    <field name="request_for"/>
+                    <field name="note" string="Notes"/>
+                    <field name="state" decoration-success="state == 'done'"
+                           decoration-info="state == 'confirm' or state == 'submit'"
+                           decoration-danger="state == 'cancel'"
+                           widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_leave_view_form_inherit" model="ir.ui.view">
+		<field name="name">hr.leave.view.form.inherit</field>
+		<field name="model">hr.leave</field>
+		<field name="inherit_id" ref="hr_holidays.hr_leave_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='number_of_days_display']" position="after">
+                <field name="issuing_exit_return"/>
+            </xpath>
+        </field>
+        </record>
+
+        <!-- HR Exit and Return Action -->
+        <record id="hr_exit_return_action" model="ir.actions.act_window">
+            <field name="name">Exit and Return</field>
+            <field name="res_model">hr.exit.return</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- HR Government Relation Menu -->
+        <menuitem id="hr_government_relation_menu"
+                  name="Government Relation"
+                  parent="hr.menu_hr_root"
+                  sequence="21"
+                  groups="hr.group_hr_user"
+        />
+
+        <!-- Exit and Return Menu -->
+        <menuitem
+                id="hr_exit_return_menu"
+                name="Exit and Return"
+                parent="hr_government_relation_menu"
+                action="hr_exit_return_action"
+                groups="hr.group_hr_user"
+                sequence="1"
+        />
+
+    </data>
+</odoo>

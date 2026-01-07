@@ -1,0 +1,79 @@
+<odoo>
+	<data>
+        <!-- slips -->
+        <record model="ir.module.category" id="module_category_slip_payroll">
+            <field name="name">Slips Payroll</field>
+            <field name="sequence">3</field>
+        </record>
+
+         <record model="res.groups" id="group_slips_refund">
+            <field name="name">Refund Slip</field>
+            <field name="category_id" ref="module_category_slip_payroll"/>
+        </record>
+        <record model="res.groups" id="group_slips_cancel">
+            <field name="name">Cancel Slip</field>
+            <field name="category_id" ref="module_category_slip_payroll"/>
+        </record>
+        <record model="res.groups" id="group_slips_compute_sheet">
+            <field name="name">Compute Slip Sheet</field>
+            <field name="category_id" ref="module_category_slip_payroll"/>
+        </record>
+        <record model="res.groups" id="group_slips_create_entery">
+            <field name="name">Create Draft Entery for  Slip</field>
+            <field name="category_id" ref="module_category_slip_payroll"/>
+        </record>
+         <record model="res.groups" id="group_slips_draft">
+            <field name="name">Reset to Draft for  Slip</field>
+            <field name="category_id" ref="module_category_slip_payroll"/>
+        </record>
+<!-- batch -->
+         <record model="ir.module.category" id="module_category_batch_payroll">
+            <field name="name">Batch Payroll</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="res.groups" id="group_bacth_slips_paid">
+            <field name="name">Matk as Paid Batch</field>
+            <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_bacth_slips_cancel_standard">
+            <field name="name">Cancel Standard</field>
+            <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_bacth_slips_validate">
+            <field name="name">Validate Batch</field>
+            <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_bacth_slips_cancel">
+            <field name="name">Cancel Done Batch</field>
+            <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+		<record model="res.groups" id="group_approve_payroll_batch">
+            <field name="name">Approve Batch</field>
+            <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_confirm_payroll_batch">
+            <field name="name">Confirm Batch</field>
+             <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_refuse_payroll_batch">
+            <field name="name">Refuse Batch</field>
+             <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_cancel_payroll_batch">
+            <field name="name">Cancel Batch</field>
+             <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_rest_to_draft_payroll_batch">
+            <field name="name">Reset to Draft Batch</field>
+             <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_payment_payroll_batch">
+            <field name="name">Payment Batch</field>
+             <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+        <record model="res.groups" id="group_post_payroll_batch">
+            <field name="name">Post Batch</field>
+             <field name="category_id" ref="module_category_batch_payroll"/>
+        </record>
+	</data>
+</odoo>

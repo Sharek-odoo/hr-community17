@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pdf_report_format" model="report.paperformat">
+        <field name="name">PDF Report Format</field>
+        <field name="default" eval="False" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">8</field>
+        <field name="margin_left">2</field>
+        <field name="margin_right">2</field>
+        <field name="header_line" eval="True" />
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <record id="sharek_hr_attendance_extension_print" model="ir.actions.report">
+        <field name="name">Attendance sheet</field>
+        <field name="model">hr.attendance.sheet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="paperformat_id" ref="sharek_hr_attendance_extension.pdf_report_format" />
+        <field name="report_name">sharek_hr_attendance_extension.sharek_hr_attendance_extension_temp</field>
+        <field name="report_file">sharek_hr_attendance_extension.sharek_hr_attendance_extension_temp</field>
+    </record>
+
+
+    <template id="sharek_hr_attendance_extension_temp">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <t t-foreach="docs" t-as="doc">
+
+                    <div class="page">
+                        <center>
+                            <h3>
+                                <b>
+                                    <t t-esc="doc.name"/>
+                                </b>
+                            </h3>
+                        </center>
+                        <div class="row">
+                            <div class="text-center col-3">
+                                Period
+                            </div>
+                            <div  class="text-left col-3">
+                                <t t-esc="doc.date_from"/> - 
+                                <t t-esc="doc.date_to"/> 
+                            </div>
+                            <div class="col-3">
+                            </div>
+                            <div class="col-3">
+                            </div>
+                        </div>
+
+                        <table class="table table-sm table-report" style="margin-top:30px;">
+                            <colgroup>
+                                <col width='28%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                                <col width='9%'/>
+                            </colgroup>
+                            <thead style="text-align: center;">
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>PL-Hours</th>
+                                    <th>ACT-Hours</th>
+                                    <th>ABS-Days</th>
+                                    <th>Late-In</th>
+                                    <th>Early-Exit</th>
+                                    <th>Diff-Time</th>
+                                    <th>Over-Time</th>
+                                    <th>Deduction</th>
+                                </tr>
+                            </thead>
+                                <tbody style="text-align: center;">
+                                <t t-foreach="doc.line_ids" t-as="l">
+                                    <tr>
+                                        <td><span t-field="l.employee_id"/></td>
+                                        <td><span t-field="l.planned_hours"/></td>
+                                        <td><span t-esc="round(l.act_hours,2)"/></td>
+                                        <td><span t-field="l.absence_days"/></td>
+                                        <td><span t-field="l.late_in"/></td>
+                                        <td><span t-field="l.early_exit"/></td>
+                                        <td><span t-esc="round(l.diff_time,2)"/></td>
+                                        <td><span t-field="l.overtime"/></td>
+                                        <td><span t-field="l.deduction_amount"/></td>
+                                    </tr>
+                                </t>
+                                </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

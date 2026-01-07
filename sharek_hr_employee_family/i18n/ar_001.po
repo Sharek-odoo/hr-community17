@@ -1,0 +1,128 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_hr_employee_family
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-17 12:05+0000\n"
+"PO-Revision-Date: 2023-03-17 12:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__birth_date
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields.selection,name:sharek_hr_employee_family.selection__hr_family__relationship__daughter
+msgid "Daughter"
+msgstr "إبنة"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__is_emergency
+msgid "Emergency"
+msgstr "إتصال في حالة طؤاري"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model,name:sharek_hr_employee_family.model_hr_employee
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model,name:sharek_hr_employee_family.model_hr_family
+msgid "Employee Family Member"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_employee__family_ids
+#: model_terms:ir.ui.view,arch_db:sharek_hr_employee_family.view_employee_form
+msgid "Family"
+msgstr "التوابع"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields.selection,name:sharek_hr_employee_family.selection__hr_family__relationship__father
+msgid "Father"
+msgstr "أب"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__id
+msgid "ID"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__id_no
+msgid "ID Number"
+msgstr "رقم الهوية"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields.selection,name:sharek_hr_employee_family.selection__hr_family__relationship__mother
+msgid "Mother"
+msgstr "أم"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields.selection,name:sharek_hr_employee_family.selection__hr_family__relationship__other
+msgid "Other"
+msgstr "أخرى"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__phone
+msgid "Phone"
+msgstr "رقم الجوال"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields,field_description:sharek_hr_employee_family.field_hr_family__relationship
+msgid "Relationship"
+msgstr "العلاقة"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields.selection,name:sharek_hr_employee_family.selection__hr_family__relationship__son
+msgid "Son"
+msgstr "إبن"
+
+#. module: sharek_hr_employee_family
+#: model:ir.model.fields.selection,name:sharek_hr_employee_family.selection__hr_family__relationship__wife
+msgid "Wife"
+msgstr "زوج/زوجة"

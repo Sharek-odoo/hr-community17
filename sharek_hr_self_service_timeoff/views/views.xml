@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+ <template id="portal_my_time_off" name="My Time off Requests">
+        <t t-call="portal.portal_layout">
+<script>        
+    function reply_click()        
+    {            
+            var location = document.getElementById('Timeoff');
+            location.style.display = 'contents';
+            var btn = document.getElementById('my_toggle');
+            btn.style.display = 'none';
+    };   
+    function remove_popup()        
+    {            
+            var btn = document.getElementById('Timeoff');
+            btn.style.display = 'none';
+            var btn2 = document.getElementById('my_toggle');
+            btn2.style.display = 'block';
+    };        
+</script>
+             <button id="my_toggle" type="button" class="btn btn-primary" data-toggle="modal" data-target="#Timeoff" onClick="reply_click()">
+              Create Timeoff
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="Timeoff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Timeoff</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <form action="/my/time_off" method="POST" enctype="multipart/form-data" class="">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="time_off_type" >Type</label>
+                            <select id="time_off_type" name="time_off_type" class="form-control">
+                              <option value="" >Type..</option>
+                                  <t t-foreach="types" t-as="s">
+                                      <option t-att-value="s.id">
+                                          <t t-esc="s.name" />
+                                      </option>
+                                  </t>
+                          </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="date_from">Date From</label> 
+                            <input id="date_from" name="date_from" class="form-control "  type="date" />
+                          </div> 
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="date_to">Date To</label> 
+                            <input id="date_to" name="date_to"  class="form-control " type="date"/>
+                          </div> 
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="name">Reason</label> 
+                            <input id="name" name="name"  class="form-control " type="text"/>
+                          </div> 
+                        </div>
+                    </div>
+
+        <div class="col-md-12 col-sm-10">
+             <button name="submit" type="submit" class="btn btn-primary pull-right "> Next <span class="fa fa-long-arrow-right"/></button>
+            <button type="button" onClick="remove_popup()"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>        
+                </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            
+            <t t-if="not time_off">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no time off requests.
+                </div>
+            </t>
+
+            <t t-if="time_off" t-call="portal.portal_table">
+                <thead>
+                    <tr>
+                        <th>Time off Type</th>
+                        <th>Date From </th>
+                        <th>Date To</th>
+                        <th>Description</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="time_off" t-as="o">
+                        <td>
+                            <span t-esc="o.holiday_status_id.name"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.request_date_from"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.request_date_to"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.name"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.state"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+  <template id="portal_my_leave_allocation" name="My Leave Allocations">
+        <t t-call="portal.portal_layout">
+<script>        
+    function reply_click()        
+    {            
+            var location = document.getElementById('RequestLeaveAllocation');
+            location.style.display = 'contents';
+            var btn = document.getElementById('my_toggle');
+            btn.style.display = 'none';
+    };   
+    function remove_popup()        
+    {            
+            var btn = document.getElementById('RequestLeaveAllocation');
+            btn.style.display = 'none';
+            var btn2 = document.getElementById('my_toggle');
+            btn2.style.display = 'block';
+    };        
+</script>
+             <button id="my_toggle" type="button" class="btn btn-primary" data-toggle="modal" data-target="#RequestLeaveAllocation" onClick="reply_click()">
+              Request Leave Allocation
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="RequestLeaveAllocation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Request Leave Allocation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <form action="/my/leave_allocation" method="POST" enctype="multipart/form-data" class="">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="name">Name</label> 
+                            <input id="name" name="name" class="form-control here"  type="text" />
+                          </div> 
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="time_off_type" >Type</label>
+                            <select id="time_off_type" name="time_off_type" class="form-control">
+                              <option value="" >Type..</option>
+                                  <t t-foreach="types" t-as="s">
+                                      <option t-att-value="s.id">
+                                          <t t-esc="s.name" />
+                                      </option>
+                                  </t>
+                          </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="number_of_days_display">Duration</label> 
+                            <input id="number_of_days_display" name="number_of_days_display"  class="form-control here" type="text"/>
+                          </div> 
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="reason">Reason</label> 
+                            <input id="reason" name="reason"  class="form-control here" type="text"/>
+                          </div> 
+                        </div>
+                    </div>
+
+        <div class="col-md-12 col-sm-10">
+            <button name="submit" type="submit" class="btn btn-primary pull-right "> Next <span class="fa fa-long-arrow-right"/></button>
+            <button type="button" onClick="remove_popup()"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>        
+                </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <t t-if="not leave_allocation">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no leave allocation requests.
+                </div>
+            </t>
+
+            <t t-if="leave_allocation" t-call="portal.portal_table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Allocation Type </th>
+                        <th>Number Of Days</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="leave_allocation" t-as="o">
+                        <td>
+                            <span t-esc="o.name"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.holiday_status_id.name"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.duration_display"/>
+                        </td>
+                        <td>
+                            <span t-esc="o.state"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+</odoo>
