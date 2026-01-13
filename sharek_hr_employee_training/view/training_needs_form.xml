@@ -140,27 +140,27 @@
                                     <field name="cost" force_save="1"/>
                                 </tree>
                             </field>
+                            <group colspan="12">
+                                <group colspan="8">
+                                </group>
+                                <group colspan="4">
+                                    <group class="oe_subtotal_footer" name="cost_box">
+                                        <label for="total_cost" string="Total Cost"/>
+                                        <div>
+                                            <field name="total_cost" readonly="1"/>
+                                        </div>
+                                        <label for="remaining_cost" string="Remaining Cost"/>
+                                        <div>
+                                            <field name="remaining_cost" readonly="1"/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </group>
                         </page>
                         <page string="Refused Reason">
                             <field name="refuse_reason" readonly="1"/>
                         </page>
                     </notebook>
-                    <group colspan="12">
-                        <group colspan="8">
-                        </group>
-                        <group colspan="4">
-                            <group class="oe_subtotal_footer" name="cost_box">
-                                <label for="total_cost" string="Total Cost"/>
-                                <div>
-                                    <field name="total_cost" readonly="1"/>
-                                </div>
-                                <label for="remaining_cost" string="Remaining Cost"/>
-                                <div>
-                                    <field name="remaining_cost" readonly="1"/>
-                                </div>
-                            </group>
-                        </group>
-                    </group>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
