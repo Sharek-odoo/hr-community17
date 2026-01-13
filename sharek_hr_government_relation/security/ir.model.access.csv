@@ -9,3 +9,9 @@ access_exit_return_line_user,access_exit_return_line_user,model_exit_return_line
 access_exit_return_line_manager,access_exit_return_line_manager,model_exit_return_line,hr.group_hr_manager,1,1,1,1
 access_batch_lines_user,access_batch_lines_user,model_batch_lines,hr.group_hr_user,1,1,1,1
 access_batch_lines_manager,access_batch_lines_manager,model_batch_lines,hr.group_hr_manager,1,1,1,1
+access_visa_renewal_user,access_visa_renewal_user,model_visa_renewal,hr.group_hr_user,1,1,1,1
+access_visa_renewal_manager,access_visa_renewal_manager,model_visa_renewal,hr.group_hr_manager,1,1,1,1
+
+access_visa_type_user,access_visa_type_user,model_visa_type,hr.group_hr_user,1,1,1,1
+access_visa_type_manager,access_visa_type_manager,model_visa_type,hr.group_hr_manager,1,1,1,1
+

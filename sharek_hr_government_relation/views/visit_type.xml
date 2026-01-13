@@ -45,14 +45,14 @@
                                 <field name="employee_id" required="1" readonly="state != 'draft'"/>
                                 <field name="iqama_expire_date"/>
                                 <field name="new_expiration_date" required="1"
-                                       readonly="1"/>
+                                       readonly="state != 'draft'"/>
                                 <field name="work_permit_fees" required="1"
                                        readonly="state != 'draft'"/>
                                 <field name="birth_date"/>       
                             </group>
                             <group>
                                 <field name="iqama_no"/>
-                                <field name="period" readonly="state != 'draft'"/>
+                                <field name="period"/>
                                 <field name="renewal_fees" required="1" readonly="state != 'draft'"/>
                                 <field name="total_fees"/>
                                 <field name="move_id" invisible="1"/>
@@ -129,7 +129,7 @@
                                         <field name="period" required="True" readonly="state != 'draft'"/>
                                         <field name="iqama_expire_date" required="True" force_save="1"/>
                                         <field name="new_expiration_date" required="1"
-                                               readonly="1"/>
+                                               readonly="state != 'draft'"/>
                                         <field name="renewal_fees" required="True"
                                                readonly="state != 'draft'"/>
                                         <field name="work_permit_fees" required="True"

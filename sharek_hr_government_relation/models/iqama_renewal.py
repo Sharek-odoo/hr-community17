@@ -126,13 +126,20 @@ class IqamaRenewal(models.Model):
         ('12', 'One Year')
     ]
 
-    state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'), ('done', 'Done'),
-                              ('cancel', 'Cancel')], string='Status', default='draft', tracking=True)
+    state = fields.Selection([
+        ('draft', 'Submitted'),
+        ('manager', 'Direct Manager Approval'),
+        ('sector_manager', 'Department Director Approval'),
+        ('hr', 'HR Approval'),
+        ('done', 'Approved'),
+        ('cancel', 'Cancelled'),
+    ], string='Status', default='draft', tracking=True)
+
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id)
     currency_id = fields.Many2one('res.currency', string='Currency',
                                   default=lambda self: self.env.user.company_id.currency_id.id)
-    employee_id = fields.Many2one("hr.employee", string="Employee")
-    iqama_no = fields.Many2one('hr.employee.iqama', related="employee_id.iqama_id")
+    employee_id = fields.Many2one("hr.employee", string="Employee",domain="[('iqama_id', '!=', False)]")
+    iqama_no = fields.Many2one('hr.employee.iqama', string="Iqama", compute="_compute_iqama_no")
     iqama_expire_date = fields.Date(related="employee_id.iqama_end_date")
     period = fields.Selection(PERIOD, default="3", string="Renew To")
     new_expiration_date = fields.Date(string="New Expiration date")
@@ -141,6 +148,19 @@ class IqamaRenewal(models.Model):
     total_fees = fields.Monetary(string="Total Fees", compute="_get_total_fees")
     move_id = fields.Many2one("account.move", string="Vendor Bill", copy=False)
     bill_count = fields.Integer(string="Bills", default=1)
+    birth_date = fields.Date(related="employee_id.birthday",state="Date of Birth")
+
+    @api.depends('employee_id')
+    def _compute_iqama_no(self):
+        for rec in self:
+            iqama = False
+            if rec.employee_id:
+                iqama = self.env['hr.employee.iqama'].search(
+                    [('employee_id', '=', rec.employee_id.id)],
+                    limit=1, order="id desc"
+                )
+            rec.iqama_no = iqama.id if iqama else False
+
 
     # @api.onchange('employee_id')
     # def _get_employee_iqama_expired(self):
@@ -176,8 +196,24 @@ class IqamaRenewal(models.Model):
                 raise ValidationError(_("Please reset iqama renewal request to draft first and try again."))
         return super(IqamaRenewal, self).unlink()
 
-    def action_confirm(self):
-        self.state = 'confirm'
+    def action_submit(self):
+        self.state = 'manager'
+
+    def action_manager_approve(self):
+        self.state = 'sector_manager'
+
+    def action_sector_manager_approve(self):
+        self.state = 'hr'
+
+    def action_hr_approve(self):
+        self.action_approve()  # Call your existing logic to create bill and move to done
+
+    def action_draft(self):
+        self.state = 'draft'
+
+    def action_cancel(self):
+        self.state = 'cancel'
+
 
     def action_approve(self):
 
@@ -247,11 +283,7 @@ class IqamaRenewal(models.Model):
                 'res_id': self.move_id.id,
                 'context': {}}
 
-    def action_draft(self):
-        self.state = 'draft'
-
-    def action_cancel(self):
-        self.state = 'cancel'
+    
 
 
 class BatchLines(models.Model):
