@@ -21,7 +21,7 @@
     'version': '17.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','hr','hr_contract', 'hr_holidays', 'sharek_hr_employee_extension'],
+    'depends': ['base','hr','hr_contract', 'hr_holidays', 'om_hr_payroll','sharek_hr_employee_extension','analytic'],
 
     # always loaded
     'data': [
