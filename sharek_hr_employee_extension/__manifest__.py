@@ -21,10 +21,11 @@
     "installable": True,
     
     "depends": [
-        'hr','hr_contract'
+        'hr','hr_contract','hr_skills'
     ],
     "data": [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'view/hr_employee.xml',
         'view/res_config_settings.xml',
         'data/data.xml',
