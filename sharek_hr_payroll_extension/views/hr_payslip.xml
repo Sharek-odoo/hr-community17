@@ -1,49 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
+        <record id="payroll_extension_inherit_view_hr_salary_rule_form" model="ir.ui.view">
+            <field name="name">inherit.hr.salary.rule.form</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="om_hr_payroll.hr_salary_rule_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="fetch_partner"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="payroll_extension_inherit_view_hr_payslip_tree" model="ir.ui.view">
+            <field name="name">payroll.extension.inherit.hr.payslip.tree</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='number']" position="after">
+                    <field name="employee_no"/>
+                </xpath>
+            </field>
+        </record>
         <!-- Payslip View -->
         <record id="payroll_extension_inherit_view_hr_payslip_form" model="ir.ui.view">
             <field name="name">payroll.extension.inherit.hr.payslip.form</field>
             <field name="model">hr.payslip.run</field>
             <field name="inherit_id" ref="om_hr_payroll.hr_payslip_run_form"/>
             <field name="arch" type="xml">
-              <!--   <xpath expr="//div[@name='button_box']" position="inside">
-                     <button string="View Payments" name="action_view_payments" type="object"
-                       invisible="state != 'paid'" class="oe_highlight" icon="fa-book" 
-                            groups="account.group_account_invoice"/>
-                </xpath> -->
-                  <xpath expr="//header" position="replace">
+                <!-- <xpath expr="//div[@name='button_box']" position="inside"> -->
+<!--                    <button string="View Payments" name="action_view_payments" type="object"-->
+<!--                            invisible="state != 'paid'" class="oe_highlight" icon="fa-book"-->
+<!--                            groups="account.group_account_invoice"/>-->
+                <!-- </xpath> -->
+                <xpath expr="//header" position="replace">
                     <header>
-                     <button string="Confirm" name="action_confirm" type="object" invisible="state != 'verify'" class="oe_highlight"
-                            groups="hr.group_hr_user"/>
-                    <button string="Approve" name="action_approve" type="object" invisible="state != 'confirm'" class="oe_highlight"
-                            groups="hr.group_hr_manager"/>
-                    <button string="Post" name="action_post" type="object" invisible="state != 'approve'" class="oe_highlight"
-                            groups="account.group_account_invoice"/>
-                    <button string="Cancel" name="close_payslip_run" type="object"
-                            invisible="state in ['draft','verify','confirm','approve']" groups="hr.group_hr_manager"/>
-                    <button string="Refuse" name="action_refuse" type="object" invisible="state in ['draft','verify','confirm','approve']"
-                            groups="hr.group_hr_manager"/>
-                <button name="%(om_hr_payroll.action_hr_payslip_by_employees)d" type="action" invisible="state != 'draft'" string="Generate Payslips" class="oe_highlight"/>
-                <!-- <widget name="add_payslips" string="Add Payslips" invisible="state not in ['draft', 'verify'] or payslip_count &gt; 0"/> -->
-                <!-- <button name="action_validate" type="object" string="Validate" invisible="state != 'verify'" class="oe_highlight" context="{'payslip_generate_pdf': True}"/> -->
-                <!-- <button string="Mark as paid" name="action_paid" type="object" invisible="state != 'close'" class="oe_highlight"/> -->
-                <button string="Set to Draft" name="action_draft" type="object" invisible="state not in ('paid', 'close')"/>
-                <button string="Register Payment" name="action_register_payment" type="object"
-                       invisible="state != 'close'" class="oe_highlight"
-                            groups="account.group_account_invoice"/>
-                     <field name="state" widget="statusbar" statusbar_visible="draft,verify,confirm,approve,done,paid,cancel,refuse"/>
+                        <button string="Confirm" name="action_confirm" type="object" invisible="state != 'verify'"
+                                class="oe_highlight"
+                                groups="hr.group_hr_user"/>
+                        <button string="Approve" name="action_approve" type="object" invisible="state != 'confirm'"
+                                class="oe_highlight"
+                                groups="hr.group_hr_manager"/>
+                        <button string="Post" name="action_post" type="object" invisible="state != 'approve'"
+                                class="oe_highlight"
+                                groups="account.group_account_invoice"/>
+                        <button string="Cancel" name="close_payslip_run" type="object"
+                                invisible="state in ['draft','verify','confirm','approve']"
+                                groups="hr.group_hr_manager"/>
+                        <button string="Refuse" name="action_refuse" type="object"
+                                invisible="state in ['draft','verify','confirm','approve']"
+                                groups="hr.group_hr_manager"/>
+                        <button name="%(om_hr_payroll.action_hr_payslip_by_employees)d" type="action"
+                                invisible="state != 'draft'" string="Generate Payslips" class="oe_highlight"/>
+                       <!--  <widget name="add_payslips" string="Add Payslips"
+                                invisible="state not in ['draft', 'verify'] or payslip_count &gt; 0"/> -->
+                        <button name="action_validate" type="object" string="Validate" invisible="state != 'approve'"
+                                class="oe_highlight" context="{'payslip_generate_pdf': True}"/>
+                        <button string="Mark as paid" name="action_paid" type="object" invisible="state != 'close'"
+                                class="oe_highlight"/>
+                        <button string="Set to Draft" name="action_draft" type="object"
+                                invisible="state not in ('paid', 'close')"/>
+                        <button string="Register Payment" name="action_register_payment" type="object"
+                                invisible="state != 'close'" class="oe_highlight"
+                                groups="account.group_account_invoice"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,verify,confirm,approve,done,cancel"/>
                     </header>
-                  </xpath>
-                
-               <!--  <field name="company_id" position="before">
-    				<field name="payment_move_ids" widget="many2many_tags"
-    					invisible="1" />
-    			</field> -->
-
+                </xpath>
+                <xpath expr="//sheet//group" position="inside">
+                    <field name="structure_id" required="1" readonly="state != 'draft'"/>
+                    <field name="payment_move_ids" widget="many2many_tags"
+                           invisible="1"/>
+                </xpath>
+                <xpath expr="//sheet" position="inside">
+                    <group>
+                        <group>
+                            <div class='o_row'>
+                                <field name="first_payslip_move_id" readonly="1" groups="sharek_hr_payroll_extension.group_payroll_accounting"/>
+                                <field name="payslip_count" invisible="1"/>
+                            </div>
+                        </group>
+                    </group>
+                    
+                </xpath> 
+            <!--      <xpath expr="//div[@class='oe_button_box']//button[@name='action_open_payslips']" position="replace">
+                        <button name="action_open_payslips" class="oe_stat_button" icon="fa-book" type="object" help="Generated Payslips" invisible="payslip_count == 0" groups="sharek_hr_payroll_extension.group_visible_payslip">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value"><field name="payslip_count"/></span>
+                            <span class="o_stat_text">Payslips</span>
+                        </div>
+                    </button>
+                </xpath> -->
             </field>
         </record>
+        <record id="hr_payslip_run_tree_inherit_structure" model="ir.ui.view">
+    <field name="name">hr.payslip.run.tree.inherit.structure</field>
+    <field name="model">hr.payslip.run</field>
+    <field name="inherit_id" ref="om_hr_payroll.hr_payslip_run_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='date_start']" position="before">
+            <field name="structure_id"/>
+        </xpath>
+    </field>
+</record>
 
-      
+
     </data>
 </odoo>

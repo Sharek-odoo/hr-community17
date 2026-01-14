@@ -19,7 +19,7 @@ class PayrollReport(models.AbstractModel):
         # sheet = workbook.add_worksheet('Payrlip Report')
 
         # Fetch available salary rules:
-        work_types=lines.slip_ids.worked_days_line_ids.mapped('work_entry_type_id')
+        work_types=lines.slip_ids.worked_days_line_ids.mapped('code')
 
         used_structures = []
         for sal_structure in lines.slip_ids.struct_id:

@@ -18,7 +18,7 @@
                 <field name="report_type">xlsx</field>
                 <field name="report_name">xlsx_payroll_report.xlsx_payroll_report</field>
                 <field name="report_file">xlsx_payroll_report.xlsx_payroll_report_file</field>
-                <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+                <field name="binding_model_id" ref="om_hr_payroll.model_hr_payslip_run"/>
                 <field name="binding_type">report</field>
             </record>
 

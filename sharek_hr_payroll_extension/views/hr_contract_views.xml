@@ -2,6 +2,17 @@
 <odoo>
     <data>
 
+        <record id="view_hr_department_form_inherit_analytic" model="ir.ui.view">
+            <field name="name">hr.department.form.inherit.analytic</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group//group[1]//field[@name='company_id']" position="after">
+                    <field name="analytic_account_id"/>
+                </xpath>
+            </field>
+        </record>
+
         <!-- Contract View -->
         <record id="hr_contract_form_additional_allowance" model="ir.ui.view">
             <field name="name">hr.contract.view.additional.allowance</field>
@@ -13,21 +24,32 @@
                 </group>
                 <xpath expr="//group[@name='salary']" position="after">
                     <group string="Monthly Advantages in Cash" name='allowances'>
+                          <label for="grade_percentage"/>
+                        <div  class="o_row mw-50">
+                            <field name="grade_percentage" nolabel="1"/>
+                            <span>?</span>
+                        </div>
                         <label for="hra"/>
-                        <div class="o_row">
-                            <field name="hra" nolabel="1"/>
+                        <div  class="o_row mw-50">
+                            <field name="hra" nolabel="1" />
                             <span>/ month</span>
                         </div>
                         <label for="transport_allowance"/>
-                        <div class="o_row">
+                        <div  class="o_row mw-50">
 
-                            <field name="transport_allowance" nolabel="1"/>
+                            <field name="transport_allowance" nolabel="1" />
+                            <span>/ month</span>
+                        </div>
+                        <label for="hr_living_allowance"/>
+                        <div  class="o_row mw-50">
+
+                            <field name="hr_living_allowance" nolabel="1" readonly="state != 'draft'"/>
                             <span>/ month</span>
                         </div>
                         <label for="other_allowance"/>
-                        <div class="o_row">
+                        <div  class="o_row mw-50">
 
-                            <field name="other_allowance" nolabel="1"/>
+                            <field name="other_allowance" nolabel="1" readonly="state != 'draft'"/>
                             <span>/ month</span>
                         </div>
                     </group>
