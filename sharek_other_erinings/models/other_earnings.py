@@ -14,7 +14,7 @@ class OtherEarnings(models.Model):
     _description = "Other Earnings"
     
     name = fields.Char(default="New", readonly=True, copy=False)
-    start_date = fields.Date(default=fields.Date.today(), string="Create Date")
+    start_date = fields.Date(default=fields.Date.today(), string="Date")
     amount = fields.Float("Amount")
     type = fields.Selection([('allowance', 'Allowance'),('deduction', 'Deduction')], string="Type", default='')
     applied_to = fields.Selection([
@@ -233,24 +233,55 @@ class HRPayrollAllow(models.Model):
     incentive_amount = fields.Float(compute="_compute_incentive_amount")
     deduction_amount = fields.Float(compute="_compute_deduction_amount")
 
+    # def _compute_incentive_amount(self):
+    #     incentive = 0.0
+    #     for pay in self:
+    #         incentive_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
+    #             ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','allowance')])
+    #         for rec in incentive_line:
+    #             incentive += rec.amount
+    #     self.incentive_amount = incentive
+
+    @api.depends('employee_id', 'date_from', 'date_to')
     def _compute_incentive_amount(self):
-        incentive = 0.0
         for pay in self:
-            incentive_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','allowance')])
+            incentive = 0.0
+            incentive_line = self.env['other.earnings.line'].search([
+                ('employee_id', '=', pay.employee_id.id),
+                ('date', '>=', pay.date_from),
+                ('date', '<=', pay.date_to),
+                ('earnings_line_id.state', '=', 'confirm'),
+                ('earnings_line_id.earnings_type', '=', 'payroll'),
+                ('earnings_line_id.type', '=', 'allowance')
+            ])
             for rec in incentive_line:
                 incentive += rec.amount
-        self.incentive_amount = incentive
+            pay.incentive_amount = incentive  # ✅ assign correctly
 
+    # def _compute_deduction_amount(self):
+    #     ded = 0.0
+    #     for pay in self:
+    #         incentive_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
+    #             ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','deduction')])
+    #         for rec in incentive_line:
+    #             ded += rec.amount
+    #     self.deduction_amount = ded
+
+    @api.depends('employee_id', 'date_from', 'date_to')
     def _compute_deduction_amount(self):
-        ded = 0.0
         for pay in self:
-            incentive_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','deduction')])
+            ded = 0.0
+            incentive_line = self.env['other.earnings.line'].search([
+                ('employee_id', '=', pay.employee_id.id),
+                ('date', '>=', pay.date_from),
+                ('date', '<=', pay.date_to),
+                ('earnings_line_id.state', '=', 'confirm'),
+                ('earnings_line_id.earnings_type', '=', 'payroll'),
+                ('earnings_line_id.type', '=', 'deduction')
+            ])
             for rec in incentive_line:
                 ded += rec.amount
-        self.deduction_amount = ded        
-
+            pay.deduction_amount = ded  # ✅ correct assignment
 
     def compute_sheet(self):
         for rec in self:

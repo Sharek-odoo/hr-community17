@@ -19,7 +19,7 @@
         <field name="name">other.earnings.form.view</field>
         <field name="model">other.earnings</field>
         <field name="arch" type="xml">
-            <form string="Other Earnings">
+            <form string="Allowances and Deductions">
                 <header>
                      <button name="action_reset_to_draft" type="object" string="Reset to Draft" class="oe_highlight"
                     invisible="state == 'draft'"
@@ -54,7 +54,7 @@
                     <group>
                         <group>
                             <field name="start_date" required="1"/>
-                            <field name="earnings_type" widget="radio"/>
+                            <field name="earnings_type" widget="radio" required="1"/>
                             <field name="applied_to"/>
                             <field name="company_ids" widget="many2many_tags" invisible="applied_to != 'company'"/>
                             <field name="department_ids" widget="many2many_tags" invisible="applied_to != 'department'"/>
@@ -71,7 +71,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Other Earnings Line">
+                        <page string="Allowances and Deductions Lines" name="earning_lies">
                             <field name="earnings_ids">
                                 <tree editable="bottom">
                                     <field name="employee_id" required="1"/>
@@ -148,20 +148,20 @@
 
     <menuitem
         id="menu_config_other_earning"
-        name="Other Earnings"
-        parent="hr.menu_hr_employee_payroll"
-        sequence="100"/>
+        name="Allowances and Deductions"
+        parent="om_hr_payroll.menu_hr_payroll_root"
+        sequence="65"/>
 
         <menuitem
             id="menu_config_plan_types"
-            name="Other Earnings"
+            name="Allowances and Deductions"
             action="action_view_of_other_earnings"
             parent="menu_config_other_earning"
             sequence="99"/>
 
         <menuitem
             id="menu_for_other_earning_lines"
-            name="Other Earning Lines"
+            name="Allowances and Deductions Lines"
             action="action_view_of_other_earnings_lines"
             parent="menu_config_other_earning"
             sequence="100"/>
