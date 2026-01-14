@@ -41,7 +41,7 @@ class PayrollBatchReportXlsx(models.AbstractModel):
             # Extract salary rule lines
             basic = sum(line.total for line in payslip.line_ids if line.category_id.code == 'BASIC')
             hra = sum(line.total for line in payslip.line_ids if line.code == 'HRA')
-            net = payslip.net_wage or 0.0
+            net = sum(line.total for line in payslip.line_ids if line.category_id.code == 'NET') or 0.0
 
             # Allowances: sum of positive earnings except deductions
             allowances = sum(
