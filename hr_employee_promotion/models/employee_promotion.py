@@ -31,11 +31,11 @@ class HREmployeePromotion(models.Model):
     salary = fields.Monetary(string='Salary', readonly=True)
     request_date = fields.Date(string='Date', default=fields.Date.today())
     effective_date = fields.Date(string='Effective Date')
-    new_manager_id = fields.Many2one('hr.employee', string='Manager',readonly=True)
-    new_department_id = fields.Many2one('hr.department', string='Department',readonly=True)
-    new_contract_id = fields.Many2one('hr.contract', string='Contract',readonly=True)
+    new_manager_id = fields.Many2one('hr.employee', string='Manager')
+    new_department_id = fields.Many2one('hr.department', string='Department')
+    new_contract_id = fields.Many2one('hr.contract', string='Contract')
     new_salary = fields.Float(string='Salary')
-    new_job_id = fields.Many2one('hr.job', string='Job Position',readonly=True)
+    new_job_id = fields.Many2one('hr.job', string='Job Position')
     notes = fields.Text(string='Notes')
     company_id = fields.Many2one('res.company', compute='_compute_company', store=True, readonly=False,
                                  default=lambda self: self.env.company, required=True)
@@ -46,7 +46,7 @@ class HREmployeePromotion(models.Model):
     avatar_1920 = fields.Image(related='employee_id.avatar_1920')
     promotion_url = fields.Char('URL', compute='get_url')
     grade_id = fields.Many2one("grade.grade", "Grade", readonly=True)
-    new_grade = fields.Many2one("grade.grade", "Grade",readonly=True)
+    new_grade = fields.Many2one("grade.grade", "Grade")
     need_new_department_approval = fields.Boolean(compute='_compute_need_new_department_approval')
     need_show_submit_hr = fields.Boolean(compute='_compute_need_show_submit_hr')
 
@@ -69,10 +69,6 @@ class HREmployeePromotion(models.Model):
         self.contract_id = self.employee_id.contract_id
         self.salary = self.employee_id.contract_id.wage
         self.grade_id = self.employee_id.grade_id
-        self.new_manager_id = self.employee_id.parent_id
-        self.new_department_id = self.employee_id.department_id
-        self.new_job_id = self.employee_id.job_id
-        self.new_grade = self.employee_id.grade_id
         self.new_contract_id = self.employee_id.contract_id
 
 
@@ -183,9 +179,9 @@ class HREmployeePromotion(models.Model):
     def employee_info_update(self):
         for record in self:
             contract = record.contract_id
-
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~`")
             # Create promotion log entry
-            self.env['hr.contract.promotion.log'].create({
+            ii = self.env['hr.contract.promotion.log'].create({
                 'contract_id': contract.id,
                 'promotion_id': record.id,
                 'old_wage': record.salary,
@@ -193,6 +189,7 @@ class HREmployeePromotion(models.Model):
                 'old_grade': record.grade_id.id,
                 'new_grade': record.new_grade.id,
             })
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",ii)
 
             # Now apply the changes to the employee
             record.employee_id.job_id = record.new_job_id or record.current_job_id
@@ -245,7 +242,7 @@ class HrPayslipInherit(models.Model):
         for payslip in self:
             promotion = self.env['hr.employee.promotion'].search([
                 ('employee_id', '=', payslip.employee_id.id),
-                ('state', '=', 'approve'),
+                ('state', '=', 'approved'),
                 ('effective_date', '>=', payslip.date_from.replace(day=1)),
                 ('effective_date', '<=', payslip.date_to),
             ], order="effective_date desc", limit=1)

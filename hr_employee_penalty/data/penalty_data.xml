@@ -9,7 +9,7 @@
             <field name="code">PENALTY</field>
             <field name="category_id" ref="om_hr_payroll.DED"/>
             <field name="name">Penalty</field>
-            <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+            <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/>
         </record>
     </data>
 </odoo>
