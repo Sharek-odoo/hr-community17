@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-<!--        <record id="seq_other_earning" model="ir.sequence">-->
-<!--            <field name="name">Earning</field>-->
-<!--            <field name="code">other.earning.seq</field>-->
-<!--            <field name="prefix">EAR/</field>-->
-<!--            <field name="number_increment">1</field>-->
-<!--            <field name="padding">3</field>-->
-<!--        </record>-->
+        <record id="seq_other_earning" model="ir.sequence">
+            <field name="name">Earning</field>
+            <field name="code">other.earning.seq</field>
+            <field name="prefix">EAR/</field>
+            <field name="number_increment">1</field>
+            <field name="padding">3</field>
+        </record>
 
         <record id="hr_salary_rule_allowance" model="hr.salary.rule">
             <field name="amount_select">code</field>
-             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/>
              <field name="condition_select">none</field>
             <field name="amount_python_compute">result = payslip.incentive_amount</field>
             <field name="code">INC</field>
@@ -23,7 +23,7 @@
 
         <record id="hr_salary_rule_ded_earning" model="hr.salary.rule">
             <field name="amount_select">code</field>
-             <!-- <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/> -->
+             <field name="struct_id" ref="sharek_hr_payroll_extension.ksa_basic_structure"/>
              <field name="condition_select">none</field>
             <field name="amount_python_compute">result = (payslip.deduction_amount)</field>
             <field name="code">DEDEAR</field>

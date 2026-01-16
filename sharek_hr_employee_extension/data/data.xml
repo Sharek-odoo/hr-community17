@@ -9,5 +9,18 @@
             <field eval="1" name="number_increment"/>
             <field name="padding">5</field>
         </record>
+
+        <record id="ir_cron_expire_iqamas" model="ir.cron">
+            <field name="name">Auto Expire Iqamas</field>
+            <field name="model_id" ref="model_hr_employee_iqama"/>
+            <field name="state">code</field>
+            <field name="code">model.check_and_expire_iqamas()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active">True</field>
+        </record>
+
+
     </data>
 </odoo>

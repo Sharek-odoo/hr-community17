@@ -12,8 +12,6 @@
             <xpath expr="//field[@name='job_id']" position="after">
                 <field name="employee_no"/>
                 <field name="structure_type_id" invisible="1"/>
-<!--                 <field name="allowed_value_ids" invisible="1"/>-->
-                <!-- <field name="struct_id" required="1"/> -->
 
             </xpath>
             <xpath expr="//group[@name='notes_group']" position="before">

@@ -1,0 +1,483 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sharek_other_erinings
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-15 11:23+0000\n"
+"PO-Revision-Date: 2025-05-15 11:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__type__allowance
+msgid "Allowance"
+msgstr "الاضافات"
+
+#. module: sharek_other_erinings
+#: model:ir.ui.menu,name:sharek_other_erinings.menu_config_other_earning
+#: model:ir.ui.menu,name:sharek_other_erinings.menu_config_plan_types
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Allowances and Deductions"
+msgstr "الاضافات والخصومات"
+
+#. module: sharek_other_erinings
+#: model:ir.ui.menu,name:sharek_other_erinings.menu_for_other_earning_lines
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Allowances and Deductions Lines"
+msgstr "بنود الاضافات والخصومات"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__amount
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__applied_to
+msgid "Applied To"
+msgstr "أضيف الى"
+
+#. module: sharek_other_erinings
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Approve"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__state__approve
+msgid "Approved"
+msgstr "تمت الموافقة"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__state__cancel
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: sharek_other_erinings
+#: model:ir.model,name:sharek_other_erinings.model_res_company
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__company_ids
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__applied_to__company
+msgid "Company"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Compute"
+msgstr "إحتساب الاضافة او الخصم"
+
+#. module: sharek_other_erinings
+#: model:ir.model,name:sharek_other_erinings.model_res_config_settings
+msgid "Config Settings"
+msgstr "تهيئة الإعدادات "
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__state__confirm
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Confirm"
+msgstr "تم التأكيد"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__create_uid
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__create_date
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_res_company__credit_account_id
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_res_config_settings__credit_account_id
+msgid "Credit Account"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__start_date
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_res_company__debit_account_id
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_res_config_settings__debit_account_id
+msgid "Debit Account"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_hr_payslip__deduction_amount
+msgid "Deduction Amount"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__department_ids
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__applied_to__department
+msgid "Department"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__description
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Description"
+msgstr "الوصف"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__type__deduction
+msgid "Disciplinary action Deduction"
+msgstr "إجراء الخصم"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__display_name
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: sharek_other_erinings
+#: model:hr.salary.rule,name:sharek_other_erinings.hr_salary_rule_ded_earning
+msgid "Earning Deduction"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__earnings_ids
+msgid "Earnings"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__earnings_line_id
+msgid "Earnings Line"
+msgstr "بنود الاضافات و الخصومات "
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__earnings_type
+msgid "Earnings Type"
+msgstr "الاجراء على"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__employee_ids
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__employee_id
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__applied_to__emplopyee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__id
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__id
+msgid "ID"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__message_has_error
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:hr.salary.rule,name:sharek_other_erinings.hr_salary_rule_allowance
+msgid "Incentive"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_hr_payslip__incentive_amount
+msgid "Incentive Amount"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__journal_id
+msgid "Journal"
+msgstr ""
+
+#. module: sharek_other_erinings
+#. odoo-python
+#: code:addons/sharek_other_erinings/models/other_earnings.py:0
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__journal_count
+#, python-format
+msgid "Journal Entries"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model,name:sharek_other_erinings.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__write_uid
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__write_date
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.actions.act_window,name:sharek_other_erinings.action_view_of_other_earnings_lines
+msgid "Other Earning Lines"
+msgstr "بنود الاضافات والخصومات "
+
+#. module: sharek_other_erinings
+#: model:ir.actions.act_window,name:sharek_other_erinings.action_view_of_other_earnings
+#: model:ir.model,name:sharek_other_erinings.model_other_earnings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_account_bank_statement_line__other_earnings_id
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_account_move__other_earnings_id
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_account_payment__other_earnings_id
+msgid "Other Earnings"
+msgstr "اضافات وخصومات اخرى"
+
+#. module: sharek_other_erinings
+#: model:ir.model,name:sharek_other_erinings.model_other_earnings_line
+msgid "Other Earnings Lines"
+msgstr "بنود الاضافات والخصومات"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__state__paid
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Paid"
+msgstr "تم الدفع"
+
+#. module: sharek_other_erinings
+#: model:ir.model,name:sharek_other_erinings.model_hr_payslip
+msgid "Pay Slip"
+msgstr "إيصال الدفع "
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__earnings_type__payroll
+msgid "Payroll"
+msgstr "على الراتب"
+
+#. module: sharek_other_erinings
+#. odoo-python
+#: code:addons/sharek_other_erinings/models/other_earnings.py:0
+#, python-format
+msgid "Please select some employees"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__project_ids
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__applied_to__project
+msgid "Project"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__earnings_type__receipt
+msgid "Receipt"
+msgstr "فاتورة منفصلة"
+
+#. module: sharek_other_erinings
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model_terms:ir.ui.view,arch_db:sharek_other_erinings.other_earnings_form_view
+msgid "Submit"
+msgstr "ارسال"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__task_ids
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__applied_to__task
+msgid "Task"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__type
+msgid "Type"
+msgstr "النوع"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields.selection,name:sharek_other_erinings.selection__other_earnings__state__under_approval
+msgid "Under Approval"
+msgstr "قيد الموافقة"
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,field_description:sharek_other_erinings.field_other_earnings__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sharek_other_erinings
+#: model:ir.model.fields,help:sharek_other_erinings.field_other_earnings__website_message_ids
+msgid "Website communication history"
+msgstr ""

@@ -1,21 +1,28 @@
 <odoo>
-  <data>
-    <record id="view_employee_form_inherit" model="ir.ui.view">
-        <field name="name">hr.employee.form.inherit</field>
-        <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr.view_employee_form"/>
-        <field name="arch" type="xml">
-            <field name="coach_id" position="after">
-                <field name="direct_supervisor" />
-            </field>
-            <field name="visa_no" position="before">
-                <field name="under_company" />
-            </field>
-            <field name="visa_no" position="before">
-                <field name="iban" />
-            </field>
+    <data>
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="marital" position="before">
+                    <field name="under_company"/>
+                </field>
+                <field name="visa_no" position="replace"/>
+                <field name="visa_expire" position="replace"/>
+                <field name="work_permit_expiration_date" position="replace"/>
 
-        </field>
-    </record>
-  </data>
+                <xpath expr="//separator[@name='has_work_permit']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='has_work_permit']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='permit_no']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>

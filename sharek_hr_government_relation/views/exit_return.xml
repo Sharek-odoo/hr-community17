@@ -51,7 +51,7 @@
                                 <field name="leave_request_id"
                                        readonly="state != 'draft'"
                                        required="request_for in ('employee','all') , without_leave != True"
-                                       invisible=" request_for == 'family' or without_leave == True"
+                                       invisible=" request_for == 'family' or without_leave != True"
                                        domain="[('employee_id', '=', employee_id) , ('state', '!=', 'draft') , ('issuing_exit_return','=', True)]"/>
                                 <field name="vacation_start_date" invisible=" request_for == 'family' or without_leave == True"/>
                                 <field name="vacation_end_date" invisible=" request_for == 'family' or without_leave == True"/>

@@ -63,6 +63,8 @@
               action="action_training_impact"
               sequence="20"/>
 
+
+
     <!-- Training Courses -->
     <record id="action_training_course" model="ir.actions.act_window">
         <field name="name">Training Courses</field>

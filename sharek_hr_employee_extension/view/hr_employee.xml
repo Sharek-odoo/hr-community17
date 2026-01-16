@@ -19,27 +19,32 @@
                 </div>
                 <div class="oe_title">
                     <h2 class="d-flex">
-                        <field name="arabic_name" placeholder="Employee's arabic name" />
+                        <field name="arabic_name" placeholder="Employee's arabic name"/>
                     </h2>
                 </div>
             </div>
-              <!-- <xpath expr="//field[@name='employee_type']" position="after"> -->
-              <!-- <xpath expr="//group[@name='active_group']" position="inside">
-                <field name="join_date" required="1"/>
-            </xpath> -->
-          <!--   <xpath expr="//field[@name='user_id']" position="after">
+            <!-- <xpath expr="//field[@name='employee_type']" position="after"> -->
+            <!-- <xpath expr="//group[@name='active_group']" position="inside">
+              <field name="join_date" required="1"/>
+          </xpath> -->
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="exempt_from_attendance" />
+            </xpath>
+<!--             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="join_date" required="1"/>
             </xpath> -->
 
             <xpath expr="//field[@name='country_id']" position="after">
 
-                 <field name="is_stranger"/>
-                 <field name="have_gosi"/>
+                <field name="is_stranger"/>
+                <field name="have_gosi"/>
+                <field name="gosi_percentage"/>
+                <field name="join_date" required="1"/>
             </xpath>
 
             <xpath expr="//field[@name='identification_id']" position="after">
                 <field name="identification_end_date"
-                       required="country_code == 'SA'" invisible="country_code != 'SA'"/>
+                       invisible="country_code != 'SA'"/>
             </xpath>
             <xpath expr="//field[@name='identification_id']" position="attributes">
                 <attribute name="required">country_code =='SA'</attribute>
@@ -49,13 +54,17 @@
                 <field name="visa_type"
                        required="country_code != 'SA'" invisible="country_code == 'SA'"/>
                 <field name="visit_id"
-                       required="country_code != 'SA' and visa_type == 'iqama'" invisible=" country_code == 'SA' or visa_type =='iqama' "/>
+                       required="country_code != 'SA' and visa_type == 'iqama'"
+                       invisible=" country_code == 'SA' or visa_type =='iqama' "/>
                 <field name="visit_end_date"
-                       required="country_code != 'SA' and visa_type == 'visit'" invisible=" country_code == 'SA' or visa_type == 'iqama'"/>
+                       required="country_code != 'SA' and visa_type == 'visit'"
+                       invisible=" country_code == 'SA' or visa_type == 'iqama'"/>
                 <field name="iqama_id"
-                       required="country_code != 'SA' and visa_type == 'visit'" invisible=" country_code == 'SA' or visa_type != 'iqama'"/>
+                       required="country_code != 'SA' and visa_type == 'visit'"
+                       invisible=" country_code == 'SA' or visa_type != 'iqama'"/>
                 <field name="iqama_end_date"
-                       required="country_code != 'SA' and visa_type == 'visit'" invisible=" country_code == 'SA' or visa_type != 'iqama'"/>
+                       required="country_code != 'SA' and visa_type == 'visit'"
+                       invisible=" country_code == 'SA' or visa_type != 'iqama'"/>
                 <field name="border_no" invisible="country_code == 'SA'"/>
             </xpath>
             <!-- <xpath expr="//field[@name='country_id']" position="attributes">
@@ -70,12 +79,58 @@
             <field name="coach_id" position="after">
                 <field name="job_id"/>
             </field>
-           <!--  <xpath expr="//group[@name='has_work_permit']" position="attributes">
-                <attribute name="attrs">{'invisible':[('country_code', '=', 'SA')]}</attribute>
-            </xpath> -->
-             <xpath expr="//field[@name='has_work_permit']" position="attributes">
+
+            <!--  <xpath expr="//group[@name='has_work_permit']" position="attributes">
+                 <attribute name="attrs">{'invisible':[('country_code', '=', 'SA')]}</attribute>
+             </xpath> -->
+            <xpath expr="//field[@name='coach_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='has_work_permit']" position="attributes">
                 <attribute name="invisible">country_code =='SA'</attribute>
             </xpath>
+            <xpath expr="//field[@name='ssnid']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+              <xpath expr="//field[@name='certificate']" position="replace">
+                  <field name="certificate_two"/>
+              </xpath>
+             <!-- Replace the existing gender field -->
+            <field name="gender" position="replace">
+                <field name="gender" string="gender" widget="selection">
+                    <selection>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </selection>
+                </field>
+            </field>
+
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='skills_resume']" position="inside">
+                <group name="experience" string="Experiences">
+                     <label for="external_experience_years"/>
+                    <div class="o_row mw-50">
+                        <field name="external_experience_years"/>
+                        <span>/ Years</span>
+                    </div>
+                     <label for="external_experience_months"/>
+                    <div class="o_row mw-50">
+                        <field name="external_experience_months"/>
+                        <span>/ Months</span>
+                    </div>
+                        <field name="total_experience" invisible="1"/>
+                    <label for="display_internal_experience"/>
+                    <div class="o_row mw-50">
+                        <field name="display_internal_experience"/>
+                    </div>
+                        <field name="internal_experience" invisible="1"/>
+
+                    <label for="total_experience_text"/>
+                    <div class="o_row mw-50">
+                        <field name="total_experience_text"/>
+                    </div>
+                </group>
+            </xpath>
+
         </field>
     </record>
 
@@ -126,20 +181,34 @@
         <field name="model">hr.employee.iqama</field>
         <field name="arch" type="xml">
             <form string="Employee Iqama">
+                <header>
+                    <button name="action_set_to_draft" type="object" string="Set to Draft" class="btn-secondary"
+                        invisible="state not in ('running','expired')"/>
+                    <button name="action_start_iqama" type="object" string="Mark as Running" class="btn-primary"
+                        invisible="state not in ('draft','expired')"/>
+                    <button name="action_expire_iqama" type="object" string="Mark as Expired" class="btn-danger"
+                        invisible="state != 'running'"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,running,expired"/>
+                </header>
+
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" required="1"/>
-                            <field name="place_of_issue" required="1"/>
-                            <field name="issuing_date" required="1"/>
-                            <field name="expiry_date" required="1"/>
+                            <field name="name" required="1"  readonly="state != 'draft'" />
+                            <field name="employee_id" readonly="state != 'draft'"/>
+                            <field name="employee_id_no"/>
+                            <field name="issuing_date" required="1" readonly="state != 'draft'"/>
+                            <field name="expiry_date" required="1" readonly="state != 'draft'"/>
                             <field name="date_of_birth" required="1"/>
                         </group>
                         <group>
-                            <field name="copy_number" required="1"/>
-                            <field name="partner_id" required="1"/>
-                            <field name="entry_date" required="1"/>
-                            <field name="blood_group" required="1"/>
+                            <field name="copy_number" required="1" readonly="state != 'draft'"/>
+                            <field name="partner_id" required="1" readonly="state != 'draft'"/>
+                            <field name="entry_date" required="1" readonly="state != 'draft'"/>
+                            <field name="job_id"/>
+                            <field name="place_of_issue" required="1" readonly="state != 'draft'"/>
+                            <field name="company_id" readonly="1"/>
                         </group>
                     </group>
                 </sheet>
@@ -166,7 +235,8 @@
                 <field name="date_of_birth"/>
                 <field name="entry_date"/>
                 <field name="place_of_issue"/>
-                <field name="blood_group"/>
+                <field name="job_id"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>

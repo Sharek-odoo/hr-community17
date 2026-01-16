@@ -8,7 +8,7 @@
             <!-- <field name="priority" eval="40"/> -->
             <field name="inherit_id" ref="om_hr_payroll.res_config_settings_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//block[@id='hr_payroll_accountant']" position="inside">
+                <xpath expr="//div[@id='om_hr_payroll_account']" position="inside">
                     <div class="col-lg-6 col-12 o_setting_box">
                         <div class="o_setting_left_pane">
                             <field name="restrict_analytic_account" />

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_iqama_rule_company" model="ir.rule">
+            <field name="name">Employee Iqama multi company rule</field>
+            <field name="model_id" ref="sharek_hr_employee_extension.model_hr_employee_iqama" />
+            <field name="global" eval="True" />
+            <field name="domain_force">['|', ('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+
+    </data>
+</odoo>

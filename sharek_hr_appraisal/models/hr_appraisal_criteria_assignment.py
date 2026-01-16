@@ -199,8 +199,9 @@ class hr_appraisal_criteria_assignment(models.Model):
             for competence in competences:
                 total_weight = sum(line.weight for line in record.assignment_competence_line_ids.filtered(lambda l: l.competence_id.id == competence.id))
                 if total_weight != 100:
-                    raise ValidationError(_("The total weights of indexes related to the competence: %s must be 100%.") % competence.name)
-    
+                    raise ValidationError(_('The total weights of indexes related to the competence:%s must be 100.)', competence.name))
+  
+  
     @api.constrains('goal_percentage', 'competence_percentage')
     def _check_percentage(self):
         for record in self:

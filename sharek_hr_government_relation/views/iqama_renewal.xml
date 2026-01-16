@@ -8,18 +8,26 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
-                                invisible="state != 'draft'" groups="hr.group_hr_user"/>
-                        <button name="action_approve" string="Approve" type="object" class="oe_highlight"
-                                invisible="state != 'confirm'" groups="hr.group_hr_manager"/>
-                        <button name="action_draft" string="Set To Draft" type="object" class="oe_highlight"
-                                invisible="state in ('draft', 'done')"
+                        <button name="action_submit" string="Submit" type="object" class="btn-primary"
+                            invisible="state != 'draft'" groups="hr.group_hr_user"/>
+
+                        <button name="action_manager_approve" string="Manager Approve" type="object" class="btn-primary"
+                            invisible="state != 'manager'" groups="hr.group_hr_user"/>
+
+                        <button name="action_sector_manager_approve" string="Department Director Approve" type="object" class="btn-primary"
+                            invisible="state != 'sector_manager'" groups="hr.group_hr_manager"/>
+
+                        <button name="action_hr_approve" string="HR Approve" type="object" class="btn-success"
+                            invisible="state != 'hr'" groups="hr.group_hr_manager"/>
+
+                        <button name="action_draft" string="Reset to Draft" type="object"
+                            invisible="state not in ('manager','sector_manager','hr','cancel')" class="btn-secondary"
                                 groups="hr.group_hr_manager"/>
-                        <button name="action_cancel" string="Cancel" type="object" class="btn-danger" icon="fa-close"
-                                invisible="state != 'confirm'"
-                                groups="hr.group_hr_manager"/>
-                        <field name="state" widget="statusbar"
-                               status_visible="draft, confirm, done, cancel"/>
+
+                        <button name="action_cancel" string="Cancel" type="object" class="btn-danger"
+                            invisible="state not in ('manager','sector_manager','hr')" groups="hr.group_hr_manager"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,manager,sector_manager,hr,done,cancel"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -37,13 +45,14 @@
                                 <field name="employee_id" required="1" readonly="state != 'draft'"/>
                                 <field name="iqama_expire_date"/>
                                 <field name="new_expiration_date" required="1"
-                                       readonly="state != 'draft'"/>
+                                       readonly="1"/>
                                 <field name="work_permit_fees" required="1"
                                        readonly="state != 'draft'"/>
+                                <field name="birth_date"/>       
                             </group>
                             <group>
                                 <field name="iqama_no"/>
-                                <field name="period"/>
+                                <field name="period" readonly="state != 'draft'"/>
                                 <field name="renewal_fees" required="1" readonly="state != 'draft'"/>
                                 <field name="total_fees"/>
                                 <field name="move_id" invisible="1"/>
@@ -120,7 +129,7 @@
                                         <field name="period" required="True" readonly="state != 'draft'"/>
                                         <field name="iqama_expire_date" required="True" force_save="1"/>
                                         <field name="new_expiration_date" required="1"
-                                               readonly="state != 'draft'"/>
+                                               readonly="1"/>
                                         <field name="renewal_fees" required="True"
                                                readonly="state != 'draft'"/>
                                         <field name="work_permit_fees" required="True"

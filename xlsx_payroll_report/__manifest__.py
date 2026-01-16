@@ -9,7 +9,7 @@
     'support': 'abdulah.khaleel@gmail.com',
     "license": "LGPL-3",
     "category": "Human Resources/Payroll",
-    "depends": ['hr_payroll','sharek_hr_employee_extension','report_xlsx'],
+    "depends": ['om_hr_payroll','sharek_hr_employee_extension','report_xlsx'],
     "data": [
         'report/payroll_report.xml',
     ],

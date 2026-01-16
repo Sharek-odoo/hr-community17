@@ -298,7 +298,10 @@ class HrEmployee(models.Model):
     penalty_count = fields.Integer(string="Penalties", compute="_get_penalty_count")
 
     def _get_penalty_count(self):
-        self.penalty_count = self.env["employee.penalty"].search_count([('employee_id', '=', self.id)])
+        print("+++++++++++++++++++++++++++++++++++++")
+        for rec in self:
+            rec.penalty_count = self.env['employee.penalty'].search_count([('employee_id', '=', rec.id)])
+
 
     def action_get_penalties(self):
         # This function is action to view employee penalties

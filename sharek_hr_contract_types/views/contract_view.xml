@@ -36,7 +36,7 @@
                 <tree string="Contract Type">
                     <field name="sequence" widget="handle"/>
                     <field colspan="4" name="name"/>
-                     <field name="code" groups="base.group_no_one"/>
+                    <field name="code" groups="base.group_no_one"/>
                     <field name="country_id"/>
                 </tree>
             </field>

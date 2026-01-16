@@ -28,5 +28,7 @@
         'views/res_config_settings.xml',
         'views/exit_return.xml',
         'views/iqama_renewal.xml',
+        'views/visit_renual.xml',
+        'views/visit_type.xml',
     ],
 }

@@ -9,7 +9,7 @@
     'support': 'support@sharek.com.sa',
     "license": "LGPL-3",
     "category": "Human Resources/Payroll",
-    "depends": ['base','hr_payroll','sharek_hr_employee_extension','report_xlsx'],
+    "depends": ['base','om_hr_payroll','sharek_hr_employee_extension','report_xlsx'],
     "data": [
         'report/payroll_report.xml',
     ],

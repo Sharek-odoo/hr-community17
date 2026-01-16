@@ -295,7 +295,7 @@ class HrPayslipInherit(models.Model):
         for payslip in self:
             transfer = self.env['hr.employee.transfer'].search([
                 ('employee_id', '=', payslip.employee_id.id),
-                ('state', '=', 'approve'),
+                ('state', '=', 'hr_manager'),
                 ('effective_date', '>=', payslip.date_from.replace(day=1)),
                 ('effective_date', '<=', payslip.date_to),
             ], order="effective_date desc", limit=1)

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-17 12:13+0000\n"
-"PO-Revision-Date: 2023-03-17 12:13+0000\n"
+"POT-Creation-Date: 2025-04-23 14:10+0000\n"
+"PO-Revision-Date: 2025-04-23 14:10+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,13 +40,22 @@ msgid "<span>/ month</span>"
 msgstr "<span>/ شهريا</span>"
 
 #. module: sharek_hr_payroll_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.hr_contract_form_additional_allowance
+msgid "<span>?</span>"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
+msgid "Add Payslips"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment_line__paid_amount
 msgid "Amount To Pay"
 msgstr "مبلغ الدفع"
 
 #. module: sharek_hr_payroll_extension
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Approve"
 msgstr "إعتماد"
 
@@ -63,7 +72,6 @@ msgstr "كشف الرواتب"
 
 #. module: sharek_hr_payroll_extension
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Cancel"
 msgstr "إالغاء"
 
@@ -71,15 +79,17 @@ msgstr "إالغاء"
 #: model:ir.model.fields.selection,name:sharek_hr_payroll_extension.selection__hr_payslip__state__cancel
 #: model:ir.model.fields.selection,name:sharek_hr_payroll_extension.selection__hr_payslip_run__state__cancel
 msgid "Cancelled"
-msgstr "ملغي"
+msgstr "تم الرفض "
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/models/hr_payroll.py:0
 #, python-format
 msgid "Cannot cancel a payslip that is done."
 msgstr ""
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/models/hr_payroll.py:0
 #, python-format
 msgid "Cannot mark payslip as paid if not confirmed."
@@ -98,7 +108,6 @@ msgstr "الشركة"
 #. module: sharek_hr_payroll_extension
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.emp_payslip_payment_form_view
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Confirm"
 msgstr "تأكيد"
 
@@ -107,6 +116,11 @@ msgstr "تأكيد"
 #: model:ir.model.fields.selection,name:sharek_hr_payroll_extension.selection__hr_payslip_run__state__confirm
 msgid "Confirmed"
 msgstr "مؤكد"
+
+#. module: sharek_hr_payroll_extension
+#: model:ir.model,name:sharek_hr_payroll_extension.model_hr_contract
+msgid "Contract Extension"
+msgstr "عقد الموظف"
 
 #. module: sharek_hr_payroll_extension
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment__create_uid
@@ -153,17 +167,27 @@ msgid "Employee"
 msgstr "اسم الموظف"
 
 #. module: sharek_hr_payroll_extension
-#: model:ir.model,name:sharek_hr_payroll_extension.model_hr_contract
-msgid "Employee Contract"
-msgstr "عقد الموظف"
-
-#. module: sharek_hr_payroll_extension
 #: model:ir.model,name:sharek_hr_payroll_extension.model_emp_payslip_payment
 msgid "Employee Payslip Payment"
 msgstr ""
 
 #. module: sharek_hr_payroll_extension
-#: model:hr.salary.rule,name:sharek_hr_payroll_extension.ksa_housing_allowance_salary_rule
+#: model:hr.salary.rule,name:sharek_hr_payroll_extension.hr_salary_rule_gosi_company_deduction
+msgid "GOSI Company Contribution"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
+#: model:hr.salary.rule,name:sharek_hr_payroll_extension.hr_salary_rule_gosi_emp_deduction_sa
+msgid "GOSI Contribution for Employee"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
+msgid "Generate Payslips"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
+#: model:hr.salary.rule,name:sharek_hr_payroll_extension.ksa_hr_housing_allowance_salary_rule
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_hr_contract__hra
 msgid "Housing Allowance"
 msgstr "بدل السكن"
@@ -181,12 +205,6 @@ msgid "Journal Entries"
 msgstr "قيود اليومية"
 
 #. module: sharek_hr_payroll_extension
-#: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment____last_update
-#: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment_line____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: sharek_hr_payroll_extension
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment__write_uid
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment_line__write_uid
 msgid "Last Updated by"
@@ -196,6 +214,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment__write_date
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment_line__write_date
 msgid "Last Updated on"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
+#: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_hr_contract__hr_living_allowance
+msgid "Living Allowance"
+msgstr "بدل الاعاشة"
+
+#. module: sharek_hr_payroll_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
+msgid "Mark as paid"
 msgstr ""
 
 #. module: sharek_hr_payroll_extension
@@ -214,6 +242,7 @@ msgid "New"
 msgstr "جديد"
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #, python-format
 msgid "No payment lines found."
@@ -243,7 +272,7 @@ msgstr "مدفوع"
 #. module: sharek_hr_payroll_extension
 #: model:ir.model,name:sharek_hr_payroll_extension.model_hr_payslip
 msgid "Pay Slip"
-msgstr "إيصال المرتب"
+msgstr "إيصال الدفع "
 
 #. module: sharek_hr_payroll_extension
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_hr_payslip__pay_amount
@@ -284,12 +313,11 @@ msgstr "دفعات إيصال الدفع "
 #. module: sharek_hr_payroll_extension
 #: model:ir.actions.act_window,name:sharek_hr_payroll_extension.action_emp_payslip_payment
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_emp_payslip_payment_line__emp_payslip_payment_id
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Payslip Payment"
 msgstr "مبلغ مسير الرواتب"
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #, python-format
@@ -297,6 +325,7 @@ msgid "Payslip Salary rule \"%s\" should be configured Credit Account.!"
 msgstr ""
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #, python-format
@@ -304,6 +333,7 @@ msgid "Payslip due amount should be positve."
 msgstr ""
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #, python-format
@@ -311,6 +341,7 @@ msgid "Please configured payment journal in payment lines."
 msgstr ""
 
 #. module: sharek_hr_payroll_extension
+#. odoo-python
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #: code:addons/sharek_hr_payroll_extension/wizard/payslip_payment.py:0
 #, python-format
@@ -319,7 +350,6 @@ msgstr ""
 
 #. module: sharek_hr_payroll_extension
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Post"
 msgstr "ترحيل القيد"
 
@@ -330,7 +360,6 @@ msgstr "المرجع"
 
 #. module: sharek_hr_payroll_extension
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Refuse"
 msgstr "رفض"
 
@@ -342,14 +371,13 @@ msgstr "مرفوض"
 
 #. module: sharek_hr_payroll_extension
 #: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
 msgid "Register Payment"
 msgstr "تسجيل دفعة"
 
 #. module: sharek_hr_payroll_extension
-#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
 msgid "Set to Draft"
-msgstr "اعادة ضبط كمسودة"
+msgstr ""
 
 #. module: sharek_hr_payroll_extension
 #: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_hr_payslip__state
@@ -379,9 +407,24 @@ msgid "Transportation Allowance"
 msgstr "بدل نقل"
 
 #. module: sharek_hr_payroll_extension
+#: model:ir.model.fields,field_description:sharek_hr_payroll_extension.field_hr_contract__grade_percentage
+msgid "Transportation Grade"
+msgstr "بدل نقل الدرجة الوظيفية؟"
+
+#. module: sharek_hr_payroll_extension
 #: model:hr.salary.rule,name:sharek_hr_payroll_extension.ksa_unpaid_leave
 msgid "Unpaid Leave"
 msgstr "اجازات غير المدفوعة"
+
+#. module: sharek_hr_payroll_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
+msgid "Validate"
+msgstr ""
+
+#. module: sharek_hr_payroll_extension
+#: model_terms:ir.ui.view,arch_db:sharek_hr_payroll_extension.payroll_extension_inherit_view_hr_payslip_form
+msgid "View Payments"
+msgstr ""
 
 #. module: sharek_hr_payroll_extension
 #: model:ir.model.fields.selection,name:sharek_hr_payroll_extension.selection__hr_payslip__state__verify

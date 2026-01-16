@@ -1,0 +1,134 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_visa_renewal_tree" model="ir.ui.view">
+        <field name="name">visa.renewal.tree</field>
+        <field name="model">visa.renewal</field>
+        <field name="arch" type="xml">
+            <tree string="Visa Renewals">
+                <field name="applicant_id"/>
+                <field name="visa_type_id"/>
+                <field name="passport_number"/>
+                <field name="passport_expiry_date"/>
+                <field name="nationality"/>
+                <field name="visa_country"/>
+                <field name="duration_months"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_visa_renewal_form" model="ir.ui.view">
+        <field name="name">visa.renewal.form</field>
+        <field name="model">visa.renewal</field>
+        <field name="arch" type="xml">
+            <form string="Visa Renewal">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_manager_approve" string="Manager Approve" type="object" class="btn-primary" invisible="state != 'manager'"/>
+                    <button name="action_sector_manager_approve" invisible="state != 'sector_manager'" string="Sector Manager Approve" type="object" class="btn-primary" />
+                    <button name="action_hr_manager_approve" string="HR Approve" type="object" class="btn-success" invisible="state != 'hr_manager'"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-danger" invisible="state not in ('manager','sector_manager','hr_manager')" />
+                    <button name="action_reset_draft" string="Reset to Draft" type="object" class="btn-secondary" invisible="state not in ('manager','sector_manager','hr_manager','cancel')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,manager,sector_manager,hr_manager,done,cancel"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="state != 'draft'"/>
+                            <field name="applicant_id" required="1" readonly="state != 'draft'"/>
+                            <field name="visa_type_id" readonly="state != 'draft'"/>
+                            <field name="name_ar" readonly="state != 'draft'"/>
+                            <field name="name_en" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="passport_number" readonly="state != 'draft'"/>
+                            <field name="passport_expiry_date" readonly="state != 'draft'"/>
+                            <field name="nationality" readonly="state != 'draft'"/>
+                            <field name="visa_country" readonly="state != 'draft'"/>
+                            <field name="duration_months" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                   <!-- -->
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_visa_renewal" model="ir.actions.act_window">
+        <field name="name">Visa Renewals</field>
+        <field name="res_model">visa.renewal</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new visa renewal request.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Structure -->
+    <menuitem id="menu_visa_renewal_root"
+              name="Visa Management"
+              parent="hr_government_relation_menu"
+              sequence="10"/>
+
+    <menuitem id="menu_visa_renewal"
+              name="Visa Renewal"
+              parent="menu_visa_renewal_root"
+              action="action_visa_renewal"
+              sequence="1"/>
+
+    <!-- ========== Visa Type Config ========== -->
+
+    <!-- Tree View -->
+    <record id="view_visa_type_tree" model="ir.ui.view">
+        <field name="name">visa.type.tree</field>
+        <field name="model">visa.type</field>
+        <field name="arch" type="xml">
+            <tree string="Visa Types">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_visa_type_form" model="ir.ui.view">
+        <field name="name">visa.type.form</field>
+        <field name="model">visa.type</field>
+        <field name="arch" type="xml">
+            <form string="Visa Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_visa_type_config" model="ir.actions.act_window">
+        <field name="name">Visa Types</field>
+        <field name="res_model">visa.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_visa_type_config"
+              name="Visa Types"
+              parent="menu_visa_renewal_root"
+              action="action_visa_type_config"
+              sequence="2"/>
+</odoo>

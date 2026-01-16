@@ -35,18 +35,13 @@ class HrEmployee(models.Model):
         'department_id.manager_id.arabic_name'
     )
     def _compute_department_manager_display(self):
-        # Force Arabic language context
-        arabic_ctx = dict(self.env.context, lang='ar_001')
-
         for emp in self:
             if emp.department_id:
-                dept = emp.department_id.with_context(arabic_ctx)
-                dept_name = dept.name or ''
+                dept_name = emp.department_id.name or ''
                 manager_name = emp.department_id.manager_id.arabic_name or ''
-
-                emp.department_manager_display = (
-                    f"{dept_name} – {manager_name}"
-                    if manager_name else dept_name
-                )
+                if manager_name:
+                    emp.department_manager_display = f"{dept_name} – {manager_name}"
+                else:
+                    emp.department_manager_display = dept_name
             else:
                 emp.department_manager_display = False

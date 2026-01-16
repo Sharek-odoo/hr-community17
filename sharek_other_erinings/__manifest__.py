@@ -12,7 +12,7 @@
     'version': '0.1',
     'author':'Sharek',
     'website': "https://sharek.com.sa",
-    'depends': [ 'hr_work_entry_contract', 'account', 'hr_timesheet'],
+    'depends': ['project', 'hr_work_entry_contract', 'account','sharek_hr_payroll_extension','hr_timesheet'],
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',

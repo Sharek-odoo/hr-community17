@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="action_report_employee_details" model="ir.actions.report">
+            <field name="name">Employee Details</field>
+            <field name="model">hr.employee</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sharek_hr_employee_extension.employee_details</field>
+            <field name="report_file">sharek_hr_employee_extension.employee_details</field>
+            <field name="print_report_name">'Employee Details - %s' % (object.name)</field>
+            <field name="binding_model_id" eval="True"/> 
+            <field name="binding_type">report</field>
+    </record>
         <!--    Employee Report    -->
-        <report
+<!--         <report
             id="report_employee_details"
             model="hr.employee" 
             string="Employee Details"
             report_type="qweb-pdf"
             name="sharek_hr_employee_extension.employee_details" 
             file="sharek_hr_employee_extension.employee_details"
-        />
+        /> -->
 
 <!--        Template Purchase Requisition-->
         <template id="employee_details">
