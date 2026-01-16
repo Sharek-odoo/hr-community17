@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
+
+         <record id="module_category_loan" model="ir.module.category">
+            <field name="name">Loan</field>
+            <field name="description">Loan Workflow Permissions</field>
+            <field name="sequence">25</field>
+        </record>
+
+        <!-- Security Groups using the new Loan category -->
+        <record id="group_loan_employee_submit" model="res.groups">
+            <field name="name">Loan - Employee Submit</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+         <record id="group_loan_direct_manager" model="res.groups">
+            <field name="name">Loan - Direct Manager</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+        <record id="group_loan_department_manager" model="res.groups">
+            <field name="name">Loan - Department Manager</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+        <record id="group_loan_hr" model="res.groups">
+            <field name="name">Loan - HR Department</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+        <record id="group_loan_hr_manager" model="res.groups">
+            <field name="name">Loan - HR Manager</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+        <record id="group_loan_ceo" model="res.groups">
+            <field name="name">Loan - CEO</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+        <record id="group_loan_finance_manager" model="res.groups">
+            <field name="name">Loan - Finance Sector Manager</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
+
+        <record id="group_loan_finance" model="res.groups">
+            <field name="name">Loan - Finance Department</field>
+            <field name="category_id" ref="sharek_hr_employee_loan.module_category_loan"/>
+        </record>
         <record id="rule_hr_loan_type" model="ir.rule">
             <field name="name">Loan Type Multi Company</field>
             <field name="model_id" ref="model_loan_type"/>
