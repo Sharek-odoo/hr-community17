@@ -10,6 +10,7 @@
                 <group>
                     <group>
                         <field name="attendance_type" />
+                        <field name="exempt_from_attendance"/>
                     </group>
                 </group>
             </xpath>
