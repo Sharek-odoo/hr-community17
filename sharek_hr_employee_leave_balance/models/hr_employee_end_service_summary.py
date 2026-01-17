@@ -152,7 +152,7 @@ class EmployeeEndOfServicesSummaryLine(models.Model):
                 record.last_total_service_balance = 0.0
                 continue
             summary_date = record.summary_id.date
-            last_service= self.env['hr.employee.end.services.summary'].search([('id','!=',record.summary_id.id),
+            last_service= self.env['hr.employee.end.services.summary'].search([('id','!=',record.summary_id._origin.id),
                                                                  ('date', '<=', summary_date)], order='date desc', limit=1)
             last_service = last_service.line_ids.filtered(lambda emp: emp.employee_id.id == record.employee_id.id)
 
