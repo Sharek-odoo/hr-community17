@@ -21,3 +21,19 @@ class HolidaysType(models.Model):
     required_ticket = fields.Boolean(string='Required Ticket')
     religion_ids = fields.Many2many('religion.religion', string='Religions')
     trial_period = fields.Boolean(string='Allowed in trial period')
+    timeoff_normal_type = fields.Selection([('annual', 'Annual'), 
+                                     ('sick', 'Sick Leave'),
+                                     ('maternity', 'Maternity Leave'),
+                                     ('bereavement_first', 'Bereavement leave (first-degree relatives)'),
+                                     ('bereavement_secondary', 'Bereavement leave (secondary relatives)'),
+                                     ('maternity_men', 'Maternity leave for men'),
+                                     ('study_leave', 'Study leave'),
+                                     ('work_leave', 'work leave'),
+                                     ('haj', 'Haj Leave'),
+                                     ('widow_leave', "widow's leave"),
+                                     ('marriage_leave', 'Marriage leave'),
+                                     ('remote_work', 'Remote Work'),
+                                     ('compensatory_leave', 'Compensatory leave'),
+                                     ('unpaid_leave', 'Unpaid leave'),
+                                     ], string='Time off Type',required=True, default='annual')
+    time_off_days = fields.Integer('Time off days')

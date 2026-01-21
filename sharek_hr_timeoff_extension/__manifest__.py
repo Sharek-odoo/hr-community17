@@ -24,18 +24,21 @@
     "license": "OPL-1",
     "installable": True,
     "depends": [
-        'hr_holidays', 'sharek_hr_employee_extension', 'hr_contract',
+        'hr_holidays', 'sharek_hr_employee_extension', 'hr_contract','sharek_hr_payroll_extension',
     ],
     "data": [
         'data/ir_sequence.xml',
         'data/ir_cron.xml',
         'data/hr_holidays_data.xml',
         'data/leave_plan.xml',
+        'security/groups.xml',
         'security/ir.model.access.csv',
         'view/hr_leave_type.xml',
         'view/hr_leave.xml',
         'view/hr_leave_balance.xml',
         'view/hr_contract_view.xml',
-        'view/hr_employee.xml'
+        'view/hr_employee.xml',
+        'view/timeoff_transfer_views.xml',
+        'view/timeoff_not_transfer_views.xml',
     ]
 }

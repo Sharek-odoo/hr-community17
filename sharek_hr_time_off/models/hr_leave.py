@@ -13,8 +13,6 @@ from odoo.addons.resource.models.utils import HOURS_PER_DAY
 from dateutil.relativedelta import relativedelta
 from lxml import etree
 from odoo.addons.base.models.ir_model import MODULE_UNINSTALL_FLAG
-from datetime import datetime
-import pytz
 
 
 class ResUsers(models.Model):
@@ -487,3 +485,7 @@ class HolidaysRequest(models.Model):
             linked_requests.unlink()
         self.activity_update()
         return True
+
+
+
+    

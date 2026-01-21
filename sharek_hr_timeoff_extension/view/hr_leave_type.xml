@@ -7,6 +7,8 @@
 		<field name="inherit_id" ref="hr_holidays.edit_holiday_status_form" />
 		<field name="arch" type="xml">
 			<group name="leave_validation" position="inside">
+				<field name="timeoff_normal_type"/>
+				<field name="time_off_days"/>
 				<field name="calc_type"/>
 				<field name="allow_negative"/>
 				<field name="negative_limit" invisible="allow_negative != True"/>

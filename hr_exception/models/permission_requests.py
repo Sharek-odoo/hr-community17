@@ -185,22 +185,6 @@ class HrPermissionRequest(models.Model):
     #             note=note,
     #             date_deadline=fields.Date.today()  # today deadline (shows as red in bell)
     #         )
-
-    def _check_balance_valid(self):
-        """Check that approving/submitting does not exceed monthly balance."""
-        for rec in self:
-            if not rec.employee_id or not rec.request_date:
-                continue
-
-            # Get current remaining balance
-            current_balance = rec._get_current_monthly_balance(rec.employee_id.id, rec.request_date)
-            after_balance = round(current_balance - (rec.duration or 0.0), 2)
-
-            if after_balance < 0:
-                raise ValidationError(_(
-                    "Permission request exceeds available balance for %s. "
-                    "Remaining balance after this request would be %.2f hours."
-                ) % (rec.employee_id.name, after_balance))
     
 
 
@@ -244,7 +228,6 @@ class HrPermissionRequest(models.Model):
 
     def action_submit(self):
         for rec in self:
-            rec._check_balance_valid()
             rec.state = 'manager'
             if rec.employee_id.parent_id.user_id:
                 rec.sudo()._create_activity(
@@ -255,7 +238,6 @@ class HrPermissionRequest(models.Model):
 
     def action_manager_approve(self):
         for rec in self:
-            rec._check_balance_valid()
             rec.state = 'hr'
             hr_group = self.env.ref('hr_exception.group_hr_user_exception')
             hr_users = hr_group.users
@@ -267,9 +249,8 @@ class HrPermissionRequest(models.Model):
 
     def action_hr_approve(self):
         for rec in self:
-            rec._check_balance_valid()
-            rec._compute_after_balance()
             rec.state = 'done'
+            rec._compute_after_balance()
             if rec.employee_id.user_id:
                 rec.sudo()._create_activity(
                     rec.employee_id.user_id.id,

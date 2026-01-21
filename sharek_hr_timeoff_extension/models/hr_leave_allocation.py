@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 class HolidaysAllocation(models.Model):
     _inherit = "hr.leave.allocation"
     last_update = fields.Date('Last Update')
+    transfered = fields.Boolean(string="Transferred from Another Year")
 
     def _set_accrual_allocation(self):
         contracts = self.env['hr.contract'].search([('state', '=', 'open')])

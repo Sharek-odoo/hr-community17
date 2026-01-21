@@ -6,14 +6,26 @@
 		<field name="model">hr.leave.balance</field>
 		<field name="arch" type="xml">
   			<form>
-				<group>
-					<field name="employee_no"/>
-					<field name="employee_id"/>
-					<field name="leave_type"/>
-					<field name="balance"/>
-					<field name="taken"/>
-					<field name="remaining"/>
-				</group>
+  				<sheet>
+					<group>
+						<group>
+							<field name="employee_no"/>
+							<field name="employee_id"/>
+							<field name="leave_type"/>
+							<field name="balance"/>
+						</group>
+						<group>
+							<field name="taken"/>
+							<field name="remaining"/>
+							<field name="company_id"/>
+						</group>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
 			</form>
 		</field>
 	</record>
@@ -29,6 +41,7 @@
 				<field name="balance"/>
 				<field name="taken"/>
 				<field name="remaining"/>
+				<field name="company_id"/>
 			</tree>
 		</field>
 	</record>
@@ -61,15 +74,18 @@
 
     <menuitem name="Leave Balance" action="action_hr_leave_balance"
         id="menu_hr_leave_balance" parent="hr_holidays.menu_hr_holidays_management"
-        sequence="20"/>
+        sequence="20"  groups="sharek_hr_timeoff_extension.group_leave_balance"/>
 
 	<record id="hr_leave_allocation_view_form_manager" model="ir.ui.view">
 		<field name="name">hr.leave.allocation.form.dates</field>
 		<field name="model">hr.leave.allocation</field>
 		<field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form_manager" />
 		<field name="arch" type="xml">
-			<field name="number_of_days_display" position="after">
+			<xpath expr="//div[@name='duration_display']" position="after">
 				<field name="last_update" />
+			</xpath>
+			<field name="employee_ids" position="after">
+				<field name="transfered"/>
 			</field>
 		</field>
 	</record>

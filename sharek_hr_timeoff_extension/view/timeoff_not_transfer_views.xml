@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree view -->
+    <record id="view_timeoff_not_transfer_tree" model="ir.ui.view">
+        <field name="name">timeoff.not.transfer.tree</field>
+        <field name="model">timeoff.not.transfer</field>
+        <field name="arch" type="xml">
+            <tree create="False">
+                <field name="employee_id"/>
+                <field name="not_transfer_balance"/>
+                <field name="taken"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="view_timeoff_not_transfer_form" model="ir.ui.view">
+        <field name="name">timeoff.not.transfer.form</field>
+        <field name="model">timeoff.not.transfer</field>
+        <field name="arch" type="xml">
+            <form string="Not Transferred Balance" create="False">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="1"/>
+                            <field name="not_transfer_balance" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="time_off_transfer" readonly="1"/>
+                            <field name="taken" readonly="0"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_timeoff_not_transfer" model="ir.actions.act_window">
+        <field name="name">Not Transferred Balances</field>
+        <field name="res_model">timeoff.not.transfer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item under Time Off Transfers -->
+    <menuitem id="menu_timeoff_not_transfer"
+              name="Not Transferred Balances"
+              parent="menu_timeoff_transfer_root"
+              action="action_timeoff_not_transfer"
+              sequence="30" groups="sharek_hr_timeoff_extension.group_leave_balance"/>
+</odoo>

@@ -29,5 +29,5 @@
     "data": [
         'security/security.xml',
         'view/hr_leave.xml',
-    ],
+    ]
 }

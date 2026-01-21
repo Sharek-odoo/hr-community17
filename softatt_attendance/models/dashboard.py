@@ -112,37 +112,6 @@ class saAttendanceDashboard(models.Model):
     # added by alkhatim
 
     def get_absent_employee(self, _time=None):
-        # user_tz = self.env.user.tz
-        # if not user_tz:
-        #     raise ValidationError("Please Set up Your Timezone")
-
-        # now = fields.Datetime.now() if not _time else _time
-        # dt = date_utils._softatt_localize(now, user_tz)
-
-        # domain = [('hour_from', '<', self.convert_time_to_float(dt.strftime('%H:%M')))]
-        # shift_ids = tuple(set(self.env['resource.calendar.attendance'].search(domain).mapped('calendar_id.id')))
-
-        # employees = set(self.env['hr.attendance'].search([
-        #     ('employee_id', '!=', False),
-        #     ('check_in', '>=',
-        #      datetime.combine(date_utils._softatt_localize(now, user_tz).date(), datetime.min.time())),
-        #     ('check_in', '<=', datetime.combine(date_utils._softatt_localize(now, user_tz).date(), datetime.max.time()))
-        # ]).mapped('employee_id.id'))
-
-        # total_employees = self.env['hr.employee'].search_count([
-        #     ('resource_calendar_id.id', 'in', shift_ids),
-        #     ('exempt_from_attendance', '=', False)
-        # ])
-
-        # absent_emps = self.env['hr.employee'].search([
-        #     ('id', 'not in', list(employees)),
-        #     ('resource_calendar_id.id', 'in', shift_ids),
-        #     ('exempt_from_attendance', '=', False)
-        # ]).ids
-
-        # return len(absent_emps), absent_emps
-
-        """Return number and list of absent employees, excluding those with approved permission or validated leave."""
         user_tz = self.env.user.tz
         if not user_tz:
             raise ValidationError("Please Set up Your Timezone")
@@ -188,29 +157,6 @@ class saAttendanceDashboard(models.Model):
         absent_emps = all_employees.filtered(lambda e: e.id not in excluded_employees)
 
         return len(absent_emps), absent_emps.ids
-
-    # added by alkhatim
-
-
-    # commit by alkhatim
-    # def get_absent_employee(self, _time=None):
-    #     user_tz         = self.env.user.tz
-    #     if not user_tz:
-    #         raise ValidationError("Please Set up Your Timezone")
-    #     now             = fields.Datetime.now() if not _time else _time
-    #     dt              = date_utils._softatt_localize(now ,user_tz)
-    #     domain          = [('hour_from','<',self.convert_time_to_float(dt.strftime('%H:%M')))]
-    #     shift_ids       = tuple(set(self.env['resource.calendar.attendance'].search(domain).mapped('calendar_id.id')))
-    #
-    #     employees       = set(self.env['hr.attendance'].search([
-    #         ('employee_id', '!=',   False),
-    #         ('check_in',    '>=',   datetime.combine(date_utils._softatt_localize(now, user_tz).date(), datetime.min.time())),
-    #         ('check_in',    '<=',   datetime.combine(date_utils._softatt_localize(now, user_tz).date(), datetime.max.time()))]).mapped('employee_id.id'))
-    #     attendance_count        = len(employees)
-    #     total_employees         = self.env['hr.employee'].search_count([('resource_calendar_id.id', 'in', shift_ids)])
-    #     absent_emps             = self.env['hr.employee'].search([('id','not in', tuple(employees)), ('resource_calendar_id.id', 'in', shift_ids)]).ids
-    #     return (len(absent_emps), absent_emps)
-    # commit by alkhatim
 
 
     # added by alkhatim
