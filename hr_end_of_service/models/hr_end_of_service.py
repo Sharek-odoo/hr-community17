@@ -138,55 +138,55 @@ class EndOfService(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
 
-
-
     @api.depends('employee_id', 'date', 'state')
     def _calc_remaining_leaves(self):
         for rec in self:
             rec.remaining_leaves = 0.0
             rec.leave_compensation = 0.0
+
             if not rec.employee_id or not rec.date:
                 continue
 
-            # If approved/paid → show frozen values
+            # Freeze values after approval/payment
             if rec.state in ('approve', 'paid') and rec.remaining_leaves_snapshot:
                 rec.remaining_leaves = rec.remaining_leaves_snapshot
                 rec.leave_compensation = rec.leave_compensation_snapshot
                 continue
 
-            year = rec.date.year
+            year_start = f'{rec.date.year}-01-01'
+            year_end = f'{rec.date.year}-12-31'
 
-            # Allocations (validated + required_location=True) within year
-            allocs = self.env['hr.leave.allocation'].search([
+            Allocation = self.env['hr.leave.allocation']
+            Leave = self.env['hr.leave']
+
+            allocs = Allocation.search([
                 ('employee_id', '=', rec.employee_id.id),
                 ('state', '=', 'validate'),
-                ('date_from', '>=', f'{year}-01-01'),
-                ('date_to', '<=', f'{year}-12-31'),
-                ('holiday_status_id.requires_allocation', '=', 'yes'),
+                ('holiday_status_id.requires_allocation', '=', True),
+                ('date_from', '<=', year_end),
+                ('date_to', '>=', year_start),
             ])
             total_alloc = sum(allocs.mapped('number_of_days'))
 
-            # Taken leaves (validated + required_location=True) within year
-            leaves = self.env['hr.leave'].search([
+            leaves = Leave.search([
                 ('employee_id', '=', rec.employee_id.id),
                 ('state', '=', 'validate'),
-                ('date_from', '>=', f'{year}-01-01'),
-                ('date_to', '<=', f'{year}-12-31'),
-                ('holiday_status_id.requires_allocation', '=', 'yes'),
+                ('holiday_status_id.requires_allocation', '=', True),
+                ('date_from', '<=', year_end),
+                ('date_to', '>=', year_start),
             ])
             total_taken = sum(leaves.mapped('number_of_days'))
 
-            # Not-transferred balance to add **while still in draft/confirm** (taken=False)
-            nt_records = self.env['timeoff.not.transfer'].search([
+            nt_balance = sum(self.env['timeoff.not.transfer'].search([
                 ('employee_id', '=', rec.employee_id.id),
                 ('taken', '=', False),
-            ])
-            nt_balance = sum(nt_records.mapped('not_transfer_balance'))
+            ]).mapped('not_transfer_balance'))
 
             remaining = (total_alloc - total_taken) + nt_balance
             rec.remaining_leaves = remaining
 
-            salary = rec.employee_id.contract_id.total_gross_salary or 0.0
+            contract = rec.employee_id.contract_id
+            salary = contract.total_gross_salary if contract else 0.0
             rec.leave_compensation = (salary / 30.0) * remaining
 
     # @api.depends('employee_id')

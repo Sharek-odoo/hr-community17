@@ -14,11 +14,12 @@
                         <field name="family_ids" nolabel="1">
                             <tree editable="bottom">
                                 <field name="name" required="1"/>
-                                <field name="relationship"/>
-                                <field name="id_no"/>
-                                <field name="birth_date"/>
-                                <field name="phone"/>
-                                <field name="is_emergency"/>
+                                <field name="name_ar" required="1"/>
+                                <field name="relationship" required="1"/>
+                                <field name="id_no" required="1"/>
+                                <field name="birth_date" required="1"/>
+                                <field name="phone" required="1"/>
+                                <field name="marital" required="1"/>
                             </tree>
                         </field>
                     </page>

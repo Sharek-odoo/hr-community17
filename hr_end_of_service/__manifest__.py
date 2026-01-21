@@ -14,6 +14,7 @@
     'depends': [
         'sharek_hr_contract_extension',
         'sharek_hr_payroll_extension',
+        'sharek_hr_timeoff_extension',
     ],
     'data': [
         'security/res_groups.xml',

@@ -17,7 +17,7 @@
     'category': 'hr',
     'version': '17.0',
     'website': "https://sharek.com.sa",
-    'depends': ['hr','account','sharek_hr_overtime','sharek_hr_employee_loan','sharek_hr_employee_family'],
+    'depends': ['hr','account','sharek_hr_overtime','sharek_hr_employee_loan','sharek_hr_employee_family', 'sharek_hr_overtime'],
 
     # always loaded
     'data': [

@@ -16,7 +16,6 @@ class ReportAction(models.Model):
         selection_add=[("xlsx", "XLSX")], ondelete={"xlsx": "set default"}
     )
 
-
     @api.model
     def _render_xlsx(self, report_ref, docids, data):
         report_sudo = self._get_report(report_ref)

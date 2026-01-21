@@ -24,6 +24,7 @@ from datetime import datetime
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
+
 class HrAnnouncement(models.Model):
     """ Model for creating announcements. """
     _name = 'hr.announcement'
