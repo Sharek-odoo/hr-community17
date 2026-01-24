@@ -61,7 +61,7 @@ class HolidaysRequest(models.Model):
 
             # ✅ Exclude current record ONLY if it is saved in DB
             if rec.id and isinstance(rec.id, int):
-                domain.append(('id', '!=', rec.id))
+                domain.append(('id', '!=', rec._origin.id))
 
             leaves = self.env['hr.leave'].search(domain)
 
