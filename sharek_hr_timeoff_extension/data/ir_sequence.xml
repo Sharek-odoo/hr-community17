@@ -8,5 +8,12 @@
 		<field name="prefix">LR</field>
 		<field name="company_id" eval="False" />
 	</record>
+
+	<record id="seq_timeoff_transfer" model="ir.sequence">
+        <field name="name">Time Off Transfer</field>
+        <field name="code">timeoff.transfer</field>
+        <field name="prefix">TFT</field>
+        <field name="padding">4</field>
+    </record>
 		
 </odoo>

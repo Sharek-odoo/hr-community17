@@ -189,7 +189,7 @@ class ChildrenEducationAllowance(models.Model):
                 'move_type': 'in_invoice',
                 'partner_id': rec.employee_id.work_contact_id.id,
                 'journal_id': journal_id,
-                'first_approve_id':rec.first_approve_id.id,
+                # 'first_approve_id':rec.first_approve_id.id,
                 'invoice_date': fields.Date.context_today(rec),
                 'ref': rec.name,
                 'invoice_origin': rec.name,

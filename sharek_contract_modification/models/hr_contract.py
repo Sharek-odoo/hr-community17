@@ -62,19 +62,17 @@ class HrContractInhertit(models.Model):
                 contract.end_trial_period = contract.date_end
                 continue
 
-            base_days = 0
+            base_months = 0
             if contract.trial_period == 'three_month':
-                base_days = 90
+                base_months = 3
             elif contract.trial_period == 'six_month':
-                base_days = 180
+                base_months = 6
 
-            # Add extra days from trial extension months
-            extension_days = contract.trial_extension_months * 30
-            total_days = base_days + extension_days
+            total_months = base_months + contract.trial_extension_months
 
-            if contract.date_start and total_days > 0:
+            if contract.date_start and total_months > 0:
                 # Step 1: Compute base end date without leaves
-                base_trial_end = contract.date_start + timedelta(days=total_days)
+                base_trial_end = contract.date_start + relativedelta(months=total_months)
 
                 # Step 2: Save it as original (snapshot before leave extension)
                 contract.original_trial_end_date = base_trial_end
@@ -101,63 +99,10 @@ class HrContractInhertit(models.Model):
                     })
 
                 # Step 5: Update actual end date
-                # contract.end_trial_period = base_trial_end + timedelta(days=total_leave_days)
-                contract.end_trial_period = base_trial_end + timedelta(days=total_leave_days) - timedelta(days=1)
-
+                contract.end_trial_period = base_trial_end + timedelta(days=total_leave_days)
 
             else:
                 contract.end_trial_period = contract.date_end
-
-
-    # @api.depends('trial_period', 'date_start', 'trial_extension_months', 'employee_id')
-    # def _compute_end_trial_period(self):
-    #     Leave = self.env['hr.leave']
-    #     for contract in self:
-    #         if not contract.need_trial_period:
-    #             contract.end_trial_period = contract.date_end
-    #             continue
-
-    #         base_months = 0
-    #         if contract.trial_period == 'three_month':
-    #             base_months = 3
-    #         elif contract.trial_period == 'six_month':
-    #             base_months = 6
-
-    #         total_months = base_months + contract.trial_extension_months
-
-    #         if contract.date_start and total_months > 0:
-    #             # Step 1: Compute base end date without leaves
-    #             base_trial_end = contract.date_start + relativedelta(months=total_months)
-
-    #             # Step 2: Save it as original (snapshot before leave extension)
-    #             contract.original_trial_end_date = base_trial_end
-
-    #             # Step 3: Find validated leaves overlapping trial period
-    #             leaves = Leave.search([
-    #                 ('employee_id', '=', contract.employee_id.id),
-    #                 ('state', '=', 'validate'),
-    #                 ('request_date_from', '<=', base_trial_end),
-    #                 ('request_date_to', '>=', contract.date_start),
-    #             ])
-
-    #             # Step 4: Remove old logs
-    #             contract.leave_log_ids.unlink()
-
-    #             total_leave_days = 0.0
-    #             for leave in leaves:
-    #                 days = leave.number_of_days_display or 0.0
-    #                 total_leave_days += days
-    #                 self.env['hr.contract.leave.log'].create({
-    #                     'contract_id': contract.id,
-    #                     'leave_id': leave.id,
-    #                     'original_end_trial_period': base_trial_end,
-    #                 })
-
-    #             # Step 5: Update actual end date
-    #             contract.end_trial_period = base_trial_end + timedelta(days=total_leave_days)
-
-    #         else:
-    #             contract.end_trial_period = contract.date_end
 
 
 

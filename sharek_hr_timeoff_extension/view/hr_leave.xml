@@ -17,12 +17,13 @@
                 <field name="attachment_ids" widget="many2many_binary"
                        readonly="state not in ('draft', 'confirm')"/>
                 <field name="balance" readonly="1"/>
+                <field name="balance_after_request" readonly="1"/>
             </xpath>
             <xpath expr="//sheet" position="inside">
                 <group name="col_right">
                     <field name="required_delegation" invisible="1"/>
                     <field name="delegated_id"
-                           requierd="required_delegation == True" invisible="required_delegation == False"/>
+                           requierd="required_delegation == True" invisible="required_delegation == False" readonly="state != 'draft'"/>
                 </group>
             </xpath>
         </field>

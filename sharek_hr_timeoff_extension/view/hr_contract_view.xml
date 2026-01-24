@@ -6,7 +6,8 @@
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
             <field name="arch" type="xml">
               <field name="hr_responsible_id" position="after">
-                <field name="timeoff_days"/>
+                <field name="grade_percentage" invisible="1"/>
+                <field name="timeoff_days" invisible="grade_percentage == False"/>
                 <field name="timeoff_type" required="1" options="{'no_create': True}"/>
               </field>
             </field>

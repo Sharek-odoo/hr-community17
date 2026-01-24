@@ -61,7 +61,7 @@ class PerpetualCustodyAllowance(models.Model):
                 'move_type': 'entry',
                 'journal_id': rec.custody_jouranl_id.id,
                 'date': fields.Date.context_today(rec),
-                'first_approve_id':rec.first_approve_id.id,
+                # 'first_approve_id':rec.first_approve_id.id,
                 'ref': rec.name,
                 'invoice_origin': rec.name,
                 'line_ids': [],

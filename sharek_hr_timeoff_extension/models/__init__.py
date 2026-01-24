@@ -12,3 +12,5 @@ from . import hr_leave_balance
 from . import hr_leave_allocation
 from . import religion
 from . import hr_employee
+from . import timeoff_transfer
+from . import timeoff_not_transfer

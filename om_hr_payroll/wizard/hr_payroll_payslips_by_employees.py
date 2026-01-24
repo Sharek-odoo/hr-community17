@@ -11,6 +11,15 @@ class HrPayslipEmployees(models.TransientModel):
 
     employee_ids = fields.Many2many('hr.employee', 'hr_employee_group_rel', 'payslip_id', 'employee_id', 'Employees')
 
+
+    def _get_employees(self):
+        active_employee_ids = self.env.context.get('active_employee_ids', False)
+        if active_employee_ids:
+            return self.env['hr.employee'].browse(active_employee_ids)
+        # YTI check dates too
+        return self.env['hr.employee'].search(self._get_available_contracts_domain())
+
+
     def compute_sheet(self):
         payslips = self.env['hr.payslip']
         [data] = self.read()

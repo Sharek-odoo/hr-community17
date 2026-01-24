@@ -6,10 +6,11 @@
         <field name="model">hr.contract</field>
         <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
         <field name="arch" type="xml">
- 			<xpath expr="//field[@name='transport_allowance']" position="after">
-                <label for="hr_productivity_allowance"/>
-                <div class="o_row">
-                    <field name="hr_productivity_allowance"/>
+ 			<xpath expr="//group[@name='allowances']" position="inside">
+                <label for="hr_productivity_allowance" invisible="1"/>
+                <div  class="o_row mw-50">
+                    <field name="hr_productivity_allowance"  invisible="1"/>
+                    <span  invisible="1">/ month</span>
                 </div>
             </xpath>
         </field>

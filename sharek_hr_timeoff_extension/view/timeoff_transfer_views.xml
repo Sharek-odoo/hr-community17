@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem
+        id="hr_holidays.menu_hr_holidays_configuration"
+        name="Configuration"
+        parent="hr_holidays.menu_hr_holidays_root"
+        groups="hr_holidays.group_hr_holidays_manager"
+        sequence="6"/> 
+    <menuitem id="menu_timeoff_transfer_root" name="Time Off Transfers"
+              parent="hr_holidays.menu_hr_holidays_root" sequence="5" />
+
+    <record id="view_timeoff_transfer_form" model="ir.ui.view">
+        <field name="name">timeoff.transfer.form</field>
+        <field name="model">timeoff.transfer</field>
+        <field name="arch" type="xml">
+            <form string="Time Off Transfer">
+                <header>
+                    <button name="action_compute_employees" type="object" string="Compute" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-success" invisible="state != 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_allocations" type="object" string="Allocations" class="oe_stat_button" icon="fa-list"/>
+                        <button name="action_view_not_transfers" type="object" string="Not Transferred"
+                           class="oe_stat_button" icon="fa-times-circle" 
+                           invisible="state == 'draft'">
+                            <field name="not_transfer_ids" widget="statinfo" string="Not Transferred"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="state != 'draft'"/>
+                            <field name="year_from" readonly="state != 'draft'"/>
+                            <field name="year_to" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="max_days" readonly="state != 'draft'"/>
+                            <field name="allocation_date" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Employees">
+                            <field name="employee_line_ids" readonly="1">
+                                <tree editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="employee_no"/>
+                                    <field name="leave_allocated"/>
+                                    <field name="leave_taken"/>
+                                    <field name="transfer_balance"/>
+                                    <field name="not_transfer_balance"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_timeoff_transfer_tree" model="ir.ui.view">
+        <field name="name">timeoff.transfer.tree</field>
+        <field name="model">timeoff.transfer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="year_from"/>
+                <field name="year_to"/>
+                <field name="max_days"/>
+                <field name="allocation_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_timeoff_transfer" model="ir.actions.act_window">
+        <field name="name">Time Off Transfers</field>
+        <field name="res_model">timeoff.transfer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first time off transfer.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_timeoff_transfer" name="Transfers"
+              parent="menu_timeoff_transfer_root"
+              action="action_timeoff_transfer" sequence="10"
+    groups="sharek_hr_timeoff_extension.group_leave_balance"/>
+</odoo>

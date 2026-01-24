@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_leave_balance,hr_leave_balance,sharek_hr_timeoff_extension.model_hr_leave_balance,base.group_user,1,1,1,1
 access_religion_religion,religion.religion,model_religion_religion,,1,1,1,1
+access_timeoff_transfer,timeoff.transfer,model_timeoff_transfer,base.group_user,1,1,1,1
+access_timeoff_transfer_line,timeoff.transfer.line,model_timeoff_transfer_line,base.group_user,1,1,1,1
+access_timeoff_not_transfer,timeoff.not.transfer,model_timeoff_not_transfer,base.group_user,1,1,1,1

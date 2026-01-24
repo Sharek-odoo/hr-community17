@@ -58,14 +58,6 @@ class EndOfService(models.Model):
                               ('approve', 'Approved'), ('refuse', 'Refused'),
                               ('cancel', 'Cancelled'), ('paid', 'Paid')], default='new', tracking=True)
     salary_compensation = fields.Float(string='Salary Compensation')
-    remaining_leaves_snapshot = fields.Float(
-        string='Remaining Leaves (Approved)', readonly=True)
-    leave_compensation_snapshot = fields.Float(
-        string='Leaves Compensation (Approved)', readonly=True)
-    not_transfer_used = fields.Float(
-        string='Not-Transfer Balance Used', readonly=True)
-
-
 
     @api.constrains("employee_id", "state")
     def _check_duplication(self):
@@ -78,56 +70,7 @@ class EndOfService(models.Model):
         self.state = 'confirm'
 
     def action_approve(self):
-        for rec in self:
-            # Compute current components explicitly (same logic as compute)
-            year = rec.date.year
-            allocs = self.env['hr.leave.allocation'].search([
-                ('employee_id', '=', rec.employee_id.id),
-                ('state', '=', 'validate'),
-                ('date_from', '>=', f'{year}-01-01'),
-                ('date_to', '<=', f'{year}-12-31'),
-                ('holiday_status_id.requires_allocation', '=', 'yes'),
-            ])
-            total_alloc = sum(allocs.mapped('number_of_days'))
-
-            leaves = self.env['hr.leave'].search([
-                ('employee_id', '=', rec.employee_id.id),
-                ('state', '=', 'validate'),
-                ('date_from', '>=', f'{year}-01-01'),
-                ('date_to', '<=', f'{year}-12-31'),
-                ('holiday_status_id.requires_allocation', '=', 'yes'),
-            ])
-            total_taken = sum(leaves.mapped('number_of_days'))
-
-            nt_records = self.env['timeoff.not.transfer'].search([
-                ('employee_id', '=', rec.employee_id.id),
-                ('taken', '=', False),
-            ])
-            nt_balance = sum(nt_records.mapped('not_transfer_balance'))
-
-            remaining = (total_alloc - total_taken) + nt_balance
-            salary = rec.employee_id.contract_id.total_gross_salary or 0.0
-            comp = (salary / 30.0) * remaining
-
-            # Freeze (snapshot) first
-            rec.write({
-                'remaining_leaves_snapshot': remaining,
-                'leave_compensation_snapshot': comp,
-                'not_transfer_used': nt_balance,
-                'state': 'approve',
-            })
-
-            # Now mark the not-transfer balances as taken
-            if nt_records:
-                nt_records.write({'taken': True})
-
-            # Chatter log
-            rec.message_post(body=(
-                f"EOS approved. Frozen remaining leaves: {remaining:.2f} days, "
-                f"leave compensation: {comp:.2f}. "
-                f"Consumed not-transfer balance: {nt_balance:.2f} days."
-            ))
-
+        self.state = 'approve'
 
     def action_reject(self):
         self.state = 'refuse'
@@ -138,67 +81,16 @@ class EndOfService(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
 
-    @api.depends('employee_id', 'date', 'state')
+    @api.depends('employee_id')
     def _calc_remaining_leaves(self):
-        for rec in self:
-            rec.remaining_leaves = 0.0
-            rec.leave_compensation = 0.0
-
-            if not rec.employee_id or not rec.date:
-                continue
-
-            # Freeze values after approval/payment
-            if rec.state in ('approve', 'paid') and rec.remaining_leaves_snapshot:
-                rec.remaining_leaves = rec.remaining_leaves_snapshot
-                rec.leave_compensation = rec.leave_compensation_snapshot
-                continue
-
-            year_start = f'{rec.date.year}-01-01'
-            year_end = f'{rec.date.year}-12-31'
-
-            Allocation = self.env['hr.leave.allocation']
-            Leave = self.env['hr.leave']
-
-            allocs = Allocation.search([
-                ('employee_id', '=', rec.employee_id.id),
-                ('state', '=', 'validate'),
-                ('holiday_status_id.requires_allocation', '=', True),
-                ('date_from', '<=', year_end),
-                ('date_to', '>=', year_start),
-            ])
-            total_alloc = sum(allocs.mapped('number_of_days'))
-
-            leaves = Leave.search([
-                ('employee_id', '=', rec.employee_id.id),
-                ('state', '=', 'validate'),
-                ('holiday_status_id.requires_allocation', '=', True),
-                ('date_from', '<=', year_end),
-                ('date_to', '>=', year_start),
-            ])
-            total_taken = sum(leaves.mapped('number_of_days'))
-
-            nt_balance = sum(self.env['timeoff.not.transfer'].search([
-                ('employee_id', '=', rec.employee_id.id),
-                ('taken', '=', False),
-            ]).mapped('not_transfer_balance'))
-
-            remaining = (total_alloc - total_taken) + nt_balance
-            rec.remaining_leaves = remaining
-
-            contract = rec.employee_id.contract_id
-            salary = contract.total_gross_salary if contract else 0.0
-            rec.leave_compensation = (salary / 30.0) * remaining
-
-    # @api.depends('employee_id')
-    # def _calc_remaining_leaves(self):
         
-    #     for rec in self:
-    #         rec.remaining_leaves = 0
-    #         rec.leave_compensation = 0
+        for rec in self:
+            rec.remaining_leaves = 0
+            rec.leave_compensation = 0
 
-    #         if rec.employee_id:
-    #             rec.remaining_leaves = rec.employee_id.remaining_leaves
-    #             rec.leave_compensation = (rec.employee_id.contract_id.total_gross_salary / 30) * rec.remaining_leaves
+            if rec.employee_id:
+                rec.remaining_leaves = rec.employee_id.remaining_leaves
+                rec.leave_compensation = (rec.employee_id.contract_id.total_gross_salary / 30) * rec.remaining_leaves
 
 
     @api.onchange('employee_id')

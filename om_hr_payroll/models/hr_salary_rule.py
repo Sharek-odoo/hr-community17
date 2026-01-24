@@ -21,6 +21,9 @@ class HrPayrollStructure(models.Model):
 
     name = fields.Char(required=True)
     code = fields.Char(string='Reference', required=True)
+    active = fields.Boolean(default=True)
+    type_id = fields.Many2one(
+        'hr.payroll.structure.type', required=True)
     company_id = fields.Many2one('res.company', string='Company', required=True, default=lambda self: self.env.company)
     note = fields.Text(string='Description')
     parent_id = fields.Many2one('hr.payroll.structure', string='Parent', default=_get_parent)
@@ -64,24 +67,6 @@ class HrContributionRegister(models.Model):
     register_line_ids = fields.One2many('hr.payslip.line', 'register_id',
         string='Register Line', readonly=True)
     note = fields.Text(string='Description')
-
-
-class HrSalaryRuleCategory(models.Model):
-    _name = 'hr.salary.rule.category'
-    _description = 'Salary Rule Category'
-
-    name = fields.Char(required=True, translate=True)
-    code = fields.Char(required=True)
-    parent_id = fields.Many2one('hr.salary.rule.category', string='Parent',
-        help="Linking a salary category to its parent is used only for the reporting purpose.")
-    children_ids = fields.One2many('hr.salary.rule.category', 'parent_id', string='Children')
-    note = fields.Text(string='Description')
-    company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company)
-
-    @api.constrains('parent_id')
-    def _check_parent_id(self):
-        if not self._check_recursion():
-            raise ValidationError(_('Error! You cannot create recursive hierarchy of Salary Rule Category.'))
 
 
 class HrSalaryRule(models.Model):
@@ -238,12 +223,3 @@ class HrSalaryRule(models.Model):
                         %s
                         """
                     ) % (self.name, self.code, repr(ex)))
-
-
-class HrRuleInput(models.Model):
-    _name = 'hr.rule.input'
-    _description = 'Salary Rule Input'
-
-    name = fields.Char(string='Description', required=True)
-    code = fields.Char(required=True, help="The code that can be used in the salary rules")
-    input_id = fields.Many2one('hr.salary.rule', string='Salary Rule Input', required=True)

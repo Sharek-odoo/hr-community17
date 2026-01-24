@@ -6,7 +6,10 @@
 #    Author: Sharek Telecom & IT Redefined
 from odoo import models, fields, api, _
 # from odoo.addons.resource.models.resource import HOURS_PER_DAY
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError,UserError
+from datetime import timedelta, datetime, time,date
+from math import ceil
+from odoo.addons.resource.models.utils import HOURS_PER_DAY
 
 
 class HolidaysRequest(models.Model):
@@ -14,10 +17,61 @@ class HolidaysRequest(models.Model):
 
     number = fields.Char(index=True, readonly=True)
     attachment_ids = fields.Many2many('ir.attachment', string='Supporting Documents')
-    balance = fields.Float(compute="_compute_employee_balance", store=True)
+    balance = fields.Float(compute="_compute_employee_balance")
     required_delegation = fields.Boolean(related='holiday_status_id.required_delegation')
     required_ticket = fields.Boolean(related='holiday_status_id.required_ticket')
     delegated_id = fields.Many2one('hr.employee', string='Delegation')
+    balance_after_request = fields.Float(
+        string='Balance After Request',
+        compute='_compute_balance_after_request',
+    )
+
+    @api.depends('employee_id', 'number_of_days', 'holiday_status_id')
+    def _compute_balance_after_request(self):
+        today = fields.Date.today()
+        year_start = date(today.year, 1, 1)
+        year_end = date(today.year, 12, 31)
+
+        for rec in self:
+            rec.balance_after_request = 0.0
+
+            if not rec.employee_id or not rec.holiday_status_id:
+                continue
+
+            employee = rec.employee_id
+
+            # 1️⃣ Allocations in current year (same leave type)
+            allocations = self.env['hr.leave.allocation'].search([
+                ('employee_id', '=', employee.id),
+                ('holiday_status_id', '=', rec.holiday_status_id.id),
+                ('state', '=', 'validate'),
+                ('date_from', '<=', year_end),
+                ('date_to', '>=', year_start),
+            ])
+
+            allocated_days = sum(allocations.mapped('number_of_days'))
+
+            domain = [
+                ('employee_id', '=', employee.id),
+                ('holiday_status_id', '=', rec.holiday_status_id.id),
+                ('state', '=', 'validate'),
+                ('request_date_from', '>=', year_start),
+                ('request_date_to', '<=', year_end),
+            ]
+
+            # ✅ Exclude current record ONLY if it is saved in DB
+            if rec.id and isinstance(rec.id, int):
+                domain.append(('id', '!=', rec.id))
+
+            leaves = self.env['hr.leave'].search(domain)
+
+            taken_days = sum(leaves.mapped('number_of_days'))
+
+            current_balance = allocated_days - taken_days
+            requested_days = rec.number_of_days or 0.0
+
+            rec.balance_after_request = max(current_balance - requested_days, 0.0)
+
 
     @api.model_create_multi
     @api.returns('self', lambda value: value.id)
@@ -36,24 +90,113 @@ class HolidaysRequest(models.Model):
     #         return {'days': days, 'hours': HOURS_PER_DAY * days}
     #     return res
 
-    @api.depends('date_from', 'date_to', 'employee_id')
-    def _compute_number_of_days(self):
-        for holiday in self:
-            if holiday.date_from and holiday.date_to:
-                holiday.number_of_days = \
-                holiday._get_number_of_days(holiday.date_from, holiday.date_to, holiday.employee_id.id)['days']
-                if holiday.holiday_status_id.calc_type == 'calendar':
-                    holiday.number_of_days = (holiday.date_to - holiday.date_from).days + 1
-            else:
-                holiday.number_of_days = 0
+    # @api.depends('date_from', 'date_to', 'employee_id')
+    # def _compute_number_of_days(self):
+    #     for holiday in self:
+    #         if holiday.date_from and holiday.date_to:
+    #             holiday.number_of_days = \
+    #             holiday._get_number_of_days(holiday.date_from, holiday.date_to, holiday.employee_id.id)['days']
+    #             if holiday.holiday_status_id.calc_type == 'calendar':
+    #                 holiday.number_of_days = (holiday.date_to - holiday.date_from).days + 1
+    #         else:
+    #             holiday.number_of_days = 0
+
+
+    def _get_duration(self, check_leave_type=True, resource_calendar=None):
+        self.ensure_one()
+
+        # --- Custom logic for calc_type = calendar ---
+        if self.holiday_status_id.calc_type == 'calendar':
+            if not self.date_from or not self.date_to:
+                return (0, 0)
+            # full calendar days count
+            days = (self.date_to.date() - self.date_from.date()).days + 1
+            # hours = days * standard hours per day (or you could just set 0)
+            hours = days * HOURS_PER_DAY
+            return (days, hours)
+
+        # --- Otherwise, fallback to Odoo standard ---
+        return super(HolidaysRequest, self)._get_duration(check_leave_type=check_leave_type, resource_calendar=resource_calendar)
+
+
+    # @api.depends('employee_id')
+    # def _compute_employee_balance(self):
+    #     today = fields.Date.today()
+    #     year_start = date(today.year, 1, 1)
+    #     year_end = date(today.year, 12, 31)
+    #
+    #     for rec in self:
+    #         rec.balance = 0.0
+    #         if not rec.employee_id:
+    #             continue
+    #
+    #         employee = rec.employee_id
+    #
+    #         # 1️⃣ Allocated leaves (current year)
+    #         allocations = self.env['hr.leave.allocation'].search([
+    #             ('employee_id', '=', employee.id),
+    #             ('state', '=', 'validate'),
+    #             ('date_from', '<=', year_end),
+    #             ('date_to', '>=', year_start),
+    #         ])
+    #
+    #         allocated_days = sum(allocations.mapped('number_of_days'))
+    #
+    #         # 2️⃣ Taken leaves (current year)
+    #         leaves = self.env['hr.leave'].search([
+    #             ('employee_id', '=', employee.id),
+    #             ('state', '=', 'validate'),
+    #             ('request_date_from', '>=', year_start),
+    #             ('request_date_to', '<=', year_end),
+    #         ])
+    #
+    #         taken_days = sum(leaves.mapped('number_of_days'))
+    #
+    #         # 3️⃣ Remaining balance
+    #         rec.balance = allocated_days - taken_days
 
     @api.depends('employee_id', 'holiday_status_id')
     def _compute_employee_balance(self):
+        today = fields.Date.today()
+        year_start = date(today.year, 1, 1)
+        year_end = date(today.year, 12, 31)
+
         for rec in self:
-            balance = self.env['hr.leave.balance'].search(
-                [('employee_id', '=', rec.employee_id.id), ('leave_type', '=', rec.holiday_status_id.id)])
-            rec.balance = balance.remaining
-            # rec.balance = rec.employee_id.allocation_count - rec.employee_id.allocation_used_count
+            rec.balance = 0.0
+
+            if not rec.employee_id or not rec.holiday_status_id:
+                continue
+
+            # ❗ Only calculate for Annual leave
+            if rec.holiday_status_id.timeoff_normal_type != 'annual':
+                continue
+
+            employee = rec.employee_id
+
+            # 1️⃣ Allocated annual leaves (current year)
+            allocations = self.env['hr.leave.allocation'].search([
+                ('employee_id', '=', employee.id),
+                ('holiday_status_id', '=', rec.holiday_status_id.id),
+                ('state', '=', 'validate'),
+                ('date_from', '<=', year_end),
+                ('date_to', '>=', year_start),
+            ])
+
+            allocated_days = sum(allocations.mapped('number_of_days'))
+
+            # 2️⃣ Taken annual leaves (current year)
+            leaves = self.env['hr.leave'].search([
+                ('employee_id', '=', employee.id),
+                ('holiday_status_id', '=', rec.holiday_status_id.id),
+                ('state', '=', 'validate'),
+                ('request_date_from', '>=', year_start),
+                ('request_date_to', '<=', year_end),
+            ])
+
+            taken_days = sum(leaves.mapped('number_of_days'))
+
+            # 3️⃣ Remaining balance
+            rec.balance = allocated_days - taken_days
 
     @api.constrains('employee_id', 'holiday_status_id', 'start_date', 'end_date')
     def _check_negative_leave(self):
