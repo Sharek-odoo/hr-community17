@@ -1,60 +1,33 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="sharek_earning_extend.list">
-      <field name="name">sharek_earning_extend list</field>
-      <field name="model">sharek_earning_extend.sharek_earning_extend</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
+    <data>
+        <record id="other_earnings_form_view_inherit" model="ir.ui.view">
+            <field name="name">other.earnings.form.view.inherit</field>
+            <field name="model">other.earnings</field>
+            <field name="inherit_id" ref="sharek_other_erinings.other_earnings_form_view"/>
+            <field name="arch" type="xml">
+                <field name="amount" position="replace">
+                    <field name="base_on" required="1"/>
+                    <field name="amount" invisible="base_on not in 'amount'"/>
+                    <field name="percentage" invisible="base_on not in 'percentage'"/>
+                    <field name="no_od_day" invisible="base_on not in 'day'"/>
+                </field>
+                <xpath expr="//page[@name='earning_lies']" position="replace">
+                    <page string="Other Earnings Line" name="earning_lies">
+                        <field name="earnings_ids">
+                            <tree editable="bottom">
+                                <field name="employee_id" required="1"/>
+                                <field name="date"/>
+                                <field name="base_on" optional="hide"/>
+                                <field name="percentage" optional="hide"  readonly="base_on not in 'percentage'"/>
+                                <field name="no_od_day" optional="hide" readonly="base_on not in 'day'"/>
+                                <field name="amount"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="sharek_earning_extend.action_window">
-      <field name="name">sharek_earning_extend window</field>
-      <field name="res_model">sharek_earning_extend.sharek_earning_extend</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+            </field>
+        </record>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="sharek_earning_extend.action_server">
-      <field name="name">sharek_earning_extend server</field>
-      <field name="model_id" ref="model_sharek_earning_extend_sharek_earning_extend"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="sharek_earning_extend" id="sharek_earning_extend.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="sharek_earning_extend.menu_1" parent="sharek_earning_extend.menu_root"/>
-    <menuitem name="Menu 2" id="sharek_earning_extend.menu_2" parent="sharek_earning_extend.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="sharek_earning_extend.menu_1_list" parent="sharek_earning_extend.menu_1"
-              action="sharek_earning_extend.action_window"/>
-    <menuitem name="Server to list" id="sharek_earning_extend" parent="sharek_earning_extend.menu_2"
-              action="sharek_earning_extend.action_server"/>
--->
-  </data>
+    </data>
 </odoo>

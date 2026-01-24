@@ -33,5 +33,5 @@
         'views/hr_sheet_print.xml',
         'views/hr_attendance_rules.xml'
     ],
-    
+
 }

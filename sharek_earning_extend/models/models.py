@@ -6,60 +6,119 @@ from odoo import models, fields, api
 class sharek_earning_extend(models.Model):
     _inherit = "other.earnings"
 
-    type = fields.Selection(selection_add=[('reward_allowance', 'Reward Allowance'),
-    	('target1_allowance', 'Target 1 Allowance')
-    	,('target2_allowance', 'Target 2 Allowance')
-    	,('gosi', 'GOSI Deduction')
-    	,('other_allowance', 'Other Allowance')],
-    	string="Type", default='')
+
+    type = fields.Selection([('allowance', 'Allowance'), ('other_allowance', 'Other Allowance'),
+                            ('deduction', 'Disciplinary action Deduction'),
+                            ('other_deduction', 'Other Deductions'),
+                            ('gosi', 'GOSI Deduction')], string="Type", default='')
+    AMOUNT_TYPES = [
+        ("percentage", "Percentage"),
+        ("amount", "Amount"),
+        ("day", "Days")
+    ]
+
+    base_on = fields.Selection(AMOUNT_TYPES, string="Base On", default="day")
+    percentage = fields.Float(string="Percentage %")
+    no_od_day = fields.Float(string="No Of Days")
+
+    @api.depends('base_on', 'percentage', 'no_od_day', 'amount')
+    def compute_amount(self):
+        for rec in self:
+            for line in  rec.earnings_ids:
+                salary = line.employee_id.contract_id.total_gross_salary or 0.0
+                line.base_on = rec.base_on
+                line.date = rec.start_date
+                if rec.base_on == 'percentage':
+                    line.percentage = rec.percentage
+                    line.amount = (line.percentage/100) * (salary / 30)
+                elif  rec.base_on == 'day':
+                    line.no_od_day = rec.no_od_day
+                    line.amount = line.no_od_day * (salary / 30)
+                else:
+                    line.amount = rec.amount
+
+class OtherEarningsLine(models.Model):
+    _inherit = "other.earnings.line"
+
+    AMOUNT_TYPES = [
+        ("percentage", "Percentage"),
+        ("amount", "Amount"),
+        ("day", "Days")
+    ]
+
+    base_on = fields.Selection(
+        AMOUNT_TYPES,
+        string="Base On",
+        default="day",
+        store=True,  # Required for front-end use
+        readonly=True  # Optional: since it's inherited
+    )
+
+    percentage = fields.Float(string="Percentage %")
+    no_od_day = fields.Float(string="No Of Days")
 
 class HRPayrollAllow(models.Model):
     _inherit = 'hr.payslip'
 
-
-    reward_allowance = fields.Float(compute="_compute_reward_amount")
-    target1_allowance = fields.Float(compute="_compute_target1_amount")
-    target2_allowance = fields.Float(compute="_compute_target2_amount")
-    gosi_deduction = fields.Float(compute="_compute_gosi_amount")
+    other_deduction = fields.Float(compute="_compute_other_deduction_amount")
+    gosi_deduction = fields.Float(compute="_compute_gosi_amount",)
     other_allowance = fields.Float(compute="_compute_other_amount")
 
-    def _compute_reward_amount(self):
-        amount = 0.0
+    @api.depends('employee_id', 'date_from', 'date_to')
+    def _compute_other_deduction_amount(self):
         for pay in self:
-            amount_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','reward_allowance')])
+            amount = 0.0
+            amount_line = self.env['other.earnings.line'].search([
+                ('employee_id', '=', pay.employee_id.id),
+                ('date', '>=', pay.date_from),
+                ('date', '<=', pay.date_to),
+                ('earnings_line_id.state', '=', 'confirm'),
+                ('earnings_line_id.earnings_type', '=', 'payroll'),
+                ('earnings_line_id.type', '=', 'other_deduction')
+            ])
             for rec in amount_line:
                 amount += rec.amount
-        self.reward_allowance = amount
-    def _compute_target1_amount(self):
-        amount = 0.0
-        for pay in self:
-            amount_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','target1_allowance')])
-            for rec in amount_line:
-                amount += rec.amount
-        self.target1_allowance = amount
-    def _compute_target2_amount(self):
-        amount = 0.0
-        for pay in self:
-            amount_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','target2_allowance')])
-            for rec in amount_line:
-                amount += rec.amount
-        self.target2_allowance = amount
+            pay.other_deduction = amount  # ✅ Assign per payslip
+
+
+    @api.depends('employee_id', 'date_from', 'date_to')
     def _compute_gosi_amount(self):
-        amount = 0.0
         for pay in self:
-            amount_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','gosi')])
+            amount = 0.0
+            amount_line = self.env['other.earnings.line'].search([
+                ('employee_id', '=', pay.employee_id.id),
+                ('date', '>=', pay.date_from),
+                ('date', '<=', pay.date_to),
+                ('earnings_line_id.state', '=', 'confirm'),
+                ('earnings_line_id.earnings_type', '=', 'payroll'),
+                ('earnings_line_id.type', '=', 'gosi')
+            ])
             for rec in amount_line:
                 amount += rec.amount
-        self.gosi_deduction = amount
+            pay.gosi_deduction = amount
+
+
+    @api.depends('employee_id', 'date_from', 'date_to')
     def _compute_other_amount(self):
-        amount = 0.0
         for pay in self:
-            amount_line = self.env['other.earnings.line'].search([('employee_id','=',pay.employee_id.id),
-                ('date','>=',pay.date_from),('date','<=',pay.date_to),('earnings_line_id.state','=','confirm'),('earnings_line_id.earnings_type','=','payroll'),('earnings_line_id.type','=','other_allowance')])
+            amount = 0.0
+            print("\n\n\n\n")
+            print("amount 1",amount)
+            amount_line = self.env['other.earnings.line'].search([
+                ('employee_id', '=', pay.employee_id.id),
+                ('date', '>=', pay.date_from),
+                ('date', '<=', pay.date_to),
+                ('earnings_line_id.state', '=', 'confirm'),
+                ('earnings_line_id.earnings_type', '=', 'payroll'),
+                ('earnings_line_id.type', '=', 'other_allowance')
+            ])
+            print("earn line",amount_line)
             for rec in amount_line:
+
                 amount += rec.amount
-        self.other_allowance = amount
+                print("amount in line for",amount)
+            pay.other_allowance = amount  # ✅ assign per payslip
+            print("pay.other_allowance",pay.other_allowance)
+            print("pay employee",pay.employee_id.name)
+
+

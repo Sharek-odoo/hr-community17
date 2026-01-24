@@ -199,7 +199,7 @@ class OvertimeRequestAllowance(models.Model):
                 'partner_id': rec.employee_id.work_contact_id.id,
                 'journal_id': journal_id,
                 'invoice_date': fields.Date.context_today(rec),
-                'first_approve_id':rec.first_approve_id.id,
+                # 'first_approve_id':rec.first_approve_id.id,
                 'ref': rec.name,
                 'invoice_origin': rec.name,
                 'invoice_line_ids': [],
